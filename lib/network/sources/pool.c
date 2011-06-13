@@ -22,6 +22,14 @@
 
 void		*(*free_data)(void *data) = NULL;
 
+/*
+** Function: fdfull - private
+** Called by pool
+**
+** This function handle the different fd_set (read,write,error)
+** and fill each set according to each specific fds.
+*/
+
 static int	fdfull(fds l, fd_set *read, fd_set *write, fd_set *error)
 {
   int		i;
@@ -47,6 +55,13 @@ static int	fdfull(fds l, fd_set *read, fd_set *write, fd_set *error)
   return (i);
 }
 
+/*
+** Function: select_handle - Private
+** Called by pool
+**
+** This function pass on each fds to check if something happend.
+*/
+
 static int	select_handle(fds *l, fd_set *read, fd_set *write, fd_set *error)
 {
   fds		tmp;
@@ -67,6 +82,15 @@ static int	select_handle(fds *l, fd_set *read, fd_set *write, fd_set *error)
   return (0);
 }
 
+/*
+** Function: pool - public
+**
+** This function have to be call periodicly.
+** The fdsList contain all fds to manage in read - write and other.
+**
+** Return the fdsList.
+*/
+
 fds		pool(fds *l)
 {
   struct timeval tv;
@@ -74,13 +98,14 @@ fds		pool(fds *l)
   fd_set	write;
   fd_set	error;
   int		max;
+  size_t	test;
 
-  tv.tv_sec = 0;
+  tv.tv_sec = 1;
   tv.tv_usec = 500;
   if ((*l) && (max = fdfull((*l), &read, &write, &error)) != -1)
     {
-      if (select((max + 1), &read, &write, &error, &tv) != -1)
-	  select_handle(l, &read, &write, &error);
+      if ((test = select((max + 1), &read, &write, &error, &tv)) != -1)
+	select_handle(l, &read, &write, &error);
     }
   return ((*l));
 }

@@ -11,6 +11,10 @@
 #ifndef         NETWORK_H_
 # define        NETWORK_H_
 
+#if	defined(NETPRIVATE)
+# include "buffer.h"
+#endif
+
 #include        <netdb.h>
 #include        <netinet/in.h>
 #include        <arpa/inet.h>
@@ -26,19 +30,14 @@
 **
 */
 
-#define BUFFERS 4096
-
 #define READM   16
 #define READB   1024
 
 #define WRITEB  1024
 
-#define DELIM   '\n'
-#define CRLF	"\r\n"
-
-#define sends(a, b)	(writes(a, b, 1))
-#define eof(a)		(writes(a, NULL, 1))
-#define sendneof(a, b)	(writes(a, b, 0))
+#define sends(a, b)     (writes(a, b, 1))
+#define eof(a)          (writes(a, NULL, 1))
+#define sendneof(a, b)  (writes(a, b, 0))
 
 /*
 ** Types
@@ -49,7 +48,7 @@ typedef struct protoent         proto;
 typedef struct sockaddr_in      saddri;
 typedef struct ifaddrs          ifaddrs;
 
-typedef enum    e_fdtype
+typedef enum    _fdtype
   {
     PROCRASTINATOR,
     READ,
@@ -58,52 +57,49 @@ typedef enum    e_fdtype
     SERV
   }             fdtype;
 
-typedef struct  ipv4
+typedef struct  _ipv4
 {
   char  ip[IPV4];
   char  **split;
 }               ipv4;
 
-typedef struct s_sock
+typedef struct	_sock
 {
+  int           fd;
   int           socket;
   int           port;
+
+  int           queue;
   saddri        bind;
   proto         *pro;
 }               sock;
 
-typedef struct          s_buffer
-{
-  char                  buf[BUFFERS + 1];
-  char                  *plus;
-  struct s_buffer       *prev;
-  struct s_buffer       *next;
-}                       t_buffer;
+typedef struct _buffer	*buffer;
+typedef struct _fds	*fds;
 
-typedef t_buffer        *buffer;
-
-typedef struct  s_fds
+typedef struct  _fds
 {
-  int           fd;
-  time_t	time;
-  int           queue;
-  sock          *s;
   fdtype        type;
+  int           fd;
+  sock          *s;
+
   buffer        read;
   buffer        write;
-  void		*data;
-  struct s_fds  *prev;
-  struct s_fds  *next;
-}               t_fds;
 
-typedef t_fds   *fds;
+  struct _fds	*prev;
+  struct _fds	*next;
+  struct _fds	*descent;
+
+  time_t        time;
+  void          *data;
+}               _fds;
 
 /*
 ** Functions
 **
 */
 
-extern void		*(*free_data)(void *data);
+extern void             *(*free_data)(void *data);
 
 /* = Fds = */
 fds             add_fd(fds *l, int fd, int type);
@@ -124,14 +120,14 @@ sock            *csocket(char *hostname, int port);
 sock            *ssocket(int port, int queue);
 ipv4            **gethostipv4(void);
 void            *free_socket(sock *ket);
-int		solimit(fds fd);
+int             solimit(fds fd);
 void            *freeipv4(ipv4 **local);
 
 /* = getcmd = */
 char            *getcmd(fds filed);
 
 /* = writeline = */
-void		writes(fds filed, char *s, int end);
+void            writes(fds filed, char *s, int end);
 
 /* = network = */
 int             handle_serv(fds *list, fds socket);
@@ -141,6 +137,6 @@ int             add_socket(fds *pool, int p, int q);
 int             add_co(fds *pool, char *hostname, int p);
 
 /* = pool = */
-fds		pool(fds *l);
+fds             pool(fds *l);
 
 #endif          /* NETWORK_H_ */

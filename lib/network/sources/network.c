@@ -8,6 +8,8 @@
 ** Last update Tue Apr 19 22:15:47 2011 julien di-marco
 */
 
+#define NETPRIVATE
+
 #include	<sys/select.h>
 #include	<sys/types.h>
 #include	<sys/time.h>
@@ -21,6 +23,16 @@
 #include	"network.h"
 
 #define ERRORMSG
+
+/*
+** Function: handle_serv - private
+**
+** Handle the action the lib have to make when a file descriptor
+** is able to accepte new connection.
+** Generaly the type of this fds is [SERV].
+**
+** Return not use for now.
+*/
 
 int		handle_serv(fds *list, fds socket)
 {
@@ -48,6 +60,16 @@ int		handle_serv(fds *list, fds socket)
   return (0);
 }
 
+/*
+** Function: handle_read - private
+**
+** Handle the action the lib have to make when a file descriptor
+** is readable without blocking, assuming the buffer are okay
+** The type of the fds is [READ | RDWR].
+**
+** Return -1 on error.
+*/
+
 int		handle_read(fds socket)
 {
   char		tmp[READB + 1];
@@ -72,6 +94,19 @@ int		handle_read(fds socket)
     }
   return (0);
 }
+
+/*
+** Function: handle_write - private
+**
+** Handle the action the lib have to make when a file descriptor
+** is writable and fetch the buffer to write on it.
+** Generaly the type of this fds is [WRITE | RDWR].
+**
+** Note: this function is only trigger when there is a least one
+** charactere in the write buffer.
+**
+** Return -1 on failure.
+*/
 
 int		handle_write(fds socket)
 {
@@ -99,6 +134,15 @@ int		handle_write(fds socket)
   return (0);
 }
 
+/*
+** Function: add_socket - public - user triggered
+**
+** This function is triggered by the user to add listen
+** on a specific port on the machine and wait for client.
+**
+** Return -1 on failure.
+*/
+
 int		add_socket(fds *pool, int p, int q)
 {
   sock		*s;
@@ -117,6 +161,16 @@ int		add_socket(fds *pool, int p, int q)
     }
   return (-1);
 }
+
+/*
+** Function: add_co - public - user triggered
+**
+** This function is trigger by the user when he want to connect
+** on a specific hostname [hostname] and on a specific port
+** [p].
+**
+** Return -1 on failure.
+*/
 
 int		add_co(fds *pool, char *hostname, int p)
 {

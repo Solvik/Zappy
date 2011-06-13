@@ -8,6 +8,8 @@
 ** Last update Thu Apr 21 23:16:56 2011 julien di-marco
 */
 
+#define NETPRIVATE
+
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>

@@ -8,6 +8,8 @@
 ** Last update Fri Apr 22 17:34:29 2011 julien di-marco
 */
 
+#define NETPRIVATE
+
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
@@ -16,12 +18,30 @@
 
 #include	"network.h"
 
+/*
+** Function: lastone - BufferToolkit
+**
+** This function return the last chunk in a bufferStack.
+**
+** Return the last chunk of a given bufferStack.
+*/
+
 static buffer	lastone(buffer e)
 {
   while (e && e->next)
     e = e->next;
   return (e);
 }
+
+/*
+** Function: add_char - BufferToolkit
+**
+** This function add only one charactere to a buffer stack.
+**
+** it can modify the buffer stack head.
+**
+** Return the chunk were the charactere have been added.
+*/
 
 buffer          add_char(buffer *l, char c)
 {
@@ -51,6 +71,16 @@ buffer          add_char(buffer *l, char c)
     }
   return (new);
 }
+
+/*
+** Function: writes - Public
+**
+** This function is user triggered to send something
+** to sa specific fds.
+** The buffer are correctly ajusted and the client 'll receive the
+** content as soon as possible.
+**
+*/
 
 void		writes(fds filed, char *s, int end)
 {
