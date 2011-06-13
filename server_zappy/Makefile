@@ -5,20 +5,22 @@ NAME		=	server_zappy
 SRC_DIR		=	src/
 CSRC_DIR	=	../common/src
 
-INCLUDE		=	-Iinclude/ -I../common/include/
+INCLUDE		=	-Iinclude/ -I../common/include/ -I../lib/
 LIB_DIR		=	../lib/
-
-## Files Prefixes
-
 
 ## Sources
 SRCS		=	$(SRC_DIR)main.c			\
-			$(SRC_DIR)$(NAME).c
+			$(SRC_DIR)$(NAME).c			\
+			\
+			$(SRC_DIR)init.c			\
+			$(SRC_DIR)init_opt.c			\
+			$(SRC_DIR)init_network.c		\
+			$(SRC_DIR)init_map.c			\
+			\
+			$(SRC_DIR)destroy.c
 
 ## Libraries
-#LIB		=	-L$(LIB_DIR)/gnl -lgnl			\
-#			-L$(LIB_DIR)/List -llist		\
-#			-L$(LIB_DIR)/itoa -litoa
+LIB		=	-L$(LIB_DIR)/List -llist
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)

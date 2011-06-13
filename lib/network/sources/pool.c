@@ -1,11 +1,11 @@
 /*
 ** pool.c for  in /home/di-mar_j//svn/irc/branches/network
-** 
+**
 ** Made by julien di-marco
 ** Login   <di-mar_j@epitech.net>
-** 
+**
 ** Started on  Fri Apr 22 12:38:07 2011 julien di-marco
-** Last update Sat Apr 23 15:41:42 2011 dimitri jorge
+** Last update Mon Jun 13 17:01:17 2011 solvik blum
 */
 
 #include	<sys/select.h>
