@@ -2,14 +2,16 @@
 #ifndef		ZAPPY_OPT
 # define	ZAPPY_OPT
 
+#include	"ztypes.h"
+
 typedef		struct
 {
-  int		port;
-  int		width;
-  int		height;
-  int		nb_client;
-  int		delay;
-  int		time;
+  uint		port;
+  uint		width;
+  uint		height;
+  uint		nb_client;
+  uint		delay;
+  uint		time;
 }		t_zopt;
 
 /*
