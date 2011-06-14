@@ -4,7 +4,7 @@
 ## Site		http://db0.fr/
 ##
 
-NAME		=	list
+NAME		=	liblist.a
 
 SRC_DIR		=	src/
 
@@ -66,14 +66,14 @@ INCLUDE		=	-Iinclude
 all		:	$(NAME)
 
 $(NAME)		:	$(OBJ)
-			$(AR) lib$(NAME).a $(OBJ)
-			ranlib lib$(NAME).a
+			$(AR) $(NAME) $(OBJ)
+			ranlib $(NAME)
 
 clean		:
 			$(RM) $(OBJ)
 
 fclean		:	clean
-			$(RM) lib$(NAME).a
+			$(RM) $(NAME)
 
 re		:	fclean all
 
