@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 15:55:53 2011 solvik blum
-** Last update Mon Jun 13 17:31:58 2011 solvik blum
+** Last update Mon Jun 13 20:18:08 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -20,20 +20,25 @@ typedef struct	s_avance
   e_direction	dir;
 }		t_avance;
 
-static int	avance_haut(t_player *player)
+static int	avance_haut(fds *client)
 {
+  client_data->y--;
 }
 
-static int	avance_bas(t_player *player)
+static int	avance_bas(fds *client)
 {
+  client_data->y++;
 }
 
-static int	avance_droite(t_player *player)
+static int	avance_droite(fds *client)
 {
+  client_data->x++;
 }
 
-static int	avance_gauche(t_player *player)
+static int	avance_gauche(fds *client)
 {
+  if (client_data->x ==
+  client_data->x--;
 }
 
 static const t_avance	gl_tab[4] =
@@ -44,6 +49,16 @@ static const t_avance	gl_tab[4] =
     {avance_gauche, WEST},
   };
 
-int		zappy_avance(t_player *player)
+int		zappy_avance(fds *client)
 {
+  unsigned int	i;
+  unsigned int	size;
+
+  size = sizeof(gl_tab) / sizeof(t_avance);
+  while (i < size)
+    {
+      if (client_data->direction == gl_tab[i].dir)
+	gl_tab[i].func(client);
+    }
+
 }

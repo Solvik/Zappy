@@ -5,32 +5,35 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 15:55:26 2011 solvik blum
-** Last update Mon Jun 13 16:54:55 2011 solvik blum
+** Last update Mon Jun 13 19:31:40 2011 solvik blum
 */
 
 #ifndef PLAYER_H_
 # define PLAYER_H_
 
 
-#include	"list.h"
+#  include	"ztypes.h"
+#  include	"list.h"
+#  include	"network.h"
 
-enum e_direction
+#define client_data	(((t_player *)(client->data))
+
+typedef enum
   {
     NORTH = 0,
     EAST,
     SOUTH,
     WEST
-  }
+  }		e_direction;
 
 typedef struct	s_player
 {
-  int		level;
-  int		life;
-  int		x;
-  int		y;
+  uint		level;
+  uint		life;
+  uint		x;
+  uint		y;
   t_list	*ressources;
   e_direction	direction
 }		t_player;
-
 
 #endif /* PLAYER_H_ */
