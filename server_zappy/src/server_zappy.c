@@ -1,15 +1,18 @@
 
-#include	"tserv.h"
+#include	"game.h"
 #include	"init.h"
 #include	"destroy.h"
 #include	"server_zappy.h"
 
-bool		server_zappy(int ac, char *opt[])
-{
-  t_serv	s;
+t_game *	game;
 
-  init(&s.map, ac, opt);
-  /* do some stuff */
+bool		server_zappy(int opt_size, char ** opt)
+{
+  t_game	s;
+
+  game = &s;
+  init(opt_size, opt);
+  run();
   destroy(&s);
   return (true);
 }

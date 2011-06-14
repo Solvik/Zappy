@@ -4,13 +4,13 @@
 #include	"init.h"
 #include	"server_zappy.h"
 
-bool		init(t_map * map, int ac, char *opt[])
+bool		init(int opt_size, char ** opt)
 {
   t_zopt	optab;
 
-  if (!init_opt(ac, opt, &optab) ||
+  if (!init_opt(opt_size, opt, &optab) ||
       !init_network(&optab) ||
-      !init_map(map, &optab))
+      !init_map(&optab))
     return (false);
   return (true);
 }

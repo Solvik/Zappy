@@ -2,6 +2,7 @@
 #ifndef		ZAPPY_OPT
 # define	ZAPPY_OPT
 
+#include	"list.h"
 #include	"ztypes.h"
 
 typedef		struct
@@ -12,6 +13,7 @@ typedef		struct
   uint		nb_client;
   uint		delay;
   uint		time;
+  t_list *	module;		// char *
 }		t_zopt;
 
 /*

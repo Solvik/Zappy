@@ -3,10 +3,15 @@ NAME		=	server_zappy
 
 ## Directories
 SRC_DIR		=	src/
-CSRC_DIR	=	../common/src
-
-INCLUDE		=	-Iinclude/ -I../common/include/ -I../lib/
+COM_DIR		=	../common/
+CSRC_DIR	=	$(COM_DIR)src/
 LIB_DIR		=	../lib/
+
+INCLUDE		=	-Iinclude/				\
+			-I$(COM_DIR)include/			\
+			-I$(LIB_DIR)network/include/		\
+			-I$(LIB_DIR)List/include/		\
+			-I$(LIB_DIR)itoa/include/
 
 ## Sources
 SRCS		=	$(SRC_DIR)main.c			\
@@ -17,7 +22,16 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)init_network.c		\
 			$(SRC_DIR)init_map.c			\
 			\
-			$(SRC_DIR)destroy.c
+			$(SRC_DIR)game_set_map.c		\
+			$(SRC_DIR)game_get_map.c		\
+			\
+			$(SRC_DIR)run.c				\
+			\
+			$(SRC_DIR)destroy.c			\
+			\
+			$(CSRC_DIR)err_print_error.c		\
+			$(CSRC_DIR)err_print_warning.c		\
+			$(CSRC_DIR)err_syntax_error.c
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/List -llist
