@@ -1,0 +1,50 @@
+0) Preliminaires :
+- Absent -> -21
+- Triche -> -42
+- Trich (vol de code) -> -84
+- Pas de rendu -> 0.5
+- Pas de fichier auteur (si demande) -> 0.5
+- Ebauc:e de code (rien de montrable / rien de mieux qu'un code de TP) -> 1
+- Ne compile pas / segmentation fault / broken pipe -> 1.5
+- Preliminaires Ok -> 2
+
+=> Preliminaires : -21    -42    -84    0.5    1    1.5    2   
+1) Le serveur
+## Dans cette partie, nn note l'avancee du groupe.
+
+
+
+- Le serveur listen sur un port et parse les options de la ligne de commande -> 1
+- Le serveur axcepte des clients et a un multiplexeur de base (sans gestion de temps). -> 1
+- Gestion correcte des deconnexions de clients -> 1
+
+=> serveur : 0    1    2    3   
+2) Le protocole
+## Testons les commandes du protocole.
+
+- Gestion de avance -> 1
+- Gestion de droite/gauche -> 1
+- Gestion de voir -> 1
+- Gestion de prend -> 1
+- Gestion de pause -> 1
+
+=> Le protocole de base : 0    1    2    3    4    5   
+3) Un peu plus avance
+
+- Gestion de fork -> 1
+- Quand un oeuf est cree, on le voit sur la map -> 1
+- Apparition du drone 600 cycles plus tard (on doit voir "joueur" au lieu de "oeuf" sur la map). -> 1
+- Gestion du temps avant le renvoi des commandes -> 1
+- Gestion de la mort des drones si ils ne prennent pas de nourriture -> 1
+- Gestion des niveaux et des incantations -> 2
+- Gestion de la fin d'une partie (6 joueurs au niveau 8) -> 1
+- Gestion du broadcast -> 2
+
+=> avance : 0    1    2    3    4    5    6    7    8    9    10   
+4) La norme
+
+
+
+- Passez un coup de moulinette de norme.
+
+=> norme : 0    -1    -2    -3    -4    -5    -6    -7    -8    -9    -10    -11    -12    -13    -14    -15    -16    -17    -18    -19    -20    -21    -22    -23    -24    -25    -26    -27    -28    -29    -30    -31    -32    -33    -34    -35    -36    -37    -38    -39    -40    -41    -42   
