@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Mon Jun 13 19:36:12 2011 solvik blum
+** Last update Tue Jun 14 17:27:32 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -24,12 +24,12 @@ static char     *gl_ressource_name[] =
     " thystame"
   };
 
-int		zappy_voir(fds *client)
+int		zappy_voir(t_fds *player)
 {
   /* on recup le lvl */
   int		level;
 
-  level = client_data->level;
+  level = player_data->level;
 
   /* en fonction du level, on itere sur X */
   /* ... */
