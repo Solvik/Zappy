@@ -4,6 +4,6 @@
 
 #  include	<stdbool.h>
 
-bool		server_zappy(char **);
+bool		server_zappy(int, char *[]);
 
 #endif		/* !SERVER_ZAPPY_H_ */

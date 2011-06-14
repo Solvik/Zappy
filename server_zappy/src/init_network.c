@@ -1,4 +1,6 @@
 
+#include	<stdio.h>
+
 #include	"zopt.h"
 #include	"server_zappy.h"
 
