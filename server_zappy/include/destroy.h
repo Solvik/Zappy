@@ -2,8 +2,8 @@
 #ifndef		DESTROY_H_
 # define	DESTROY_H_
 
-#  include	"game.h"
+#  include	"tserver.h"
 
-void		destroy(t_game *);
+void		destroy(t_server *);
 
 #endif		/* !DESTROY_H_ */

@@ -22,12 +22,17 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)init_network.c		\
 			$(SRC_DIR)init_map.c			\
 			\
-			$(SRC_DIR)game_set_map.c		\
-			$(SRC_DIR)game_get_map.c		\
+			$(SRC_DIR)gserv_set_map.c		\
+			$(SRC_DIR)gserv_get_map.c		\
+			\
+			$(SRC_DIR)net_wait_clients.c		\
 			\
 			$(SRC_DIR)run.c				\
+			$(SRC_DIR)run_end.c				\
 			\
 			$(SRC_DIR)destroy.c			\
+			\
+			$(SRC_DIR)dbg_show_map.c		\
 			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
@@ -42,7 +47,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g
+CFLAGS		+=	-W -Wall -g -Werror
 
 ## RULES
 

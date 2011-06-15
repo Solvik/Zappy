@@ -1,8 +1,9 @@
 
-#include	"game.h"
+#include	<stdlib.h>
+#include	"tserver.h"
+#include	"tserver.h"
 
 void		destroy(void)
 {
-  /* destroy_map(serv->m); */
-  // destroy and free
+  free(get_map());
 }

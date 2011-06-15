@@ -4,7 +4,7 @@
 #include	"map.h"
 #include	"zopt.h"
 #include	"error.h"
-#include	"game.h"
+#include	"tserver.h"
 #include	"server_zappy.h"
 
 bool		init_map(t_zopt *opt)

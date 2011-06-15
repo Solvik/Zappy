@@ -1,20 +1,20 @@
 
-#include	"game.h"
+#include	"tserver.h"
 #include	"server_zappy.h"
 
-extern t_game *	game;
+extern t_server *	gserv;
 
 void		set_map_width(uint width)
 {
-  game->map.width = width;
+  gserv->map.width = width;
 }
 
 void		set_map_height(uint height)
 {
-  game->map.height = height;
+  gserv->map.height = height;
 }
 
 void		set_map(t_box * map)
 {
-  game->map.map = map;
+  gserv->map.map = map;
 }

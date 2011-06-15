@@ -16,10 +16,4 @@ typedef		struct
   t_list *	module;		// char *
 }		t_zopt;
 
-/*
-** time should be a great option to change the time referential
-** wich by default is 1 second aka 1 000 000 usec.
-**
-*/
-
 #endif		/* !ZAPPY_OPT */

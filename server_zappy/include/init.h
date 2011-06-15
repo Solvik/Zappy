@@ -2,6 +2,7 @@
 #ifndef		ZAPPY_INIT_H_
 # define	ZAPPY_INIT_H_
 
+#  include	<stdbool.h>
 #  include	"zopt.h"
 #  include	"map.h"
 
