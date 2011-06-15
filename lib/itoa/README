@@ -1,0 +1,27 @@
+ITOA                         db0 company Manual                        ITOA
+
+NAME
+       itoa, itoadup - convert an integer to a string
+
+SYNOPSIS
+       #include "itoa.h"
+
+       void            itoa(int input, char *buffer, int radix);
+       char *          itoadup(int input, int radix);
+x
+DESCRIPTION
+       The itoa() function make a string with the integer input and put it in
+       the buffer using radix as the base number.
+       radix must be less than 37.
+
+       The itoadup() function do the same as itoa() but alloc the buffer
+       and return it. After using it, you must free it.
+
+RETURN VALUE
+       itoa() did not return anything, so you have to check the radix yourself
+       itoadup() return NULL if radix is wrong or if allocation failed.
+
+SEE ALSO
+       atoi(3)
+
+db0 company                       2010-08-16                           ITOA
