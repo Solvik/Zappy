@@ -24,4 +24,6 @@ void		set_map_height(uint);
 void		set_map(t_box *);
 bool		set_new_module(t_module *);
 
+bool		gserv_const(bool created);
+
 #endif		/* !TSERV_H_ */
