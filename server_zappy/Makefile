@@ -1,4 +1,6 @@
 
+MAKEFLAGS	+= --no-print-directory
+
 NAME		=	server_zappy
 
 ## Directories
