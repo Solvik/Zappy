@@ -82,6 +82,9 @@ typedef struct _fds	*fds;
 
 typedef struct  _fds
 {
+  void          *data;
+  time_t        time;
+
   fdtype        type;
   int           fd;
   sock          *s;
@@ -92,9 +95,6 @@ typedef struct  _fds
   struct _fds	*prev;
   struct _fds	*next;
   struct _fds	*descent;
-
-  time_t        time;
-  void          *data;
 }               t_fds;
 
 /*

@@ -1,7 +1,7 @@
+Network Library
+===============
 
-Network
-
-cet librairie utilise le multiplexer select(2) et colle sur sont fonctionnement.
+cette librairie utilise le multiplexer select(2) et colle sur sont fonctionnement.
 
 Select est utiliser de facon periodique et avec plusieurs set de file descriptor.
 On retrouve donc un set de lecture, ecriture et d'erreur, dans chacun de ses 'set'
@@ -14,7 +14,8 @@ Notre librairie va mettre en place un fonctionnement simplifier d'une architectu
  + Connection / Deconnection simplifier
  + ajout simple de connection entrante / sortant (I/O)
 
-       ---------------------------------------------------------------------------
+General
+-------
 
 Le system fonctionne sur la base d'une liste chainee, nous partiront d'un simple:
 
@@ -53,7 +54,9 @@ pool va tout gere pour nous:
      compte les nouvelle entree
    - lors d'une ecriture par l'user - vous - le buffer
      d'ecriture sera 'vider' transferer
---
+
+How To ?
+--------
 
 Ainsi nos filedescriptor sont maintenant gere correctement, les connection/deconnection
 sur les differentes socket sont gere, l'ecriture et la lecture est aussi gere, il ne reste plus
@@ -85,3 +88,18 @@ void sendneof(fds, char*);
 // renvoie NULL si il n'y as rien dans le buffer de reception ou
 // si il y a quelque chose mais aucun caractere de fin de commande.
 char	*getcmd(fds);
+
+Fellow Trick
+------------
+
+As part of This commit @add comit the fds struct have been change so you are
+able to access the data pointer really easily.
+
+in fact you can use some alignement trick like this.
+
+```C
+fds test = (fds)0x42; // do allocation here.
+printf("test: %p\n", (*test)); // here you access the data pointer
+(*(char**)test) = strdup("lol"); // here you can assigned it.
+printf("hello: [%s]\n]", *(char**)test); // finaly.
+```

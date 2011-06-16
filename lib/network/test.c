@@ -30,9 +30,14 @@ static int	test(fds *pooling)
       	{
       	  if (tmp->type != SERV && (s = getcmd(tmp)))
       	    {
-	      printf("string -> [%s] - [%p]\n", s, s);
-	      sends(tmp, s);
-	      free(s);
+	      sendneof(tmp, "old [");
+	      sendneof(tmp, (*(char**)tmp) ? (*(char**)tmp) : "NULL");
+	      sendneof(tmp, "] and new [");
+	      sendneof(tmp, s);
+	      sends(tmp, "].");
+
+	      free(*(void**)tmp);
+	      *((char**)tmp) = s;
       	    }
       	  tmp = tmp->next;
       	}
