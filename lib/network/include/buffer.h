@@ -9,7 +9,7 @@
 */
 
 #ifndef		BUFFER_H_
-# define	BUFFEE_H_
+# define	BUFFER_H_
 
 #define BUFFERS 4096
 
