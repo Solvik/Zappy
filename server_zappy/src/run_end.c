@@ -7,5 +7,5 @@ bool		run_end(void)
   static uint tmp = 0;
 
   ++tmp;
-  return (!(tmp <= 5));
+  return (!(tmp <= 2));
 }

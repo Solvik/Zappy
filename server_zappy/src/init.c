@@ -10,7 +10,8 @@ bool		init(int opt_size, char ** opt)
 
   if (!init_opt(opt_size, opt, &optab) ||
       !init_network(&optab) ||
-      !init_map(&optab))
+      !init_map(&optab) ||
+      !init_modules(&optab))
     return (false);
   return (true);
 }
