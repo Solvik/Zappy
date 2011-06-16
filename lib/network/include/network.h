@@ -48,7 +48,7 @@ typedef struct protoent         proto;
 typedef struct sockaddr_in      saddri;
 typedef struct ifaddrs          ifaddrs;
 
-typedef enum    _fdtype
+typedef enum    e_fdtype
   {
     PROCRASTINATOR,
     READ,
@@ -61,9 +61,9 @@ typedef struct  _ipv4
 {
   char  ip[IPV4];
   char  **split;
-}               ipv4;
+}               t_ipv4;
 
-typedef struct	_sock
+typedef struct _sock
 {
   int           fd;
   int           socket;
@@ -72,7 +72,10 @@ typedef struct	_sock
   int           queue;
   saddri        bind;
   proto         *pro;
-}               sock;
+}               t_sock;
+
+typedef struct _ipv4	ipv4;
+typedef struct _sock	sock;
 
 typedef struct _buffer	*buffer;
 typedef struct _fds	*fds;
@@ -92,7 +95,7 @@ typedef struct  _fds
 
   time_t        time;
   void          *data;
-}               _fds;
+}               t_fds;
 
 /*
 ** Functions
