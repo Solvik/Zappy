@@ -16,7 +16,6 @@ bool            server_zappy(int opt_size, char ** opt)
   bzero(gserv, sizeof(*gserv));
   gserv_const(true);
   if (!init(opt_size, opt) ||
-      !net_wait_clients() ||
       !run())
     return (false);
   destroy(&s);
