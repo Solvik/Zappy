@@ -7,7 +7,8 @@ SRC_DIR		=	src/
 INCLUDE		=	-Iinclude/			\
 			-I../../include/		\
 			-I../../../common/include/	\
-			-I../../../lib/List/include/
+			-I../../../lib/List/include/	\
+			-I../../../lib/network/include/
 
 ## Sources
 SRCS		=	$(SRC_DIR)test.c

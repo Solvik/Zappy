@@ -29,5 +29,5 @@ t_list *	get_modules(void)
 
 bool		set_new_module(t_module * module)
 {
-  return (put_in_list(&gserv->module, module));
+  return (put_in_list(singleton_module(), module));
 }

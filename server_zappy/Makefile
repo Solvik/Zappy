@@ -43,7 +43,8 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c
+			$(CSRC_DIR)err_syntax_error.c		\
+			modules/test/src/test.c
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/List -llist		\
@@ -55,7 +56,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -Werror
+CFLAGS		+=	-W -Wall -Werror -DNOTSHARED
 
 ## RULES
 

@@ -3,6 +3,7 @@
 #include	<string.h>
 #include	<strings.h>
 #include	<stdlib.h>
+#include	"tserver.h"
 #include	"module.h"
 
 t_module *	get_module(void)
@@ -20,6 +21,15 @@ t_module *	get_module(void)
   module->clients = NULL;
   return (module);
 }
+
+#if	defined(NOTSHARED)
+__attribute__ ((constructor))
+void	init_(void)
+{
+  printf("Should really work !\n");
+  set_new_module(get_module());
+}
+#endif
 
 bool		action(void)
 {

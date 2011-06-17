@@ -13,6 +13,7 @@ typedef		enum
 
 typedef		struct
 {
+  char		*command;
   bool		(*action)(void);
 }		t_mod_func;
 

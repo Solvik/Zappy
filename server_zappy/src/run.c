@@ -1,4 +1,6 @@
 
+#include	<stdio.h>
+
 #include	"dbg.h"
 #include	"run.h"
 #include	"module.h"
@@ -7,7 +9,11 @@
 
 static void	action_module(void * data)
 {
-  ((t_module *)data)->functions.action();
+  printf("Loaded module: %s\n", ((t_module *)data)->name);
+  if (!data)
+    printf("Empty Chunk\n");
+  if (((t_module *)data)->functions.action)
+    ((t_module *)data)->functions.action();
 }
 
 bool		run(void)
