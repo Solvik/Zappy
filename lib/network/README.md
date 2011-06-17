@@ -32,11 +32,15 @@ add_socket - permettant d'ecouter sur un port local.
 
 on pourrais ainsi avoir la liste suivante:
 
+<pre>
+
  +---------------+       +----------------------+
  | type - SERV	 |  -- > |   type - RDWR	|
  | Port - 4242	 |       | hostname: google.fr	|
  | queue - 5	 | < --  | port: 80		|
  +---------------+	 +----------------------+
+
+</pre>
 
 on peut ainsi utiliser notre fonction pool de la facon suivante:
 
