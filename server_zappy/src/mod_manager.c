@@ -1,17 +1,18 @@
 
-#include		<strings.h>
-#include		<unistd.h>
-#include		<stdlib.h>
-#include		<stdio.h>
-#include		"util_string.h"
+#include	<strings.h>
+#include	<unistd.h>
+#include	<stdlib.h>
+#include	<stdio.h>
+#include	"util_string.h"
 
-#include		"tserver.h"
-#include		"network.h"
-#include		"module.h"
+#include	"tserver.h"
+#include	"net.h"
+#include	"network.h"
+#include	"module.h"
 
-extern t_server		*gserv;
+extern t_server	*gserv;
 
-static bool		mod_unique(void *elem, void *arg)
+static bool	mod_unique(void *elem, void *arg)
 {
   bool	out;
   char	*lower;
@@ -26,7 +27,7 @@ static bool		mod_unique(void *elem, void *arg)
   return (out);
 }
 
-bool			mod_register(t_module * new)
+bool		mod_register(t_module * new)
 {
   char	*lower;
 
@@ -42,12 +43,7 @@ bool			mod_register(t_module * new)
     }
   free(lower);
   if (gserv_const(false))
-    if (add_socket(&gserv->pool, ((int)new->port == -1 ? \
-				  gserv->options.port : new->port), 10) == -1)
-      {
-	fprintf(stderr, "Zappy: Warning: Can't open network acording to module.\n");
-	return (false);
-      }
+    net_bind(new->port);
   if (!set_new_module(new))
     fprintf(stderr, "Zappy: error: unable to set module.\n");
   return (true);

@@ -33,6 +33,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gserv_modules.c		\
 			\
 			$(SRC_DIR)net_wait_clients.c		\
+			$(SRC_DIR)net_connection.c		\
 			\
 			$(SRC_DIR)run.c				\
 			$(SRC_DIR)run_end.c			\
@@ -44,7 +45,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(CSRC_DIR)util_string.c		\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c		#\
+			$(CSRC_DIR)err_syntax_error.c		\
 			modules/test/src/test.c
 
 ## Libraries
