@@ -41,6 +41,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(SRC_DIR)dbg_show_map.c		\
 			\
+			$(CSRC_DIR)util_string.c		\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
 			$(CSRC_DIR)err_syntax_error.c		#\

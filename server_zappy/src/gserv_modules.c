@@ -9,7 +9,7 @@ bool		gserv_const(bool created)
 {
   static bool	_const = false;
 
-  if (created)
+  if (created && !_const)
     gserv->module = get_modules();
   _const = (created ? true : _const);
   return (_const);

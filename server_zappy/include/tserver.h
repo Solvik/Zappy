@@ -5,10 +5,12 @@
 #  include	"module.h"
 #  include	"network.h"
 #  include	"map.h"
+#  include	"zopt.h"
 
 typedef		struct
 {
   t_map		map;
+  t_zopt	options;
   fds		pool;
   t_list *	module;		// t_module
   t_list *	team;		// t_module

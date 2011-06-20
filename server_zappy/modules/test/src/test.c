@@ -14,7 +14,7 @@ t_module *	get_module(void)
   bzero(module, sizeof(*module));
   module->name = strdup("test");
   module->delim = strdup("\r\n");
-  module->port = 4242;
+  module->port = -1;
   module->antiflood = 10;
   module->clients = NULL;
   return (module);
