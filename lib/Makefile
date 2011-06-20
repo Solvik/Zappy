@@ -17,15 +17,15 @@ MAKE		=	make
 all		:
 			@ (cd $(LIST) && $(MAKE))
 			@ (cd $(ITOA) && $(MAKE))
-#			@ (cd $(NETW) && $(MAKE))
+			@ (cd $(NETW) && $(MAKE))
 clean		:
 			@ (cd $(LIST) && $(MAKE) clean)
 			@ (cd $(ITOA) && $(MAKE) clean)
-#			@ (cd $(NETW) && $(MAKE) clean)
+			@ (cd $(NETW) && $(MAKE) clean)
 
 fclean		:
 			@ (cd $(LIST) && $(MAKE) fclean)
 			@ (cd $(ITOA) && $(MAKE) fclean)
-#			@ (cd $(NETW) && $(MAKE) fclean)
+			@ (cd $(NETW) && $(MAKE) fclean)
 
 re		:	fclean all

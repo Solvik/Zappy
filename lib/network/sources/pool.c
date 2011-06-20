@@ -98,14 +98,12 @@ fds		pool(fds *l)
   fd_set	write;
   fd_set	error;
   int		max;
-  size_t	test;
+  int		test;
 
   tv.tv_sec = 1;
   tv.tv_usec = 500;
   if ((*l) && (max = fdfull((*l), &read, &write, &error)) != -1)
-    {
-      if ((test = select((max + 1), &read, &write, &error, &tv)) != -1)
-	select_handle(l, &read, &write, &error);
-    }
+    if ((test = select((max + 1), &read, &write, &error, &tv)) != -1)
+      select_handle(l, &read, &write, &error);
   return ((*l));
 }
