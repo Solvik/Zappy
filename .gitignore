@@ -1,2 +1,8 @@
 *.[oa]
 *~
+TAGS
+a.out
+core.*
+.*
+\#*\#
+*.so

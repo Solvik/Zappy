@@ -13,6 +13,7 @@ typedef		struct
   uint		nb_client;
   uint		delay;
   uint		time;
+  t_list *	team;		// char *
   t_list *	module;		// char *
 }		t_zopt;
 

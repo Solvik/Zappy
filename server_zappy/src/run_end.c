@@ -1,11 +1,11 @@
 
 #include	"ztypes.h"
+#include	"tserver.h"
 #include	"server_zappy.h"
+
+extern t_server	*gserv;
 
 bool		run_end(void)
 {
-  static uint tmp = 0;
-
-  ++tmp;
-  return (!(tmp <= 5));
+  return (!(get_list_len(gserv->module) > 0 ));
 }

@@ -1,4 +1,6 @@
 
+MAKEFLAGS	+= --no-print-directory
+
 NAME		=	server_zappy
 
 ## Directories
@@ -21,14 +23,19 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)init_opt.c			\
 			$(SRC_DIR)init_network.c		\
 			$(SRC_DIR)init_map.c			\
+			$(SRC_DIR)init_modules.c		\
+			\
+			$(SRC_DIR)mod_dl_load.c			\
+			$(SRC_DIR)mod_manager.c			\
 			\
 			$(SRC_DIR)gserv_set_map.c		\
 			$(SRC_DIR)gserv_get_map.c		\
+			$(SRC_DIR)gserv_modules.c		\
 			\
 			$(SRC_DIR)net_wait_clients.c		\
 			\
 			$(SRC_DIR)run.c				\
-			$(SRC_DIR)run_end.c				\
+			$(SRC_DIR)run_end.c			\
 			\
 			$(SRC_DIR)destroy.c			\
 			\
@@ -36,10 +43,12 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c
+			$(CSRC_DIR)err_syntax_error.c		#\
+			modules/test/src/test.c
 
 ## Libraries
-LIB		=	-L$(LIB_DIR)/List -llist
+LIB		=	-L$(LIB_DIR)/List -llist -L$(LIB_DIR)/network -lnet	\
+			-ldl
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
@@ -47,7 +56,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g -Werror
+CFLAGS		+=	-W -Wall -Werror -DNOTSHARED
 
 ## RULES
 
