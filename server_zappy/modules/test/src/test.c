@@ -3,7 +3,6 @@
 #include	<string.h>
 #include	<strings.h>
 #include	<stdlib.h>
-#include	"tserver.h"
 #include	"module.h"
 
 t_module *	get_module(void)
@@ -14,10 +13,9 @@ t_module *	get_module(void)
     return (NULL);
   bzero(module, sizeof(*module));
   module->name = strdup("test");
-  module->id = 0;
-  module->port = 42;
-  module->antiflood = 10;
   module->delim = strdup("\r\n");
+  module->port = 4242;
+  module->antiflood = 10;
   module->clients = NULL;
   return (module);
 }
@@ -27,7 +25,7 @@ __attribute__ ((constructor))
 void	init_(void)
 {
   printf("Should really work !\n");
-  set_new_module(get_module());
+  mod_register(get_module());
 }
 #endif
 

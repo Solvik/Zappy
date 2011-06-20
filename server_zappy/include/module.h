@@ -5,12 +5,6 @@
 #  include	"ztypes.h"
 #  include	"list.h"
 
-typedef		enum
-  {
-    ADD,
-    GET
-  }		e_module_action;
-
 typedef		struct
 {
   char		*command;
@@ -19,18 +13,24 @@ typedef		struct
 
 typedef	struct	_module
 {
-  t_mod_func	functions;
-  void *	handle;
   char *	name;
-  uint		id;
+  char *	delim;
   uint		port;
   uint		antiflood;
-  char *	delim;
+
+  t_mod_func	functions;
+  bool		(*update)(void);
+  int		(*timer)(void);
+
+  void *	handle;
   t_list *	clients; // t_clients
 }		t_module;
 
-bool		mod_add(t_module *);
-t_list *	mod_get(void);
-t_module *	mod_dl_load(char *);
+bool		mod_register(t_module *);
+bool		mod_unregister(char *);
+
+void		*mod_dl_load(char *);
+bool		mod_load(char *);
+bool		mod_unload(char *);
 
 #endif		/* !MODULE_H_ */

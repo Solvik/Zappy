@@ -43,11 +43,11 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c		\
+			$(CSRC_DIR)err_syntax_error.c		#\
 			modules/test/src/test.c
 
 ## Libraries
-LIB		=	-L$(LIB_DIR)/List -llist		\
+LIB		=	-L$(LIB_DIR)/List -llist -L$(LIB_DIR)/network -lnet	\
 			-ldl
 
 ## functions
