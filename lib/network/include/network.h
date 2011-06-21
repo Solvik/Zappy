@@ -85,6 +85,7 @@ typedef struct  _fds
   void          *data;
   time_t        time;
 
+  void		*trick;
   fdtype        type;
   int           fd;
   sock          *s;
