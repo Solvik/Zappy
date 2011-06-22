@@ -48,7 +48,10 @@ int		handle_serv(fds *list, fds socket)
 			      (struct sockaddr*)&s->bind, &len)) != -1)
 	{
 	  if ((new = add_fd(list, s->socket, RDWR)))
-	    new->s = s;
+	    {
+	      new->s = s;
+	      new->port = (socket->s ? socket->s->port : -1);
+	    }
 	  else
 	    free_socket(s);
 	}

@@ -89,6 +89,7 @@ typedef struct  _fds
   void		*trick;
   fdtype        type;
   int           fd;
+  int		port;
   sock          *s;
 
   buffer        read;
