@@ -1,11 +1,11 @@
 /*
-** pool.c for  in /home/di-mar_j//svn/irc/branches/network
-**
+** pool.c for  in /home/di-mar_j/git/Zappy/server_zappy/src
+** 
 ** Made by julien di-marco
 ** Login   <di-mar_j@epitech.net>
-**
-** Started on  Fri Apr 22 12:38:07 2011 julien di-marco
-** Last update Mon Jun 13 17:01:17 2011 solvik blum
+** 
+** Started on  Wed Jun 22 17:43:40 2011 julien di-marco
+** Last update Wed Jun 22 17:43:40 2011 julien di-marco
 */
 
 #include	<sys/select.h>

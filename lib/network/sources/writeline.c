@@ -87,6 +87,8 @@ void		writes(fds filed, char *s, int end)
   if (filed && filed->fd != -1)
     {
       if (s)
+	filed->anounce = 1;
+      if (s)
 	add_buffer(&filed->write, s);
       if (s && end)
 	add_buffer(&filed->write, CRLF);

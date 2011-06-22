@@ -11,13 +11,13 @@
 #ifndef         NETWORK_H_
 # define        NETWORK_H_
 
-#if	defined(NETPRIVATE)
-# include "buffer.h"
-#endif
-
 #include        <netdb.h>
 #include        <netinet/in.h>
 #include        <arpa/inet.h>
+
+#if	defined(NETPRIVATE)
+# include "buffer.h"
+#endif
 
 #define PROTO   "TCP"
 
@@ -34,6 +34,7 @@
 #define READB   1024
 
 #define WRITEB  1024
+#define DELIMS	64
 
 #define sends(a, b)     (writes(a, b, 1))
 #define eof(a)          (writes(a, NULL, 1))
@@ -92,6 +93,8 @@ typedef struct  _fds
 
   buffer        read;
   buffer        write;
+  char		delim[DELIMS + 1];
+  char		anounce : 1;
 
   struct _fds	*prev;
   struct _fds	*next;

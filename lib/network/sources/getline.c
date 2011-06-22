@@ -72,32 +72,48 @@ static buffer	push(buffer *bf, char *s)
   return (new);
 }
 
+static char	*check_end(fds f, buffer node, char *d)
+{
+  char		*r;
+  int		i;
+
+  i = -1;
+  r = NULL;
+  while (node->buf[++i])
+    {
+      if ((((d && d[0]) && strncmp(&node->buf[i], d, strlen(d)) == 0) ||
+	   ((!d || (d && !d[0])) && node->buf[i] == DELIM)) ||
+	  (!node->next && !node->buf[i + 1] &&
+	   ((size_buffer(f->read) == READM) || f->fd == -1)))
+	{
+	  i += (get_size(node) - strlen(node->buf));
+	  if ((r = pop(&node)))
+	    {
+	      i = (r[i - 1] == '\r' ? i - 1 : i);
+	      strncpy(d, &r[i], ((d && d[0] &&
+				  strlen(d) < DELIMS) ? strlen(d) : 2));
+	      f->read = (r[i + 1] == '\0') ? NULL :
+		push(&node, r + i + strlen(d));
+	      r[i] = '\0';
+	    }
+	  return (r);
+	}
+    }
+  return (r);
+}
+
 char		*getcmd(fds filed)
 {
   buffer	tmp;
   char		*r;
-  int		i;
 
   if (filed && (tmp = filed->read))
-    {
-      while (tmp)
-	{
-	  i = -1;
-	  while (tmp->buf[++i])
-	    if (tmp->buf[i] == DELIM || (!tmp->next && !tmp->buf[i + 1] && \
-					 ((size_buffer(filed->read) == READM) || \
-					  filed->fd == -1)))
-	      {
-		i += (get_size(tmp) - strlen(tmp->buf));
-		if ((r = pop(&tmp)))
-		    filed->read = (r[i + 1] == '\0') ? NULL : push(&tmp, r + i + 1);
-		if (r)
-		  r[(r[i - 1] == '\r' ? i - 1 : i)] = '\0';
-		return (r);
-	      }
-	  tmp = tmp->next;
-	}
-    }
+    while (tmp)
+      {
+	if ((r = check_end(filed, tmp, filed->delim)))
+	  return (r);
+	tmp = tmp->next;
+      }
   return (NULL);
 }
 
