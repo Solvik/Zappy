@@ -77,7 +77,7 @@ bool		init_opt(int ac, char *opt[], t_zopt *optab)
 {
   char		option;
 
-  init_opt_default(optab); 
+  init_opt_default(optab);
   while ((option = getopt(ac, opt, "c:p:t:r:w:h:x:y:n:m:")) != -1)
     if ((!options(option, opt, optab)))
       {
@@ -91,4 +91,3 @@ bool		init_opt(int ac, char *opt[], t_zopt *optab)
   dump_list(optab->team, lol);
   return (true);
 }
-

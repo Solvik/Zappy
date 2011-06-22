@@ -3,11 +3,13 @@
 #include	<string.h>
 #include	<strings.h>
 #include	<stdlib.h>
-#include	"module.h"
 
-t_module *	get_module(void)
+#include	"module.h"
+#include	"network.h"
+
+t_module	*get_module(void)
 {
-  t_module *	module;
+  t_module	*module;
 
   if (!(module = malloc(sizeof(*module))))
     return (NULL);
@@ -20,12 +22,25 @@ t_module *	get_module(void)
   return (module);
 }
 
+bool		handshaking(fds client)
+{
+  (void)client;
+  printf("Hello hello\n");
+  return (true);
+}
+
 #if	defined(NOTSHARED)
 __attribute__ ((constructor))
 void	init_(void)
 {
+  t_module	*info;
+
   printf("Should really work !\n");
-  mod_register(get_module());
+  if ((info = get_module()))
+    {
+      info->handshaking = handshaking;
+      mod_register(info);
+    }
 }
 #endif
 
@@ -34,3 +49,4 @@ bool		action(void)
   printf("Congrats!\n");
   return (true);
 }
+

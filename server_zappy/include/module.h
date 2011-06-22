@@ -2,6 +2,7 @@
 #ifndef		MODULE_H_
 # define	MODULE_H_
 
+#  include	"network.h"
 #  include	"ztypes.h"
 #  include	"list.h"
 
@@ -19,6 +20,7 @@ typedef	struct	_module
   uint		antiflood;
 
   t_mod_func	functions;
+  bool		(*handshaking)(fds);
   bool		(*update)(void);
   int		(*timer)(void);
 

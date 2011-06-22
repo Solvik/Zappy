@@ -43,7 +43,7 @@ bool		mod_register(t_module * new)
     }
   free(lower);
   if (gserv_const(false))
-    net_bind(new->port);
+    net_bind(&new->port);
   if (!set_new_module(new))
     fprintf(stderr, "Zappy: error: unable to set module.\n");
   return (true);

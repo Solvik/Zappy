@@ -15,11 +15,10 @@
 
 typedef struct _client
 {
-  char		*delim;
   char		*antiflood;
 
-  void		*callback;
   t_module	*_m;
+  void		*callback;
 }		t_client;
 
 #endif		/* !CLIENT_H_ */

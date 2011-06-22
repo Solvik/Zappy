@@ -11,7 +11,7 @@ static void	net_init(void *data)
 {
   if (!data)
     return ;
-  net_bind(((t_module*)data)->port);
+  net_bind(&((t_module*)data)->port);
 }
 
 bool		init_network(t_zopt * optab)

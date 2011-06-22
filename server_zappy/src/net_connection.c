@@ -32,12 +32,12 @@ bool	net_port_unique(int port)
   return (true);
 }
 
-bool	net_bind(uint port)
+bool	net_bind(uint *port)
 {
   if (!gserv_const(false))
     return (false);
-  port = (int)port == -1 ? gserv->options.port : port;
-  if (net_port_unique(port) && add_socket(&gserv->pool, port, 10))
+  *port = (int)*port == -1 ? gserv->options.port : *port;
+  if (net_port_unique(*port) && add_socket(&gserv->pool, *port, 10))
     return (true);
   return (false);
 }
