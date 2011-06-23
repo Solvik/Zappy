@@ -22,11 +22,13 @@ t_module	*get_module(void)
   return (module);
 }
 
-bool		handshaking(fds client)
+bool		handshaking(fds client, char *cmd)
 {
-  (void)client;
-  printf("Hello hello\n");
-  return (true);
+  if (!client->anounce)
+    sends(client, "BIENVENU");
+  if (cmd && (strcmp(cmd, "hello") == 0))
+    return (true);
+  return (false);
 }
 
 #if	defined(NOTSHARED)

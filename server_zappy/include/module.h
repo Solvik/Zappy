@@ -20,7 +20,7 @@ typedef	struct	_module
   uint		antiflood;
 
   t_mod_func	functions;
-  bool		(*handshaking)(fds);
+  bool		(*handshaking)(fds, char*);
   bool		(*update)(void);
   int		(*timer)(void);
 

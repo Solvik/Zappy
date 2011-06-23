@@ -18,13 +18,12 @@ static bool	module_handskaking(void *elem, void *arg)
   t_module	*module;
   fds		client;
 
-  if (!(module = elem) || !(client = arg))
+  if (!(module = elem) || !(client = arg) || !client->trick)
     return (true);
-  printf("m: %d - c: %d\n", (int)module->port, client->port);
   if ((int)module->port != client->port)
     return (false);
-  printf("hi !\n");
-  if (module->handshaking && module->handshaking(client))
+  if (module->handshaking &&
+      module->handshaking(client, ((t_client*)client->trick)->antiflood))
     {
       printf("Congrat to them - they just share a beer !\n");
       ((t_client*)client->trick)->_m = module;
@@ -34,7 +33,7 @@ static bool	module_handskaking(void *elem, void *arg)
   return (false);
 }
 
-bool		discover_module(fds client)
+bool		discover_module(fds client, char *cmd)
 {
   t_client	*info;
 
@@ -47,19 +46,25 @@ bool		discover_module(fds client)
       else
 	info = client->trick;
     }
+  ((t_client*)client->trick)->antiflood = cmd;
   foreach_arg_stop_list(get_modules(), module_handskaking, client);
+  ((t_client*)client->trick)->antiflood = NULL;
   return (true);
 }
 
 bool		execute(fds	pool)
 {
+  char		*s;
+
   while (pool)
     {
       if (pool->type != SERV)
 	{
+	  s = getcmd(pool);
 	  if (!(pool->trick) ||
 	      !(((t_client*)pool->trick)->_m))
-	    discover_module(pool);
+	    discover_module(pool, s);
+	  free(s);
 	}
       pool = pool->next;
     }
