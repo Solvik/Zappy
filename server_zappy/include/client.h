@@ -13,9 +13,18 @@
 
 #include	"module.h"
 
+typedef struct	_antiflood
+{
+  char		**array;
+  long		read;
+  long		write;
+  int		size;
+}		t_antiflood;
+
 typedef struct _client
 {
-  char		*antiflood;
+  char		*command;
+  t_antiflood	flood;
 
   t_module	*_m;
   void		*callback;
