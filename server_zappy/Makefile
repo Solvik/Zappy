@@ -58,7 +58,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -Werror -DNOTSHARED -DBSDSOURCE
+CFLAGS		+=	-W -Wall -Werror -rdynamic -DNOTSHARED -DBSDSOURCE
 
 ## RULES
 
