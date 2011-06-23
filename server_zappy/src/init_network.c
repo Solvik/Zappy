@@ -18,5 +18,6 @@ bool		init_network(t_zopt * optab)
 {
   (void)optab;
   foreach_list(get_modules(), net_init);
+  set_port(optab->port);
   return (true);
 }
