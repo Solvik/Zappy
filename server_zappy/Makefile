@@ -28,11 +28,13 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)mod_dl_load.c			\
 			$(SRC_DIR)mod_manager.c			\
 			\
+			$(SRC_DIR)gserv_get.c			\
 			$(SRC_DIR)gserv_set_map.c		\
 			$(SRC_DIR)gserv_get_map.c		\
+			$(SRC_DIR)gserv_get_network.c		\
+			$(SRC_DIR)gserv_set_network.c		\
 			$(SRC_DIR)gserv_modules.c		\
 			\
-			$(SRC_DIR)net_wait_clients.c		\
 			$(SRC_DIR)net_connection.c		\
 			\
 			$(SRC_DIR)run.c				\

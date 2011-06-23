@@ -14,7 +14,6 @@
 #include	"network.h"
 #include	"tserver.h"
 
-extern t_server	*gserv;
 
 bool	net_port_unique(int port)
 {
@@ -22,7 +21,7 @@ bool	net_port_unique(int port)
 
   if (!gserv_const(false))
     return (false);
-  tmp = gserv->pool;
+  tmp = *get_pool();
   while (tmp)
     {
       if (tmp->s && tmp->s->port == port)
@@ -36,8 +35,8 @@ bool	net_bind(uint *port)
 {
   if (!gserv_const(false))
     return (false);
-  *port = (int)*port == -1 ? gserv->options.port : *port;
-  if (net_port_unique(*port) && add_socket(&gserv->pool, *port, 10))
+  *port = (int)*port == -1 ? (unsigned)get_port() : *port;
+  if (net_port_unique(*port) && add_socket(get_pool(), *port, 10))
     return (true);
   return (false);
 }
