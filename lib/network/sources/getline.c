@@ -80,25 +80,24 @@ static char	*check_end(fds f, buffer node, char *d)
   i = -1;
   r = NULL;
   while (node->buf[++i])
-    {
-      if ((((d && d[0]) && strncmp(&node->buf[i], d, strlen(d)) == 0) ||
-	   ((!d || (d && !d[0])) && node->buf[i] == DELIM)) ||
-	  (!node->next && !node->buf[i + 1] &&
-	   ((size_buffer(f->read) == READM) || f->fd == -1)))
-	{
-	  i += (get_size(node) - strlen(node->buf));
-	  if ((r = pop(&node)))
-	    {
-	      i = (r[i - 1] == '\r' ? i - 1 : i);
-	      strncpy(d, &r[i], ((d && d[0] &&
-				  strlen(d) < DELIMS) ? strlen(d) : 2));
-	      f->read = (r[i + 1] == '\0') ? NULL :
-		push(&node, r + i + strlen(d));
-	      r[i] = '\0';
-	    }
-	  return (r);
-	}
-    }
+    if ((((d && d[0]) && strncmp(&node->buf[i], d, strlen(d)) == 0) ||
+	 ((!d || (d && !d[0])) && node->buf[i] == DELIM)) ||
+	(!node->next && !node->buf[i + 1] &&
+	 ((size_buffer(f->read) == READM) || f->fd == -1)))
+      {
+	i += (get_size(node) - strlen(node->buf));
+	if ((r = pop(&node)))
+	  {
+	    i = (r[i - 1] == '\r' ? i - 1 : i);
+	    strncpy(d, &r[i], ((d && d[0] &&
+				strlen(d) < DELIMS) ? strlen(d) :
+			       (r[i] == '\r' ? 2 : 1)));
+	    f->read = (r[i + 1] == '\0') ? NULL :
+	      push(&node, r + i + strlen(d));
+	    r[i] = '\0';
+	  }
+	return (r);
+      }
   return (r);
 }
 
