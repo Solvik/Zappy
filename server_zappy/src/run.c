@@ -119,7 +119,10 @@ bool		execute(fds	pool)
 	  s = getcmd(pool);
 	  if (!(pool->trick) ||
 	      !(((t_client*)pool->trick)->_m))
-	    discover_module(pool, s);
+	    {
+	      discover_module(pool, s);
+	      free(s);
+	    }
 	  else if (s && (s = flood_check(pool, s)))
 	    printf("Call [%s]\n", s);
 	  flood_read(pool);
