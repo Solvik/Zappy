@@ -50,7 +50,7 @@ bool	mod_load(char *name)
     return (false);
   module->handle = handle;
   if (!module->handshaking && !(module->handshaking = dlsym(handle, "handshaking")))
-    print_warning(dlerror());
+    return (print_error(dlerror()));
   if (!module->update && !(module->update = dlsym(handle, "update")))
     print_warning(dlerror());
   if (!module->timer && !(module->timer = dlsym(handle, "timer")))
