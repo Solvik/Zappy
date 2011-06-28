@@ -9,7 +9,7 @@
 typedef		struct
 {
   char		*command;
-  bool		(*action)(void);
+  bool		(*action)(fds, char*);
 }		t_mod_func;
 
 typedef	struct	_module
@@ -19,13 +19,13 @@ typedef	struct	_module
   uint		port;
   uint		antiflood;
 
-  t_mod_func	functions;
+  void *	handle;
+  t_list *	clients; // t_clients
+
   bool		(*handshaking)(fds, char*);
   bool		(*update)(void);
   int		(*timer)(void);
-
-  void *	handle;
-  t_list *	clients; // t_clients
+  t_mod_func	functions[1];
 }		t_module;
 
 bool		mod_register(t_module *);

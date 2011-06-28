@@ -7,19 +7,30 @@
 #include	"module.h"
 #include	"network.h"
 
+bool		test(fds client, char *cmd);
+
 t_module	*get_module(void)
 {
   t_module	*module;
 
-  if (!(module = malloc(sizeof(*module))))
+  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 5)))
     return (NULL);
-  bzero(module, sizeof(*module));
+  bzero(module, sizeof(*module) + sizeof(t_mod_func) * 5);
   module->name = strdup("test");
   module->delim = strdup("\r\n");
   module->port = -1;
   module->antiflood = 10;
   module->clients = NULL;
+  module->functions[0].command = strdup("test");
+  module->functions[0].action = test;
   return (module);
+}
+
+bool		test(fds client, char *cmd)
+{
+  (void)client;
+  printf("WORKING : [%s]\n", cmd);
+  return (true);
 }
 
 bool		handshaking(fds client, char *cmd)

@@ -108,7 +108,38 @@ bool		flood_read(fds pool)
   return (true);
 }
 
-bool		execute(fds	pool)
+bool		parse_cmp(char *a, char *b)
+{
+  char		*help;
+
+  help = NULL;
+  if (!a || !b)
+    return (false);
+  if (strncasecmp(a, b, strlen(b)) == 0)
+    return (true);
+  return (false);
+}
+
+bool		find_action(fds client, char *s)
+{
+  t_client	*info;
+  t_module	*module;
+  t_mod_func	*functions;
+
+  if (!client || !s || !(info = client->trick) ||
+      !(module = info->_m))
+    return (false);
+  functions = module->functions;
+  while (functions && (*functions).action)
+    {
+      if (parse_cmp(s, (*functions).command) && (*functions).action)
+	return ((*functions).action(client, s));
+      functions = &functions[1];
+    }
+  return (false);
+}
+
+bool		execute(fds pool)
 {
   char		*s;
 
@@ -124,8 +155,8 @@ bool		execute(fds	pool)
 	      free(s);
 	    }
 	  else if (s && (s = flood_check(pool, s)))
-	    printf("Call [%s]\n", s);
-	  flood_read(pool);
+	    if ((int)find_action(pool, s) != -1)
+	      flood_read(pool);
 	}
       pool = pool->next;
     }

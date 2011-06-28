@@ -29,13 +29,15 @@ static bool	mod_unique(void *elem, void *arg)
 
 bool		mod_register(t_module * new)
 {
+  int	i = -1;
   char	*lower;
 
   lower = NULL;
   if (!new)
     return (false);
-  printf("return: %d\n", foreach_arg_stop_list(get_modules(), mod_unique, (lower = lowercase(new->name))));
-  if ((foreach_arg_stop_list(get_modules(), mod_unique, \
+  while (new->functions[++i].action)
+    printf("Action[%d]: %p\n", i, new->functions[i].action);
+  if ((foreach_arg_stop_list(get_modules(), mod_unique,	\
 			     (lower = lowercase(new->name)))))
     {
       fprintf(stderr, "Zappy: Warning: Module with the same name already loaded.\n");
