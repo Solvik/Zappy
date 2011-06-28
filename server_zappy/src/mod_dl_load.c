@@ -11,29 +11,27 @@
 
 void	*mod_dl_load(char * name)
 {
-  int		acces;
+  int		ace;
   char		*plus;
   void *	handle;
 
-  acces = 0;
+  ace = 0;
   plus = NULL;
   if (!name)
     return (NULL);
-  if ((acces = access(name, F_OK)) != -1 && \
+  if ((ace = access(name, F_OK)) != -1 && \
       (handle = dlopen(name, RTLD_NOW)))
     return (handle);
   else
-    print_error((acces != -1 ? dlerror() : \
-		 "Zappy: Warning module not found '.so' append."));
+    print_warning((ace != -1 ? dlerror() : "module not found '.so' append."));
   if ((strcmp(&name[(strlen(name) - 3)], ".so") != 0) && \
       (plus = malloc((strlen(name) + 4) * sizeof(*name))) &&
       (plus = strcpy(plus, name)) && (plus = strcat(plus, ".so")) && \
-      ((acces = access(plus, F_OK)) != -1))
+      ((ace = access(plus, F_OK)) != -1))
     handle = dlopen(plus, RTLD_NOW);
   free(plus);
-  if (acces == -1 || handle == (void*)-1)
-    print_error((acces != -1 ? dlerror() : \
-		 "Zappy: Warning: no module to load."));
+  if (ace == -1 || handle == (void*)-1)
+    print_warning((ace != -1 ? dlerror() : "no module to load."));
   return (handle);
 }
 
@@ -52,11 +50,11 @@ bool	mod_load(char *name)
     return (false);
   module->handle = handle;
   if (!module->handshaking && !(module->handshaking = dlsym(handle, "handshaking")))
-    print_error(dlerror());
+    print_warning(dlerror());
   if (!module->update && !(module->update = dlsym(handle, "update")))
-    print_error(dlerror());
+    print_warning(dlerror());
   if (!module->timer && !(module->timer = dlsym(handle, "timer")))
-    print_error(dlerror());
+    print_warning(dlerror());
   return (mod_register(module));
 }
 
