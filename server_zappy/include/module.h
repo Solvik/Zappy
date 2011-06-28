@@ -35,4 +35,6 @@ void		*mod_dl_load(char *);
 bool		mod_load(char *);
 bool		mod_unload(char *);
 
+bool	       mod_discovery(fds client, char *cmd);
+
 #endif		/* !MODULE_H_ */
