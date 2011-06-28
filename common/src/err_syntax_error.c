@@ -10,3 +10,4 @@ bool		syntax_error(char * filename, int line)
 	   filename, line);
   return (print_error(error));
 }
+
