@@ -8,21 +8,30 @@
 ** Last update Thu Jun 16 17:05:11 2011 seb
 */
 
+#include <stdbool.h>
 #include "graph_time.h"
 
 
-void handle_sgt(t_fds *client)
+bool handle_sgt(t_fds *client, char *cmd)
 {
-  (void)client;
+
+  char *to_send;
+
+  to_send = NULL;
+  asprintf(&to_send, "sgt %d", /* get_Server_time() */ 10);
+  sends(client, to_send);
+  free(to_send);
   /*
    * sgt unite_temps
    */
+  return true;
 }
 
-void handle_sst(t_fds *client)
+bool handle_sst(t_fds *client, char *cmd)
 {
   (void)client;
   /*
    * sgt unite_temps
    */
+  return true;
 }

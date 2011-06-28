@@ -11,7 +11,7 @@
 #include "graph_player.h"
 
 
-void handle_ppo(t_fds *client)
+bool handle_ppo(t_fds *client, char *cmd)
 {
   (void)client;
   /*
@@ -19,7 +19,7 @@ void handle_ppo(t_fds *client)
    */
 }
 
-void handle_plv(t_fds *client)
+bool handle_plv(t_fds *client, char *cmd)
 {
   (void)client;
   /*
@@ -27,10 +27,15 @@ void handle_plv(t_fds *client)
    */
 }
 
-void handle_pin(t_fds *client)
+bool handle_pin(t_fds *client, char *cmd)
 {
   (void)client;
   /*
     pin numero_joueur X Y quantite_pierre quantite_bouffe
    */
+}
+
+bool handle_pnw(t_fds *client, char *cmd)
+{
+  sends(client, "pnw 0 2 5 1 1 LOL");
 }
