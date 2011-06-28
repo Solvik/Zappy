@@ -31,3 +31,4 @@ t_box *		get_box(uint x, uint y)
     return (NULL);
   return (&(gserv->map.map[x + (get_map_width() * y)]));
 }
+
