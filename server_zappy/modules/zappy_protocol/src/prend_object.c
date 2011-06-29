@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Tue Jun 28 17:14:06 2011 solvik blum
+** Last update Wed Jun 29 12:32:49 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -14,9 +14,10 @@
 #include "server_zappy.h"
 
 
-int		zappy_prend_objet(t_fds *player, char *cmd)
+int		zappy_prend_objet(t_fds *client, char *cmd)
 {
   (void)cmd;
+  sends(client, "ok\n");
 
-
+  return (1);
 }

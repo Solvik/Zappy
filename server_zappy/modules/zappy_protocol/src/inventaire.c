@@ -5,10 +5,12 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Tue Jun 28 17:04:06 2011 solvik blum
+** Last update Wed Jun 29 12:36:30 2011 solvik blum
 */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "itoa.h"
 #include "player.h"
@@ -30,7 +32,7 @@ static void     cat_ressources(void * data, void * arg)
 
   r = (t_ressource *)data;
   str = (char **)arg;
-  n = itoadup(r->n);
+  n = itoadup(r->n, 10);
 
   strcpy((*str), r->name);
   (*str) += strlen(r->name);
@@ -43,7 +45,7 @@ static void     cat_ressources(void * data, void * arg)
   free(n);
 }
 
-int		zappy_inventaire(t_fds *player, char *cmd)
+int		zappy_inventaire(t_fds *client, char *cmd)
 {
   int		len;
   char		*str;
@@ -52,8 +54,9 @@ int		zappy_inventaire(t_fds *player, char *cmd)
   len = 0;
   foreach_arg_list(player_data->ressources, get_len, &len);
   str = malloc(len + 2);
-  foreach_arg_list(player_data->ressources, cat_users, &str);
+  foreach_arg_list(player_data->ressources, cat_ressources, &str);
   *str = '\0';
   printf("inventaire: [[%s]]\n", str);
-  send(player, str);
+  sends(client, str);
+  return (1);
 }
