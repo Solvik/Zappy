@@ -53,6 +53,9 @@ Return 0 if position is invalid.
 
 --- Players ---
 
+t_player *		new_player(void);
+create a new blank player.
+
 bool			setbox_add_player(t_player * player,
 			char * name, uint x, uint y);
 Add the player "player" in team "name" at position "x", "y" on the map.
@@ -63,7 +66,7 @@ t_list *		get_players(unit x, uint y);
 Return the list of players at position "x", "y".
 
 void			setbox_del_player(t_player * player);
-delete a player.
+delete a player (and remove pointers everywhere o__o).
 
 --- Teams ---
 
