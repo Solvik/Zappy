@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 16:31:08 2011 solvik blum
+** Last update Wed Jun 29 17:15:15 2011 solvik blum
 */
 
 #include <stdio.h>
@@ -36,6 +36,8 @@ int		zappy_expulse(t_fds *client, char *cmd)
 
       asprintf(&ret, "deplacement %s", enum_to_dir[player_data->direction]);
       sends(client, ret);
+      if (ret)
+	free(ret);
       sends(client, "ok");
     }
   else

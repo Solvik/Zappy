@@ -72,10 +72,12 @@ bool		handshaking(fds client, char *cmd)
 	return (false);
       asprintf(&ret, "%d", player_data->id);
       sends(client, ret);
-      free(ret);
+      if (ret)
+	free(ret);
       asprintf(&ret, "%d %d", player_data->x, player_data->y);
       sends(client, ret);
-      free(ret);
+      if (ret)
+	free(ret);
       return (true);
     }
   return (false);
