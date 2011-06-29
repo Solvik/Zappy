@@ -18,7 +18,7 @@ LIB		=	$(LIB_DIR)List/liblist.a	\
 
 ## Sources
 SRCS		=	$(SRC_DIR)avance.c			\
-			$(SRC_DIR)broadcast_texte.c		\
+			$(SRC_DIR)broadcast.c			\
 			$(SRC_DIR)connect_nbr.c			\
 			$(SRC_DIR)droite.c			\
 			$(SRC_DIR)expulse.c			\
@@ -26,8 +26,8 @@ SRCS		=	$(SRC_DIR)avance.c			\
 			$(SRC_DIR)gauche.c			\
 			$(SRC_DIR)incantation.c			\
 			$(SRC_DIR)inventaire.c			\
-			$(SRC_DIR)pose_object.c			\
-			$(SRC_DIR)prend_object.c		\
+			$(SRC_DIR)pose.c			\
+			$(SRC_DIR)prend.c			\
 			$(SRC_DIR)voir.c			\
 			$(SRC_DIR)main.c			\
 

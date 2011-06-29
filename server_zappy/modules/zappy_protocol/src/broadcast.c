@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 16:30:46 2011 solvik blum
+** Last update Wed Jun 29 17:12:59 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 #include "server_zappy.h"
 
 
-int		zappy_broadcast_texte(t_fds *client, char *cmd)
+int		zappy_broadcast(t_fds *client, char *cmd)
 {
   (void)cmd;
   sends(client, "ok");

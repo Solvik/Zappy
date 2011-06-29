@@ -5,10 +5,19 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Tue Jun 14 18:21:03 2011 solvik blum
+** Last update Wed Jun 29 17:12:36 2011 solvik blum
 */
 
 #include <stdlib.h>
 
 #include "player.h"
 #include "server_zappy.h"
+
+
+int		zappy_prend(t_fds *client, char *cmd)
+{
+  (void)cmd;
+  sends(client, "ok");
+
+  return (1);
+}

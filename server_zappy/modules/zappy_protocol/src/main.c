@@ -25,9 +25,9 @@ void		init_commands(t_mod_func *func)
   init_func(func, "voir",		zappy_voir); /* OK */
   init_func(func, "inventaire",		zappy_inventaire); /* OK */
   init_func(func, "expulse",		zappy_expulse); /* OK */
-  init_func(func, "prend objet",	zappy_prend_objet);
-  init_func(func, "pose objet",		zappy_pose_objet);
-  init_func(func, "broadcast texte",	zappy_broadcast_texte);
+  init_func(func, "prend",		zappy_prend);
+  init_func(func, "pose",		zappy_pose);
+  init_func(func, "broadcast",		zappy_broadcast);
   init_func(func, "incantation",	zappy_incantation);
   init_func(func, "fork",		zappy_fork);
   init_func(func, "connect_nbr",	zappy_connect_nbr);
