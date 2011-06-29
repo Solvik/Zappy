@@ -7,6 +7,7 @@
 #  include	"map.h"
 #  include	"zopt.h"
 #  include	"player.h"
+#  include	"stone.h"
 
 typedef		struct
 {

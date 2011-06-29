@@ -16,6 +16,7 @@
 #include	"napi.h"
 
 #include	"graph_map.h"
+#include	"graph_graphic.h"
 
 
 /*
@@ -34,8 +35,8 @@ t_module *	get_module(void)
   module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
-  add_command(module->functions, "msz", handle_msz);
-  add_command(module->functions, "graphic", handle_msz);
+  add_command(module->functions, "msz", graph_msz);
+  add_command(module->functions, "graphic", graph_graphic);
   return (module);
 }
 
