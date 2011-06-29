@@ -15,7 +15,7 @@
 #include "tserver.h"
 #include "graph_map.h"
 
-bool handle_msz(t_fds *player, char *cmd)
+bool graph_msz(t_fds *player, char *cmd)
 {
   char *to_send;
 
@@ -26,7 +26,7 @@ bool handle_msz(t_fds *player, char *cmd)
   return true;
 }
 
-bool handle_bct(t_fds *player, char *cmd)
+bool graph_bct(t_fds *player, char *cmd)
 {
   /*
   ** TODO: verifier le retour de strtok pour pas segfault comme une merde avec atoi(NULL)
@@ -54,7 +54,7 @@ bool handle_bct(t_fds *player, char *cmd)
   return true;
 }
 
-bool handle_mct(t_fds *player,char *cmd)
+bool graph_mct(t_fds *player,char *cmd)
 {
   uint x;
   uint y;
@@ -71,7 +71,7 @@ bool handle_mct(t_fds *player,char *cmd)
       while (y < get_map_height())
 	{
 	  asprintf(&msg, "bct %d %d", x, y);
-	  handle_bct(player, msg);
+	  graph_bct(player, msg);
 	  free(msg);
 	  y++;
 	}

@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "network.h"
 
-bool handle_sgt(t_fds *, char *cmd);
-bool handle_sst(t_fds *, char *cmd);
+bool graph_sgt(t_fds *, char *cmd);
+bool graph_sst(t_fds *, char *cmd);
 
 #endif

@@ -33,9 +33,9 @@ t_module *	get_module(void)
   module->antiflood = 10;
   module->clients = NULL;
   module->functions[0].command = strdup("msz");
-  module->functions[0].action = handle_msz;
+  module->functions[0].action = graph_msz;
   module->functions[1].command = strdup("graphic");
-  module->functions[1].action = handle_msz;
+  module->functions[1].action = graph_msz;
   return (module);
 }
 
@@ -54,7 +54,7 @@ bool		handshaking(t_fds *client, char *cmd)
     sends(client, "BIENVENUE");
   if (cmd && (strcmp(cmd, "GRAPHIC") == 0))
     {
-      handle_graphic(client, cmd);
+      graph_graphic(client, cmd);
       return (true);
     }
   return (false);

@@ -11,7 +11,7 @@
 #include "network.h"
 #include "graph_team.h"
 
-bool handle_tna(t_fds *player, char *cmd)
+bool graph_tna(t_fds *player, char *cmd)
 {
   sends(player, "tna LOL");
   /*

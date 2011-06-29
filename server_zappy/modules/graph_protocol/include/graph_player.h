@@ -14,9 +14,9 @@
 #include <stdbool.h>
 #include "network.h"
 
-bool handle_ppo(t_fds *, char *);
-bool handle_plv(t_fds *, char *);
-bool handle_pin(t_fds *, char *);
-bool handle_pnw(t_fds *, char *);
+bool graph_ppo(t_fds *, char *);
+bool graph_plv(t_fds *, char *);
+bool graph_pin(t_fds *, char *);
+bool graph_pnw(t_fds *, char *);
 
 #endif

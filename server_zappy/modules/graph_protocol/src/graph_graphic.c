@@ -11,13 +11,13 @@
 #include <stdlib.h>
 #include "graph_graphic.h"
 
-bool handle_graphic(t_fds *client, char *cmd)
+bool graph_graphic(t_fds *client, char *cmd)
 {
-  handle_sgt(client, NULL);
-  handle_msz(client, NULL);
-  handle_mct(client, NULL);
-  handle_tna(client, NULL);
-  handle_pnw(client, NULL);
-  //handle_enw(client, NULL);
+  graph_sgt(client, NULL);
+  graph_msz(client, NULL);
+  graph_mct(client, NULL);
+  graph_tna(client, NULL);
+  graph_pnw(client, NULL);
+  //graph_enw(client, NULL);
   return true;
 }

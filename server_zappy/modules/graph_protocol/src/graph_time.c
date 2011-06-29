@@ -12,7 +12,7 @@
 #include "graph_time.h"
 
 
-bool handle_sgt(t_fds *client, char *cmd)
+bool graph_sgt(t_fds *client, char *cmd)
 {
 
   char *to_send;
@@ -27,7 +27,7 @@ bool handle_sgt(t_fds *client, char *cmd)
   return true;
 }
 
-bool handle_sst(t_fds *client, char *cmd)
+bool graph_sst(t_fds *client, char *cmd)
 {
   (void)client;
   /*

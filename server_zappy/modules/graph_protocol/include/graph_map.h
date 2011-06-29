@@ -14,8 +14,8 @@
 #include "network.h"
 #include "map.h"
 
-bool handle_msz(t_fds *, char *);
-bool handle_bct(t_fds *, char *);
-bool handle_mct(t_fds *, char *);
+bool graph_msz(t_fds *, char *);
+bool graph_bct(t_fds *, char *);
+bool graph_mct(t_fds *, char *);
 
 #endif

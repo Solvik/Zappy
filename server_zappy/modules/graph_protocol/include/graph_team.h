@@ -14,6 +14,6 @@
 #include <stdbool.h>
 #include "network.h"
 
-bool handle_tna(t_fds *, char *);
+bool graph_tna(t_fds *, char *);
 
 #endif

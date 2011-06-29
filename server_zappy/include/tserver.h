@@ -6,6 +6,7 @@
 #  include	"network.h"
 #  include	"map.h"
 #  include	"zopt.h"
+#  include	"player.h"
 
 typedef		struct
 {
@@ -31,7 +32,7 @@ t_list *	get_modules(void);
 uint		getbox_nbstones(uint, uint, e_stone);
 int		get_port(void);
 fds *		get_pool(void);
-t_list *	get_players(unit, uint);
+t_list *	get_players(uint, uint);
 
 void		set_map_width(uint);
 void		set_map_height(uint);

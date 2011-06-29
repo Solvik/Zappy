@@ -10,7 +10,7 @@
 
 #include "graph_egg.h"
 
-bool handle_enw(t_fds *client, char *cmd)
+bool graph_enw(t_fds *client, char *cmd)
 {
   sends(client, "enw 0 1 1 1");
 }

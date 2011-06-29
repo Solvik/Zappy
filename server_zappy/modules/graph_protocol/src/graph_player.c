@@ -11,7 +11,7 @@
 #include "graph_player.h"
 
 
-bool handle_ppo(t_fds *client, char *cmd)
+bool graph_ppo(t_fds *client, char *cmd)
 {
   (void)client;
   /*
@@ -19,7 +19,7 @@ bool handle_ppo(t_fds *client, char *cmd)
    */
 }
 
-bool handle_plv(t_fds *client, char *cmd)
+bool graph_plv(t_fds *client, char *cmd)
 {
   (void)client;
   /*
@@ -27,7 +27,7 @@ bool handle_plv(t_fds *client, char *cmd)
    */
 }
 
-bool handle_pin(t_fds *client, char *cmd)
+bool graph_pin(t_fds *client, char *cmd)
 {
   (void)client;
   /*
@@ -35,7 +35,7 @@ bool handle_pin(t_fds *client, char *cmd)
    */
 }
 
-bool handle_pnw(t_fds *client, char *cmd)
+bool graph_pnw(t_fds *client, char *cmd)
 {
   sends(client, "pnw 0 2 5 1 1 LOL");
 }
