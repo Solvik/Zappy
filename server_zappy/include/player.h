@@ -28,6 +28,7 @@ typedef enum
 
 typedef struct	s_player
 {
+  uint		id;
   uint		level;
   uint		life;
   uint		x;

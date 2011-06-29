@@ -11,7 +11,8 @@
 
 typedef		struct
 {
-  int		port;
+  uint		port;
+  uint		delay;
 }		t_netinfo;
 
 typedef		struct
