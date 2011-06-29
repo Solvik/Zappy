@@ -6,6 +6,7 @@
 
 #include	"module.h"
 #include	"network.h"
+#include	"player.h"
 #include	"zappy_protocol.h"
 
 void		init_func(t_mod_func *mod_func, char *cmd, void *func)
@@ -21,11 +22,11 @@ void		init_commands(t_mod_func *func)
   init_func(func, "avance",		zappy_avance); /* OK */
   init_func(func, "droite",		zappy_droite); /* OK */
   init_func(func, "gauche",		zappy_gauche);  /* OK */
-  init_func(func, "voir",		zappy_voir);
+  init_func(func, "voir",		zappy_voir); /* OK */
   init_func(func, "inventaire",		zappy_inventaire); /* OK */
+  init_func(func, "expulse",		zappy_expulse); /* OK */
   init_func(func, "prend objet",	zappy_prend_objet);
   init_func(func, "pose objet",		zappy_pose_objet);
-  init_func(func, "expulse",		zappy_expulse); /* OK */
   init_func(func, "broadcast texte",	zappy_broadcast_texte);
   init_func(func, "incantation",	zappy_incantation);
   init_func(func, "fork",		zappy_fork);
@@ -57,10 +58,26 @@ bool		test(fds client, char *cmd)
 
 bool		handshaking(fds client, char *cmd)
 {
+  char		*ret;
+
   if (!client->anounce)
-    sends(client, "BIENVENU");
-  if (cmd && (strcmp(cmd, "hello") == 0))
-    return (true);
+    sends(client, "BIENVENUE");
+  if (cmd)
+    {
+      if ((client->data = new_player()) == NULL ||
+	  (setbox_add_player(client->data,
+			     cmd,
+			     rand() % get_map_width(),
+			     rand() % get_map_height())) == false)
+	return (false);
+      asprintf(&ret, "%d", player_data->id);
+      sends(client, ret);
+      free(ret);
+      asprintf(&ret, "%d %d", player_data->x, player_data->y);
+      sends(client, ret);
+      free(ret);
+      return (true);
+    }
   return (false);
 }
 
