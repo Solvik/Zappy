@@ -22,7 +22,7 @@ uint			getbox_nbstones(uint x, uint y, e_stone type)
   return (stone->nb);
 }
 
-uint			getbox_nbstones_by_player(t_player *player, stone type)
+uint			getbox_nbstones_by_player(t_player *player, e_stone type)
 {
   t_stone *		stone;
 
