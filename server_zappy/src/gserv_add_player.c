@@ -26,13 +26,19 @@ static t_team *		add_team(char * name)
   return (team);
 }
 
-bool			add_player(t_player * player, char * name)
+bool			setbox_add_player(t_player * player,
+					  char * name,
+					  uint x, uint y)
 {
+  t_box *		box;
   t_team *		team;
 
+  if (!(box = get_box(x, y)))
+    return (false);
   if ((!(team = get_data_as_arg(gserv->team, match_team, name)) &&
        !(team = add_team(name))) ||
-      (!(put_in_list(&team->players, player))))
+      (!(put_in_list(&team->players, player))) ||
+      (!(put_in_list(&box->players, player))))
     return (false);
   return (true);
 }

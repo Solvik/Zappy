@@ -32,3 +32,10 @@ t_box *		get_box(uint x, uint y)
   return (&(gserv->map.map[x + (get_map_width() * y)]));
 }
 
+t_box *		get_box_at(uint i)
+{
+  if (i < get_map_max())
+    return (NULL);
+  return (&(gserv->map.map[i]));
+}
+
