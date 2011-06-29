@@ -17,7 +17,7 @@ INCLUDE		=	-Iinclude/				\
 
 ## Sources
 SRCS		=	$(SRC_DIR)main.c			\
-			$(SRC_DIR)$(NAME).c			\
+			$(SRC_DIR)server_zappy.c		\
 			\
 			$(SRC_DIR)init.c			\
 			$(SRC_DIR)init_opt.c			\
@@ -27,6 +27,9 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(SRC_DIR)mod_dl_load.c			\
 			$(SRC_DIR)mod_manager.c			\
+			$(SRC_DIR)mod_discovery.c		\
+			\
+			$(SRC_DIR)flood_manager.c		\
 			\
 			$(SRC_DIR)gserv_get.c			\
 			$(SRC_DIR)gserv_set_map.c		\
@@ -45,14 +48,21 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)run.c				\
 			$(SRC_DIR)run_end.c			\
 			\
+			$(SRC_DIR)exec_actions.c		\
+			$(SRC_DIR)exec_timer.c			\
+			\
 			$(SRC_DIR)destroy.c			\
 			\
 			$(SRC_DIR)dbg_show_map.c		\
 			\
 			$(CSRC_DIR)util_string.c		\
+			$(CSRC_DIR)time.c			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c		#\
+			$(CSRC_DIR)err_syntax_error.c		\
+			\
+			$(SRC_DIR)napi_functions.c		#\
+			\
 			modules/test/src/test.c
 
 ## Libraries

@@ -11,6 +11,7 @@
 #ifndef         NETWORK_H_
 # define        NETWORK_H_
 
+#include	<sys/time.h>
 #include        <netdb.h>
 #include        <netinet/in.h>
 #include        <arpa/inet.h>
@@ -145,6 +146,6 @@ int             add_socket(fds *pool, int p, int q);
 int             add_co(fds *pool, char *hostname, int p);
 
 /* = pool = */
-fds             pool(fds *l);
+fds             pool(fds *, struct timeval *);
 
 #endif          /* NETWORK_H_ */

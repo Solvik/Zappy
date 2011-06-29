@@ -8,7 +8,7 @@
 #include	"tserver.h"
 #include	"server_zappy.h"
 
-t_server	*gserv;
+extern t_server	*gserv;
 
 void		sigint_handler(int _)
 {

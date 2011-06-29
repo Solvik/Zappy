@@ -14,6 +14,7 @@ typedef		struct
 
 typedef	struct	_module
 {
+  char		*data;
   char *	name;
   char *	delim;
   uint		port;
@@ -34,5 +35,7 @@ bool		mod_unregister(char *);
 void		*mod_dl_load(char *);
 bool		mod_load(char *);
 bool		mod_unload(char *);
+
+bool	       mod_discovery(fds client, char *cmd);
 
 #endif		/* !MODULE_H_ */

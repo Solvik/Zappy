@@ -12,8 +12,10 @@
 #include	<string.h>
 #include	<strings.h>
 #include	<stdlib.h>
+
+#include	"napi.h"
+
 #include	"graph_map.h"
-#include	"module.h"
 
 
 /*
@@ -32,10 +34,8 @@ t_module *	get_module(void)
   module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
-  module->functions[0].command = strdup("msz");
-  module->functions[0].action = graph_msz;
-  module->functions[1].command = strdup("graphic");
-  module->functions[1].action = graph_msz;
+  add_command(module->functions, "msz", handle_msz);
+  add_command(module->functions, "graphic", handle_msz);
   return (module);
 }
 
@@ -46,7 +46,6 @@ void	init_(void)
   mod_register(get_module());
 }
 #endif
-
 
 bool		handshaking(t_fds *client, char *cmd)
 {

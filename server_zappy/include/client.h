@@ -11,15 +11,8 @@
 #ifndef		CLIENT_H_
 # define	CLIENT_H_
 
-#include	"module.h"
-
-typedef struct	_antiflood
-{
-  char		**array;
-  long		read;
-  long		write;
-  int		size;
-}		t_antiflood;
+# include	"module.h"
+# include	"flood.h"
 
 typedef struct _client
 {

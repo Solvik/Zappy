@@ -91,19 +91,16 @@ static int	select_handle(fds *l, fd_set *read, fd_set *write, fd_set *error)
 ** Return the fdsList.
 */
 
-fds		pool(fds *l)
+fds		pool(fds *l, struct timeval *tv)
 {
-  struct timeval tv;
   fd_set	read;
   fd_set	write;
   fd_set	error;
   int		max;
   int		test;
 
-  tv.tv_sec = 1;
-  tv.tv_usec = 500;
   if ((*l) && (max = fdfull((*l), &read, &write, &error)) != -1)
-    if ((test = select((max + 1), &read, &write, &error, &tv)) != -1)
+    if ((test = select((max + 1), &read, &write, &error, tv)) != -1)
       select_handle(l, &read, &write, &error);
   return ((*l));
 }
