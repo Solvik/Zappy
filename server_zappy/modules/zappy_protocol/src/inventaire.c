@@ -5,57 +5,39 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Wed Jun 29 12:36:30 2011 solvik blum
+** Last update Wed Jun 29 16:56:26 2011 solvik blum
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
+#include "stone.h"
 #include "itoa.h"
 #include "player.h"
 #include "server_zappy.h"
-
-static void     get_len(void * data, void * arg)
-{
-  t_ressource	*r;
-
-  r = (t_ressource *)data;
-  *((int *)arg) += strlen(r->name) + itoa_number_size(r->n, 10) + 2; // space + ','
-}
-
-static void     cat_ressources(void * data, void * arg)
-{
-  t_ressource		*r;
-  char **               str;
-  char			*n;
-
-  r = (t_ressource *)data;
-  str = (char **)arg;
-  n = itoadup(r->n, 10);
-
-  strcpy((*str), r->name);
-  (*str) += strlen(r->name);
-  *(*str) = ' ';
-  ++(*str);
-  strcpy((*str), n);
-  (*str) += strlen(n);
-  *(*str) = ',';
-  ++(*str);
-  free(n);
-}
 
 int		zappy_inventaire(t_fds *client, char *cmd)
 {
   int		len;
   char		*str;
 
-  (void)cmd;
-  len = 0;
-  foreach_arg_list(player_data->ressources, get_len, &len);
-  str = malloc(len + 2);
-  foreach_arg_list(player_data->ressources, cat_ressources, &str);
-  *str = '\0';
+  asprintf(&str, "{"
+	   "nourriture %u,"
+	   "linemate %u,"
+	   "deraumere %u,"
+	   "sibur %u,"
+	   "mendiane %u,"
+	   "phiras %u,"
+	   "thystame %u"
+	   "}",
+	   player_data->life,
+	   getbox_nbstones_by_player(player_data, LINEMATE),
+	   getbox_nbstones_by_player(player_data, DERAUMERE),
+	   getbox_nbstones_by_player(player_data, SIBUR),
+	   getbox_nbstones_by_player(player_data, MENDIANE),
+	   getbox_nbstones_by_player(player_data, PHIRAS),
+	   getbox_nbstones_by_player(player_data, THYSTAME));
   printf("inventaire: [[%s]]\n", str);
   sends(client, str);
   return (1);
