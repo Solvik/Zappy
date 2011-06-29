@@ -1,0 +1,148 @@
+#!/usr/bin/perl
+## Made by	db0
+## Contact	db0company@gmail.com
+## Website	http://db0.fr/
+
+die "Ce script prend en parametre un fichier formate :
+ligne 1 = Nom de la classe
+ligne 2-n = Donnees avec : type nom;
+-> Ne pas mettre d'espaces dans le type !
+   (int & --> int&)
+
+Creer deux fichiers au chemin specifie en second
+argument : NomDeLaClasse.cpp et NomDeLaClasse.hpp
+avec les constructeurs, destructeurs de la
+methode de coplien ainsi que les setteurs et
+getteurs.
+" if ($#ARGV != 1);
+
+print "Parsing file...";
+
+open(FILEHANDLER, $ARGV[0]) or die $!;
+
+my $classe = <FILEHANDLER>;
+chomp($classe);
+
+my %vars;
+while (<FILEHANDLER>)
+{
+    chomp;
+    $_ =~ s/^(\S+)\s+(\S+)//;
+    $vars{$2} = $1;
+}
+
+close(FILEHANDLER);
+
+print " Done.\n";
+
+# Header File
+
+print "Header file in ".$ARGV[1]."/$classe.hpp...";
+
+open(FILEHANDLER, ">".$ARGV[1]."/$classe.hpp") or die $!;
+
+print FILEHANDLER "
+#ifndef\t\t\t".uc($classe)."_H_
+# define\t\t".uc($classe)."_H_
+
+class\t\t\t$classe
+{
+ private:\n";
+foreach (keys %vars)
+{
+    print FILEHANDLER "  $vars{$_}\t\t\t$_;\n";
+}
+printf FILEHANDLER "
+ public:
+  $classe(void);
+  $classe($classe const &);
+  $classe &\t\toperator=($classe const &);
+  ~$classe(void);
+
+ public:
+";
+foreach (keys %vars)
+{
+    printf FILEHANDLER "  $vars{$_} const\t\tget$_(void) const;
+  void\t\t\tset$_($vars{$_} const &);\n";
+}
+
+print FILEHANDLER "};
+\n#endif\t\t\t// !".uc($classe)."_H_\n\n";
+
+close(FILEHANDLER);
+
+print " Done.\n";
+
+# Source File
+
+print "Source file in ".$ARGV[1]."/$classe.cpp...";
+
+open(FILEHANDLER, ">".$ARGV[1]."/$classe.cpp") or die $!;
+
+print FILEHANDLER "
+#include\t\t\"$classe.hpp\"
+
+".$classe."::$classe(void)
+  : ";
+my $flag = 0;
+foreach (keys %vars)
+{
+    print FILEHANDLER ", " if ($flag);
+    print FILEHANDLER "$_(0)";
+    $flag = 1;
+}
+print FILEHANDLER "
+{}
+
+".$classe."::$classe($classe const & other)
+  : ";
+my $flag = 0;
+foreach (keys %vars)
+{
+    print FILEHANDLER ", " if ($flag);
+    print FILEHANDLER "$_(other.$_)";
+    $flag = 1;
+}
+print FILEHANDLER "
+{}
+
+$classe &\t\t".$classe."::operator=($classe const & other)
+{
+  if (&other != this)
+    {
+";
+foreach (keys %vars)
+{
+    print FILEHANDLER "      this->$_ = other.$_;\n";
+}
+print FILEHANDLER "
+      // If there is a pointer to something allocated, do this :
+      // if (this->SomeThingAllocated)
+      //   delete this->SomeThingAllocated;
+      // this->SomeThingAllocated = CopyFunc(other.SomeThingAllocated);
+    }
+  return (*this);
+}
+
+".$classe."::~$classe(void)
+{}
+
+";
+foreach (keys %vars)
+{
+    print FILEHANDLER "$vars{$_} const\t\t".$classe."::get$_(void) const
+{
+    return (this->$_);
+}
+
+void\t\t".$classe."::set$_($vars{$_} const & $_)
+{
+    this->$_ = $_;
+}
+";
+}
+
+close(FILEHANDLER);
+
+print " Done.\n";

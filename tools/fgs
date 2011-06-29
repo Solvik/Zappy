@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacs -nw `gs $1 | cut -d: -f1`

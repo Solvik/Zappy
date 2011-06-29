@@ -1,0 +1,3 @@
+#!/bin/sh
+
+\grep -Ir $1 . | \grep -v svn | grep -vi binary | grep -vi binaire
