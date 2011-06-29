@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jun 29 16:18:48 2011 solvik blum
-** Last update Wed Jun 29 16:56:43 2011 solvik blum
+** Last update Wed Jun 29 17:47:18 2011 solvik blum
 */
 
 #ifndef		VOIR_H_
@@ -14,8 +14,6 @@
 #include	"stone.h"
 #include	"player.h"
 #include	"zappy_protocol.h"
-
-
 
 typedef struct	s_enum_to_ressource
 {
@@ -32,6 +30,8 @@ static t_enum_to_ressource     gl_ressource_name[] =
     {PHIRAS,	" phiras"},
     {THYSTAME,	" thystame"}
   };
+
+static const int	size_stone = sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource);
 
 typedef struct	s_zappy_voir
 {

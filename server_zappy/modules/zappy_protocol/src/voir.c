@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 16:27:04 2011 solvik blum
+** Last update Wed Jun 29 17:47:20 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -41,7 +41,7 @@ static void	check_case(int pos, char **ret)
   for (i = 0; i < map[i].food; i++)
     *ret = concat(*ret, " nourriture");
   for (i = 0; i < get_list_len(map[i].stones); i++)
-    for (j = 0; j < sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource); j++)
+    for (j = 0; j < size_stone; j++)
       *ret = concat(*ret, gl_ressource_name[j].str);
 }
 
