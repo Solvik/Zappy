@@ -15,7 +15,7 @@ bool handle_graphic(t_fds *client, char *cmd)
 {
   handle_sgt(client, NULL);
   handle_msz(client, NULL);
-  handle_bct(client, NULL);
+  handle_mct(client, NULL);
   handle_tna(client, NULL);
   handle_pnw(client, NULL);
   //handle_enw(client, NULL);
