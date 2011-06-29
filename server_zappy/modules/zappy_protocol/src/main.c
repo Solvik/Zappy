@@ -6,9 +6,31 @@
 
 #include	"module.h"
 #include	"network.h"
+#include	"zappy_protocol.h"
 
+void		init_func(t_mod_func *mod_func, char *cmd, void *func)
+{
+  static int	i = 0;
 
-bool		test(fds client, char *cmd);
+  mod_func[i].command = strdup(cmd);
+  mod_func[i++].action = func;
+}
+
+void		init_commands(t_mod_func *func)
+{
+  init_func(func, "avance",		zappy_avance); /* OK */
+  init_func(func, "droite",		zappy_droite); /* OK */
+  init_func(func, "gauche",		zappy_gauche);  /* OK */
+  init_func(func, "voir",		zappy_voir);
+  init_func(func, "inventaire",		zappy_inventaire); /* OK */
+  init_func(func, "prend objet",	zappy_prend_objet);
+  init_func(func, "pose objet",		zappy_pose_objet);
+  init_func(func, "expulse",		zappy_expulse); /* OK */
+  init_func(func, "broadcast texte",	zappy_broadcast_texte);
+  init_func(func, "incantation",	zappy_incantation);
+  init_func(func, "fork",		zappy_fork);
+  init_func(func, "connect_nbr",	zappy_connect_nbr);
+}
 
 t_module	*get_module(void)
 {
@@ -24,30 +46,6 @@ t_module	*get_module(void)
   module->clients = NULL;
   init_commands(module->functions);
   return (module);
-}
-
-void		init_command(t_mod_func *func, char *cmd, void *func)
-{
-  static int	i = 0;
-
-  func[i].command = strdup(cmd);
-  func[i++].action = func;
-}
-
-void		init_commands(t_mod_func *func)
-{
-  init_command(func, "avance",		zappy_avance); /* OK */
-  init_command(func, "droite",		zappy_droite); /* OK */
-  init_command(func, "gauche",		zappy_gauche);  /* OK */
-  init_command(func, "voir",		zappy_voir);
-  init_command(func, "inventaire",	zappy_inventaire); /* OK */
-  init_command(func, "prend objet",	zappy_prend_objet);
-  init_command(func, "pose objet",	zappy_pose_objet);
-  init_command(func, "expulse",		zappy_expulse);
-  init_command(func, "broadcast texte", zappy_broadcast_texte);
-  init_command(func, "incantation",	zappy_incantation);
-  init_command(func, "fork",		zappy_fork);
-  init_command(func, "connect_nbr",	zappy_connect_nbr);
 }
 
 bool		test(fds client, char *cmd)
