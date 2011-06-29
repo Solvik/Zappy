@@ -11,7 +11,8 @@ typedef		enum
     SIBUR,
     MENDIANE,
     PHIRAS,
-    THYSTAME
+    THYSTAME,
+    NONE
   }		e_stone;
 
 typedef		struct
