@@ -31,6 +31,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			\
 			$(SRC_DIR)flood_manager.c		\
 			\
+			$(SRC_DIR)new_player.c			\
 			$(SRC_DIR)gserv_get.c			\
 			$(SRC_DIR)gserv_set_map.c		\
 			$(SRC_DIR)gserv_get_map.c		\

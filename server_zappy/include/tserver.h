@@ -24,6 +24,7 @@ typedef		struct
   bool		run;
 }		t_server;
 
+t_player *	new_player(void);
 uint		get_map_width(void);
 uint		get_map_height(void);
 t_box *		get_map(void);

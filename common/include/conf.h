@@ -12,4 +12,6 @@ static define   default_time		= 1;
 static define   default_width           = 4;
 static define   default_height          = 10;
 
+static define	default_life		= 10;
+
 #endif          /* !CONF_H_ */
