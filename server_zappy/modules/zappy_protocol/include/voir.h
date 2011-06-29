@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jun 29 16:18:48 2011 solvik blum
-** Last update Wed Jun 29 16:26:40 2011 solvik blum
+** Last update Wed Jun 29 16:56:43 2011 solvik blum
 */
 
 #ifndef		VOIR_H_
@@ -26,7 +26,7 @@ typedef struct	s_enum_to_ressource
 static t_enum_to_ressource     gl_ressource_name[] =
   {
     {LINEMATE,	" linemate"},
-    {DERAUMETRE, " deraumere"},
+    {DERAUMERE, " deraumere"},
     {SIBUR,	" sibur"},
     {MENDIANE,	" mendiane"},
     {PHIRAS,	" phiras"},
