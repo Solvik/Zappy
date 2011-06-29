@@ -11,16 +11,18 @@
 #ifndef		CLIENT_H_
 # define	CLIENT_H_
 
+# include	"scheduler.h"
 # include	"module.h"
 # include	"flood.h"
 
 typedef struct _client
 {
   char		*command;
+  t_scheduler	schedule;
   t_antiflood	flood;
 
   t_module	*_m;
-  void		*callback;
+  void		(*callback)();
 }		t_client;
 
 #endif		/* !CLIENT_H_ */

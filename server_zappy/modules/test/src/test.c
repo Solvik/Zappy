@@ -4,8 +4,7 @@
 #include	<strings.h>
 #include	<stdlib.h>
 
-#include	"module.h"
-#include	"network.h"
+#include	"napi.h"
 
 bool		test(fds client, char *cmd);
 
@@ -28,6 +27,8 @@ t_module	*get_module(void)
 
 bool		test(fds client, char *cmd)
 {
+  if (!schedule_active(client))
+    return (schedule_relative(client, 300, (bool (*)(fds, void*))test, cmd));
   (void)client;
   printf("WORKING : [%s]\n", cmd);
   return (true);

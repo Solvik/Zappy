@@ -11,6 +11,7 @@
 #ifndef		NAPI_H_
 # define	NAPI_H_
 
+# include	"scheduler.h"
 # include	"module.h"
 # include	"net.h"
 
