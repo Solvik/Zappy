@@ -2,6 +2,8 @@
 #ifndef		ZAPPY_TEAM_H_
 # define	ZAPPY_TEAM_H_
 
+#  include	"list.h"
+
 typedef		struct
 {
   char *	name;

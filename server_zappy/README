@@ -53,11 +53,26 @@ Return 0 if position is invalid.
 
 --- Players ---
 
-bool                    add_player(t_player * player, char * name, uint x, uint y);
+bool			setbox_add_player(t_player * player,
+			char * name, uint x, uint y);
 Add the player "player" in team "name" at position "x", "y" on the map.
 If team didnt exist, team is created.
 Return false on failure (invalid position, allocation failed).
 
 t_list *		get_players(unit x, uint y);
 Return the list of players at position "x", "y".
+
+void			setbox_del_player(t_player * player);
+delete a player.
+
+--- Teams ---
+
+t_team *		get_team_by_name(char * name);
+return the team "name" or NULL if the team didnt exists.
+
+t_team *		get_team_of_player(t_player * player);
+return the team where player is.
+
+t_list *		get_teams(void);
+return the list of teams.
 

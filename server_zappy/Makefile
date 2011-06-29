@@ -40,7 +40,11 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gserv_get_network.c		\
 			$(SRC_DIR)gserv_set_network.c		\
 			$(SRC_DIR)gserv_add_player.c		\
+			$(SRC_DIR)gserv_del_player.c		\
 			$(SRC_DIR)gserv_get_players.c		\
+			$(SRC_DIR)gserv_get_teams.c		\
+			$(SRC_DIR)gserv_get_team_of_player.c	\
+			$(SRC_DIR)gserv_get_team_by_name.c	\
 			$(SRC_DIR)gserv_modules.c		\
 			\
 			$(SRC_DIR)net_connection.c		\

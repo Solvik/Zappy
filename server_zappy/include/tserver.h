@@ -5,7 +5,7 @@
 #  include	"module.h"
 #  include	"network.h"
 #  include	"map.h"
-#  include	"zopt.h"
+#  include	"team.h"
 #  include	"player.h"
 #  include	"stone.h"
 
@@ -34,6 +34,7 @@ uint		getbox_nbstones(uint, uint, e_stone);
 int		get_port(void);
 fds *		get_pool(void);
 t_list *	get_players(uint, uint);
+t_team *	get_team_of_player(t_player *);
 
 void		set_map_width(uint);
 void		set_map_height(uint);

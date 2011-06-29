@@ -32,14 +32,8 @@ typedef struct	s_player
   uint		life;
   uint		x;
   uint		y;
-  t_list	*ressources;	// t_ressource
+  t_list *	stones;		// t_stone
   e_direction	direction;
 }		t_player;
-
-typedef struct	s_resource
-{
-  char		*name;
-  int		n;
-}		t_ressource;
 
 #endif /* PLAYER_H_ */
