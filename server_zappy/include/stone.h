@@ -2,6 +2,8 @@
 #ifndef		STONE_H_
 # define	STONE_H_
 
+#include "ztypes.h"
+
 typedef		enum
   {
     LINEMATE,
