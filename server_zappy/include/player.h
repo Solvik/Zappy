@@ -33,7 +33,7 @@ typedef struct	s_player
   uint		x;
   uint		y;
   t_list	*ressources;	// t_ressource
-  e_direction	direction
+  e_direction	direction;
 }		t_player;
 
 typedef struct	s_resource

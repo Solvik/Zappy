@@ -18,7 +18,7 @@ typedef		struct
   t_map		map;
   fds		pool;
   t_list *	module;		// t_module
-  /* t_list *	team;		// t_module */
+  t_list *	team;		// t_team
   bool		run;
 }		t_server;
 
