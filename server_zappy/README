@@ -58,6 +58,6 @@ Add the player "player" in team "name" at position "x", "y" on the map.
 If team didnt exist, team is created.
 Return false on failure (invalid position, allocation failed).
 
-t_list *		get_players_at(unit x, uint y);
+t_list *		get_players(unit x, uint y);
 Return the list of players at position "x", "y".
 
