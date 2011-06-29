@@ -59,7 +59,10 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(CSRC_DIR)time.c			\
 			$(CSRC_DIR)err_print_error.c		\
 			$(CSRC_DIR)err_print_warning.c		\
-			$(CSRC_DIR)err_syntax_error.c		#\
+			$(CSRC_DIR)err_syntax_error.c		\
+			\
+			$(SRC_DIR)napi_functions.c		#\
+			\
 			modules/test/src/test.c
 
 ## Libraries

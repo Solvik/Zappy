@@ -14,6 +14,7 @@ typedef		struct
 
 typedef	struct	_module
 {
+  char		*data;
   char *	name;
   char *	delim;
   uint		port;
