@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 12:20:56 2011 solvik blum
+** Last update Wed Jun 29 13:15:37 2011 solvik blum
 */
 
 #include <stdio.h>
@@ -29,7 +29,7 @@ int		zappy_expulse(t_fds *client, char *cmd)
   t_list	*list;
 
   (void)cmd;
-  list = get_players_at(player_data->x, player_data->y);
+  list = get_players(player_data->x, player_data->y);
   if (get_list_len(list))
     {
       char	*ret;
