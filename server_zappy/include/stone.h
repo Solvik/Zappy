@@ -5,7 +5,7 @@
 typedef		enum
   {
     LINEMATE,
-    DERAUMETRE,
+    DERAUMERE,
     SIBUR,
     MENDIANE,
     PHIRAS,
