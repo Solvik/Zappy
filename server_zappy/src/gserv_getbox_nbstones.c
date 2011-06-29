@@ -21,3 +21,12 @@ uint			getbox_nbstones(uint x, uint y, e_stone type)
     return (0);
   return (stone->nb);
 }
+
+uint			getbox_nbstones_by_player(t_player *player, stone type)
+{
+  t_stone *		stone;
+
+  if (!(stone = get_data_as_arg(player->stones, match_stone, &type)))
+    return (0);
+  return (stone->nb);
+}
