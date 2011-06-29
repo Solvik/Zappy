@@ -31,8 +31,13 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gserv_get.c			\
 			$(SRC_DIR)gserv_set_map.c		\
 			$(SRC_DIR)gserv_get_map.c		\
+			$(SRC_DIR)gserv_setbox_addstone.c	\
+			$(SRC_DIR)gserv_setbox_delstone.c	\
+			$(SRC_DIR)gserv_getbox_nbstones.c	\
 			$(SRC_DIR)gserv_get_network.c		\
 			$(SRC_DIR)gserv_set_network.c		\
+			$(SRC_DIR)gserv_add_player.c		\
+			$(SRC_DIR)gserv_get_players.c		\
 			$(SRC_DIR)gserv_modules.c		\
 			\
 			$(SRC_DIR)net_connection.c		\
