@@ -16,7 +16,7 @@
 #include	"client.h"
 #include	"tserver.h"
 
-bool		schedule_action(fds c, _time dt,
+bool		scheduler_action(fds c, _time dt,
 				bool (*callb)(fds, void*), void *data)
 {
   t_client	*info;
@@ -30,19 +30,21 @@ bool		schedule_action(fds c, _time dt,
   memset(schedule, 0, sizeof(*schedule));
   schedule->state = (char)true;
   schedule->st = time_();
+  schedule->lt = schedule->st;
   schedule->dt = dt;
   schedule->callback = callb;
   schedule->data = data;
+  scheduler_update(dt);
   return (true);
 }
 
-bool		schedule_relative(fds c, _time dt,
+bool		scheduler_relative(fds c, _time dt,
 				  bool (*cb)(fds, void*), void *data)
 {
   t_client	*info;
   t_scheduler	*schedule;
 
-  if (!schedule_action(c, dt, cb, data))
+  if (!scheduler_action(c, dt, cb, data))
     return (false);
   if (!c || !(info = c->trick))
     return (false);
@@ -51,7 +53,7 @@ bool		schedule_relative(fds c, _time dt,
   return (true);
 }
 
-bool		schedule_active(fds c)
+bool		scheduler_active(fds c)
 {
   t_client	*info;
   t_scheduler	*schedule;

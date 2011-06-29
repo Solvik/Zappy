@@ -42,10 +42,12 @@ static bool		mod_handshaking(void *elem, void *arg)
   return (false);
 }
 
-bool	       mod_discovery(fds client, char *cmd)
+bool	       mod_discovery(fds client, char **s)
 {
+  char		*cmd;
   t_client	*info;
 
+  cmd = (s ? *s : NULL);
   if (!client)
     return (false);
   if (!(info = client->trick))
@@ -58,5 +60,8 @@ bool	       mod_discovery(fds client, char *cmd)
   ((t_client*)client->trick)->command = cmd;
   foreach_arg_stop_list(get_modules(), mod_handshaking, client);
   ((t_client*)client->trick)->command = NULL;
+  free(cmd);
+  if (s)
+    *s = NULL;
   return (true);
 }

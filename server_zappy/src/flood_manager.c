@@ -21,7 +21,7 @@ char		*flood_check(fds pool, char *s)
   t_client	*info;
 
   if (!pool || !(info = pool->trick) ||
-      !(flood = &info->flood) || !s ||
+      !(flood = &info->flood) ||
       !(flood->size <= 0 || flood->array))
     return (NULL);
   if (flood->size <= 0 && info->command)
@@ -30,7 +30,7 @@ char		*flood_check(fds pool, char *s)
     return ((info->command = s));
   if (flood->write == flood->read)
     memset(&flood->read, 0, sizeof(flood->read) * 2);
-  if ((flood->write - flood->read) < flood->size)
+  if (s && (flood->write - flood->read) < flood->size)
     flood->array[(flood->write++) % flood->size] = s;
   else
     free(s);

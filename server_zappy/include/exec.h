@@ -14,7 +14,9 @@
 # include	"time_.h"
 # include	"network.h"
 
-bool		exec_actions(fds, double);
-bool		exec_timer(time__ *, double);
+bool		exec_pool(fds, double);
+bool		exec_client(fds c, double tdt);
+
+bool		exec_timer(time__ **, double);
 
 #endif		/* !EXEC_H_ */

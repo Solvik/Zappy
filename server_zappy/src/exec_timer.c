@@ -11,12 +11,21 @@
 #include	<stdbool.h>
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<stdio.h>
 
 #include	"time_.h"
+#include	"scheduler.h"
 
-bool		exec_timer(time__ *tv, double tdt)
+bool		exec_timer(time__ **tv, double tdt)
 {
-  (void)tv;
+  static time__	*t = NULL;
+  double	lol;
+
   (void)tdt;
+  if (!tv || (!t && !(t = calloc(1, sizeof(*t)))))
+    return (false);
+  *tv = timeval_(t, (lol = (scheduler_update(-1.0))));
+  if (lol <= -1.0)
+    *tv = NULL;
   return (true);
 }

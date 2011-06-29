@@ -11,10 +11,12 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<stdio.h>
 
 #include	"error.h"
 #include	"module.h"
 #include	"client.h"
+#include	"scheduler.h"
 #include	"run.h"
 #include	"tserver.h"
 
@@ -52,26 +54,29 @@ bool		find_action(fds client, char *s)
   return (false);
 }
 
-bool		exec_actions(fds pool, double tdt)
+bool		exec_client(fds c, double tdt)
+{
+  char		*s;
+
+  s = getcmd(c);
+  if (!(c->trick) || !(((t_client*)c->trick)->_m))
+    return (mod_discovery(c, &s));
+  s = flood_check(c, s);
+  if (scheduler_(c, tdt))
+    return (scheduler_dispatch(c));
+  else if (s && !scheduler_active(c) && (int)find_action(c, s) != -1)
+    flood_read(c);
+  return (true);
+}
+
+bool		exec_pool(fds pool, double tdt)
 {
   (void)	tdt;
-  char		*s;
 
   while (pool)
     {
       if (pool->type != SERV)
-	{
-	  s = getcmd(pool);
-	  if (!(pool->trick) ||
-	      !(((t_client*)pool->trick)->_m))
-	    {
-	      mod_discovery(pool, s);
-	      free(s);
-	    }
-	  else if (s && (s = flood_check(pool, s)))
-	    if ((int)find_action(pool, s) != -1)
-	      flood_read(pool);
-	}
+	exec_client(pool, tdt);
       pool = pool->next;
     }
   return (true);

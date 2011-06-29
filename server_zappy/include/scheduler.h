@@ -23,12 +23,17 @@ typedef struct	_scheduler
   char		relative: 1;
 
   _time		st;
+  _time		lt;
   _time		dt;
   bool		(*callback)(fds, void *);
 }		t_scheduler;
 
-bool		schedule_action(fds, _time, bool (*_)(fds, void*), void *);
-bool		schedule_relative(fds, _time, bool (*_)(fds, void*), void *);
-bool		schedule_active(fds);
+bool		scheduler_(fds c, double tdt);
+bool		scheduler_dispatch(fds c);
+double		scheduler_update(double r);
+
+bool		scheduler_action(fds, _time, bool (*_)(fds, void*), void *);
+bool		scheduler_relative(fds, _time, bool (*_)(fds, void*), void *);
+bool		scheduler_active(fds);
 
 #endif		/* !SCHEDULER_H_ */

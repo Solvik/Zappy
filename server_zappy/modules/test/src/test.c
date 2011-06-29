@@ -1,3 +1,12 @@
+/*
+** test.c for  in /home/di-mar_j/git/Zappy/server_zappy
+** 
+** Made by julien di-marco
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Wed Jun 29 18:41:39 2011 julien di-marco
+** Last update Wed Jun 29 18:41:39 2011 julien di-marco
+*/
 
 #include	<stdio.h>
 #include	<string.h>
@@ -27,8 +36,9 @@ t_module	*get_module(void)
 
 bool		test(fds client, char *cmd)
 {
-  if (!schedule_active(client))
-    return (schedule_relative(client, 300, (bool (*)(fds, void*))test, cmd));
+  if (!scheduler_active(client))
+    return (scheduler_relative(client, 4.2,
+				 (bool (*)(fds, void*))test, strdup(cmd)));
   (void)client;
   printf("WORKING : [%s]\n", cmd);
   return (true);
