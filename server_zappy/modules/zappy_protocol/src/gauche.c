@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 17:32:06 2011 solvik blum
-** Last update Wed Jun 29 12:18:58 2011 solvik blum
+** Last update Wed Jun 29 16:31:16 2011 solvik blum
 */
 
 #include "player.h"
@@ -13,7 +13,8 @@
 
 int		zappy_gauche(t_fds *client, char *cmd)
 {
+  (void)cmd;
   player_data->direction = (player_data->direction + 3) % 4;
-  sends(client, "ok\n");
+  sends(client, "ok");
   return (0);
 }

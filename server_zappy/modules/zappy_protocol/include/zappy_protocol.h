@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jun 29 10:24:19 2011 solvik blum
-** Last update Wed Jun 29 13:02:16 2011 solvik blum
+** Last update Wed Jun 29 16:18:45 2011 solvik blum
 */
 
 #ifndef		ZAPPY_PROTOCOL_H_
@@ -23,5 +23,6 @@ int		zappy_broadcast_texte(t_fds *, char *);
 int		zappy_incantation(t_fds *, char *);
 int		zappy_connect_nbr(t_fds *, char *);
 int		zappy_fork(t_fds *, char *);
+
 
 #endif		/* !ZAPPY_PROTOCOL_H_ */

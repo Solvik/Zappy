@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 15:55:53 2011 solvik blum
-** Last update Wed Jun 29 11:05:06 2011 solvik blum
+** Last update Wed Jun 29 16:30:35 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -65,7 +65,7 @@ int		zappy_avance(t_fds *client, char *cmd)
       if (player_data->direction == gl_tab[i].dir)
 	{
 	  gl_tab[i].func(client);
-	  sends(client, "ok\n");
+	  sends(client, "ok");
 	  return (1);
 	}
     }
