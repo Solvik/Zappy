@@ -85,9 +85,5 @@ bool		init_opt(int ac, char *opt[], t_zopt *optab)
 	return (false);
       }
   epure(optab);
-  printf("modules: %d\n", get_list_len(optab->module));
-  dump_list(optab->module, lol);
-  printf("teams: %d\n", get_list_len(optab->team));
-  dump_list(optab->team, lol);
   return (true);
 }

@@ -11,8 +11,9 @@
 #ifndef GRAPH_TEAM_H_
 #define GRAPH_MAP_H_
 
+#include <stdbool.h>
 #include "network.h"
 
-void handle_tna(t_fds *);
+bool handle_tna(t_fds *, char *);
 
 #endif

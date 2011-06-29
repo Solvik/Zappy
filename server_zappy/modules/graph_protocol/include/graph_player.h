@@ -11,10 +11,12 @@
 #ifndef GRAPH_PLAYER_H_
 #define GRAPH_PLAYER_H_
 
+#include <stdbool.h>
 #include "network.h"
 
-void handle_ppo(t_fds *);
-void handle_plv(t_fds *);
-void handle_pin(t_fds *);
+bool handle_ppo(t_fds *, char *);
+bool handle_plv(t_fds *, char *);
+bool handle_pin(t_fds *, char *);
+bool handle_pnw(t_fds *, char *);
 
 #endif

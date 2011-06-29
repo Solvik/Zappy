@@ -11,9 +11,10 @@
 #ifndef GRAPH_TIME_H_
 #define GRAPH_TIME_H_
 
+#include <stdlib.h>
 #include "network.h"
 
-void handle_sgt(t_fds *);
-void handle_sst(t_fds *);
+bool handle_sgt(t_fds *, char *cmd);
+bool handle_sst(t_fds *, char *cmd);
 
 #endif

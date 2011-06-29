@@ -7,5 +7,5 @@ extern t_server	*gserv;
 
 bool		run_end(void)
 {
-  return (!(get_list_len(gserv->module) > 0 ));
+  return (!(gserv->run && get_list_len(gserv->module) > 0 ));
 }

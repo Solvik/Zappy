@@ -19,6 +19,7 @@ typedef		struct
   fds		pool;
   t_list *	module;		// t_module
   /* t_list *	team;		// t_module */
+  bool		run;
 }		t_server;
 
 uint		get_map_width(void);

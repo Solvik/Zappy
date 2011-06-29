@@ -8,11 +8,12 @@
 ** Last update Mon Jun 13 19:01:45 2011 seb
 */
 
+#include "network.h"
 #include "graph_team.h"
 
-void handle_tna(t_fds *player)
+bool handle_tna(t_fds *player, char *cmd)
 {
-  (void)player;
+  sends(player, "tna LOL");
   /*
     On envoie tna tean_name\n pour chaque team presente sur la map
    */

@@ -12,20 +12,30 @@
 #include	<string.h>
 #include	<strings.h>
 #include	<stdlib.h>
+#include	"graph_map.h"
 #include	"module.h"
+
+
+/*
+ * TODO : Mettre le bon nombre de fonction dans le malloc
+ */
 
 t_module *	get_module(void)
 {
   t_module *	module;
 
-  if (!(module = malloc(sizeof(*module))))
+  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 40)))
     return (NULL);
   bzero(module, sizeof(*module));
   module->name = strdup("Graphic Protocol");
   module->delim = strdup("\n");
-  module->port = 1337;
+  module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
+  module->functions[0].command = strdup("msz");
+  module->functions[0].action = handle_msz;
+  module->functions[1].command = strdup("graphic");
+  module->functions[1].action = handle_msz;
   return (module);
 }
 
@@ -36,3 +46,16 @@ void	init_(void)
   mod_register(get_module());
 }
 #endif
+
+
+bool		handshaking(t_fds *client, char *cmd)
+{
+  if (!client->anounce)
+    sends(client, "BIENVENUE");
+  if (cmd && (strcmp(cmd, "GRAPHIC") == 0))
+    {
+      handle_graphic(client, cmd);
+      return (true);
+    }
+  return (false);
+}

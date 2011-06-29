@@ -8,6 +8,7 @@
 ** Last update Sun Apr 03 22:43:34 2011 lepage_b
 */
 
+#include	<stdarg.h>
 #include	<stdio.h>
 #include	<stdbool.h>
 
@@ -23,3 +24,14 @@ bool		print_perror(char *cmd)
   return (false);
 }
 
+bool		syntax_print_error(char const *format, ...)
+{
+   va_list arguments;
+
+  va_start(arguments, format);
+  fprintf(stderr, "Error: ");
+  vfprintf(stderr, format, arguments);
+  va_end(arguments);
+  fprintf(stderr, "\n");
+  return (false);
+}
