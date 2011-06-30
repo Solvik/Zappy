@@ -19,7 +19,7 @@ static void     get_len(void * data, void * arg)
   t_ressource	*r;
 
   r = (t_ressource *)data;
-  *((int *)arg) += strlen(r->name) + itoa_number_size(r->n, 10) + 2; // space + ','
+  *((int *)arg) += strlen(r->name) + itoa_number_size(r->n, 10) + 2;
 }
 
 static void     cat_ressources(void * data, void * arg)

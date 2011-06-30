@@ -13,7 +13,6 @@
 #include "player.h"
 #include "server_zappy.h"
 
-
 int		zappy_droite(t_fds *player)
 {
   player_data->direction = (player_data->direction + 1) % 4;

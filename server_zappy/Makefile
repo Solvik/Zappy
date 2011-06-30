@@ -8,6 +8,7 @@ SRC_DIR		=	src/
 COM_DIR		=	../common/
 CSRC_DIR	=	$(COM_DIR)src/
 LIB_DIR		=	../lib/
+CHECK		= /u/all/astek/public/norme/norme
 
 INCLUDE		=	-Iinclude/				\
 			-I$(COM_DIR)include/			\
@@ -117,4 +118,7 @@ re		:	fclean libre all
 
 .c.o		:
 			$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) $(INCLUDE)
+
+check		:
+		  @$(CHECK) -nocheat `find . -name "*.[ch]"`
 

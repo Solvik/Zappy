@@ -1,3 +1,12 @@
+/*
+** map.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:08:09 2011 Julien Di Marco
+** Last update Thu Jun 30 05:08:09 2011 Julien Di Marco
+*/
 
 #ifndef		MAP_H_
 # define	MAP_H_
@@ -7,9 +16,9 @@
 
 typedef		struct
 {
-  t_list *	stones;		// t_stone
-  t_list *	players;	// t_players
-  t_list *	eggs;		// t_eggs
+  t_list *	stones;
+  t_list *	players;
+  t_list *	eggs;
   uint		food;
 }		t_box;
 

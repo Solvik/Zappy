@@ -1,3 +1,12 @@
+/*
+** gserv_add_player.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:05:45 2011 Julien Di Marco
+** Last update Thu Jun 30 05:05:45 2011 Julien Di Marco
+*/
 
 #include		<stdlib.h>
 #include		<string.h>

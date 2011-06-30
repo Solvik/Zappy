@@ -13,7 +13,6 @@
 #include "player.h"
 #include "server_zappy.h"
 
-
 typedef struct	s_avance
 {
   int		(*func)();

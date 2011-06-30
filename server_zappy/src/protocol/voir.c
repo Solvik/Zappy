@@ -26,12 +26,8 @@ static char     *gl_ressource_name[] =
 
 int		zappy_voir(t_fds *player)
 {
-  /* on recup le lvl */
   int		level;
 
   level = player_data->level;
-
-  /* en fonction du level, on itere sur X */
-  /* ... */
 }
 

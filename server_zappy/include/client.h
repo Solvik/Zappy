@@ -1,4 +1,13 @@
 /*
+** client.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:08:26 2011 Julien Di Marco
+** Last update Thu Jun 30 05:08:26 2011 Julien Di Marco
+*/
+/*
 ** client.h for  in /home/di-mar_j/git/Zappy/server_zappy
 **
 ** Made by julien di-marco

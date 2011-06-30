@@ -1,3 +1,12 @@
+/*
+** mod_manager.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:04:33 2011 Julien Di Marco
+** Last update Thu Jun 30 05:04:33 2011 Julien Di Marco
+*/
 
 #include	<string.h>
 #include	<unistd.h>
@@ -29,7 +38,7 @@ bool		mod_register(t_module * new)
 {
   if (!new)
     return (false);
-  if ((foreach_arg_stop_list(get_modules(), mod_unique,	new->name)))
+  if ((foreach_arg_stop_list(get_modules(), mod_unique, new->name)))
     return (syntax_print_error("Module with the same name already loaded."));
   if (gserv_const(false))
     net_bind(&new->port);

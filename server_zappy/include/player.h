@@ -11,7 +11,6 @@
 #ifndef PLAYER_H_
 # define PLAYER_H_
 
-
 #  include	"ztypes.h"
 #  include	"list.h"
 #  include	"network.h"
@@ -33,7 +32,7 @@ typedef struct	s_player
   uint		life;
   uint		x;
   uint		y;
-  t_list *	stones;		// t_stone
+  t_list *	stones;
   e_direction	direction;
 }		t_player;
 

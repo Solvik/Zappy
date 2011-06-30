@@ -1,3 +1,12 @@
+/*
+** tserver.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
+** Last update Thu Jun 30 05:07:36 2011 Julien Di Marco
+*/
 
 #ifndef		TSERV_H_
 # define	TSERV_H_
@@ -20,8 +29,8 @@ typedef		struct
   t_netinfo	net;
   t_map		map;
   fds		pool;
-  t_list *	module;		// t_module
-  t_list *	team;		// t_team
+  t_list *	module;
+  t_list *	team;
   bool		run;
 }		t_server;
 

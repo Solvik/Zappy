@@ -1,3 +1,12 @@
+/*
+** mod_dl_load.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** 
+** Made by Julien Di Marco
+** Login   <Lifely@epitech.net>
+** 
+** Started on  Thu Jun 30 05:04:37 2011 Julien Di Marco
+** Last update Thu Jun 30 05:04:37 2011 Julien Di Marco
+*/
 
 #include	<unistd.h>
 #include	<stdlib.h>
@@ -49,7 +58,8 @@ bool	mod_load(char *name)
   if (!(module = get_module()))
     return (false);
   module->handle = handle;
-  if (!module->handshaking && !(module->handshaking = dlsym(handle, "handshaking")))
+  if (!module->handshaking && !(module->handshaking =
+				dlsym(handle, "handshaking")))
     return (print_error(dlerror()));
   if (!module->update && !(module->update = dlsym(handle, "update")))
     print_warning(dlerror());

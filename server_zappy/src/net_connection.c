@@ -14,7 +14,6 @@
 #include	"network.h"
 #include	"tserver.h"
 
-
 bool	net_port_unique(int port)
 {
   fds	tmp;
@@ -40,6 +39,3 @@ bool	net_bind(uint *port)
     return (true);
   return (false);
 }
-
-
-
