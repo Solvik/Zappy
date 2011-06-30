@@ -18,7 +18,7 @@
 
 bool		init_map(t_zopt *opt)
 {
-  t_box *	map_ptr;
+  t_box 	*map_ptr;
 
   set_map_width(opt->width);
   set_map_height(opt->height);

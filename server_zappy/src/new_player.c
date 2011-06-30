@@ -13,10 +13,10 @@
 #include	"conf.h"
 #include	"player.h"
 
-t_player *	new_player(void)
+t_player 	*new_player(void)
 {
   static uint	id = 0;
-  t_player *	player;
+  t_player 	*player;
 
   if (!(player = malloc(sizeof(*player))))
     return (NULL);

@@ -23,7 +23,7 @@ static void	net_init(void *data)
   net_bind(&((t_module*)data)->port);
 }
 
-bool		init_network(t_zopt * optab)
+bool		init_network(t_zopt *optab)
 {
   (void)optab;
   foreach_list(get_modules(), net_init);

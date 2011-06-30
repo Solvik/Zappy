@@ -10,9 +10,9 @@
 
 #include	"tserver.h"
 
-extern t_server *	gserv;
+extern t_server *gserv;
 
-fds *		get_pool(void)
+fds 		*get_pool(void)
 {
   return (&(gserv->pool));
 }

@@ -13,11 +13,11 @@
 #include		"tserver.h"
 #include		"server_zappy.h"
 
-extern t_server *	gserv;
+extern t_server 	*gserv;
 
-static t_stone *	new_stone(e_stone type, uint nb)
+static t_stone		*new_stone(e_stone type, uint nb)
 {
-  t_stone *		stone;
+  t_stone 		*stone;
 
   if (!(stone = malloc(sizeof(*stone))))
     return (NULL);
@@ -26,15 +26,15 @@ static t_stone *	new_stone(e_stone type, uint nb)
   return (stone);
 }
 
-static bool		match_stone(void * data, void * stone)
+static bool		match_stone(void *data, void *stone)
 {
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
 bool			setbox_addstone(uint x, uint y, e_stone type, uint nb)
 {
-  t_box *		box;
-  t_stone *		stone;
+  t_box 		*box;
+  t_stone 		*stone;
 
   if (!(box = get_box(x, y)))
     return (false);

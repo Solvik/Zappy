@@ -12,7 +12,7 @@
 #include	"zopt.h"
 #include	"module.h"
 
-static void	init_module_insert(void * data)
+static void	init_module_insert(void *data)
 {
   mod_load((char *)data);
 }
@@ -25,7 +25,7 @@ static void	init_module_insert(void * data)
 **
 */
 
-bool		init_modules(t_zopt * optab)
+bool		init_modules(t_zopt *optab)
 {
   foreach_list(optab->module, init_module_insert);
   return (true);

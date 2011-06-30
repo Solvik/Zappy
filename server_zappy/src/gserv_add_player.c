@@ -15,16 +15,16 @@
 #include		"team.h"
 #include		"server_zappy.h"
 
-extern t_server *	gserv;
+extern t_server 	*gserv;
 
-static bool		match_team(void * data, void * name)
+static bool		match_team(void *data, void *name)
 {
   return (!(strcmp(((t_team *)data)->name, (char *)name)));
 }
 
-static t_team *		add_team(char * name)
+static t_team 		*add_team(char *name)
 {
-  t_team *		team;
+  t_team 		*team;
 
   if (!(team = malloc(sizeof(*team))))
     return (NULL);
@@ -35,12 +35,12 @@ static t_team *		add_team(char * name)
   return (team);
 }
 
-bool			setbox_add_player(t_player * player,
-					  char * name,
+bool			setbox_add_player(t_player *player,
+					  char *name,
 					  uint x, uint y)
 {
-  t_box *		box;
-  t_team *		team;
+  t_box 		*box;
+  t_team 		*team;
 
   if (!(box = get_box(x, y)))
     return (false);

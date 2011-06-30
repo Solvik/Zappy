@@ -12,19 +12,19 @@
 #include		"team.h"
 #include		"tserver.h"
 
-extern t_server *	gserv;
+extern t_server		*gserv;
 
 /*
 ** delete stones - l: 23
 */
 
-static void		delete_player(t_player * player)
+static void		delete_player(t_player *player)
 {
   destroy_list(&player->stones, free);
   free(player);
 }
 
-static bool		match_player(void * data, void * arg)
+static bool		match_player(void *data, void *arg)
 {
   return (data == arg);
 }
@@ -35,10 +35,10 @@ static bool		match_player(void * data, void * arg)
 ** delete player   l :50
 */
 
-void			setbox_del_player(t_player * player)
+void			setbox_del_player(t_player *player)
 {
-  t_team *		team;
-  t_box *		box;
+  t_team 		*team;
+  t_box 		*box;
 
   if (!(team = get_team_of_player(player)))
     return ;

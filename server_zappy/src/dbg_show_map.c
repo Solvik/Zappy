@@ -16,7 +16,7 @@
 void		dbg_show_map(void)
 {
   size_t	i;
-  t_box *	map;
+  t_box 	*map;
 
   map = get_map();
   i = 0;

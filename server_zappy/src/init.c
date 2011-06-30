@@ -26,7 +26,7 @@ void		sigint_handler(int _)
   write(STDOUT_FILENO, "\b\b", 2);
 }
 
-bool		init(int opt_size, char ** opt)
+bool		init(int opt_size, char **opt)
 {
   t_zopt	optab;
 

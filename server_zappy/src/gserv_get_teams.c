@@ -10,14 +10,14 @@
 
 #include	"tserver.h"
 
-extern t_server *	gserv;
+extern t_server *gserv;
 
-t_list *	get_teams(void)
+t_list		*get_teams(void)
 {
   return (gserv->team);
 }
 
-t_box *		get_box_at(uint i)
+t_box 		*get_box_at(uint i)
 {
   if (i < get_map_max())
     return (NULL);

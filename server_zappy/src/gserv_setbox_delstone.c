@@ -13,9 +13,9 @@
 #include		"tserver.h"
 #include		"server_zappy.h"
 
-extern t_server *	gserv;
+extern t_server 	*gserv;
 
-static bool		match_stone(void * data, void * stone)
+static bool		match_stone(void *data, void *stone)
 {
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
@@ -23,8 +23,8 @@ static bool		match_stone(void * data, void * stone)
 bool			setbox_delstone(uint x, uint y,
 					e_stone type, uint nb)
 {
-  t_box *		box;
-  t_stone *		stone;
+  t_box 		*box;
+  t_stone 		*stone;
 
   if (!(box = get_box(x, y)) ||
       !(stone = get_data_as_arg(box->stones, match_stone, &type)))

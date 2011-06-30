@@ -12,7 +12,7 @@
 #include	<stdlib.h>
 #include	"tserver.h"
 
-extern t_server *	gserv;
+extern t_server *gserv;
 
 bool		gserv_const(bool created)
 {
@@ -31,12 +31,12 @@ t_list		**singleton_module(void)
   return ((gserv_const(false) ? &gserv->module : &module_manager));
 }
 
-t_list *	get_modules(void)
+t_list		*get_modules(void)
 {
   return (*(singleton_module()));
 }
 
-bool		set_new_module(t_module * module)
+bool		set_new_module(t_module *module)
 {
   return (put_in_list(singleton_module(), module));
 }

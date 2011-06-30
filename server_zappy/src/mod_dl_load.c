@@ -18,11 +18,11 @@
 #include	"error.h"
 #include	"module.h"
 
-void	*mod_dl_load(char * name)
+void	*mod_dl_load(char *name)
 {
   int		ace;
   char		*plus;
-  void *	handle;
+  void		*handle;
 
   ace = 0;
   plus = NULL;

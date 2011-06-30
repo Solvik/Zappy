@@ -15,9 +15,9 @@
 #include        "destroy.h"
 #include        "server_zappy.h"
 
-t_server *      gserv;
+t_server       *gserv;
 
-bool            server_zappy(int opt_size, char ** opt)
+bool            server_zappy(int opt_size, char **opt)
 {
   t_server      s;
   bool		out;
