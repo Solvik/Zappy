@@ -13,9 +13,8 @@
 #include "player.h"
 #include "server_zappy.h"
 
-int		zappy_pose(t_fds *client, char *_)
+int		zappy_pose(t_fds *client, char *cmd)
 {
-  (void)_;
   sends(client, "ok");
   return (1);
 }

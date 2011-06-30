@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jun 29 16:18:48 2011 solvik blum
-** Last update Wed Jun 29 17:47:18 2011 solvik blum
+** Last update Thu Jun 30 09:52:36 2011 solvik blum
 */
 
 #ifndef		VOIR_H_
@@ -23,16 +23,15 @@ typedef struct	s_enum_to_ressource
 
 static t_enum_to_ressource     gl_ressource_name[] =
   {
-    {LINEMATE, " linemate"},
+    {LINEMATE,	" linemate"},
     {DERAUMERE, " deraumere"},
-    {SIBUR, " sibur"},
-    {MENDIANE, " mendiane"},
-    {PHIRAS, " phiras"},
-    {THYSTAME, " thystame"}
+    {SIBUR,	" sibur"},
+    {MENDIANE,	" mendiane"},
+    {PHIRAS,	" phiras"},
+    {THYSTAME,	" thystame"}
   };
 
-#define SIZE_STONE (sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource))
-static const int size_stone = SIZE_STONE;
+static const int size_stone = sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource);
 
 typedef struct	s_zappy_voir
 {
