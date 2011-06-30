@@ -1,59 +1,129 @@
+##
+## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
+## 
+## Made by Julien Di Marco
+## Login   <Lifely@epitech.net>
+## 
+## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+##
 
-NAME		=	zappy_protocol
+############################################################
 
-## Directories
-SRC_DIR		=	src/
+NAME	= ZappyModule
 
-LIB_DIR		=	../../../lib/
+INCLUDE	= .				\
+	  ./include/			\
+	  $(SERVER)include/		\
+	  $(COMMONS)include/		\
+	  $(LIBRARY)List/include/	\
+	  $(LIBRARY)itoa/include/	\
+	  $(LIBRARY)network/include/
 
-INCLUDE		=	-Iinclude/			\
-			-I../../include/		\
-			-I../../../common/include/	\
-			-I../../../lib/List/include/	\
-			-I../../../lib/itoa/include/	\
-			-I../../../lib/network/include/
+############################################################
 
-LIB		=	$(LIB_DIR)List/liblist.a	\
-			$(LIB_DIR)network/libnet.a
+ROOT	= ../../../
 
-## Sources
-SRCS		=	$(SRC_DIR)avance.c			\
-			$(SRC_DIR)broadcast.c			\
-			$(SRC_DIR)connect_nbr.c			\
-			$(SRC_DIR)droite.c			\
-			$(SRC_DIR)expulse.c			\
-			$(SRC_DIR)fork.c			\
-			$(SRC_DIR)gauche.c			\
-			$(SRC_DIR)incantation.c			\
-			$(SRC_DIR)inventaire.c			\
-			$(SRC_DIR)pose.c			\
-			$(SRC_DIR)prend.c			\
-			$(SRC_DIR)voir.c			\
-			$(SRC_DIR)main.c			\
+COMMONS	= $(ROOT)common/
+LIBRARY	= $(ROOT)lib/
+SERVER	= $(ROOT)server_zappy/
 
+LOCAL	= ./src/
 
-## functions
-OBJS		=	$(SRCS:.c=.o)
-RM		=	rm -f
-CC		?=	gcc
-CFLAGS		+=	-W -Wall
+############################################################
 
-## RULES
-all		:	$(NAME)
+SOURCE	= $(LOCAL)avance.c			\
+	  $(LOCAL)broadcast.c			\
+	  $(LOCAL)connect_nbr.c			\
+	  $(LOCAL)droite.c			\
+	  $(LOCAL)expulse.c			\
+	  $(LOCAL)fork.c			\
+	  $(LOCAL)gauche.c			\
+	  $(LOCAL)incantation.c			\
+	  $(LOCAL)inventaire.c			\
+	  $(LOCAL)pose.c			\
+	  $(LOCAL)prend.c			\
+	  $(LOCAL)voir.c			\
+	  $(LOCAL)main.c
 
-$(NAME)		:	$(OBJS)
-			$(CC) -shared -rdynamic $(CFLAGS) $(OBJS) $(LIB) -o lib$(NAME).so
+SOURCES	= $(SOURCE:.c=.o)
 
-## clean
+ARCHIVE	= $(LIBRARY)List/liblist.a	\
+	  $(LIBRARY)network/libnet.a
+
+############################################################
+
+NDEBUG	?= 1
+OS	= $(shell uname -s)
+OS	!= uname -s
+ARCHI	= $(shell uname -m)
+ARCHI	!= uname -m
+
+############################################################
+
+MFLAG		= $(MFLAG_${OS})
+MFLAG_$(OS)	= -shared -rdynamic
+MFLAG_Darwin	= -bundle -flat_namespace -undefined suppress
+MFLAG_darwin	= $(MFLAG_Darwin)
+
+OFLAG		= $(OFLAG_${OS})
+OFLAG_$(OS)	= -fPIC
+OFLAG_Darwin	= -fno-common
+OFLAG_darwin	= $(OFLAG_Darwin)
+
+CC	= gcc
+
+CHECK	= /u/all/astek/public/norme/norme
+PRINTF	= /usr/bin/printf
+CP	= cp
+RM	= rm -f
+
+CFLAGS	+= -W -Wall -Wextra		\
+	   -D_${OS}_ -03 -funroll-loops	\
+	   $(addprefix -I, $(INCLUDE))
+
+############################################################
+
+ifeq	($(NDEBUG), 1)
+ CFLAGS	+= -DNDEBUG
+else
+ CFLAGS	+= -ggdb
+endif
+
+############################################################
+
+all		: $(NAME).so
+
+$(NAME).so	: $(SOURCES)
+		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
+		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
+		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
+
+mrpropre	: all clean
+
 clean		:
-			$(RM) $(OBJS)
+		  $(RM) $(SOURCES)
 
-fclean		:	clean
-			$(RM) lib$(NAME).so
+fclean		: clean
+		  $(RM) $(NAME).so
 
-## re
-re		:	fclean all
+re		: fclean all
 
-.c.o		:
-			$(CC) -fPIC -c $(CFLAGS) $< -o $(<:.c=.o) $(INCLUDE)
+############################################################
 
+%.o		: %.c
+		  @ $(CC) $(OFLAG) $(CFLAGS) -o $@ -c $<
+		  @ $(PRINTF) "\033[32m[OK]\033[m --> $< \n"
+
+############################################################
+
+.PHONY		: clean fclean
+
+.SUFFIXES	: %.c
+
+############################################################
+
+check		:
+		  @$(CHECK) -nocheat `find . -name "*.[ch]"`
+
+############################################################

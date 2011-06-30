@@ -4,33 +4,45 @@
 #include	<strings.h>
 #include	<stdlib.h>
 
+#include	"napi.h"
+#include	"tserver.h"
+
 #include	"module.h"
 #include	"network.h"
 #include	"player.h"
 #include	"zappy_protocol.h"
 
-void		init_func(t_mod_func *mod_func, char *cmd, void *func)
-{
-  static int	i = 0;
-
-  mod_func[i].command = strdup(cmd);
-  mod_func[i++].action = func;
-}
+/*
+**
+** avance : OK
+** droite : OK
+** gauche : OK
+** voir : OK
+** inventaire : OK
+** expulse : OK
+** prend
+** pose
+** broadcast
+** incantation
+** fork
+** connect_nbr
+**
+*/
 
 void		init_commands(t_mod_func *func)
 {
-  init_func(func, "avance",		zappy_avance); /* OK */
-  init_func(func, "droite",		zappy_droite); /* OK */
-  init_func(func, "gauche",		zappy_gauche);  /* OK */
-  init_func(func, "voir",		zappy_voir); /* OK */
-  init_func(func, "inventaire",		zappy_inventaire); /* OK */
-  init_func(func, "expulse",		zappy_expulse); /* OK */
-  init_func(func, "prend",		zappy_prend);
-  init_func(func, "pose",		zappy_pose);
-  init_func(func, "broadcast",		zappy_broadcast);
-  init_func(func, "incantation",	zappy_incantation);
-  init_func(func, "fork",		zappy_fork);
-  init_func(func, "connect_nbr",	zappy_connect_nbr);
+  add_command(func, "avance",		zappy_avance);
+  add_command(func, "droite",		zappy_droite);
+  add_command(func, "gauche",		zappy_gauche);
+  add_command(func, "voir",		zappy_voir);
+  add_command(func, "inventaire",	zappy_inventaire);
+  add_command(func, "expulse",		zappy_expulse);
+  add_command(func, "prend",		zappy_prend);
+  add_command(func, "pose",		zappy_pose);
+  add_command(func, "broadcast",	zappy_broadcast);
+  add_command(func, "incantation",	zappy_incantation);
+  add_command(func, "fork",		zappy_fork);
+  add_command(func, "connect_nbr",	zappy_connect_nbr);
 }
 
 t_module	*get_module(void)

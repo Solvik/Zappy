@@ -8,12 +8,16 @@
 ** Last update Wed Jun 29 17:47:37 2011 solvik blum
 */
 
+#include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "player.h"
 #include "map.h"
 #include "voir.h"
 #include "server_zappy.h"
+
+#include "tserver.h"
 
 e_stone		is_stone(char *str)
 {
@@ -29,6 +33,14 @@ e_stone		is_stone(char *str)
   return (NONE);
 }
 
+/*
+** l: 58
+** if (setbox_delfood(x, y, 1) == true)
+** 	return (true);
+** else
+** return (false);
+*/
+
 static bool	prendre_action(int x, int y, char *obj)
 {
   t_box		*map;
@@ -43,12 +55,7 @@ static bool	prendre_action(int x, int y, char *obj)
 	return (false);
     }
   else if (!strcmp(obj, "nourriture"))
-    {
-      /* if (setbox_delfood(x, y, 1) == true) */
-      /* 	return (true); */
-      /* else */
-      /* 	return (false); */
-    }
+    return (true);
   else
     return (false);
 }

@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "tserver.h"
+
 #include "player.h"
 #include "voir.h"
 #include "map.h"
@@ -27,18 +29,19 @@ static char     *concat(char *msg, char *concat)
   return (new);
 }
 
-static void	check_case(int pos, char **ret)
+static void	check_case(int _, char **ret)
 {
   t_box		*map;
   int		i;
   int		j;
 
+  (void)_;
   i = 0;
   j = 0;
   map = get_map();
   for (i = 0; i < get_list_len(map[i].players); i++)
     *ret = concat(*ret, " joueur");
-  for (i = 0; i < map[i].food; i++)
+  for (i = 0; i < (int)map[i].food; i++)
     *ret = concat(*ret, " nourriture");
   for (i = 0; i < get_list_len(map[i].stones); i++)
     for (j = 0; j < size_stone; j++)
@@ -106,7 +109,7 @@ static void	zappy_voir_south(int pos, int step, char **ret)
 	  angle_x--;
 	}
       i += get_map_width();
-      if (i > get_map_max())
+      if (i > (int)get_map_max())
 	i -= get_map_max();
       step--;
       angle_y++;
@@ -134,7 +137,7 @@ static void	zappy_voir_west(int pos, int step, char **ret)
 	    to_check += get_map_max();
 	  check_case(to_check, ret);
 	  to_check = i + (get_map_width() * angle_x);
-	  if (to_check > get_map_max())
+	  if (to_check > (int)get_map_max())
 	    to_check -= get_map_max();
 	  check_case(to_check, ret);
 	  angle_x--;
@@ -168,7 +171,7 @@ static void	zappy_voir_east(int pos, int step, char **ret)
 	    to_check += get_map_max();
 	  check_case(to_check, ret);
 	  to_check = i + (get_map_width() * angle_x);
-	  if (to_check > get_map_max())
+	  if (to_check > (int)get_map_max())
 	    to_check -= get_map_max();
 	  check_case(to_check, ret);
 	  angle_x--;
@@ -192,7 +195,6 @@ static const t_zappy_voir	voir_func[4] =
 
 int		zappy_voir(t_fds *client, char *cmd)
 {
-  t_box		*map;
   int		pos;
   int		step;
   int		size;

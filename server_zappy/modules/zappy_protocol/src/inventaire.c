@@ -17,11 +17,13 @@
 #include "player.h"
 #include "server_zappy.h"
 
-int		zappy_inventaire(t_fds *client, char *cmd)
+#include "tserver.h"
+
+int		zappy_inventaire(t_fds *client, char *_)
 {
-  int		len;
   char		*str;
 
+  (void)_;
   asprintf(&str, "{"
 	   "nourriture %u,"
 	   "linemate %u,"
