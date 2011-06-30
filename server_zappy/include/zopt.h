@@ -19,7 +19,7 @@ typedef		struct
   uint		port;
   uint		width;
   uint		height;
-  uint		nb_client;
+  uint		nb_clients;
   double	delay;
   double	time;
   t_list	*team;

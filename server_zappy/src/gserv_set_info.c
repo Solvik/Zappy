@@ -26,5 +26,11 @@ void		set_delay(double delay)
 
 void		set_time(double time)
 {
-  gserv->info.time = time;
+  if (time != 0.0)
+    gserv->info.time = time;
+}
+
+void		set_nb_clients(uint nb_clients)
+{
+  gserv->info.nb_clients = nb_clients;
 }

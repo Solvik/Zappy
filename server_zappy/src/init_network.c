@@ -27,6 +27,9 @@ bool		init_network(t_zopt *optab)
 {
   (void)optab;
   set_port(optab->port);
+  set_delay(optab->delay);
+  set_time(optab->time);
+  set_nb_clients(optab->nb_clients);
   foreach_list(get_modules(), net_init);
   return (true);
 }

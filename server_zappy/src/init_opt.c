@@ -26,7 +26,7 @@ static void	init_opt_default(t_zopt	*optab)
 {
   bzero(optab, sizeof(*optab));
   set_port(optab->port = default_port);
-  optab->nb_client = default_nb_client;
+  optab->nb_clients = default_nb_clients;
   set_delay(optab->delay = default_delay);
   set_time(optab->time = default_time);
   optab->width = default_width;
@@ -49,7 +49,7 @@ static bool	options(char opt, char *opts[], t_zopt *optab)
   if (opt == 't')
     optab->delay = strtod(optarg, NULL);
   else if (opt == 'c')
-    optab->nb_client = strtoul(optarg, NULL, 0);
+    optab->nb_clients = strtoul(optarg, NULL, 0);
   else if (opt == 'p')
     optab->port = strtoul(optarg, NULL, 0);
   else if (opt == 'r')

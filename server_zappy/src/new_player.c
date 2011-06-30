@@ -1,19 +1,11 @@
-/*
-** new_player.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-** 
-** Started on  Thu Jun 30 05:04:23 2011 Julien Di Marco
-** Last update Thu Jun 30 05:04:23 2011 Julien Di Marco
-*/
 
 #include	<stdlib.h>
 #include	<strings.h>
+#include	"tserver.h"
 #include	"conf.h"
 #include	"player.h"
 
-t_player 	*new_player(void)
+static t_player *init_player(void)
 {
   static uint	id = 0;
   t_player 	*player;
@@ -30,4 +22,14 @@ t_player 	*new_player(void)
   player->direction = EAST;
   ++id;
   return (player);
+}
+
+bool		new_player(char * team)
+{
+  t_player *	player;
+
+  return ((player = init_player()) &&
+	  (setbox_add_player(player, team,
+			     rand() % get_map_width(),
+			     rand() % get_map_height())));
 }
