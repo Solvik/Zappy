@@ -56,9 +56,9 @@ t_module	*get_module(void)
 {
   t_module	*module;
 
-  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 5)))
+  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 12)))
     return (NULL);
-  bzero(module, sizeof(*module) + sizeof(t_mod_func) * 5);
+  bzero(module, sizeof(*module) + sizeof(t_mod_func) * 12);
   module->name = strdup("Zappy Protocol");
   module->delim = strdup("\r\n");
   module->port = -1;
