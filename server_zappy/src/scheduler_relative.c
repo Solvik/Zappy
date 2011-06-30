@@ -61,8 +61,8 @@ bool		scheduler_relative(fds c, _time dt,
   if (!c || !(info = c->trick))
     return (false);
   schedule = &info->schedule;
-  scahedule->relative = (char)true;
-  scheduler_update(dt * (get_time() / get_delay());
+  schedule->relative = (char)true;
+  scheduler_update(dt * (get_time() / get_delay()));
   return (true);
 }
 
