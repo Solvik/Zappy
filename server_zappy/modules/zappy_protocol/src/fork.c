@@ -14,7 +14,9 @@
 #include "server_zappy.h"
 
 
-int		zappy_fork(t_fds *client, char *cmd)
+int		zappy_fork(t_fds *__, char *_)
 {
+  (void)__;
+  (void)_;
   return (1);
 }

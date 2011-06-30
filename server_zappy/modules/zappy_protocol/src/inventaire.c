@@ -8,6 +8,8 @@
 ** Last update Wed Jun 29 17:15:28 2011 solvik blum
 */
 
+#define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

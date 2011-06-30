@@ -30,18 +30,25 @@ void		check_case(int _, char **ret)
 
   (void)_;
   map = get_map();
-  i = -1;
-  while (++i < get_list_len(map[i].players))
-    *ret = concat(*ret, " joueur");
-  i = -1;
-  while (++i < (int)map[i].food)
-    *ret = concat(*ret, " nourriture");
-  i = -1;
-  while (++i < get_list_len(map[i].stones))
+  i = 0;
+  while (i < get_list_len(map[i].players))
+    {
+      *ret = concat(*ret, " joueur");
+      i += 1;
+    }
+  i = 0;
+  while (i < (int)map[i].food)
+    {
+      *ret = concat(*ret, " nourriture");
+      i += 1;
+    }
+  i = 0;
+  while (i < get_list_len(map[i].stones))
     {
       j = -1;
       while (++j < size_stone)
 	*ret = concat(*ret, gl_ressource_name[j].str);
+      i += 1;
     }
 }
 

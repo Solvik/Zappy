@@ -14,8 +14,9 @@
 #include "server_zappy.h"
 
 
-int		zappy_connect_nbr(t_fds *client, char *cmd)
+int		zappy_connect_nbr(t_fds *client, char *_)
 {
+  (void)_;
   sends(client, "ok");
   return (1);
 }

@@ -8,8 +8,11 @@
 ** Last update Wed Jun 29 17:15:15 2011 solvik blum
 */
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "player.h"
 #include "server_zappy.h"
