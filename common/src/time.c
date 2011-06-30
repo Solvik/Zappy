@@ -15,7 +15,6 @@
 
 #include	"time_.h"
 
-
 double		time_(void)
 {
   time__	t;
