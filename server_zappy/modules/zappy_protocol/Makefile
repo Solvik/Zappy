@@ -32,7 +32,8 @@ LOCAL	= ./src/
 
 ############################################################
 
-SOURCE	= $(LOCAL)avance.c			\
+SOURCE	= $(LOCAL)get_module.c			\
+	  $(LOCAL)avance.c			\
 	  $(LOCAL)broadcast.c			\
 	  $(LOCAL)connect_nbr.c			\
 	  $(LOCAL)droite.c			\
@@ -44,6 +45,7 @@ SOURCE	= $(LOCAL)avance.c			\
 	  $(LOCAL)pose.c			\
 	  $(LOCAL)prend.c			\
 	  $(LOCAL)voir.c			\
+	  $(LOCAL)voir_dir.c			\
 	  $(LOCAL)main.c
 
 SOURCES	= $(SOURCE:.c=.o)

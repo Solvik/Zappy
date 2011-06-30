@@ -23,15 +23,16 @@ typedef struct	s_enum_to_ressource
 
 static t_enum_to_ressource     gl_ressource_name[] =
   {
-    {LINEMATE,	" linemate"},
+    {LINEMATE, " linemate"},
     {DERAUMERE, " deraumere"},
-    {SIBUR,	" sibur"},
-    {MENDIANE,	" mendiane"},
-    {PHIRAS,	" phiras"},
-    {THYSTAME,	" thystame"}
+    {SIBUR, " sibur"},
+    {MENDIANE, " mendiane"},
+    {PHIRAS, " phiras"},
+    {THYSTAME, " thystame"}
   };
 
-static const int	size_stone = sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource);
+#define SIZE_STONE (sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource))
+static const int size_stone = SIZE_STONE;
 
 typedef struct	s_zappy_voir
 {

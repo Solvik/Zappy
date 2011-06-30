@@ -11,6 +11,11 @@
 #ifndef		ZAPPY_PROTOCOL_H_
 # define	ZAPPY_PROTOCOL_H_
 
+#include	"napi.h"
+#include	"module.h"
+
+t_module	*get_module(void);
+
 int		zappy_avance(t_fds *, char *);
 int		zappy_droite(t_fds *, char *);
 int		zappy_gauche(t_fds *, char *);
@@ -23,6 +28,5 @@ int		zappy_broadcast(t_fds *, char *);
 int		zappy_incantation(t_fds *, char *);
 int		zappy_connect_nbr(t_fds *, char *);
 int		zappy_fork(t_fds *, char *);
-
 
 #endif		/* !ZAPPY_PROTOCOL_H_ */
