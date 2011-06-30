@@ -13,8 +13,7 @@
 
 #include "player.h"
 #include "server_zappy.h"
-
-
+#include "tserver.h"
 
 static const char	*enum_to_dir[4] =
   {
@@ -24,16 +23,15 @@ static const char	*enum_to_dir[4] =
     "WEST",
   };
 
-int		zappy_expulse(t_fds *client, char *cmd)
+int		zappy_expulse(t_fds *client, char *_)
 {
+  char		*ret;
   t_list	*list;
 
-  (void)cmd;
+  (void)_;
   list = get_players(player_data->x, player_data->y);
   if (get_list_len(list))
     {
-      char	*ret;
-
       asprintf(&ret, "deplacement %s", enum_to_dir[player_data->direction]);
       sends(client, ret);
       if (ret)

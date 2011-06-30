@@ -1,3 +1,12 @@
+##
+## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
+## 
+## Made by Julien Di Marco
+## Login   <Lifely@epitech.net>
+## 
+## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+##
 
 ############################################################
 
@@ -36,9 +45,10 @@ SOURCE	= $(LOCAL)get_module.c			\
 	  $(LOCAL)pose.c			\
 	  $(LOCAL)prend.c			\
 	  $(LOCAL)voir.c			\
+	  $(LOCAL)voir_dir.c			\
 	  $(LOCAL)main.c
 
-OBJS	= $(SOURCE:.c=.o)
+SOURCES	= $(SOURCE:.c=.o)
 
 ARCHIVE	= $(LIBRARY)List/liblist.a	\
 	  $(LIBRARY)network/libnet.a
@@ -71,7 +81,7 @@ CP	= cp
 RM	= rm -f
 
 CFLAGS	+= -W -Wall -Wextra		\
-	   -D_${OS}_ -O3 -funroll-loops	\
+	   -D_${OS}_ -03 -funroll-loops	\
 	   $(addprefix -I, $(INCLUDE))
 
 ############################################################
@@ -86,15 +96,15 @@ endif
 
 all		: $(NAME).so
 
-$(NAME).so	: $(OBJS)
+$(NAME).so	: $(SOURCES)
 		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
 		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
-		  $(CC) $(MFLAG) $(CFLAGS) $(OBJS) $(ARCHIVE) -o $@
+		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
 
 mrpropre	: all clean
 
 clean		:
-		  $(RM) $(OBJS)
+		  $(RM) $(SOURCES)
 
 fclean		: clean
 		  $(RM) $(NAME).so

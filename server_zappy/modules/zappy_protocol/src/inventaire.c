@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Thu Jun 30 09:45:57 2011 solvik blum
+** Last update Wed Jun 29 17:15:28 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -17,10 +17,13 @@
 #include "player.h"
 #include "server_zappy.h"
 
-int		zappy_inventaire(t_fds *client, char *cmd)
+#include "tserver.h"
+
+int		zappy_inventaire(t_fds *client, char *_)
 {
   char		*str;
 
+  (void)_;
   asprintf(&str, "{"
 	   "nourriture %u,"
 	   "linemate %u,"
