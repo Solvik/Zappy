@@ -10,7 +10,7 @@
 
 ############################################################
 
-NAME	= ModuleTest
+NAME	= testModule
 
 INCLUDE	= .				\
 	  ./include/			\
