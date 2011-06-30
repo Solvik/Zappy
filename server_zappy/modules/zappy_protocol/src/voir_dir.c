@@ -29,16 +29,20 @@ void		check_case(int _, char **ret)
   int		j;
 
   (void)_;
-  i = 0;
-  j = 0;
   map = get_map();
-  for (i = 0; i < get_list_len(map[i].players); i++)
+  i = -1;
+  while (++i < get_list_len(map[i].players))
     *ret = concat(*ret, " joueur");
-  for (i = 0; i < (int)map[i].food; i++)
+  i = -1;
+  while (++i < (int)map[i].food)
     *ret = concat(*ret, " nourriture");
-  for (i = 0; i < get_list_len(map[i].stones); i++)
-    for (j = 0; j < size_stone; j++)
-      *ret = concat(*ret, gl_ressource_name[j].str);
+  i = -1;
+  while (++i < get_list_len(map[i].stones))
+    {
+      j = -1;
+      while (++j < size_stone)
+	*ret = concat(*ret, gl_ressource_name[j].str);
+    }
 }
 
 void	zappy_voir_north(int pos, int step, char **ret)
