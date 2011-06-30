@@ -15,23 +15,25 @@
 #include "tserver.h"
 #include "graph_map.h"
 
-bool graph_msz(t_fds *player, char *cmd)
+bool graph_msz(t_fds *player, char *_)
 {
   char *to_send;
 
+  (void)_;
   to_send = NULL;
   asprintf(&to_send, "msz %u %u", get_map_width(), get_map_height());
   sends(player, to_send);
   free(to_send);
-  return true;
+  return (true);
 }
+
+/*
+** TODO : Mettre le bon nombre de fonction dans le malloc
+** getbox_nbstones(x, y, BOUFFE) - L: 47 - to replace 42
+*/
 
 bool graph_bct(t_fds *player, char *cmd)
 {
-  /*
-  ** TODO: verifier le retour de strtok pour pas segfault comme une merde avec atoi(NULL)
-  */
-
   char *to_send;
   t_box *box;
   char *token;
@@ -42,26 +44,26 @@ bool graph_bct(t_fds *player, char *cmd)
   x = atoi(strtok(NULL, " "));
   y = atoi(strtok(NULL, " "));
   box = get_box(x, y);
-  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", x, y,/*getbox_nbstones(x, y, BOUFFE)*/42,
+  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", x, y, 42,
 	   getbox_nbstones(x, y, LINEMATE),
-	   getbox_nbstones(x, y, DERAUMETRE),
+	   getbox_nbstones(x, y, DERAUMERE),
 	   getbox_nbstones(x, y, SIBUR),
 	   getbox_nbstones(x, y, MENDIANE),
 	   getbox_nbstones(x, y, PHIRAS),
 	   getbox_nbstones(x, y, THYSTAME));
   sends(player, to_send);
   free(to_send);
-  return true;
+  return (true);
 }
 
-bool graph_mct(t_fds *player,char *cmd)
+bool graph_mct(t_fds *player,char *_)
 {
   uint x;
   uint y;
-  char *to_send;
   char *msg;
-  t_box *box;
+  char *to_send;
 
+  (void)_;
   x = 0;
   to_send = NULL;
   msg = NULL;
@@ -77,5 +79,5 @@ bool graph_mct(t_fds *player,char *cmd)
 	}
       x++;
     }
-  return true;
+  return (true);
 }

@@ -1,51 +1,122 @@
+##
+## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
+## 
+## Made by Julien Di Marco
+## Login   <Lifely@epitech.net>
+## 
+## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+##
 
-NAME		=	graphproto
+############################################################
 
-## Directories
-SRC_DIR		=	src/
+NAME	= ModuleGraph
 
-INCLUDE		=	-Iinclude/			\
-			-I../../include/		\
-			-I../../../common/include/	\
-			-I../../../lib/List/include/	\
-			-I../../../lib/network/include/
+INCLUDE	= .				\
+	  ./include/			\
+	  $(SERVER)include/		\
+	  $(COMMONS)include/		\
+	  $(LIBRARY)List/include/	\
+	  $(LIBRARY)network/include/
 
-LIB_DIR		=	../../../lib/
+############################################################
 
-LIB		=	$(LIB_DIR)List/liblist.a	\
-			$(LIB_DIR)network/libnet.a
+ROOT	= ../../../
 
-## Sources
-SRCS		=	$(SRC_DIR)init.c		\
-			$(SRC_DIR)graph_team.c		\
-			$(SRC_DIR)graph_time.c		\
-			$(SRC_DIR)graph_player.c	\
-			$(SRC_DIR)graph_graphic.c	\
-			$(SRC_DIR)graph_egg.c		\
-			$(SRC_DIR)graph_map.c
+COMMONS	= $(ROOT)common/
+LIBRARY	= $(ROOT)lib/
+SERVER	= $(ROOT)server_zappy/
 
-## functions
-OBJS		=	$(SRCS:.c=.o)
-RM		=	rm -f
-CC		?=	gcc
-CFLAGS		+=	-W -Wall -D_GNU_SOURCE
+LOCAL	= ./src/
 
-## RULES
-all		:	$(NAME)
+############################################################
 
-$(NAME)		:	$(OBJS)
-			$(CC) -shared -rdynamic $(CFLAGS) $(OBJS) -o lib$(NAME).so $(LIB)
+SOURCE	= $(LOCAL)init.c		\
+	  $(LOCAL)graph_team.c		\
+	  $(LOCAL)graph_time.c		\
+	  $(LOCAL)graph_player.c	\
+	  $(LOCAL)graph_graphic.c	\
+	  $(LOCAL)graph_egg.c		\
+	  $(LOCAL)graph_map.c
 
-## clean
+SOURCES	= $(SOURCE:.c=.o)
+
+ARCHIVE	= $(LIBRARY)List/liblist.a	\
+	  $(LIBRARY)network/libnet.a
+
+############################################################
+
+NDEBUG	?= 1
+OS	= $(shell uname -s)
+OS	!= uname -s
+ARCHI	= $(shell uname -m)
+ARCHI	!= uname -m
+
+############################################################
+
+MFLAG		= $(MFLAG_${OS})
+MFLAG_$(OS)	= -shared -rdynamic
+MFLAG_Darwin	= -bundle -flat_namespace -undefined suppress
+MFLAG_darwin	= $(MFLAG_Darwin)
+
+OFLAG		= $(OFLAG_${OS})
+OFLAG_$(OS)	= -fPIC
+OFLAG_Darwin	= -fno-common
+OFLAG_darwin	= $(OFLAG_Darwin)
+
+CC	= gcc
+
+CHECK	= /u/all/astek/public/norme
+PRINTF	= /usr/bin/printf
+CP	= cp
+RM	= rm -f
+
+CFLAGS	+= -W -Wall -Wextra		\
+	   -D_${OS}_ -03 -funroll-loops	\
+	   $(addprefix -I, $(INCLUDE))
+
+############################################################
+
+ifeq	($(NDEBUG), 1)
+ CFLAGS	+= -DNDEBUG
+else
+ CFLAGS	+= -ggdb
+endif
+
+############################################################
+
+all		: $(NAME).so
+
+$(NAME).so	: $(SOURCES)
+		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
+		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
+		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
+
+mrpropre	: all clean
+
 clean		:
-			$(RM) $(OBJS)
+		  $(RM) $(SOURCES)
 
-fclean		:	clean
-			$(RM) lib$(NAME).so
+fclean		: clean
+		  $(RM) $(NAME).so
 
-## re
-re		:	fclean all
+re		: fclean all
 
-.c.o		:
-			$(CC) -fPIC -c $(CFLAGS) $< -o $(<:.c=.o) $(INCLUDE)
+############################################################
 
+%.o		: %.c
+		  @ $(CC) $(OFLAG) $(CFLAGS) -o $@ -c $<
+		  @ $(PRINTF) "\033[32m[OK]\033[m --> $< \n"
+
+############################################################
+
+.PHONY		: clean fclean
+
+.SUFFIXES	: %.c
+
+############################################################
+
+check		:
+		  @$(CHECK) -nocheat `find . -name "*.[ch]"`
+
+############################################################

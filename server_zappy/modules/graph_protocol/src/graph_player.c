@@ -10,32 +10,43 @@
 
 #include "graph_player.h"
 
+/*
+** ppo numero_joueur X Y orientation
+*/
 
-bool graph_ppo(t_fds *client, char *cmd)
+bool graph_ppo(t_fds *__, char *_)
 {
-  (void)client;
-  /*
-    ppo numero_joueur X Y orientation
-   */
+  (void)__;
+  (void)_;
+  return (true);
 }
 
-bool graph_plv(t_fds *client, char *cmd)
+/*
+** plv numero_joueur niveau
+*/
+
+bool graph_plv(t_fds *__, char *_)
 {
-  (void)client;
-  /*
-    plv numero_joueur niveau
-   */
+  (void)__;
+  (void)__;
+  (void)_;
+  return (true);
 }
 
-bool graph_pin(t_fds *client, char *cmd)
+/*
+**  pin numero_joueur X Y quantite_pierre quantite_bouffe
+*/
+
+bool graph_pin(t_fds *__, char *_)
 {
-  (void)client;
-  /*
-    pin numero_joueur X Y quantite_pierre quantite_bouffe
-   */
+  (void)__;
+  (void)_;
+  return (true);
 }
 
-bool graph_pnw(t_fds *client, char *cmd)
+bool graph_pnw(t_fds *client, char *_)
 {
+  (void)_;
   sends(client, "pnw 0 2 5 1 1 LOL");
+  return (true);
 }

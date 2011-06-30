@@ -8,18 +8,26 @@
 ** Last update Wed Jun 29 15:08:52 2011 guillaume gelin
 */
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "napi.h"
+
+#include "tserver.h"
 #include "list.h"
 #include "team.h"
 #include "network.h"
 #include "graph_team.h"
 
-bool graph_tna(t_fds *player, char *cmd)
+bool graph_tna(t_fds *player, char *_)
 {
   unsigned int	i;
   t_list	*teams;
   char		*to_send;
   void		*data;
 
+  (void)_;
   i = 0;
   teams = get_teams();
   while ((data = get_data_at(teams, i)) && ++i)
@@ -28,4 +36,5 @@ bool graph_tna(t_fds *player, char *cmd)
       sends(player, to_send);
       free(to_send);
     }
+  return (true);
 }

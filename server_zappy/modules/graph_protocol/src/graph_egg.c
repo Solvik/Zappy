@@ -10,7 +10,9 @@
 
 #include "graph_egg.h"
 
-bool graph_enw(t_fds *client, char *cmd)
+bool graph_enw(t_fds *client, char *_)
 {
+  (void)_;
   sends(client, "enw 0 1 1 1");
+  return (true);
 }

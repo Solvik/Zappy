@@ -9,15 +9,25 @@
 */
 
 #include <stdlib.h>
-#include "graph_graphic.h"
 
-bool graph_graphic(t_fds *client, char *cmd)
+#include "graph_egg.h"
+#include "graph_graphic.h"
+#include "graph_map.h"
+#include "graph_player.h"
+#include "graph_team.h"
+#include "graph_time.h"
+
+/*
+**   //graph_enw(client, NULL); - l: 24
+*/
+
+bool graph_graphic(t_fds *client, char *_)
 {
+  (void)_;
   graph_sgt(client, NULL);
   graph_msz(client, NULL);
   graph_mct(client, NULL);
   graph_tna(client, NULL);
   graph_pnw(client, NULL);
-  //graph_enw(client, NULL);
-  return true;
+  return (true);
 }
