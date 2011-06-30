@@ -16,7 +16,8 @@
 # include	"net.h"
 
 # include	"map.h"
+# include	"tserver.h"
 
-bool		add_command(t_mod_func *f, char *cmd, void *a);
+bool		add_command(t_mod_func *, char *, void *);
 
 #endif		/* !NAPI_H_ */

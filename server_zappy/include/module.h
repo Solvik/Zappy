@@ -24,13 +24,13 @@ typedef		struct
 typedef	struct	_module
 {
   char		*data;
-  char *	name;
-  char *	delim;
+  char		*name;
+  char		*delim;
   uint		port;
   uint		antiflood;
 
-  void *	handle;
-  t_list *	clients; // t_clients
+  void		*handle;
+  t_list 	*clients;
 
   bool		(*handshaking)(fds, char*);
   bool		(*update)(void);
@@ -45,6 +45,6 @@ void		*mod_dl_load(char *);
 bool		mod_load(char *);
 bool		mod_unload(char *);
 
-bool	       mod_discovery(fds client, char **cmd);
+bool	       mod_discovery(fds, char **);
 
 #endif		/* !MODULE_H_ */

@@ -32,7 +32,7 @@ typedef struct	s_player
   uint		life;
   uint		x;
   uint		y;
-  t_list *	stones;
+  t_list 	*stones;
   e_direction	direction;
 }		t_player;
 

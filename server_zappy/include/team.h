@@ -15,8 +15,8 @@
 
 typedef		struct
 {
-  char *	name;
-  t_list *	players;
+  char		*name;
+  t_list 	*players;
 }		t_team;
 
 #endif		/* !ZAPPY_TEAM_H_ */

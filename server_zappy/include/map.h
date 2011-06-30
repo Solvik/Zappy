@@ -16,9 +16,9 @@
 
 typedef		struct
 {
-  t_list *	stones;
-  t_list *	players;
-  t_list *	eggs;
+  t_list 	*stones;
+  t_list 	*players;
+  t_list 	*eggs;
   uint		food;
 }		t_box;
 
@@ -26,7 +26,7 @@ typedef		struct
 {
   uint		width;
   uint		height;
-  t_box	*	map;
+  t_box		*map;
 }		t_map;
 
 #endif		/* !MAP_H_ */

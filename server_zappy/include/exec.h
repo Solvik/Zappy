@@ -15,7 +15,7 @@
 # include	"network.h"
 
 bool		exec_pool(fds, double);
-bool		exec_client(fds c, double tdt);
+bool		exec_client(fds, double);
 
 bool		exec_timer(time__ **, double);
 

@@ -22,8 +22,8 @@ typedef		struct
   uint		nb_client;
   uint		delay;
   uint		time;
-  t_list *	team;
-  t_list *	module;
+  t_list	*team;
+  t_list 	*module;
 }		t_zopt;
 
 #endif		/* !ZAPPY_OPT */
