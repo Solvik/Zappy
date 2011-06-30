@@ -20,13 +20,15 @@
 #include	"map.h"
 #include	"server_zappy.h"
 
+#include	"tserver.h"
+
 static void	init_opt_default(t_zopt	*optab)
 {
   bzero(optab, sizeof(*optab));
-  optab->port = default_port;
+  set_port(optab->port = default_port);
   optab->nb_client = default_nb_client;
-  optab->delay = default_delay;
-  optab->time = default_time;
+  set_delay(optab->delay = default_delay);
+  set_time(optab->time = default_time);
   optab->width = default_width;
   optab->height = default_height;
 }
@@ -45,13 +47,13 @@ static bool	multiple(char *opts[], t_list **list)
 static bool	options(char opt, char *opts[], t_zopt *optab)
 {
   if (opt == 't')
-    optab->delay = strtoul(optarg, NULL, 0);
+    optab->delay = strtod(optarg, NULL);
   else if (opt == 'c')
     optab->nb_client = strtoul(optarg, NULL, 0);
   else if (opt == 'p')
     optab->port = strtoul(optarg, NULL, 0);
   else if (opt == 'r')
-    optab->time = strtoul(optarg, NULL, 0);
+    optab->time = strtod(optarg, NULL);
   else if (opt == 'w')
     optab->width = strtoul(optarg, NULL, 0);
   else if (opt == 'x')

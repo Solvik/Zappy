@@ -10,6 +10,7 @@
 
 #include	<unistd.h>
 #include	<signal.h>
+#include	<stdio.h>
 
 #include	"map.h"
 #include	"zopt.h"
@@ -37,5 +38,8 @@ bool		init(int opt_size, char **opt)
       !init_network(&optab) ||
       !init_modules(&optab))
     return (false);
+  set_delay(optab.delay);
+  set_time(optab.time);
+  printf("d: %f - t: %f\n", optab.delay, optab.time);
   return ((gserv->run = true));
 }

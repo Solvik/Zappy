@@ -20,7 +20,8 @@ void		set_port(int port)
 
 void		set_delay(double delay)
 {
-  gserv->info.delay = delay;
+  if (delay != 0.0)
+    gserv->info.delay = delay;
 }
 
 void		set_time(double time)

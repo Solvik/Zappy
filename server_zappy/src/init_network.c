@@ -26,7 +26,7 @@ static void	net_init(void *data)
 bool		init_network(t_zopt *optab)
 {
   (void)optab;
-  foreach_list(get_modules(), net_init);
   set_port(optab->port);
+  foreach_list(get_modules(), net_init);
   return (true);
 }

@@ -20,8 +20,8 @@ typedef		struct
   uint		width;
   uint		height;
   uint		nb_client;
-  uint		delay;
-  uint		time;
+  double	delay;
+  double	time;
   t_list	*team;
   t_list 	*module;
 }		t_zopt;
