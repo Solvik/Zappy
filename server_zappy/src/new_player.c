@@ -24,12 +24,14 @@ static t_player *init_player(void)
   return (player);
 }
 
-bool		new_player(char * team)
+t_player *	new_player(char * team)
 {
   t_player *	player;
 
-  return ((player = init_player()) &&
-	  (setbox_add_player(player, team,
-			     rand() % get_map_width(),
-			     rand() % get_map_height())));
+  if (!(player = init_player()) ||
+    !(setbox_add_player(player, team,
+			rand() % get_map_width(),
+			rand() % get_map_height())))
+    return (NULL);
+  return (player);
 }
