@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 18:51:14 2011 seb
-** Last update Mon Jun 13 18:51:14 2011 seb
+** Last update Thu Jun 30 07:43:05 2011 Sebastien Blot
 */
 
 #include <stdio.h>
@@ -37,20 +37,22 @@ bool graph_bct(t_fds *player, char *cmd)
   char *to_send;
   t_box *box;
   char *token;
-  uint x;
-  uint y;
+  char *x;
+  char *y;
 
   token = strtok(cmd, " ");
-  x = atoi(strtok(NULL, " "));
-  y = atoi(strtok(NULL, " "));
-  box = get_box(x, y);
-  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", x, y, 42,
-	   getbox_nbstones(x, y, LINEMATE),
-	   getbox_nbstones(x, y, DERAUMERE),
-	   getbox_nbstones(x, y, SIBUR),
-	   getbox_nbstones(x, y, MENDIANE),
-	   getbox_nbstones(x, y, PHIRAS),
-	   getbox_nbstones(x, y, THYSTAME));
+  x = strtok(NULL, " ");
+  y = strtok(NULL, " ");
+  if (!x || !y)
+	return (false);
+  box = get_box(atoi(x), atoi(y));
+  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y), 42,
+		   getbox_nbstones(atoi(x), atoi(y), LINEMATE),
+		   getbox_nbstones(atoi(x), atoi(y), DERAUMERE),
+		   getbox_nbstones(atoi(x), atoi(y), SIBUR),
+		   getbox_nbstones(atoi(x), atoi(y), MENDIANE),
+		   getbox_nbstones(atoi(x), atoi(y), PHIRAS),
+		   getbox_nbstones(atoi(x), atoi(y), THYSTAME));
   sends(player, to_send);
   free(to_send);
   return (true);

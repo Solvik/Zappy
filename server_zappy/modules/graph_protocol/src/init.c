@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Mon Jun 20 12:10:00 2011 seb
+** Last update Thu Jun 30 07:40:56 2011 Sebastien Blot
 */
 
 #include	<stdio.h>
@@ -17,10 +17,8 @@
 
 #include	"graph_map.h"
 #include	"graph_graphic.h"
-
-/*
-** TODO : Mettre le bon nombre de fonction dans le malloc
-*/
+#include    "graph_team.h"
+#include    "graph_time.h"
 
 t_module *	get_module(void)
 {
@@ -35,6 +33,11 @@ t_module *	get_module(void)
   module->antiflood = 10;
   module->clients = NULL;
   add_command(module->functions, "msz", graph_msz);
+  add_command(module->functions, "bct", graph_bct);
+  add_command(module->functions, "mct", graph_mct);
+  add_command(module->functions, "tna", graph_tna);
+  add_command(module->functions, "sgt", graph_sgt);
+  add_command(module->functions, "sst", graph_sst);
   add_command(module->functions, "graphic", graph_graphic);
   return (module);
 }

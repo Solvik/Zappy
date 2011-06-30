@@ -5,12 +5,13 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jun 16 17:05:11 2011 seb
-** Last update Thu Jun 30 06:42:12 2011 Sebastien Blot
+** Last update Thu Jun 30 07:37:34 2011 Sebastien Blot
 */
 
 #include <stdio.h>
 
 #include <stdbool.h>
+#include <string.h>
 #include "tserver.h"
 #include "graph_time.h"
 
@@ -35,9 +36,15 @@ bool graph_sgt(t_fds *client, char *_)
 ** sgt unite_temps
 */
 
-bool graph_sst(t_fds *__, char *_)
+bool graph_sst(t_fds *client, char *cmd)
 {
-  (void)__;
-  (void)_;
+  char *delay;
+
+  (void)strtok(cmd, " ");
+  delay = strtok(NULL, " ");
+  if (!delay)
+	return (false);
+  set_delay(atof(delay));
+  graph_sgt(client, cmd);
   return (true);
 }
