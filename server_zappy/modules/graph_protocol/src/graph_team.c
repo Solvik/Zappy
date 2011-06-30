@@ -5,8 +5,10 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 19:01:45 2011 seb
-** Last update Wed Jun 29 15:08:52 2011 guillaume gelin
+** Last update Thu Jun 30 12:08:16 2011 guillaume gelin
 */
+
+#define _GNU_SOURCE
 
 #include <unistd.h>
 #include <stdlib.h>
