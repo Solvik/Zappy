@@ -28,11 +28,15 @@ bool		scheduler_(fds c, double tdt)
   schedule = &info->schedule;
   dt = time_d(schedule->lt);
   schedule->lt = time_();
-  schedule->dt -= dt;
+  schedule->dt -= dt * (get_time() / get_delay();
   if ((schedule->dt <= 0.0))
     return (true);
   else
-    scheduler_update(schedule->dt);
+    {
+      scheduler_update((schedule->relative ?				\
+			(scheduler->dt * (get_time() / get_delay())) :  \
+			scheduler->dt));
+    }
   return (false);
 }
 
