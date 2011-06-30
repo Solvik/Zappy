@@ -15,5 +15,15 @@ extern t_server *gserv;
 
 int		get_port(void)
 {
-  return (gserv->net.port);
+  return (gserv->info.port);
+}
+
+double		get_delay(void)
+{
+  return (gserv->info.delay);
+}
+
+double		get_time(void)
+{
+  return (gserv->info.time);
 }

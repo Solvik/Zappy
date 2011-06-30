@@ -21,12 +21,13 @@
 typedef		struct
 {
   uint		port;
-  uint		delay;
-}		t_netinfo;
+  double	delay;
+  double	time;
+}		t_info;
 
 typedef		struct
 {
-  t_netinfo	net;
+  t_info	info;
   t_map		map;
   fds		pool;
   t_list	*module;
@@ -46,6 +47,9 @@ uint		getbox_nbstones(uint, uint, e_stone);
 uint		getbox_nbstones_by_player(t_player *, e_stone);
 
 int		get_port(void);
+double		get_delay(void);
+double		get_time(void);
+
 fds 		*get_pool(void);
 
 t_list		*get_teams(void);
@@ -63,7 +67,10 @@ bool		setbox_delstone(uint, uint, e_stone, uint);
 bool		setbox_add_player(t_player *, char *, uint, uint);
 
 bool		set_new_module(t_module *);
+
 void		set_port(int);
+void		set_delay(double);
+void		set_time(double);
 
 bool		add_player(t_player *, char *, uint, uint);
 

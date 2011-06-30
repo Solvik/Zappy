@@ -42,8 +42,8 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gserv_setbox_addstone.c	\
 			$(SRC_DIR)gserv_setbox_delstone.c	\
 			$(SRC_DIR)gserv_getbox_nbstones.c	\
-			$(SRC_DIR)gserv_get_network.c		\
-			$(SRC_DIR)gserv_set_network.c		\
+			$(SRC_DIR)gserv_get_info.c		\
+			$(SRC_DIR)gserv_set_info.c		\
 			$(SRC_DIR)gserv_add_player.c		\
 			$(SRC_DIR)gserv_del_player.c		\
 			$(SRC_DIR)gserv_get_players.c		\

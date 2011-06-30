@@ -15,5 +15,15 @@ extern t_server	*gserv;
 
 void		set_port(int port)
 {
-  gserv->net.port = port;
+  gserv->info.port = port;
+}
+
+void		set_delay(double delay)
+{
+  gserv->info.delay = delay;
+}
+
+void		set_time(double time)
+{
+  gserv->info.time = time;
 }
