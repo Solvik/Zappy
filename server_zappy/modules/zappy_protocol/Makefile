@@ -81,7 +81,7 @@ CP	= cp
 RM	= rm -f
 
 CFLAGS	+= -W -Wall -Wextra		\
-	   -D_${OS}_ -03 -funroll-loops	\
+	   -D_${OS}_ -O3 -funroll-loops	\
 	   $(addprefix -I, $(INCLUDE))
 
 ############################################################
