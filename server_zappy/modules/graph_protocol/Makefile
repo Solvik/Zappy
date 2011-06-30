@@ -66,7 +66,7 @@ OFLAG_darwin	= $(OFLAG_Darwin)
 
 CC	= gcc
 
-CHECK	= /u/all/astek/public/norme
+CHECK	= /u/all/astek/public/norme/norme
 PRINTF	= /usr/bin/printf
 CP	= cp
 RM	= rm -f

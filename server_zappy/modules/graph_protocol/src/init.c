@@ -18,10 +18,9 @@
 #include	"graph_map.h"
 #include	"graph_graphic.h"
 
-
 /*
- * TODO : Mettre le bon nombre de fonction dans le malloc
- */
+** TODO : Mettre le bon nombre de fonction dans le malloc
+*/
 
 t_module *	get_module(void)
 {

@@ -56,7 +56,7 @@ bool graph_bct(t_fds *player, char *cmd)
   return (true);
 }
 
-bool graph_mct(t_fds *player,char *_)
+bool graph_mct(t_fds *player, char *_)
 {
   uint x;
   uint y;
