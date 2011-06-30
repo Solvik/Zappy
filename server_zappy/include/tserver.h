@@ -34,6 +34,7 @@ uint		get_map_max(void);
 
 t_box *		get_box(uint, uint);
 uint		getbox_nbstones(uint, uint, e_stone);
+uint		getbox_nbstones_by_player(t_player *player, e_stone type);
 
 int		get_port(void);
 fds *		get_pool(void);
@@ -50,6 +51,9 @@ void		set_map(t_box *);
 
 bool		setbox_addstone(uint, uint, e_stone, uint);
 bool		setbox_delstone(uint, uint, e_stone, uint);
+bool		setbox_add_player(t_player * player,
+				  char * name,
+				  uint x, uint y);
 
 bool		set_new_module(t_module *);
 void		set_port(int);

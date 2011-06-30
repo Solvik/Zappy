@@ -6,15 +6,15 @@
 
 extern t_server *	gserv;
 
-static bool		match_stone(void * data, void * stone)
+static bool	match_stone(void * data, void * stone)
 {
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-uint			getbox_nbstones(uint x, uint y, e_stone type)
+uint		getbox_nbstones(uint x, uint y, e_stone type)
 {
-  t_box *		box;
-  t_stone *		stone;
+  t_box *	box;
+  t_stone *	stone;
 
   if (!(box = get_box(x, y)) ||
       !(stone = get_data_as_arg(box->stones, match_stone, &type)))
@@ -22,9 +22,9 @@ uint			getbox_nbstones(uint x, uint y, e_stone type)
   return (stone->nb);
 }
 
-uint			getbox_nbstones_by_player(t_player *player, e_stone type)
+uint		getbox_nbstones_by_player(t_player *player, e_stone type)
 {
-  t_stone *		stone;
+  t_stone *	stone;
 
   if (!(stone = get_data_as_arg(player->stones, match_stone, &type)))
     return (0);
