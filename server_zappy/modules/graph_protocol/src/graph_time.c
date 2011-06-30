@@ -5,12 +5,13 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jun 16 17:05:11 2011 seb
-** Last update Thu Jun 16 17:05:11 2011 seb
+** Last update Thu Jun 30 06:42:12 2011 Sebastien Blot
 */
 
 #include <stdio.h>
 
 #include <stdbool.h>
+#include "tserver.h"
 #include "graph_time.h"
 
 /*
@@ -24,7 +25,7 @@ bool graph_sgt(t_fds *client, char *_)
 
   (void)_;
   to_send = NULL;
-  asprintf(&to_send, "sgt %d", 10);
+  asprintf(&to_send, "sgt %f", get_delay());
   sends(client, to_send);
   free(to_send);
   return (true);
