@@ -45,11 +45,7 @@ bool		handshaking(fds client, char *cmd)
     sends(client, "BIENVENUE");
   if (cmd)
     {
-      if ((client->data = new_player()) == NULL ||
-	  (setbox_add_player(client->data,
-			     cmd,
-			     rand() % get_map_width(),
-			     rand() % get_map_height())) == false)
+      if ((client->data = new_player(cmd)) == NULL)
 	return (false);
       asprintf(&ret, "%d", player_data->id);
       sends(client, ret);
