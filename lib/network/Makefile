@@ -27,7 +27,9 @@ CFLAGS		+= -W -Wall -ansi -ggdb #
 
 INCLUDE		= -Iinclude
 
+.PHONY		: all
 all		: $(NAME)
+		 @ echo > /dev/null #no 'Nothing to be done' trick
 
 $(NAME)		: $(OBJ)
 		  $(AR) $(NAME) $(OBJ)
