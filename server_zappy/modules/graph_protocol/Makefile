@@ -5,7 +5,7 @@
 ## Login   <Lifely@epitech.net>
 ## 
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Last update Thu Jun 30 12:10:09 2011 guillaume gelin
 ##
 
 ############################################################
@@ -37,7 +37,8 @@ SOURCE	= $(LOCAL)init.c		\
 	  $(LOCAL)graph_player.c	\
 	  $(LOCAL)graph_graphic.c	\
 	  $(LOCAL)graph_egg.c		\
-	  $(LOCAL)graph_map.c
+	  $(LOCAL)graph_map.c		\
+	  $(LOCAL)graph_misc.c
 
 SOURCES	= $(SOURCE:.c=.o)
 
@@ -89,7 +90,7 @@ all		: $(NAME).so
 
 $(NAME).so	: $(SOURCES)
 		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
-		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
+		  @ $(PRINTF) "Module name is: \033[33m$@\033[0m\n"
 		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
 
 mrpropre	: all clean
@@ -106,7 +107,7 @@ re		: fclean all
 
 %.o		: %.c
 		  @ $(CC) $(OFLAG) $(CFLAGS) -o $@ -c $<
-		  @ $(PRINTF) "\033[32m[OK]\033[m --> $< \n"
+		  @ $(PRINTF) "\033[32m[OK]\033[0m --> $< \n"
 
 ############################################################
 

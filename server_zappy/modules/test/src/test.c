@@ -67,10 +67,3 @@ void	init_(void)
     }
 }
 #endif
-
-bool		action(void)
-{
-  printf("Congrats!\n");
-  return (true);
-}
-

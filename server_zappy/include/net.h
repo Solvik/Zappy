@@ -11,7 +11,8 @@
 #ifndef		SERV_ZAPPY_NET_H_
 # define	SERV_ZAPPY_NET_H_
 
-#include	"network.h"
+# include	<stdbool.h>
+# include	"network.h"
 
 bool	net_wait_clients(void);
 
