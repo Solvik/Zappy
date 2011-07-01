@@ -24,6 +24,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)init_opt.c			\
 			$(SRC_DIR)init_network.c		\
 			$(SRC_DIR)init_map.c			\
+			$(SRC_DIR)init_names.c			\
 			$(SRC_DIR)init_modules.c		\
 			\
 			$(SRC_DIR)mod_dl_load.c			\
@@ -46,13 +47,14 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gserv_getbox_nbstones.c	\
 			$(SRC_DIR)gserv_get_info.c		\
 			$(SRC_DIR)gserv_set_info.c		\
-			$(SRC_DIR)gserv_add_player.c		\
-			$(SRC_DIR)gserv_del_player.c		\
+			$(SRC_DIR)gserv_setbox_add_player.c	\
+			$(SRC_DIR)gserv_setbox_del_player.c	\
 			$(SRC_DIR)gserv_get_players.c		\
 			$(SRC_DIR)gserv_get_teams.c		\
 			$(SRC_DIR)gserv_get_team_of_player.c	\
 			$(SRC_DIR)gserv_get_team_by_name.c	\
 			$(SRC_DIR)gserv_modules.c		\
+			$(SRC_DIR)gserv_available_names.c	\
 			\
 			$(SRC_DIR)net_connection.c		\
 			\

@@ -18,12 +18,9 @@
 #include	"tserver.h"
 #include	"server_zappy.h"
 
-extern t_server	*gserv;
-
-void		sigint_handler(int _)
+void		sigint_handler(__attribute__((unused))int _)
 {
-  (void)_;
-  gserv->run = false;
+  set_run(false);
   write(STDOUT_FILENO, "\b\b", 2);
 }
 
@@ -36,10 +33,10 @@ bool		init(int opt_size, char **opt)
       !init_opt(opt_size, opt, &optab) ||
       !init_map(&optab) ||
       !init_network(&optab) ||
+      !init_names(&optab) ||
       !init_modules(&optab))
     return (false);
-  set_delay(optab.delay);
-  set_time(optab.time);
   printf("d: %f - t: %f\n", optab.delay, optab.time);
-  return ((gserv->run = true));
+  set_run(true);
+  return (true);
 }

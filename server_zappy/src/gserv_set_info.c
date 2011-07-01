@@ -34,3 +34,8 @@ void		set_nb_clients(uint nb_clients)
 {
   gserv->info.nb_clients = nb_clients;
 }
+
+void		set_run(bool run)
+{
+  gserv->run = run;
+}

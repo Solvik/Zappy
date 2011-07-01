@@ -28,15 +28,22 @@ typedef		struct
 
 typedef		struct
 {
+  t_list *	modules;
+  t_list *	teams;
+}		t_names;
+
+typedef		struct
+{
+  t_names	names;
   t_info	info;
   t_map		map;
   fds		pool;
-  t_list	*module;
-  t_list 	*team;
+  t_list	*module;	/* t_module */
+  t_list 	*team;		/* t_team */
   bool		run;
 }		t_server;
 
-bool		new_player(char *);
+t_player *	new_player(char *);
 
 uint		get_map_width(void);
 uint		get_map_height(void);
@@ -67,8 +74,11 @@ void		set_port(int);
 void		set_delay(double);
 void		set_time(double);
 void		set_nb_clients(uint);
-
+void		set_run(bool);
 bool		add_player(t_player *, char *, uint, uint);
+
+bool		available_modules(char *);
+bool		available_teams(char *);
 
 bool		gserv_const(bool);
 

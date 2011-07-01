@@ -42,7 +42,8 @@ bool			setbox_add_player(t_player *player,
   t_box 		*box;
   t_team 		*team;
 
-  if (!(box = get_box(x, y)))
+  if (!(available_teams(name)) ||
+      !(box = get_box(x, y)))
     return (false);
   if ((!(team = get_data_as_arg(gserv->team, match_team, name)) &&
        !(team = add_team(name))) ||
