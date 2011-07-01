@@ -17,6 +17,7 @@
 #include	"module.h"
 #include	"client.h"
 #include	"scheduler.h"
+#include	"callback.h"
 #include	"run.h"
 #include	"tserver.h"
 
@@ -64,8 +65,8 @@ bool		exec_client(fds c, double tdt)
   s = flood_check(c, s);
   if (scheduler_(c, tdt))
     return (scheduler_dispatch(c));
-  /* else if (callback_(c, tdt)) */
-  /*   return (callback_handler(c, s)); */
+  else if (callback_(c, s, tdt))
+    return (callback_handler(c, s));
   else if (s && !scheduler_active(c) && (int)find_action(c, s) != -1)
     flood_read(c);
   return (true);

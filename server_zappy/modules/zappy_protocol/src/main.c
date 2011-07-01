@@ -45,8 +45,12 @@ bool		handshaking(fds client, char *cmd)
     sends(client, "BIENVENUE");
   if (cmd)
     {
+      printf("HELLO \n");
       if ((client->data = new_player(cmd)) == NULL)
-	return (false);
+	{
+	  printf("Failed !\n");
+	  return (false);
+	}
       asprintf(&ret, "%d", player_data->id);
       sends(client, ret);
       if (ret)

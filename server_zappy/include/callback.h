@@ -26,4 +26,8 @@ bool		callback_set(fds, callback, void *);
 bool		callback_active(fds);
 bool		callback_overide(fds, callback, void *);
 
+bool		callback_handler(fds c, char *s);
+bool		callback_(fds c, char*, double _);
+
 #endif		/* !CALLBACK_H_ */
+

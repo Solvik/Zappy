@@ -37,6 +37,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)scheduler_relative.c		\
 			\
 			$(SRC_DIR)callback_user.c		\
+			$(SRC_DIR)callback_internal.c		\
 			\
 			$(SRC_DIR)new_player.c			\
 			$(SRC_DIR)gserv_get.c			\
