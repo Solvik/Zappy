@@ -15,7 +15,7 @@
 #include	"tserver.h"
 #include	"module.h"
 
-void		module_updates(t_module *elem, double *arg)
+static void		module_updates(t_module *elem, double *arg)
 {
   if (!elem || !arg)
     return ;

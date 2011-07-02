@@ -34,7 +34,7 @@ typedef	struct	_module
 
   bool		(*handshaking)(fds, char*);
   bool		(*update)(double);
-  int		(*timer)(void);
+  double	(*timer)(void);
   t_mod_func	functions[1];
 }		t_module;
 

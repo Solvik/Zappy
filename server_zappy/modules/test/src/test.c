@@ -103,3 +103,8 @@ bool		update(double tdt)
   printf("Supra delta time is: %f\n", tdt);
   return (true);
 }
+
+double		timer(void)
+{
+  return (1.42);
+}

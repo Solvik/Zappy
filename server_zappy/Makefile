@@ -148,9 +148,9 @@ endif
 
 ############################################################
 
-all		: $(NAME)
+all		: libraries $(NAME)
 
-$(NAME)		: libraries $(OBJECTS)
+$(NAME)		: $(OBJECTS)
 		  @ $(PRINTF) "\n Flag used with $(CC): \033[33m$(CFLAGS)\033[m\n"
 		  @ $(PRINTF) " Liraries linked: \033[33m$(LDFLAGS)\033[m\n"
 		  @ $(PRINTF) "Binary name is: \033[33m$@\033[m\n"
