@@ -10,7 +10,7 @@
 
 ############################################################
 
-NAME	= GraphModule
+NAME	= graphModule
 
 INCLUDE	= .				\
 	  ./include/			\

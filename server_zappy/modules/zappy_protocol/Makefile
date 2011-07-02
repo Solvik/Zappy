@@ -10,7 +10,7 @@
 
 ############################################################
 
-NAME	= ZappyModule
+NAME	= zappyModule
 
 INCLUDE	= .				\
 	  ./include/			\
