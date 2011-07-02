@@ -132,7 +132,7 @@ CFLAGS	+= -W -Wall -Wextra -Werror -rdynamic	\
 	   $(addprefix -I, $(INCLUDE))
 
 LDFLAGS	+= $(addprefix -L, $(LIBRARIES))\
-	   -L$(LIBRARY)List -llist -L$(LIBRARY)network -lnet
+	   -L$(LIBRARY)List -llist -L$(LIBRARY)network -lnet -ldl
 
 ############################################################
 
