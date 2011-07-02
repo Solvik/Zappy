@@ -132,7 +132,7 @@ CFLAGS	+= -W -Wall -Wextra -Werror -rdynamic	\
 	   $(addprefix -I, $(INCLUDE))
 
 LDFLAGS	+= $(addprefix -L, $(LIBRARIES))\
-	   -L$(LIBRARY)List -llist -L$(LIBRARY)network -lnet -ldl
+	   -llist -lnet -ldl
 
 ############################################################
 
@@ -157,7 +157,7 @@ $(NAME)		: $(OBJECTS)
 		  @ $(PRINTF) "\n Flag used with $(CC): \033[33m$(CFLAGS)\033[m\n"
 		  @ $(PRINTF) " Liraries linked: \033[33m$(LDFLAGS)\033[m\n"
 		  @ $(PRINTF) "Binary name is: \033[33m$@\033[m\n"
-		  $(CC) $(LDFLAGS) $(CFLAGS) $(OBJECTS) -o $@
+		  $(CC) $(CFLAGS) $(OBJECTS) $(LDFLAGS) -o $@
 
 mrpropre	: all clean
 
