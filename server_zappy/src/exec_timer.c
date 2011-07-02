@@ -41,6 +41,7 @@ bool		exec_timer(time__ **tv, double tdt)
   double	time;
 
   (void)tdt;
+  idle = -1.0;
   if (!tv || (!t && !(t = calloc(1, sizeof(*t)))))
     return (false);
   if ((modules = get_modules()))
