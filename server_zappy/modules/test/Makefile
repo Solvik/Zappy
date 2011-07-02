@@ -12,12 +12,7 @@
 
 NAME	= testModule
 
-INCLUDE	= .				\
-	  ./include/			\
-	  $(SERVER)include/		\
-	  $(COMMONS)include/		\
-	  $(LIBRARY)List/include/	\
-	  $(LIBRARY)network/include/
+INCLUDE	=
 
 ############################################################
 
@@ -31,9 +26,9 @@ LOCAL	= ./src/
 
 ############################################################
 
-SOURCE	= $(LOCAL)test.c
+include	./testModule.mk
 
-SOURCES	= $(SOURCE:.c=.o)
+OBJECTS	= $(SOURCES:.c=.o)
 
 ARCHIVE	= $(LIBRARY)List/liblist.a	\
 	  $(LIBRARY)network/libnet.a
@@ -81,15 +76,15 @@ endif
 
 all		: $(NAME).so
 
-$(NAME).so	: $(SOURCES)
+$(NAME).so	: $(OBJECTS)
 		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
 		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
-		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
+		  $(CC) $(MFLAG) $(CFLAGS) $(OBJECTS) $(ARCHIVE) -o $@
 
 mrpropre	: all clean
 
 clean		:
-		  $(RM) $(SOURCES)
+		  $(RM) $(OBJECTS)
 
 fclean		: clean
 		  $(RM) $(NAME).so

@@ -19,6 +19,8 @@ INCLUDE	= .				\
 	  $(LIBRARY)List/include/	\
 	  $(LIBRARY)network/include/
 
+MODULES	+=
+
 ############################################################
 
 ROOT	= ../
@@ -93,19 +95,20 @@ SOURCES	= $(LOCAL)main.c			\
 	  \
 	  $(LOCAL)napi_functions.c
 
-#include modules/test/testModule.mk
+include	$(MODULES)
 
-############################################################
-
-OBJECTS	= $(SOURCES:.c=.o)
-
-LIBRARIES = $(LIBRARY)List			\
-	    $(LIBRARY)network
 ############################################################
 
 SOURCES := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(SOURCES))))
 INCLUDE := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(INCLUDE))))
 
+############################################################
+
+OBJECTS	= $(SOURCES:.c=.o)
+
+
+LIBRARIES = $(LIBRARY)List			\
+	    $(LIBRARY)network
 ############################################################
 
 NDEBUG	?= 1

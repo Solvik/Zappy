@@ -19,15 +19,15 @@ INCLUDES = .				\
 	   $(LIBRARY)List/include/	\
 	   $(LIBRARY)network/include/
 
-INCLUDE	+= $(addprefix $(TOP),$(INCLUDES))
-
 ############################################################
 
 TEST	= ./src/
 
+SOURCE	= $(TEST)test.c
+
 ############################################################
 
-SOURCE	= $(TEST)test.c
+INCLUDE	+= $(addprefix $(TOP),$(INCLUDES))
 
 SOURCES	+= $(addprefix $(TOP),$(SOURCE))
 

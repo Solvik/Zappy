@@ -26,7 +26,7 @@ t_module *	get_module(void)
 
   if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 40)))
     return (NULL);
-  bzero(module, sizeof(*module));
+  bzero(module, sizeof(*module) + sizeof(t_mod_func) * 40);
   module->name = strdup("Graphic Protocol");
   module->delim = strdup("\n");
   module->port = 4242;
