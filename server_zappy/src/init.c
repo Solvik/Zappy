@@ -21,6 +21,7 @@
 void		sigint_handler(__attribute__((unused))int _)
 {
   set_run(false);
+  #define _FORTIFY_SOURCE=0
   write(STDOUT_FILENO, "\b\b", 2);
 }
 
