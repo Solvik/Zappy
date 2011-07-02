@@ -90,14 +90,20 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(COMMON)err_print_warning.c		\
 	  $(COMMON)err_syntax_error.c		\
 	  \
-	  $(LOCAL)napi_functions.c		#\
-	  \
-	  modules/test/src/test.c
+	  $(LOCAL)napi_functions.c
+
+#include modules/test/testModule.mk
+
+############################################################
 
 OBJECTS	= $(SOURCES:.c=.o)
 
 LIBRARIES = $(LIBRARY)List			\
 	    $(LIBRARY)network
+############################################################
+
+SOURCES := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(SOURCES))))
+INCLUDE := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(INCLUDE))))
 
 ############################################################
 
