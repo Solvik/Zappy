@@ -33,7 +33,7 @@ typedef	struct	_module
   t_list 	*clients;
 
   bool		(*handshaking)(fds, char*);
-  bool		(*update)(void);
+  bool		(*update)(double);
   int		(*timer)(void);
   t_mod_func	functions[1];
 }		t_module;

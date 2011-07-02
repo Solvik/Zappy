@@ -77,6 +77,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)run.c				\
 	  $(LOCAL)run_end.c			\
 	  \
+	  $(LOCAL)exec_updates.c		\
 	  $(LOCAL)exec_actions.c		\
 	  $(LOCAL)exec_timer.c			\
 	  \

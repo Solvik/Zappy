@@ -97,3 +97,9 @@ void	init_(void)
     }
 }
 #endif
+
+bool		update(double tdt)
+{
+  printf("Supra delta time is: %f\n", tdt);
+  return (true);
+}
