@@ -8,6 +8,8 @@
 ** Last update Thu Jun 30 05:05:01 2011 Julien Di Marco
 */
 
+#undef _FORTIFY_SOURCE
+
 #include	<unistd.h>
 #include	<signal.h>
 #include	<stdio.h>
@@ -21,8 +23,6 @@
 void		sigint_handler(__attribute__((unused))int _)
 {
   set_run(false);
-  #undef _FORTIFY_SOURCE
-  #define _FORTIFY_SOURCE 0
   write(STDOUT_FILENO, "\b\b", 2);
 }
 
