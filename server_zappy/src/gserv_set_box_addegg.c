@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Sun Jul  3 20:45:10 2011 solvik blum
-** Last update Sun Jul  3 22:43:53 2011 solvik blum
+** Last update Mon Jul  4 01:49:33 2011 solvik blum
 */
 
 #include		<stdlib.h>
@@ -28,7 +28,7 @@ static t_egg		*new_egg(t_player *player)
   return (egg);
 }
 
-t_egg			*setbox_add_egg(t_player *player)
+t_egg			*set_box_addegg(t_player *player)
 {
   t_box 		*box;
   t_egg 		*egg;
