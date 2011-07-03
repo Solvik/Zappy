@@ -14,15 +14,12 @@
 #include		"tserver.h"
 #include		"server_zappy.h"
 
-extern t_server 	*gserv;
-
 bool			setbox_addfood(uint x, uint y, uint nb)
 {
   t_box 		*box;
-  t_stone 		*stone;
 
   if (!(box = get_box(x, y)))
     return (false);
-  stone->nb += nb;
+  box->food += nb;
   return (true);
 }

@@ -19,13 +19,12 @@ extern t_server 	*gserv;
 bool			setbox_delfood(uint x, uint y, uint nb)
 {
   t_box 		*box;
-  t_stone 		*stone;
 
   if (!(box = get_box(x, y)))
     return (false);
   if (box->food < nb)
-    stone->nb = 0;
+    box->food = 0;
   else
-    stone->nb -= nb;
+    box->food -= nb;
   return (true);
 }

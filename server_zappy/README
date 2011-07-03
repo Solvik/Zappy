@@ -36,7 +36,7 @@ while (i < get_map_max())
 	++i;
 }
 
---- Food --- (TODO!!!!)
+--- Food ---
 bool            setbox_addfood(uint x, uint y, uint nb);
 
 bool            setbox_delfood(uint x, uint y, uint nb)
