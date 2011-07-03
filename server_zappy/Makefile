@@ -68,6 +68,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_setbox_add_player.c	\
 	  $(LOCAL)gserv_setbox_del_player.c	\
 	  $(LOCAL)gserv_get_players.c		\
+	  $(LOCAL)gserv_get_player_by_id.c	\
 	  $(LOCAL)gserv_get_teams.c		\
 	  $(LOCAL)gserv_get_team_of_player.c	\
 	  $(LOCAL)gserv_get_team_by_name.c	\

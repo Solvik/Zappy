@@ -62,6 +62,7 @@ t_list		*get_teams(void);
 t_list		*get_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
 t_list		*get_modules(void);
+t_player	*get_player_by_id(uint);
 
 void		set_map_width(uint);
 void		set_map_height(uint);
