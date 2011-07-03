@@ -1,11 +1,11 @@
 /*
 ** main.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/zappy_protocol
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 03:41:59 2011 Julien Di Marco
-** Last update Thu Jun 30 03:41:59 2011 Julien Di Marco
+** Last update Sun Jul  3 17:25:22 2011 solvik blum
 */
 
 #define		_GNU_SOURCE
@@ -37,8 +37,9 @@ void	init_(void)
 }
 #endif
 
-bool		handshaking(fds client, char *cmd)
+bool		handshaking(t_fds *client, char *cmd)
 {
+  int		r;
   char		*ret;
 
   if (!client->anounce)
@@ -51,11 +52,11 @@ bool		handshaking(fds client, char *cmd)
 	  printf("Failed !\n");
 	  return (false);
 	}
-      asprintf(&ret, "%d", player_data->id);
+      r = asprintf(&ret, "%d", player_data->id);
       sends(client, ret);
       if (ret)
 	free(ret);
-      asprintf(&ret, "%d %d", player_data->x, player_data->y);
+      r = asprintf(&ret, "%d %d", player_data->x, player_data->y);
       sends(client, ret);
       if (ret)
 	free(ret);

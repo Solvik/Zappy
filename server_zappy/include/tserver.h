@@ -1,11 +1,11 @@
 /*
 ** tserver.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Thu Jun 30 05:07:36 2011 Julien Di Marco
+** Last update Sun Jul  3 17:20:51 2011 solvik blum
 */
 
 #ifndef		TSERV_H_
@@ -73,6 +73,10 @@ void		set_map_height(uint);
 void		set_map(t_box *);
 bool		setbox_addstone(uint, uint, e_stone, uint);
 bool		setbox_delstone(uint, uint, e_stone, uint);
+bool		setbox_addfood(uint, uint, uint);
+bool		setbox_delfood(uint, uint, uint);
+bool		setplayer_addstone(t_player *, e_stone, uint);
+bool		setplayer_delstone(t_player *, e_stone, uint);
 bool		setbox_add_player(t_player *, char *, uint, uint);
 bool		set_new_module(t_module *);
 void		set_port(int);
