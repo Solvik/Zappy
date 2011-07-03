@@ -63,6 +63,10 @@ t_list		*get_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
 t_list		*get_modules(void);
 t_player	*get_player_by_id(uint);
+uint		get_player_level(uint);
+bool		get_player_pos(uint, uint *, uint *);
+t_list * /* t_stone */	get_player_stones(uint);
+uint		get_player_food(uint);
 
 void		set_map_width(uint);
 void		set_map_height(uint);
