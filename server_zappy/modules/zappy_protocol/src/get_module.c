@@ -1,11 +1,11 @@
 /*
 ** get_module.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/zappy_protocol
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 03:50:51 2011 Julien Di Marco
-** Last update Thu Jun 30 03:50:51 2011 Julien Di Marco
+** Last update Sun Jul  3 16:08:33 2011 solvik blum
 */
 
 #include	<strings.h>
@@ -27,7 +27,7 @@
 ** voir : OK
 ** inventaire : OK
 ** expulse : OK
-** prend
+** prend : OK
 ** pose
 ** broadcast
 ** incantation
@@ -38,18 +38,18 @@
 
 static void		init_commands(t_mod_func *func)
 {
-  add_command(func, "avance", zappy_avance);
-  add_command(func, "droite", zappy_droite);
-  add_command(func, "gauche", zappy_gauche);
-  add_command(func, "voir", zappy_voir);
-  add_command(func, "inventaire", zappy_inventaire);
-  add_command(func, "expulse", zappy_expulse);
-  add_command(func, "prend", zappy_prend);
-  add_command(func, "pose", zappy_pose);
-  add_command(func, "broadcast", zappy_broadcast);
-  add_command(func, "incantation", zappy_incantation);
-  add_command(func, "fork", zappy_fork);
-  add_command(func, "connect_nbr", zappy_connect_nbr);
+  add_command(func, "avance",		zappy_avance);
+  add_command(func, "droite",		zappy_droite);
+  add_command(func, "gauche",		zappy_gauche);
+  add_command(func, "voir",		zappy_voir);
+  add_command(func, "inventaire",	zappy_inventaire);
+  add_command(func, "expulse",		zappy_expulse);
+  add_command(func, "prend",		zappy_prend);
+  add_command(func, "pose",		zappy_pose);
+  add_command(func, "broadcast",	zappy_broadcast);
+  add_command(func, "incantation",	zappy_incantation);
+  add_command(func, "fork",		zappy_fork);
+  add_command(func, "connect_nbr",	zappy_connect_nbr);
 }
 
 t_module	*get_module(void)

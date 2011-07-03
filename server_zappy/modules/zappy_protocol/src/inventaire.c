@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Wed Jun 29 17:15:28 2011 solvik blum
+** Last update Sun Jul  3 17:24:50 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -21,27 +21,28 @@
 
 #include "tserver.h"
 
-int		zappy_inventaire(t_fds *client, char *_)
+int		zappy_inventaire(t_fds *client, char *cmd)
 {
+  int		r;
   char		*str;
 
-  (void)_;
-  asprintf(&str, "{"
-	   "nourriture %u,"
-	   "linemate %u,"
-	   "deraumere %u,"
-	   "sibur %u,"
-	   "mendiane %u,"
-	   "phiras %u,"
-	   "thystame %u"
-	   "}",
-	   player_data->life,
-	   getbox_nbstones_by_player(player_data, LINEMATE),
-	   getbox_nbstones_by_player(player_data, DERAUMERE),
-	   getbox_nbstones_by_player(player_data, SIBUR),
-	   getbox_nbstones_by_player(player_data, MENDIANE),
-	   getbox_nbstones_by_player(player_data, PHIRAS),
-	   getbox_nbstones_by_player(player_data, THYSTAME));
+  (void)cmd;
+  r = asprintf(&str, "{"
+	       "nourriture %u,"
+	       "linemate %u,"
+	       "deraumere %u,"
+	       "sibur %u,"
+	       "mendiane %u,"
+	       "phiras %u,"
+	       "thystame %u"
+	       "}",
+	       player_data->life,
+	       getbox_nbstones_by_player(player_data, LINEMATE),
+	       getbox_nbstones_by_player(player_data, DERAUMERE),
+	       getbox_nbstones_by_player(player_data, SIBUR),
+	       getbox_nbstones_by_player(player_data, MENDIANE),
+	       getbox_nbstones_by_player(player_data, PHIRAS),
+	       getbox_nbstones_by_player(player_data, THYSTAME));
   sends(client, str);
   if (str)
     free(str);

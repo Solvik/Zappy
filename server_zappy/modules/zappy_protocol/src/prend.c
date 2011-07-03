@@ -5,41 +5,19 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 17:47:37 2011 solvik blum
+** Last update Sun Jul  3 17:16:40 2011 solvik blum
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
+#include	<unistd.h>
+#include	<stdlib.h>
+#include	<string.h>
 
-#include "player.h"
-#include "map.h"
-#include "voir.h"
-#include "server_zappy.h"
+#include	"player.h"
+#include	"map.h"
+#include	"voir.h"
+#include	"server_zappy.h"
 
-#include "tserver.h"
-
-e_stone		is_stone(char *str)
-{
-  int		i;
-
-  i = 0;
-  while (i < size_stone)
-    {
-      if (!strcmp(str, &(gl_ressource_name[i].str[1])))
-	return (gl_ressource_name[i].stone);
-      i++;
-    }
-  return (NONE);
-}
-
-/*
-** l: 58
-** if (setbox_delfood(x, y, 1) == true)
-** 	return (true);
-** else
-** return (false);
-*/
+#include	"tserver.h"
 
 static bool	prendre_action(int x, int y, char *obj)
 {
@@ -49,15 +27,17 @@ static bool	prendre_action(int x, int y, char *obj)
   map = get_map();
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (setbox_delstone(x, y, stone, 1) == true)
-	return (true);
-      else
+      if (!setbox_delstone(x, y, stone, 1))
 	return (false);
     }
   else if (!strcmp(obj, "nourriture"))
-    return (true);
+    {
+      if (!setbox_delfood(x, y, 1))
+	return (false);
+    }
   else
     return (false);
+  return (true);
 }
 
 int		zappy_prend(t_fds *client, char *cmd)

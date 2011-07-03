@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Thu Jun 30 09:26:24 2011 solvik blum
+** Last update Sun Jul  3 16:02:27 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -14,9 +14,7 @@
 #include "server_zappy.h"
 
 
-int		zappy_fork(t_fds *__, char *_)
+int		zappy_fork(t_fds *client, char *cmd)
 {
-  (void)__;
-  (void)_;
   return (1);
 }
