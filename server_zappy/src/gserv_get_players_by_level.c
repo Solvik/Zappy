@@ -10,21 +10,17 @@
 
 #include	<stdlib.h>
 
-
 #include	"map.h"
 #include	"player.h"
 #include	"tserver.h"
 #include	"server_zappy.h"
 
-
-
-static bool	match_player(void * player, void * level)
+static bool	match_player(void * player, void* level)
 {
-  if (((t_player *)player)->level != (uint)level)
+  if (((t_player *)player)->level != *(uint*)level)
     return (false);
   return (true);
 }
-
 
 t_list		*get_players_by_level(uint x, uint y, uint level)
 {
@@ -33,6 +29,6 @@ t_list		*get_players_by_level(uint x, uint y, uint level)
 
   if (!(box = get_box(x, y)))
     return (false);
-  players = sub_list_arg(box->players, match_player, (void *)level);
+  players = sub_list_arg(box->players, match_player, &level);
   return (players);
 }
