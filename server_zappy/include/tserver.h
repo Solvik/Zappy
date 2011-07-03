@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Sun Jul  3 17:20:51 2011 solvik blum
+** Last update Sun Jul  3 22:59:53 2011 solvik blum
 */
 
 #ifndef		TSERV_H_
@@ -63,6 +63,7 @@ t_list		*get_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
 t_list		*get_modules(void);
 t_player	*get_player_by_id(uint);
+t_list		*get_players_by_level(uint, uint, uint);
 
 void		set_map_width(uint);
 void		set_map_height(uint);

@@ -65,6 +65,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_getbox_nbstones.c	\
 	  $(LOCAL)gserv_setbox_addfood.c	\
 	  $(LOCAL)gserv_setbox_delfood.c	\
+	  $(LOCAL)gserv_setbox_add_egg.c	\
 	  $(LOCAL)gserv_setplayer_addstone.c	\
 	  $(LOCAL)gserv_setplayer_delstone.c	\
 	  $(LOCAL)gserv_get_info.c		\
@@ -73,6 +74,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_setbox_del_player.c	\
 	  $(LOCAL)gserv_get_players.c		\
 	  $(LOCAL)gserv_get_player_by_id.c	\
+	  $(LOCAL)gserv_get_players_by_level.c	\
 	  $(LOCAL)gserv_get_teams.c		\
 	  $(LOCAL)gserv_get_team_of_player.c	\
 	  $(LOCAL)gserv_get_team_by_name.c	\
