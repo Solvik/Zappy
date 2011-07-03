@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul  3 23:22:06 2011 solvik blum
+** Last update Mon Jul  4 01:49:01 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -19,7 +19,7 @@ int		zappy_fork(t_fds *client, char *cmd)
 {
   t_egg		*egg;
 
-  if (!(egg = setbox_add_egg(player_data)))
+  if (!(egg = set_box_add_egg(player_data)))
     return (0);
   /* scheduler_relative(client, 42, */
   /* 		     (bool (*)(fds, void*))test, strdup(cmd))); */
