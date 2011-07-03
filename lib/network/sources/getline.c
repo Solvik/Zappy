@@ -46,7 +46,7 @@ static char	*pop(buffer *b)
 	  strncpy(r + (get_size(t) - strlen(t->buf)), t->buf, strlen(t->buf));
 	  f = t;
 	  t = t->prev;
-	  remove_buffer(f);
+	  buffer_remove(f);
 	}
     }
   return (r);
@@ -59,7 +59,7 @@ static buffer	push(buffer *bf, char *s)
 
   if ((new = calloc(1, sizeof(*new))))
     {
-      fill_buffer(new->buf, s);
+      buffer_fill(new->buf, s);
       if ((tmp = *bf))
 	{
 	  if (tmp)
@@ -83,7 +83,7 @@ static char	*check_end(fds f, buffer node, char *d)
     if ((((d && d[0]) && strncmp(&node->buf[i], d, strlen(d)) == 0) ||
 	 ((!d || (d && !d[0])) && node->buf[i] == DELIM)) ||
 	(!node->next && !node->buf[i + 1] &&
-	 ((size_buffer(f->read) == READM) || f->fd == -1)))
+	 ((buffer_size(f->read) == READM) || f->fd == -1)))
       {
 	i += (get_size(node) - strlen(node->buf));
 	if ((r = pop(&node)))

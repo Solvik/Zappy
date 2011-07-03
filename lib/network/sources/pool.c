@@ -44,7 +44,7 @@ static int	fdfull(fds l, fd_set *read, fd_set *write, fd_set *error)
 	{
 	  FD_SET(l->fd, error);
 	  if (((l->type == READ || l->type == RDWR) && \
-	       (size_buffer(l->read) < READM)) || l->type == SERV)
+	       (buffer_size(l->read) < READM)) || l->type == SERV)
 	    FD_SET(l->fd, read);
 	  if ((l->type == WRITE || l->type == RDWR) && l->write)
 	    FD_SET(l->fd, write);

@@ -47,7 +47,7 @@ int		handle_serv(fds *list, fds socket)
       if ((s->socket = accept(socket->fd, \
 			      (struct sockaddr*)&s->bind, &len)) != -1)
 	{
-	  if ((new = add_fd(list, s->socket, RDWR)))
+	  if ((new = fds_add(list, s->socket, RDWR)))
 	    {
 	      new->s = s;
 	      new->port = (socket->s ? socket->s->port : -1);
@@ -80,10 +80,10 @@ int		handle_read(fds socket)
 
   i = 0;
   memset(tmp, 0, (READB + 1));
-  if (socket && (socket->fd != -1) && (size_buffer(socket->read) < READM))
+  if (socket && (socket->fd != -1) && (buffer_size(socket->read) < READM))
     {
       if ((i = read(socket->fd, tmp, READB)) > 0)
-	add_buffer(&socket->read, tmp);
+	buffer_add(&socket->read, tmp);
       else
 	{
 #if defined(ERRORMSG)
@@ -121,8 +121,8 @@ int		handle_write(fds socket)
 		     (((i = strlen(socket->write->buf)) > WRITEB) \
 		      ? i : WRITEB))) > 0)
 	{
-	  if (move_buffer(socket->write, i) == -1)
-	    socket->write = remove_buffer(socket->write);
+	  if (buffer_move(socket->write, i) == -1)
+	    socket->write = buffer_remove(socket->write);
 	}
       else
       	{
@@ -154,7 +154,7 @@ int		add_socket(fds *pool, int p, int q)
   fd = NULL;
   if (pool && (s = ssocket(p, q)))
     {
-      if ((fd = add_fd(pool, s->socket, SERV)))
+      if ((fd = fds_add(pool, s->socket, SERV)))
 	{
 	  fd->s = s;
 	  return (0);
@@ -183,7 +183,7 @@ int		add_co(fds *pool, char *hostname, int p)
   fd = NULL;
   if (pool && (s = csocket(hostname, p)))
     {
-      if ((fd = add_fd(pool, s->socket, RDWR)))
+      if ((fd = fds_add(pool, s->socket, RDWR)))
 	{
 	  fd->s = s;
 	  return (0);

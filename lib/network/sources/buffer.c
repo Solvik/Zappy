@@ -18,7 +18,7 @@
 
 #include        "network.h"
 
-char            *fill_buffer(char *buffer, char *s)
+char            *buffer_fill(char *buffer, char *s)
 {
   int           i;
 
@@ -30,7 +30,7 @@ char            *fill_buffer(char *buffer, char *s)
   return (s);
 }
 
-buffer          add_buffer(buffer *l, char *s)
+buffer		buffer_add(buffer *l, char *s)
 {
   buffer                tmp;
   buffer                new;
@@ -39,7 +39,7 @@ buffer          add_buffer(buffer *l, char *s)
     {
       while (tmp && tmp->next)
         tmp = tmp->next;
-      if (tmp && !(s = fill_buffer(tmp->buf, s)))
+      if (tmp && !(s = buffer_fill(tmp->buf, s)))
         return (tmp);
     }
   if ((new = calloc(1, sizeof(*new))))
@@ -52,13 +52,13 @@ buffer          add_buffer(buffer *l, char *s)
         }
       else
         *l = new;
-      if ((s = fill_buffer(new->buf, s)))
-        return (add_buffer(l, s));
+      if ((s = buffer_fill(new->buf, s)))
+        return (buffer_add(l, s));
     }
   return (new);
 }
 
-int             size_buffer(buffer b)
+int		buffer_size(buffer b)
 {
   int           i;
 
@@ -72,7 +72,7 @@ int             size_buffer(buffer b)
   return (i);
 }
 
-buffer          remove_buffer(buffer e)
+buffer		buffer_remove(buffer e)
 {
   buffer                prev;
   buffer                next;
@@ -91,7 +91,7 @@ buffer          remove_buffer(buffer e)
   return (NULL);
 }
 
-int             move_buffer(buffer l, int i)
+int		buffer_move(buffer l, int i)
 {
   if (l && (i <= BUFFERS) && (strlen(&l->buf[i]) > 0))
     {

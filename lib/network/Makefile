@@ -8,13 +8,15 @@ NAME		= libnet.a
 
 SRC_DIR		= sources/
 
-SRCS		= $(SRC_DIR)buffer.c	\
-		  $(SRC_DIR)fds.c	\
-		  $(SRC_DIR)getline.c	\
-		  $(SRC_DIR)inet.c	\
-		  $(SRC_DIR)net.c	\
-		  $(SRC_DIR)network.c	\
-		  $(SRC_DIR)pool.c	\
+SRCS		= $(SRC_DIR)buffer.c		\
+		  $(SRC_DIR)buffer_destroy.c	\
+		  $(SRC_DIR)buffer_utils.c	\
+		  $(SRC_DIR)fds.c		\
+		  $(SRC_DIR)getline.c		\
+		  $(SRC_DIR)inet.c		\
+		  $(SRC_DIR)net.c		\
+		  $(SRC_DIR)network.c		\
+		  $(SRC_DIR)pool.c		\
 		  $(SRC_DIR)writeline.c
 
 OBJ		= $(SRCS:.c=.o)
