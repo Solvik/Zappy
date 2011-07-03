@@ -36,17 +36,15 @@ while (i < get_map_max())
 	++i;
 }
 
---- Food --- (TODO!!!!)
+--- Food ---
 bool            setbox_addfood(uint x, uint y, uint nb);
+ok
 
 bool            setbox_delfood(uint x, uint y, uint nb)
+ok
 
 uint		getbox_nbfood(uint x, uint y);
-
-bool            player_addfood(uint x, uint y, uint nb);
-
-bool            player_delfood(uint x, uint y, uint nb)
-
+ok
 
 --- Stones ---
 
@@ -63,10 +61,6 @@ uint		getbox_nbstones(uint x, uint y, e_stone type);
 Return how many stones of type "type" are at position "x", "y".
 Return 0 if position is invalid.
 
-uint		getbox_nbstones_by_player(t_player *player, e_stone type);
-Return how many stones of type "type" the "player" owns.
-Return 0 if position is invalid.
-
 --- Players ---
 
 t_player *		new_player(void);
@@ -78,7 +72,7 @@ Add the player "player" in team "name" at position "x", "y" on the map.
 If team didnt exist, team is created.
 Return false on failure (invalid position, allocation failed).
 
-t_list *		get_players(unit x, uint y);
+t_list *		get_box_players(unit x, uint y);
 Return the list of players at position "x", "y".
 
 void			setbox_del_player(t_player * player);
@@ -94,4 +88,55 @@ return the team where player is.
 
 t_list *		get_teams(void);
 return the list of teams.
+
+/* --------------------------------- PLAYER -------------------------------- */
+
+
+t_player        *get_player_by_id(uint id);
+return a player by his id
+
+--- Level ---
+
+uint            get_player_level(uint id);
+return the level of a player or 0 if invalid id
+
+todo : levelup
+
+--- Position --
+
+bool            get_player_pos(uint id, uint *x, uint *y);
+set x, y to the position of the player id. return false if id is invalid
+
+todo : move_player
+
+--- Food ---
+
+uint get_player_food(uint id);
+return the food (= life) of the player (0 if invalid id)
+
+todo :
+bool            player_addfood(uint x, uint y, uint nb);
+bool            player_delfood(uint x, uint y, uint nb)
+
+
+--- Stones ---
+
+t_list * /* t_stone */  get_player_stones(uint id);
+return the list of stones of the player.
+t_stone : e_stone type; uint nb;
+
+uint		get_player_nbstones(uint id, e_stone type);
+Return how many stones of type "type" player id have
+Return 0 if id is invalid.
+
+todo :
+
+bool            set_player_addstone(uint id, e_stone type, uint nb);
+Add "nb" stones of type "type" to player id
+Return false on failure (invalid id, allocation failed).
+
+bool            set_player_delstone(uint id, e_stone type, uint nb);
+Remove "nb" stones of type "type" to player id
+Return false on failure (invalid id, invalid stone type).
+If stone->nb < nb, stone->nb = 0
 

@@ -23,7 +23,7 @@ bool	net_port_unique(int port)
   tmp = *get_pool();
   while (tmp)
     {
-      if (tmp->s && tmp->s->port == port)
+      if (tmp->s && socket_port(tmp->s) == port)
 	return (false);
       tmp = tmp->next;
     }

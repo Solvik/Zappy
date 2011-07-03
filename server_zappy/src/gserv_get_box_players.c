@@ -1,5 +1,5 @@
 /*
-** gserv_get_players.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** gserv_get_box_players.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
 ** 
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
@@ -14,7 +14,7 @@
 
 extern t_server 	*gserv;
 
-t_list			*get_players(uint x, uint y)
+t_list			*get_box_players(uint x, uint y)
 {
   t_box 		*box;
 

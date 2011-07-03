@@ -35,7 +35,7 @@ static bool		match_player(void *data, void *arg)
 ** delete player   l :50
 */
 
-void			setbox_del_player(t_player *player)
+void			set_box_delplayer(t_player *player)
 {
   t_team 		*team;
   t_box 		*box;

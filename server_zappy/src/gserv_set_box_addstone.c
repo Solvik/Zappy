@@ -1,5 +1,5 @@
 /*
-** gserv_setbox_addstone.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** gserv_set_box_addstone.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
 ** 
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
@@ -31,7 +31,7 @@ static bool		match_stone(void *data, void *stone)
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-bool			setbox_addstone(uint x, uint y, e_stone type, uint nb)
+bool			set_box_addstone(uint x, uint y, e_stone type, uint nb)
 {
   t_box 		*box;
   t_stone 		*stone;

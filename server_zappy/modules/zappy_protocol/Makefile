@@ -5,7 +5,7 @@
 ## Login   <Lifely@epitech.net>
 ##
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Last update
 ##
 
 ############################################################
@@ -46,6 +46,7 @@ SOURCE	= $(LOCAL)get_module.c			\
 	  $(LOCAL)prend.c			\
 	  $(LOCAL)voir.c			\
 	  $(LOCAL)voir_dir.c			\
+	  $(LOCAL)is_stone.c			\
 	  $(LOCAL)main.c
 
 SOURCES	= $(SOURCE:.c=.o)

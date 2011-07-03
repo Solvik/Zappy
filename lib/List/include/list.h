@@ -1,11 +1,11 @@
 /*
 ** list.h for  in /Users/Lifely/Developer/project/Zappy/lib/List
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 05:39:38 2011 Julien Di Marco
-** Last update Thu Jun 30 05:39:38 2011 Julien Di Marco
+** Last update Sun Jul  3 23:19:33 2011 solvik blum
 */
 
 #ifndef			LIST_H_
@@ -52,6 +52,9 @@ bool		foreach_arg_stop_list(t_list * list,
 
 t_list *	sub_list(t_list * list,
 			 bool (*function)(void *));
+t_list *	sub_list_arg(t_list * list,
+			     bool (*function)(void *, void * arg),
+			     void * arg);
 
 int		get_list_len(t_list * list);
 
