@@ -14,22 +14,29 @@
 ** ppo numero_joueur X Y orientation
 */
 
-bool graph_ppo(t_fds *__, char *_)
+bool graph_ppo(t_fds *client, char *cmd)
 {
-  (void)__;
-  (void)_;
-  return (true);
+
 }
 
 /*
 ** plv numero_joueur niveau
 */
 
-bool graph_plv(t_fds *__, char *_)
+bool graph_plv(t_fds *client, char *cmd)
 {
-  (void)__;
-  (void)__;
-  (void)_;
+  char *id;
+  char *to_send;
+  int	level;
+
+  to_send = NULL;
+  (void)strtok(cmd, " ");
+  id = strtok(NULL, " ");
+  if (!id || (level = get_player_level_by_id(atoi(id))) == -1)
+    sends(player, "sbp");
+  asprintf(&to_send, "plv %s %d", id, level);
+  sends(client, to_send);
+  free(to_send);
   return (true);
 }
 
@@ -37,16 +44,14 @@ bool graph_plv(t_fds *__, char *_)
 **  pin numero_joueur X Y quantite_pierre quantite_bouffe
 */
 
-bool graph_pin(t_fds *__, char *_)
+bool graph_pin(t_fds *client, char *cmd)
 {
-  (void)__;
-  (void)_;
+
   return (true);
 }
 
-bool graph_pnw(t_fds *client, char *_)
+bool graph_pnw(t_fds *client, char *cmd)
 {
-  (void)_;
   sends(client, "pnw 0 2 5 1 1 LOL");
   return (true);
 }

@@ -1,9 +1,9 @@
 ##
 ## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
-## 
+##
 ## Made by Julien Di Marco
 ## Login   <Lifely@epitech.net>
-## 
+##
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
 ## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
 ##
@@ -133,7 +133,7 @@ CFLAGS	+= -W -Wall -Wextra -Werror -rdynamic	\
 	   $(addprefix -I, $(INCLUDE))
 
 LDFLAGS	+= $(addprefix -L, $(LIBRARIES))\
-	   -llist -lnet -ldl
+	   -llist -lnet -ldl -lm
 
 ############################################################
 
