@@ -49,12 +49,12 @@ bool graph_bct(t_fds *player, char *cmd)
 	return (false);
   box = get_box(atoi(x), atoi(y));
   asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y), 42,
-		   getbox_nbstones(atoi(x), atoi(y), LINEMATE),
-		   getbox_nbstones(atoi(x), atoi(y), DERAUMERE),
-		   getbox_nbstones(atoi(x), atoi(y), SIBUR),
-		   getbox_nbstones(atoi(x), atoi(y), MENDIANE),
-		   getbox_nbstones(atoi(x), atoi(y), PHIRAS),
-		   getbox_nbstones(atoi(x), atoi(y), THYSTAME));
+		   get_box_nbstones(atoi(x), atoi(y), LINEMATE),
+		   get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
+		   get_box_nbstones(atoi(x), atoi(y), SIBUR),
+		   get_box_nbstones(atoi(x), atoi(y), MENDIANE),
+		   get_box_nbstones(atoi(x), atoi(y), PHIRAS),
+		   get_box_nbstones(atoi(x), atoi(y), THYSTAME));
   sends(player, to_send);
   free(to_send);
   return (true);

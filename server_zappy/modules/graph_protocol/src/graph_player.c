@@ -8,6 +8,9 @@
 ** Last update Tue Jun 14 16:08:10 2011 seb
 */
 
+
+#include <stdlib.h>
+#include <string.h>
 #include "graph_player.h"
 
 /*
@@ -16,7 +19,7 @@
 
 bool graph_ppo(t_fds *client, char *cmd)
 {
-
+  return (true);
 }
 
 /*
@@ -33,7 +36,10 @@ bool graph_plv(t_fds *client, char *cmd)
   (void)strtok(cmd, " ");
   id = strtok(NULL, " ");
   if (!id || (level = get_player_level_by_id(atoi(id))) == -1)
-    sends(player, "sbp");
+    {
+      sends(client, "sbp");
+      return (true);
+    }
   asprintf(&to_send, "plv %s %d", id, level);
   sends(client, to_send);
   free(to_send);
