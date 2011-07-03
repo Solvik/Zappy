@@ -11,6 +11,7 @@
 #ifndef		ZAPPY_TEAM_H_
 # define	ZAPPY_TEAM_H_
 
+#  include	"ztypes.h"
 #  include	"list.h"
 
 typedef		struct

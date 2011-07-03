@@ -5,7 +5,7 @@
 ## Login   <Lifely@epitech.net>
 ##
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Truc
+## Lastedi on  Wed Jun 29 23:31:59 2011 Julien Di Marco
 ##
 
 ############################################################
@@ -153,7 +153,6 @@ ifeq	($(NDEBUG), 1)
 else
  CFLAGS	+= -ggdb
 endif
-
 
 ############################################################
 
