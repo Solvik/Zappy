@@ -1,11 +1,11 @@
 ##
 ## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
-## 
+##
 ## Made by Julien Di Marco
 ## Login   <Lifely@epitech.net>
-## 
+##
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Last update Wed Jun 29 23:31:59 2011 Julien Di Marco
+## Truc
 ##
 
 ############################################################
@@ -63,6 +63,10 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_setbox_addstone.c	\
 	  $(LOCAL)gserv_setbox_delstone.c	\
 	  $(LOCAL)gserv_getbox_nbstones.c	\
+	  $(LOCAL)gserv_setbox_addfood.c	\
+	  $(LOCAL)gserv_setbox_delfood.c	\
+	  $(LOCAL)gserv_setplayer_addstone.c	\
+	  $(LOCAL)gserv_setplayer_delstone.c	\
 	  $(LOCAL)gserv_get_info.c		\
 	  $(LOCAL)gserv_set_info.c		\
 	  $(LOCAL)gserv_setbox_add_player.c	\
