@@ -23,66 +23,6 @@
 void		*(*free_data)(void *data) = NULL;
 
 /*
-** Function: fdfull - private
-** Called by pool
-**
-** This function handle the different fd_set (read,write,error)
-** and fill each set according to each specific fds.
-*/
-
-static int	fdfull(fds l, fd_set *read, fd_set *write, fd_set *error)
-{
-  int		i;
-
-  i = -1;
-  FD_ZERO(read);
-  FD_ZERO(write);
-  FD_ZERO(error);
-  while (l && read && write && error)
-    {
-      if (l && l->fd != -1)
-	{
-	  FD_SET(l->fd, error);
-	  if (((l->type == READ || l->type == RDWR) && \
-	       (size_buffer(l->read) < READM)) || l->type == SERV)
-	    FD_SET(l->fd, read);
-	  if ((l->type == WRITE || l->type == RDWR) && l->write)
-	    FD_SET(l->fd, write);
-	  i = (l->fd > i ? l->fd : i);
-	}
-      l = l->next;
-    }
-  return (i);
-}
-
-/*
-** Function: select_handle - Private
-** Called by pool
-**
-** This function pass on each fds to check if something happend.
-*/
-
-static int	select_handle(fds *l, fd_set *read, fd_set *write, fd_set *error)
-{
-  fds		tmp;
-
-  tmp = (*l);
-  while (tmp && read && write && error)
-    {
-      if ((tmp->fd != -1) && tmp->type == SERV && FD_ISSET(tmp->fd, read))
-	handle_serv(l, tmp);
-      if ((tmp->fd != -1) && (tmp->type == READ || tmp->type == RDWR) && \
-	  FD_ISSET(tmp->fd, read))
-	handle_read(tmp);
-      if ((tmp->fd != -1) && (tmp->type == WRITE || tmp->type == RDWR) && \
-	  FD_ISSET(tmp->fd, write))
-	handle_write(tmp);
-      tmp = tmp->next;
-    }
-  return (0);
-}
-
-/*
 ** Function: pool - public
 **
 ** This function have to be call periodicly.
@@ -93,14 +33,10 @@ static int	select_handle(fds *l, fd_set *read, fd_set *write, fd_set *error)
 
 fds		pool(fds *l, struct timeval *tv)
 {
-  fd_set	read;
-  fd_set	write;
-  fd_set	error;
-  int		max;
-  int		test;
+  static t_pool	p;
 
-  if ((*l) && (max = fdfull((*l), &read, &write, &error)) != -1)
-    if ((test = select((max + 1), &read, &write, &error, tv)) != -1)
-      select_handle(l, &read, &write, &error);
+  if ((*l) && (p.max = pool_fill((*l), &p)) != -1)
+    if ((pool_exec(&p, tv) != -1))
+      pool_handle(l, &p);
   return ((*l));
 }

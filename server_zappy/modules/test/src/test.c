@@ -77,7 +77,10 @@ bool		call(fds client, char *cmd)
 bool		handshaking(fds client, char *cmd)
 {
   if (!client->anounce)
-    sends(client, "BIENVENU");
+    {
+      printf("Hello [%s]\n", socket_addr(client->s));
+      sends(client, "BIENVENU");
+    }
   if (cmd && (strcmp(cmd, "hello") == 0))
     return (true);
   return (false);
@@ -106,5 +109,5 @@ bool		update(double tdt)
 
 double		timer(void)
 {
-  return (1.42);
+  return (-1.42);
 }

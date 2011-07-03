@@ -1,5 +1,5 @@
 /*
-** gserv_setbox_delfood.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
+** gserv_set_box_delfood.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
 **
 ** Made by solvik blum
 ** Login   <blum_s@epitech.net>
@@ -16,16 +16,15 @@
 
 extern t_server 	*gserv;
 
-bool			setbox_delfood(uint x, uint y, uint nb)
+bool			set_box_delfood(uint x, uint y, uint nb)
 {
   t_box 		*box;
-  t_stone 		*stone;
 
   if (!(box = get_box(x, y)))
     return (false);
   if (box->food < nb)
-    stone->nb = 0;
+    box->food = 0;
   else
-    stone->nb -= nb;
+    box->food -= nb;
   return (true);
 }

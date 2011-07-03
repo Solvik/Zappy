@@ -37,7 +37,7 @@ static t_team 		*add_team(char *name)
   return (team);
 }
 
-bool			setbox_add_player(t_player *player,
+bool			set_box_addplayer(t_player *player,
 					  char *name,
 					  uint x, uint y)
 {

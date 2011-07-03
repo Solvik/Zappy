@@ -19,7 +19,7 @@
 
 #include	"network.h"
 
-fds		add_fd(fds *l, int fd, int type)
+fds		fds_add(fds *l, int fd, int type)
 {
   fds		tmp;
   fds		new;
@@ -44,7 +44,7 @@ fds		add_fd(fds *l, int fd, int type)
   return (new);
 }
 
-void		*remove_fds(fds *l, fds e)
+void		*fds_remove(fds *l, fds e)
 {
   fds		prev;
   fds		next;
@@ -58,52 +58,27 @@ void		*remove_fds(fds *l, fds e)
       if ((*l) == e)
 	(*l) = e->next;
       free_data(e->data);
-      free_buffer(&e->read);
-      free_buffer(&e->write);
-      free_socket(e->s);
+      buffer_destroy(&e->read);
+      buffer_destroy(&e->write);
+      socket_destroy(e->s);
       e->fd = -1;
       free(e);
     }
   return (NULL);
 }
 
-void		*free_fds(fds *l)
+void		*fds_destroy(fds *l)
 {
   if ((*l))
     {
-      free_fds(&((*l)->next));
+      fds_destroy(&((*l)->next));
       free_data((*l)->data);
-      free_buffer(&(*l)->read);
-      free_buffer(&(*l)->write);
-      free_socket((*l)->s);
+      buffer_destroy(&(*l)->read);
+      buffer_destroy(&(*l)->write);
+      socket_destroy((*l)->s);
       (*l)->fd = -1;
        free((*l));
       *l = NULL;
     }
   return (NULL);
-}
-
-void            *free_buffer(buffer *l)
-{
-  if ((*l))
-    {
-      free_buffer(&((*l)->next));
-      if ((*l)->plus)
-        free((*l)->plus);
-      free((*l));
-      *l = NULL;
-    }
-  return (NULL);
-}
-
-void		*free_socket(sock *ket)
-{
-  if (ket)
-    {
-      if (ket->socket != -1)
-	close(ket->socket);
-      ket->socket = -1;
-      free(ket);
-    }
-  return ((ket = NULL));
 }
