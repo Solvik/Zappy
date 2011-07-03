@@ -8,16 +8,21 @@ NAME		= libnet.a
 
 SRC_DIR		= sources/
 
-SRCS		= $(SRC_DIR)buffer.c		\
-		  $(SRC_DIR)buffer_destroy.c	\
-		  $(SRC_DIR)buffer_utils.c	\
-		  $(SRC_DIR)fds.c		\
-		  $(SRC_DIR)getline.c		\
-		  $(SRC_DIR)inet.c		\
-		  $(SRC_DIR)net.c		\
-		  $(SRC_DIR)network.c		\
-		  $(SRC_DIR)pool.c		\
-		  $(SRC_DIR)writeline.c
+POOL		?= SELECT_
+SRCS		= $(SRC_DIR)buffer.c			\
+		  $(SRC_DIR)buffer_destroy.c		\
+		  $(SRC_DIR)buffer_utils.c		\
+		  $(SRC_DIR)fds.c			\
+		  $(SRC_DIR)socket.c			\
+		  $(SRC_DIR)socket_get.c		\
+		  $(SRC_DIR)getline.c			\
+		  $(SRC_DIR)inet.c			\
+		  $(SRC_DIR)net.c			\
+		  $(SRC_DIR)network.c			\
+		  $(SRC_DIR)pool.c			\
+		  $(SRC_DIR)writeline.c			\
+		  $(SRC_DIR)select_/select_actions.c	\
+		  $(SRC_DIR)select_/select_pool.c
 
 OBJ		= $(SRCS:.c=.o)
 
@@ -25,7 +30,7 @@ AR		= ar r
 RM		= rm -f
 CC		?= gcc
 
-CFLAGS		+= -W -Wall -ansi -ggdb #
+CFLAGS		+= -W -Wall -ansi -D$(POOL) -ggdb #
 
 INCLUDE		= -Iinclude
 

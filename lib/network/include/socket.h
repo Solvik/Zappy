@@ -11,6 +11,11 @@
 #ifndef		SOCKET_H_
 # define	SOCKET_H_
 
+# include	<sys/time.h>
+# include	<netdb.h>
+# include	<netinet/in.h>
+# include	<arpa/inet.h>
+
 typedef struct protoent         proto;
 typedef struct sockaddr_in      saddri;
 typedef struct ifaddrs          ifaddrs;
@@ -24,6 +29,7 @@ typedef struct _sock	sock;
 */
 
 #define IPV4            INET_ADDRSTRLEN
+#define IPV6		INET6_ADDRSTRLEN
 #define LO              "lo"
 #define LOCALHOST       "127.0.0.1"
 #define LOCAL(c)	(c && c[0] ? c[0]->ip : LOCALHOST)
@@ -37,7 +43,6 @@ typedef struct  _ipv4
 #if	defined(NETPRIVATE)
 typedef struct _sock
 {
-  int           fd;
   int           socket;
   int           port;
 
@@ -52,7 +57,11 @@ typedef struct _sock
 sock            *csocket(char *hostname, int port);
 sock            *ssocket(int port, int queue);
 ipv4            **gethostipv4(void);
-void            *free_socket(sock *ket);
+void            *socket_destroy(sock *ket);
 void            *freeipv4(ipv4 **local);
+
+char*		socket_addr(sock *et);
+int		socket_port(sock *et);
+int		socket_fd(sock *et);
 
 #endif		/* !SOCKET_H_ */

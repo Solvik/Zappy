@@ -60,7 +60,7 @@ void		*fds_remove(fds *l, fds e)
       free_data(e->data);
       buffer_destroy(&e->read);
       buffer_destroy(&e->write);
-      free_socket(e->s);
+      socket_destroy(e->s);
       e->fd = -1;
       free(e);
     }
@@ -75,22 +75,10 @@ void		*fds_destroy(fds *l)
       free_data((*l)->data);
       buffer_destroy(&(*l)->read);
       buffer_destroy(&(*l)->write);
-      free_socket((*l)->s);
+      socket_destroy((*l)->s);
       (*l)->fd = -1;
        free((*l));
       *l = NULL;
     }
   return (NULL);
-}
-
-void		*free_socket(sock *ket)
-{
-  if (ket)
-    {
-      if (ket->socket != -1)
-	close(ket->socket);
-      ket->socket = -1;
-      free(ket);
-    }
-  return ((ket = NULL));
 }
