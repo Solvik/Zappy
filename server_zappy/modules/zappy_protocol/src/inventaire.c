@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Sun Jul  3 17:24:50 2011 solvik blum
+** Last update Sun Jul  3 22:33:07 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -15,7 +15,6 @@
 #include <string.h>
 
 #include "stone.h"
-#include "itoa.h"
 #include "player.h"
 #include "server_zappy.h"
 
