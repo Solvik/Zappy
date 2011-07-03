@@ -1,11 +1,11 @@
 /*
 ** gserv_add_player.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 05:05:45 2011 Julien Di Marco
-** Last update Thu Jun 30 05:05:45 2011 Julien Di Marco
+** Last update Sun Jul  3 22:33:46 2011 solvik blum
 */
 
 #include		<stdlib.h>
@@ -30,6 +30,8 @@ static t_team 		*add_team(char *name)
     return (NULL);
   team->name = strdup(name);
   team->players = NULL;
+  team->max_conn = 1;
+  team->egg_list = NULL;
   if (!(put_in_list(&gserv->team, team)))
     return (NULL);
   return (team);
