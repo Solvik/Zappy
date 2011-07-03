@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul  3 23:02:55 2011 solvik blum
+** Last update Mon Jul  4 01:21:55 2011 solvik blum
 */
 
 #define		_GNU_SOURCE
@@ -44,12 +44,12 @@ static const t_elevation      gl_elevation_infos[] =
 
 static bool	verif_incantation(t_player *player)
 {
-  if (ELV.linemate == getbox_nbstones_by_player(player, LINEMATE) &&
-      ELV.deraumere == getbox_nbstones_by_player(player, DERAUMERE) &&
-      ELV.sibur == getbox_nbstones_by_player(player, SIBUR) &&
-      ELV.mendiane == getbox_nbstones_by_player(player, MENDIANE) &&
-      ELV.phiras == getbox_nbstones_by_player(player, PHIRAS) &&
-      ELV.thystame == getbox_nbstones_by_player(player, THYSTAME) &&
+  if (ELV.linemate == get_box_nbstones_by_player(player, LINEMATE) &&
+      ELV.deraumere == get_box_nbstones_by_player(player, DERAUMERE) &&
+      ELV.sibur == get_box_nbstones_by_player(player, SIBUR) &&
+      ELV.mendiane == get_box_nbstones_by_player(player, MENDIANE) &&
+      ELV.phiras == get_box_nbstones_by_player(player, PHIRAS) &&
+      ELV.thystame == get_box_nbstones_by_player(player, THYSTAME) &&
       ELV.nb_players == (uint)get_list_len(get_players_by_level(player->x,
 								player->y,
 								player->level)))

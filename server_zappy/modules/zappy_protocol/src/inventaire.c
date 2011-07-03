@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Sun Jul  3 22:33:07 2011 solvik blum
+** Last update Mon Jul  4 01:19:27 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -36,12 +36,12 @@ int		zappy_inventaire(t_fds *client, char *cmd)
 	       "thystame %u"
 	       "}",
 	       player_data->life,
-	       getbox_nbstones_by_player(player_data, LINEMATE),
-	       getbox_nbstones_by_player(player_data, DERAUMERE),
-	       getbox_nbstones_by_player(player_data, SIBUR),
-	       getbox_nbstones_by_player(player_data, MENDIANE),
-	       getbox_nbstones_by_player(player_data, PHIRAS),
-	       getbox_nbstones_by_player(player_data, THYSTAME));
+	       get_box_nbstones_by_player(player_data, LINEMATE),
+	       get_box_nbstones_by_player(player_data, DERAUMERE),
+	       get_box_nbstones_by_player(player_data, SIBUR),
+	       get_box_nbstones_by_player(player_data, MENDIANE),
+	       get_box_nbstones_by_player(player_data, PHIRAS),
+	       get_box_nbstones_by_player(player_data, THYSTAME));
   sends(client, str);
   if (str)
     free(str);

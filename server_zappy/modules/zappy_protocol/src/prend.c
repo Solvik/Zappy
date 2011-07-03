@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul  3 17:16:40 2011 solvik blum
+** Last update Mon Jul  4 01:23:02 2011 solvik blum
 */
 
 #include	<unistd.h>
@@ -27,12 +27,12 @@ static bool	prendre_action(int x, int y, char *obj)
   map = get_map();
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (!setbox_delstone(x, y, stone, 1))
+      if (!set_box_delstone(x, y, stone, 1))
 	return (false);
     }
   else if (!strcmp(obj, "nourriture"))
     {
-      if (!setbox_delfood(x, y, 1))
+      if (!set_box_delfood(x, y, 1))
 	return (false);
     }
   else

@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul  3 17:24:24 2011 solvik blum
+** Last update Mon Jul  4 01:23:17 2011 solvik blum
 */
 
 #include	<unistd.h>
@@ -25,14 +25,14 @@ static bool	pose_action(t_player *player, char *obj)
 
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (!setbox_addstone(player->x, player->y, stone, 1) ||
+      if (!set_box_addstone(player->x, player->y, stone, 1) ||
 	  !setplayer_delstone(player, stone, 1))
 	return (false);
     }
   else if (!strcmp(obj, "nourriture"))
     {
       player->life -= 1;
-      if (setbox_addfood(player->x, player->y, 1))
+      if (set_box_addfood(player->x, player->y, 1))
 	return (true);
       else
 	return (false);
