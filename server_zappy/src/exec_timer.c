@@ -18,10 +18,6 @@
 #include	"module.h"
 #include	"tserver.h"
 
-/*   *tv = timeval_(t, (lol = (scheduler_update(-1.0)))); */
-/*   if (lol <= -1.0) */
-/*     *tv = NULL; */
-
 static void		module_timer(t_module *elem, double *arg)
 {
   double	out;
