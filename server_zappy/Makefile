@@ -60,20 +60,22 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_get.c			\
 	  $(LOCAL)gserv_set_map.c		\
 	  $(LOCAL)gserv_get_map.c		\
-	  $(LOCAL)gserv_setbox_addstone.c	\
-	  $(LOCAL)gserv_setbox_delstone.c	\
-	  $(LOCAL)gserv_getbox_nbstones.c	\
-	  $(LOCAL)gserv_setbox_addfood.c	\
-	  $(LOCAL)gserv_setbox_delfood.c	\
-	  $(LOCAL)gserv_setplayer_addstone.c	\
-	  $(LOCAL)gserv_setplayer_delstone.c	\
+	  $(LOCAL)gserv_set_box_addstone.c	\
+	  $(LOCAL)gserv_set_box_delstone.c	\
+	  $(LOCAL)gserv_set_box_addfood.c	\
+	  $(LOCAL)gserv_set_box_delfood.c	\
+	  $(LOCAL)gserv_set_box_addplayer.c	\
+	  $(LOCAL)gserv_set_box_delplayer.c	\
+	  $(LOCAL)gserv_get_box_nbfood.c	\
+	  $(LOCAL)gserv_get_box_nbstones.c	\
+	  $(LOCAL)gserv_get_box_players.c	\
 	  $(LOCAL)gserv_get_info.c		\
 	  $(LOCAL)gserv_set_info.c		\
-	  $(LOCAL)gserv_setbox_add_player.c	\
-	  $(LOCAL)gserv_setbox_del_player.c	\
-	  $(LOCAL)gserv_get_players.c		\
 	  $(LOCAL)gserv_get_player_by_id.c	\
 	  $(LOCAL)gserv_get_player_info.c	\
+	  $(LOCAL)gserv_get_player_nbstones.c	\
+	  $(LOCAL)gserv_setplayer_addstone.c	\
+	  $(LOCAL)gserv_setplayer_delstone.c	\
 	  $(LOCAL)gserv_get_teams.c		\
 	  $(LOCAL)gserv_get_team_of_player.c	\
 	  $(LOCAL)gserv_get_team_by_name.c	\

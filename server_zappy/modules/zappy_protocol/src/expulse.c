@@ -33,7 +33,7 @@ int		zappy_expulse(t_fds *client, char *cmd)
   t_list	*list;
 
   (void)cmd;
-  list = get_players(player_data->x, player_data->y);
+  list = get_box_players(player_data->x, player_data->y);
   if (get_list_len(list))
     {
       r = asprintf(&ret, "deplacement %s", enum_to_dir[player_data->direction]);

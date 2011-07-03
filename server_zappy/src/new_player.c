@@ -29,7 +29,7 @@ t_player *	new_player(char * team)
   t_player *	player;
 
   if (!(player = init_player()) ||
-    !(setbox_add_player(player, team,
+    !(set_box_addplayer(player, team,
 			rand() % get_map_width(),
 			rand() % get_map_height())))
     return (NULL);
