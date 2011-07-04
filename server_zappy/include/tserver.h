@@ -17,6 +17,7 @@
 #  include	"team.h"
 #  include	"player.h"
 #  include	"stone.h"
+#  include	"event.h"
 
 typedef		struct
 {
@@ -37,6 +38,7 @@ typedef		struct
   t_names	names;
   t_info	info;
   t_map		map;
+  t_eventManager event;
   fds		pool;
   t_list	*module;	/* t_module */
   t_list 	*team;		/* t_team */
