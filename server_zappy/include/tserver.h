@@ -66,7 +66,7 @@ t_list		*get_box_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
 t_list		*get_modules(void);
 t_player	*get_player_by_id(uint);
-t_list		*get_players_by_level(uint, uint, uint);
+t_list		*get_box_players_by_level(uint, uint, uint);
 uint		get_player_level(uint);
 bool		get_player_pos(uint, uint *, uint *);
 t_list * /* t_stone */	get_player_stones(uint);

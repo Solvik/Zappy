@@ -50,7 +50,7 @@ static bool	verif_incantation(t_player *player)
       ELV.mendiane == get_box_nbstones_by_player(player, MENDIANE) &&
       ELV.phiras == get_box_nbstones_by_player(player, PHIRAS) &&
       ELV.thystame == get_box_nbstones_by_player(player, THYSTAME) &&
-      ELV.nb_players == (uint)get_list_len(get_players_by_level(player->x,
+      ELV.nb_players == (uint)get_list_len(get_box_players_by_level(player->x,
 								player->y,
 								player->level)))
     return (true);

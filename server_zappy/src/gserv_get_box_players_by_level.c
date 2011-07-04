@@ -22,7 +22,7 @@ static bool	match_player(void * player, void* level)
   return (true);
 }
 
-t_list		*get_players_by_level(uint x, uint y, uint level)
+t_list		*get_box_players_by_level(uint x, uint y, uint level)
 {
   t_list	*players;
   t_box		*box;

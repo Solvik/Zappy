@@ -78,7 +78,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_get_box_players.c	\
 	  $(LOCAL)gserv_get_info.c		\
 	  $(LOCAL)gserv_get_player_by_id.c	\
-	  $(LOCAL)gserv_get_players_by_level.c	\
+	  $(LOCAL)gserv_get_box_players_by_level.c	\
 	  $(LOCAL)gserv_get_player_info.c	\
 	  $(LOCAL)gserv_get_player_nbstones.c	\
 	  $(LOCAL)gserv_get_teams.c		\
