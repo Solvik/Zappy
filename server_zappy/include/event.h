@@ -20,6 +20,7 @@ typedef	struct _eventManager
 typedef	struct _event
 {
   char		*name;
+  void		*data;
 
   double	delay;
   char		relative : 1;
