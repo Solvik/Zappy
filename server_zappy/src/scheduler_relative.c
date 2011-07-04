@@ -76,3 +76,15 @@ bool		scheduler_active(fds c)
   schedule = &info->schedule;
    return ((bool)schedule->state);
 }
+
+bool		scheduler_free(fds c)
+{
+  t_client	*info;
+  t_scheduler	*schedule;
+
+  if (!c || !(info = c->trick))
+    return (false);
+  schedule = &info->schedule;
+  schedule->free = true;
+  return (true);
+}

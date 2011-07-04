@@ -38,18 +38,27 @@ bool		parse_cmp(char *c, char *m)
 
 bool		find_action(fds client, char *s)
 {
+  bool		(*schedule)(fds, _time, bool (*)(fds, char*), void *);
   t_client	*info;
   t_module	*module;
   t_mod_func	*functions;
 
   if (!client || !s || !(info = client->trick) ||
-      !(module = info->_m))
+      !(module = info->_m) || !(functions = module->functions))
     return (false);
-  functions = module->functions;
   while (functions && (*functions).action)
     {
       if (parse_cmp(s, (*functions).command) && (*functions).action)
-	return ((*functions).action(client, s));
+	{
+	  schedule = (void*)((*functions).relative ?
+		      scheduler_relative : scheduler_action);
+	  if ((*functions).delay <= 0.0)
+	    return ((*functions).action(client, s));
+	  else
+	    schedule(client, (*functions).delay, (*functions).action, s);
+	  scheduler_free(client);
+	  return ((bool)-1);
+	}
       functions = &functions[1];
     }
   return (false);

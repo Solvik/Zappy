@@ -30,13 +30,15 @@ t_module	*get_module(void)
   module->port = -1;
   module->antiflood = 10;
   module->clients = NULL;
-  add_command(module->functions, "test", test);
-  add_command(module->functions, "callback", call);
+  command_add(module->functions, "test", test);
+  command_add(module->functions, "callback", call);
+  command_relative(module->functions, "testdelay", test, 4.2);
   return (module);
 }
 
 bool		test(fds client, char *cmd)
 {
+  printf("Delay 4.2\n");
   if (!scheduler_active(client))
     return (scheduler_relative(client, 4.2,
 				 (bool (*)(fds, void*))test, strdup(cmd)));

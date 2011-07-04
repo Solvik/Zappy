@@ -57,6 +57,8 @@ bool		scheduler_dispatch(fds c)
     out = true;
   schedule->callback = NULL;
   schedule->state = (char)false;
+  if (schedule->free)
+    flood_read(c);
   return (exec_client(c, time_d(t)));
 }
 
