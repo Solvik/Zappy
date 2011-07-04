@@ -8,10 +8,12 @@
 ** Last update Wed Jun 29 16:30:35 2011 solvik blum
 */
 
-#include <stdlib.h>
+#include	<stdlib.h>
 
-#include "player.h"
-#include "server_zappy.h"
+#include	"map.h"
+#include	"player.h"
+#include	"server_zappy.h"
+#include	"tserver.h"
 
 typedef struct	s_avance
 {
@@ -21,26 +23,25 @@ typedef struct	s_avance
 
 static int	avance_haut(t_fds *client)
 {
-  player_data->y--;
+  player_data->y = (player_data->y - 1) % get_map_height();
   return (1);
 }
 
 static int	avance_bas(t_fds *client)
 {
-  player_data->y++;
+  player_data->y = (player_data->y + 1) % get_map_height();
   return (1);
 }
 
 static int	avance_droite(t_fds *client)
 {
-  player_data->x++;
+  player_data->x = (player_data->x + 1) % get_map_width();
   return (1);
 }
 
 static int	avance_gauche(t_fds *client)
 {
-  if (player_data->x == 1)
-    player_data->x--;
+  player_data->x = (player_data->x - 1) % get_map_width();
   return (1);
 }
 
@@ -54,8 +55,8 @@ static const t_avance	gl_tab[4] =
 
 int		zappy_avance(t_fds *client, char *cmd)
 {
-  unsigned int	i;
-  unsigned int	size;
+  uint		i;
+  uint		size;
 
   (void)cmd;
   i = -1;
