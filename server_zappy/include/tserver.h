@@ -64,7 +64,11 @@ fds 		*get_pool(void);
 t_list		*get_teams(void);
 t_list		*get_box_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
+
 t_list		*get_modules(void);
+t_list		*get_events(void);
+t_list		*get_catchers(void);
+
 t_player	*get_player_by_id(uint);
 t_list		*get_box_players_by_level(uint, uint, uint);
 uint		get_player_level(uint);
@@ -82,7 +86,11 @@ bool		set_box_delfood(uint, uint, uint);
 bool		setplayer_addstone(t_player *, e_stone, uint);
 bool		setplayer_delstone(t_player *, e_stone, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
+
 bool		set_new_module(t_module *);
+bool		set_new_event(t_event *);
+bool		set_new_catcher(t_catch *);
+
 void		set_port(int);
 void		set_delay(double);
 void		set_time(double);

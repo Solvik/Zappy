@@ -10,6 +10,7 @@
 
 #include	<unistd.h>
 #include	<stdlib.h>
+
 #include	"tserver.h"
 
 extern t_server *gserv;
@@ -19,7 +20,11 @@ bool		gserv_const(bool created)
   static bool	_const = false;
 
   if (created && !_const)
-    gserv->module = get_modules();
+    {
+      gserv->module = get_modules();
+      gserv->event.dispatch = get_events();
+      gserv->event.catch = get_catchers();
+    }
   _const = (created ? true : _const);
   return (_const);
 }

@@ -13,8 +13,8 @@
 
 typedef	struct _eventManager
 {
-  t_list	*catchEvent;
-  t_list	*dispatchEvent;
+  t_list	*catch;
+  t_list	*dispatch;
 }		t_eventManager;
 
 typedef	struct _event
