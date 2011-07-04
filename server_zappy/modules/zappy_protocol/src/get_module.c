@@ -6,7 +6,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 03:50:51 2011 Julien Di Marco
-** Last update Sun Jul  3 16:08:33 2011 solvik blum
+** Last update Mon Jul  4 19:45:09 2011 Sebastien Blot
 */
 
 #include	<strings.h>
