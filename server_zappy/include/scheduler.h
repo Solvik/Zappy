@@ -21,6 +21,7 @@ typedef struct	_scheduler
   void		*data;
   char		state	: 1;
   char		relative: 1;
+  char		free	: 1;
 
   _time		st;
   _time		lt;
@@ -34,6 +35,8 @@ double		scheduler_update(double);
 
 bool		scheduler_action(fds, _time, bool (*_)(fds, void*), void *);
 bool		scheduler_relative(fds, _time, bool (*_)(fds, void*), void *);
+
 bool		scheduler_active(fds);
+bool		scheduler_free(fds);
 
 #endif		/* !SCHEDULER_H_ */

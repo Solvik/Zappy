@@ -1,3 +1,4 @@
+
 /*
 ** get_module.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/zappy_protocol
 **
@@ -38,18 +39,18 @@
 
 static void		init_commands(t_mod_func *func)
 {
-  add_command(func, "avance",		zappy_avance);
-  add_command(func, "droite",		zappy_droite);
-  add_command(func, "gauche",		zappy_gauche);
-  add_command(func, "voir",		zappy_voir);
-  add_command(func, "inventaire",	zappy_inventaire);
-  add_command(func, "expulse",		zappy_expulse);
-  add_command(func, "prend",		zappy_prend);
-  add_command(func, "pose",		zappy_pose);
-  add_command(func, "broadcast",	zappy_broadcast);
-  add_command(func, "incantation",	zappy_incantation);
-  add_command(func, "fork",		zappy_fork);
-  add_command(func, "connect_nbr",	zappy_connect_nbr);
+  command_relative(func, "avance",	zappy_avance, 7);
+  command_relative(func, "droite",	zappy_droite, 7);
+  command_relative(func, "gauche",	zappy_gauche, 7);
+  command_relative(func, "voir",	zappy_voir, 7);
+  command_relative(func, "inventaire",	zappy_inventaire, 1);
+  command_relative(func, "prend",	zappy_prend, 7);
+  command_relative(func, "pose",	zappy_pose, 7);
+  command_relative(func, "expulse",	zappy_expulse, 7);
+  command_relative(func, "broadcast",	zappy_broadcast, 7);
+  command_relative(func, "incantation",	zappy_incantation, 300);
+  command_relative(func, "fork",	zappy_fork, 42);
+  command_add(func, "connect_nbr",	zappy_connect_nbr);
 }
 
 t_module	*get_module(void)

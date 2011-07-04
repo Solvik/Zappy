@@ -93,12 +93,10 @@ int		zappy_voir(t_fds *client, char *cmd)
   if ((ret = strdup("{")) == NULL)
     return (0);
   size = sizeof(voir_func) / sizeof(t_zappy_voir);
-  i = 0;
-  while (i < size)
-    {
-      if (player_data->direction == voir_func[i].dir)
-	voir_func[i].f(pos, step, &ret);
-    }
+  i = -1;
+  while (++i < size)
+    if (player_data->direction == voir_func[i].dir)
+      voir_func[i].f(pos, step, &ret);
   if ((ret = concat(ret, "}")) == NULL)
     return (0);
   sends(client, ret);

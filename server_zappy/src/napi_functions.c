@@ -14,14 +14,40 @@
 
 #include	"module.h"
 
-bool		add_command(t_mod_func *f, char *cmd, void *a)
+bool		command_add(t_mod_func *f, char *cmd, void *a)
 {
   if (!f || !cmd || !a)
     return (false);
   while (f && (*f).action)
     f = &f[1];
   (*f).command = strdup(cmd);
+  (*f).delay = -1;
   (*f).action = a;
   return (true);
 }
 
+bool		command_relative(t_mod_func *f, char *cmd, void *a, double d)
+{
+  if (!f || !cmd || !a)
+    return (false);
+  while (f && (*f).action)
+    f = &f[1];
+  (*f).command = strdup(cmd);
+  (*f).delay = (d >= 0.0 ? d : -1);
+  (*f).relative = true;
+  (*f).action = a;
+  return (true);
+}
+
+bool		command_universel(t_mod_func *f, char *cmd, void *a, double d)
+{
+  if (!f || !cmd || !a)
+    return (false);
+  while (f && (*f).action)
+    f = &f[1];
+  (*f).command = strdup(cmd);
+  (*f).delay = (d >= 0.0 ? d : -1);
+  (*f).relative = false;
+  (*f).action = a;
+  return (true);
+}

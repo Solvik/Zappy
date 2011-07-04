@@ -19,6 +19,8 @@
 # include	"map.h"
 # include	"tserver.h"
 
-bool		add_command(t_mod_func *, char *, void *);
+bool		command_add(t_mod_func *, char *, void *);
+bool		command_relative(t_mod_func*, char*, void*, double);
+bool		command_universel(t_mod_func*, char*, void*, double);
 
 #endif		/* !NAPI_H_ */
