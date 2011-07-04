@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 ** 
 ** Started on  Thu Jun 30 05:05:34 2011 Julien Di Marco
-** Last update Thu Jun 30 05:05:34 2011 Julien Di Marco
+** Last update Mon Jul  4 15:57:20 2011 Sebastien Blot
 */
 
 #include	<stdlib.h>
@@ -36,7 +36,7 @@ uint		get_map_max(void)
 
 t_box		*get_box(uint x, uint y)
 {
-  if (x >= get_map_height() || y >= get_map_width())
-    return (NULL);
+  if (x >= get_map_width() || y >= get_map_height())
+	return (NULL);
   return (&(gserv->map.map[x + (get_map_width() * y)]));
 }

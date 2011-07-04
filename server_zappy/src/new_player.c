@@ -18,8 +18,8 @@ static t_player *init_player(void)
   player->id = id;
   player->level = 1;
   player->life = default_life;
-  player->x = rand() % (get_map_width() - 1);
-  player->y = rand() % (get_map_height() - 1);
+  player->x = rand() % get_map_width();
+  player->y = rand() % get_map_height();
   player->stones = NULL;
   player->direction = EAST;
   ++id;
