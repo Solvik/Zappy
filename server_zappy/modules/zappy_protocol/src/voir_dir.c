@@ -128,9 +128,7 @@ void	zappy_voir_east(int pos, int step, char **ret)
   while (step != 0)
     {
       check_case(i, ret);
-      printf("Hella \n");
       check = _voir_ne(ret, i, angle_x, pos);
-      printf("Hello \n");
       if (((i += 1) / get_map_width()) != (pos / get_map_width()))
 	i -= get_map_width();
       step--;
