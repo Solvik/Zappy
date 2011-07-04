@@ -58,16 +58,14 @@ int		zappy_avance(t_fds *client, char *cmd)
   unsigned int	size;
 
   (void)cmd;
-  i = 0;
+  i = -1;
   size = sizeof(gl_tab) / sizeof(t_avance);
-  while (i < size)
-    {
-      if (player_data->direction == gl_tab[i].dir)
-	{
-	  gl_tab[i].func(client);
-	  sends(client, "ok");
-	  return (1);
-	}
-    }
+  while (++i < size)
+    if (player_data->direction == gl_tab[i].dir)
+      {
+	gl_tab[i].func(client);
+	sends(client, "ok");
+	return (1);
+      }
   return (0);
 }
