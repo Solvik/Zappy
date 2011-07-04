@@ -19,7 +19,7 @@ typedef		struct
 {
   char		*command;
   double	delay;
-  bool		relative : 1;
+  char		relative : 1;
 
   bool		(*action)(fds, char*);
 }		t_mod_func;

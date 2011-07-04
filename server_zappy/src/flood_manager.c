@@ -11,6 +11,7 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<stdio.h>
 
 #include	"client.h"
 #include	"net.h"
@@ -22,7 +23,7 @@ char		*flood_check(fds pool, char *s)
 
   if (!pool || !(info = pool->trick) ||
       !(flood = &info->flood) ||
-      !(flood->size <= 0 || flood->array))
+      !(flood->array))
     return (NULL);
   if (flood->size <= 0 && info->command)
     free(info->command);
@@ -32,8 +33,11 @@ char		*flood_check(fds pool, char *s)
     memset(&flood->read, 0, sizeof(flood->read) * 2);
   if (s && (flood->write - flood->read) < flood->size)
     flood->array[(flood->write++) % flood->size] = s;
-  else
-    free(s);
+   else
+    {
+      free(s);
+      buffer_destroy(&pool->read);
+    }
   if ((flood->write - flood->read) > 0)
     return (flood->array[(flood->read % flood->size)]);
   return (NULL);
@@ -46,7 +50,7 @@ bool		flood_read(fds pool)
 
   if (!pool || !(info = pool->trick) ||
       !(flood = &info->flood) ||
-      !(flood->size <= 0 || flood->array))
+      !(flood->array))
     return (false);
   if (flood->size <= 0 && info->command)
     {

@@ -55,10 +55,10 @@ bool		scheduler_dispatch(fds c)
     return (out);
   if (schedule->callback(c, schedule->data))
     out = true;
+  if ((schedule->free))
+    flood_read(c);
   schedule->callback = NULL;
   schedule->state = (char)false;
-  if (schedule->free)
-    flood_read(c);
   return (exec_client(c, time_d(t)));
 }
 
