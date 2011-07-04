@@ -11,7 +11,6 @@ static t_player *init_player(void)
   static uint	id = 0;
   t_player 	*player;
 
-  srand(time(NULL));
   if (!(player = malloc(sizeof(*player))))
     return (NULL);
   bzero(player, sizeof(*player));
