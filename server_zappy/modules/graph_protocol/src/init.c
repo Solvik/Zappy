@@ -32,13 +32,13 @@ t_module *	get_module(void)
   module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
-  add_command(module->functions, "msz", graph_msz);
-  add_command(module->functions, "bct", graph_bct);
-  add_command(module->functions, "mct", graph_mct);
-  add_command(module->functions, "tna", graph_tna);
-  add_command(module->functions, "sgt", graph_sgt);
-  add_command(module->functions, "sst", graph_sst);
-  add_command(module->functions, "graphic", graph_graphic);
+  command_add(module->functions, "msz", graph_msz);
+  command_add(module->functions, "bct", graph_bct);
+  command_add(module->functions, "mct", graph_mct);
+  command_add(module->functions, "tna", graph_tna);
+  command_add(module->functions, "sgt", graph_sgt);
+  command_add(module->functions, "sst", graph_sst);
+  command_add(module->functions, "graphic", graph_graphic);
   return (module);
 }
 
