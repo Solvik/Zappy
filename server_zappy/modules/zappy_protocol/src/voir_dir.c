@@ -101,7 +101,7 @@ void	zappy_voir_west(int pos, int step, char **ret)
   int		angle_x;
   int		i;
 
-  angle_x = 0;
+  angle_x = 1;
   angle_y = 0;
   i = pos;
   while (step != 0)
@@ -122,13 +122,15 @@ void	zappy_voir_east(int pos, int step, char **ret)
   int		angle_x;
   int		i;
 
-  angle_x = 0;
+  angle_x = 1;
   angle_y = 0;
   i = pos;
   while (step != 0)
     {
       check_case(i, ret);
+      printf("Hella \n");
       check = _voir_ne(ret, i, angle_x, pos);
+      printf("Hello \n");
       if (((i += 1) / get_map_width()) != (pos / get_map_width()))
 	i -= get_map_width();
       step--;
