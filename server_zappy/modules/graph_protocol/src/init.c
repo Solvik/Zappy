@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Thu Jun 30 07:40:56 2011 Sebastien Blot
+** Last update Mon Jul  4 19:29:37 2011 ramnes
 */
 
 #include	<stdio.h>
@@ -17,8 +17,9 @@
 
 #include	"graph_map.h"
 #include	"graph_graphic.h"
-#include    "graph_team.h"
-#include    "graph_time.h"
+#include	"graph_team.h"
+#include	"graph_time.h"
+#include	"graph_player.h"
 
 t_module *	get_module(void)
 {
@@ -38,6 +39,8 @@ t_module *	get_module(void)
   command_add(module->functions, "tna", graph_tna);
   command_add(module->functions, "sgt", graph_sgt);
   command_add(module->functions, "sst", graph_sst);
+  command_add(module->functions, "ppo", graph_ppo);
+  command_add(module->functions, "plv", graph_plv);
   command_add(module->functions, "graphic", graph_graphic);
   return (module);
 }

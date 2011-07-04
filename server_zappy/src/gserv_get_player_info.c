@@ -6,19 +6,23 @@ uint			get_player_level(uint id)
 {
   t_player *	player;
 
-  if (!(player = get_player_by_id(id)))
+  if ((player = get_player_by_id(id)) == NULL)
     return (0);
   return (player->level);
 }
 
-bool			get_player_pos(uint id, uint * x, uint * y)
+bool			get_player_pos(uint id, uint * x, uint * y, uint * o)
 {
   t_player *	player;
 
-  if (!(player = get_player_by_id(id)))
+  if ((player = get_player_by_id(id)) == NULL)
     return (false);
-  *x = player->x;
-  *y = player->y;
+  if (x != NULL)
+    *x = player->x;
+  if (y != NULL)
+    *y = player->y;
+  if (o != NULL)
+    *o = ((uint)player->direction) + 1;
   return (true);
 }
 

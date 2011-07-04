@@ -5,13 +5,16 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 14 16:08:10 2011 seb
-** Last update Tue Jun 14 16:08:10 2011 seb
+** Last update Mon Jul  4 19:48:54 2011 ramnes
 */
 
+#define _GNU_SOURCE
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "graph_player.h"
+#include "tserver.h"
 
 /*
 ** ppo numero_joueur X Y orientation
@@ -19,6 +22,23 @@
 
 bool graph_ppo(t_fds *client, char *cmd)
 {
+  char *id;
+  char *to_send;
+  unsigned int	x;
+  unsigned int	y;
+  unsigned int	o;
+
+  to_send = NULL;
+  (void)strtok(cmd, " ");
+  id = strtok(NULL, " ");
+  if (!id || get_player_pos(atoi(id), &x, &y, &o) == false)
+    {
+      sends(client, "sbp");
+      return (true);
+    }
+  asprintf(&to_send, "ppo %s %d %d %d", id, x, y, o);
+  sends(client, to_send);
+  free(to_send);
   return (true);
 }
 
@@ -35,7 +55,8 @@ bool graph_plv(t_fds *client, char *cmd)
   to_send = NULL;
   (void)strtok(cmd, " ");
   id = strtok(NULL, " ");
-  if (!id || (level = get_player_level_by_id(atoi(id))) == -1)
+  printf("%s\n", id);
+  if (!id || (level = get_player_level(atoi(id))) == 0)
     {
       sends(client, "sbp");
       return (true);

@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Mon Jul  4 01:21:29 2011 solvik blum
+** Last update Mon Jul  4 18:49:35 2011 ramnes
 */
 
 #ifndef		TSERV_H_
@@ -68,7 +68,7 @@ t_list		*get_modules(void);
 t_player	*get_player_by_id(uint);
 t_list		*get_box_players_by_level(uint, uint, uint);
 uint		get_player_level(uint);
-bool		get_player_pos(uint, uint *, uint *);
+bool		get_player_pos(uint, uint *, uint *, uint *);
 t_list * /* t_stone */	get_player_stones(uint);
 uint		get_player_food(uint);
 
