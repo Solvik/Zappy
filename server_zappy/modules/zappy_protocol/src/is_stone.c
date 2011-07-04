@@ -19,7 +19,7 @@ e_stone		is_stone(char *str)
   i = 0;
   while (i < size_stone)
     {
-      if (!strcmp(str, &(gl_ressource_name[i].str[1])))
+      if (!strcasecmp(str, &(gl_ressource_name[i].str[1])))
 	return (gl_ressource_name[i].stone);
       i++;
     }

@@ -29,7 +29,7 @@ static bool	pose_action(t_player *player, char *obj)
 	  !setplayer_delstone(player, stone, 1))
 	return (false);
     }
-  else if (!strcmp(obj, "nourriture"))
+  else if (!strcasecmp(obj, "nourriture"))
     {
       player->life -= 1;
       if (set_box_addfood(player->x, player->y, 1))
