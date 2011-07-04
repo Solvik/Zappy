@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:05:45 2011 Julien Di Marco
-** Last update Sun Jul  3 22:33:46 2011 solvik blum
+** Last update Mon Jul  4 15:57:27 2011 Sebastien Blot
 */
 
 #include		<stdlib.h>
@@ -38,8 +38,8 @@ static t_team 		*add_team(char *name)
 }
 
 bool			set_box_addplayer(t_player *player,
-					  char *name,
-					  uint x, uint y)
+								  char *name,
+								  uint x, uint y)
 {
   t_box 		*box;
   t_team 		*team;
