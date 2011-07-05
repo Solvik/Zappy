@@ -57,7 +57,7 @@ ARCHI	!= uname -m
 
 MFLAG		= $(MFLAG_${OS})
 MFLAG_$(OS)	= -shared -rdynamic
-MFLAG_Darwin	= -bundle -flat_namespace -undefined suppress
+MFLAG_Darwin	= -bundle -flat_namespace -undefined dynamic_lookup
 MFLAG_darwin	= $(MFLAG_Darwin)
 
 OFLAG		= $(OFLAG_${OS})
