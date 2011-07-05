@@ -18,6 +18,12 @@
 bool		test(fds client, char *cmd);
 bool		call(fds client, char *cmd);
 
+bool		event(void *data)
+{
+  printf("Hello this is a event !![%p]\n", data);
+  return (true);
+}
+
 t_module	*get_module(void)
 {
   t_module	*module;
@@ -33,16 +39,18 @@ t_module	*get_module(void)
   command_add(module->functions, "test", test);
   command_add(module->functions, "callback", call);
   command_relative(module->functions, "testdelay", test, 4.2);
+  event_catch("testEvent", event);
+  event_catch("testEvent", event);
   return (module);
 }
 
 bool		test(fds client, char *cmd)
 {
-  printf("Delay 4.2\n");
   if (!scheduler_active(client))
     return (scheduler_relative(client, 4.2,
 				 (bool (*)(fds, void*))test, strdup(cmd)));
   (void)client;
+  event_relative_dispatch("testEvent", (void*)0x4242, 42);
   printf("WORKING : [%s]\n", cmd);
   return (true);
 }
@@ -67,6 +75,7 @@ bool		call_o(fds c, char *cmd, void *data)
 
 bool		call(fds client, char *cmd)
 {
+  event_dispatch("testEvent", (void*)0x42, 0.42);
   printf("Setting callback - Please enter your password. [%d]\n", callback_active(client));
   callback_set(client, callback__, (void*)0x42);
   if (cmd && strcmp(cmd, "callback set") == 0)

@@ -15,6 +15,7 @@
 
 #include	"time_.h"
 #include	"scheduler.h"
+#include	"event.h"
 #include	"module.h"
 #include	"tserver.h"
 
@@ -43,6 +44,8 @@ bool		exec_timer(time__ **tv, double tdt)
   if ((modules = get_modules()))
     foreach_arg_list(modules, (void(*)(void*, void*))module_timer, &idle);
   idle = (((time = scheduler_update(-1.0)) < idle) || idle <= -1.0) &&
+    time > -1.0 ? time : idle;
+  idle = (((time = event_update(-1.0)) < idle) || idle <= -1.0) &&
     time > -1.0 ? time : idle;
   *tv = timeval_(t, idle);
   return ((idle <= -1.0 ? (bool)(*tv = NULL) : true));

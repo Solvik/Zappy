@@ -11,6 +11,8 @@
 #ifndef		EVENT_H_
 # define	EVENT_H_
 
+# include	"list.h"
+
 typedef	struct _eventManager
 {
   t_list	*catch;
@@ -25,6 +27,9 @@ typedef	struct _event
   double	delay;
   char		relative : 1;
   char		free	 : 1;
+
+  double	st;
+  double	lt;
 }		t_event;
 
 typedef struct _catch
@@ -34,5 +39,17 @@ typedef struct _catch
 
   t_list	*catch;
 }		t_catch;
+
+bool		event_dispatch(char *, void *, double);
+bool		event_free(char *, void *, double);
+bool		event_relative_dispatch(char *, void *, double);
+bool		event_free_dispatch(char *, void *, double);
+
+bool		event_catch(char *, bool (*)(void*));
+
+double		event_update(double);
+bool		eventm_dispatch(t_event *);
+
+t_list		**singleton_event(void);
 
 #endif		/* !EVENT_H_ */

@@ -56,6 +56,9 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)callback_user.c		\
 	  $(LOCAL)callback_internal.c		\
 	  \
+	  $(LOCAL)event_user.c			\
+	  $(LOCAL)event_internal.c		\
+	  \
 	  $(LOCAL)new_player.c			\
 	  \
 	  $(LOCAL)gserv_get.c			\
@@ -84,8 +87,10 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_get_teams.c		\
 	  $(LOCAL)gserv_get_team_of_player.c	\
 	  $(LOCAL)gserv_get_team_by_name.c	\
-	  $(LOCAL)gserv_modules.c		\
 	  $(LOCAL)gserv_available_names.c	\
+	  $(LOCAL)gserv_modules.c		\
+	  $(LOCAL)gserv_event.c			\
+	  $(LOCAL)gserv_event_handler.c		\
 	  \
 	  $(LOCAL)net_connection.c		\
 	  \
@@ -94,6 +99,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  \
 	  $(LOCAL)exec_updates.c		\
 	  $(LOCAL)exec_actions.c		\
+	  $(LOCAL)exec_event.c			\
 	  $(LOCAL)exec_timer.c			\
 	  \
 	  $(LOCAL)destroy.c			\

@@ -34,6 +34,7 @@ bool            run(void)
       /* printf("Updates: T[%f] d[%f]\n", t, time_d(t)); */
       exec_updates(time_d(t));
       exec_pool(gserv->pool, time_d(t));
+      exec_event(time_d(t));
       exec_timer(&tv, time_d(t));
     }
   return (true);

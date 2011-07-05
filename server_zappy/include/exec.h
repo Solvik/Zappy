@@ -17,6 +17,8 @@
 bool		exec_pool(fds, double);
 bool		exec_client(fds, double);
 
+bool		exec_event(double);
+
 bool		exec_updates(double);
 bool		exec_timer(time__ **, double);
 

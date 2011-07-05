@@ -13,6 +13,7 @@
 
 # include	"scheduler.h"
 # include	"callback.h"
+# include	"event.h"
 # include	"module.h"
 # include	"net.h"
 
