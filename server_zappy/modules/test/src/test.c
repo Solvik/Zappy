@@ -17,6 +17,7 @@
 
 bool		test(fds client, char *cmd);
 bool		call(fds client, char *cmd);
+bool		load(fds client, char *_);
 
 bool		event(void *data)
 {
@@ -38,6 +39,7 @@ t_module	*get_module(void)
   module->clients = NULL;
   command_add(module->functions, "test", test);
   command_add(module->functions, "callback", call);
+  command_add(module->functions, "load", load);
   command_relative(module->functions, "testdelay", test, 4.2);
   event_catch("testEvent", event);
   event_catch("testEvent", event);
@@ -82,6 +84,27 @@ bool		call(fds client, char *cmd)
     printf("try setting callback: %d\n", callback_set(client, call_s, (void*)0x41));
   if (strcmp(cmd, "callback overide") == 0)
     printf("try overide callback: %d\n", callback_overide(client, call_o, (void*)0x1337));
+  return (true);
+}
+
+bool		load(fds client, char *_)
+{
+  int		w;
+  int		h;
+  (void)_;
+  w = get_map_width();
+  while (w > 0)
+    {
+      h = get_map_height();
+      while (h > 0)
+	{
+	  sends(client, "case");
+	  h -= 1;
+	}
+      w -= 1;;
+    }
+  printf("Finish \n");
+  sends(client, "Finish YAY");
   return (true);
 }
 
