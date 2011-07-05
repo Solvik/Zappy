@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Tue Jul  5 19:07:34 2011 solvik blum
+** Last update Wed Jul  6 00:37:00 2011 solvik blum
 */
 
 #ifndef		CLIENT_ZAPPY_H_
@@ -18,6 +18,12 @@
 #  include	<SDL/SDL.h>
 
 bool		client_zappy(int, char *[]);
+
+typedef struct	s_cmd
+{
+  int		argc;
+  char		**argv;
+}		t_cmd;
 
 typedef struct	s_sprite
 {

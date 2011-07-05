@@ -16,7 +16,9 @@ LIB_DIR		=	../lib/
 
 
 ## Sources
+
 SRCS		=	$(SRC_DIR)main.c			\
+			$(SRC_DIR)parse_cmd.c			\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries
