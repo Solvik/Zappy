@@ -31,6 +31,7 @@ void		create_window(t_visu *p)
 void		connect_server(char *addr, int port)
 {
   fds		pooler;
+  char *cmd;
 
   pooler = NULL;
   add_co(&pooler, addr, port);
@@ -39,27 +40,31 @@ void		connect_server(char *addr, int port)
       pool(&pooler, NULL);
       if (!pooler || (pooler && pooler->fd == -1))
 	break;
-      printf("Command find: %s\n", getcmd(pooler));
+      while ((cmd = getcmd(pooler)))
+	{
+	  printf("Command find: %s\n", cmd);
+	  if (!strcasecmp(cmd, "BIENVENUE"))
+	    sends(pooler, "GRAPHIC");
+	}
     }
-  sends(pooler, "GRAPHIC");
   // while on recoit, on traite selon cmd[0]
 }
 
-bool		client_zappy(int ac, char *av[])
-{
-  t_visu	visu;
+  bool		client_zappy(int ac, char *av[])
+  {
+    t_visu	visu;
 
-  create_window(&visu);
-  if (ac > 2)
-    connect_server(av[1], atoi(av[2]));
-  // event (souris)
-  // send > GRAPHIC
-  // on recupere les infos
-  // msz X Y > taille map
-  // sgt T > temps
-  // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
-  // tna N >> nom de chaque equipe
-  // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
-  // oeuf pondu >> ok
-  return (true);
-}
+    create_window(&visu);
+    if (ac > 2)
+      connect_server(av[1], atoi(av[2]));
+    // event (souris)
+    // send > GRAPHIC
+    // on recupere les infos
+    // msz X Y > taille map
+    // sgt T > temps
+    // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
+    // tna N >> nom de chaque equipe
+    // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
+    // oeuf pondu >> ok
+    return (true);
+  }
