@@ -5,11 +5,12 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Tue Jul  5 19:21:04 2011 solvik blum
+** Last update Wed Jul  6 01:15:03 2011 solvik blum
 */
 
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<errno.h>
 #include	<stdio.h>
 
 #include	"network.h"
@@ -31,7 +32,8 @@ void		create_window(t_visu *p)
 void		connect_server(char *addr, int port)
 {
   fds		pooler;
-  char *cmd;
+  char		*cmd;
+  t_cmd		*inc_cmd;
 
   pooler = NULL;
   add_co(&pooler, addr, port);
@@ -42,10 +44,12 @@ void		connect_server(char *addr, int port)
 	break;
       while ((cmd = getcmd(pooler)))
 	{
-	  printf("Command find: %s\n", cmd);
-	  if (!strcasecmp(cmd, "BIENVENUE"))
-	    sends(pooler, "GRAPHIC");
+	  inc_cmd = parse_cmd(cmd);
+	  if (!gere_cmd(pooler, inc_cmd))
+	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
+	  /* free_cmd(inc_cmd); */
 	}
+      printf("lol\n");
     }
   // while on recoit, on traite selon cmd[0]
 }

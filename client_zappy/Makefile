@@ -19,6 +19,9 @@ LIB_DIR		=	../lib/
 
 SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)parse_cmd.c			\
+			$(SRC_DIR)gere_cmd.c			\
+			$(SRC_DIR)bienvenue.c			\
+			$(SRC_DIR)msz.c				\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries
@@ -32,7 +35,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g
+CFLAGS		+=	-W -Wall -g3
 
 ## RULES
 
