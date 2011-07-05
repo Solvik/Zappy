@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 18:51:14 2011 seb
-** Last update Thu Jun 30 12:09:20 2011 guillaume gelin
+** Last update Tue Jul  5 16:05:44 2011 guillaume gelin
 */
 
 #define _GNU_SOURCE
@@ -29,11 +29,6 @@ bool graph_msz(t_fds *player, char *_)
   return (true);
 }
 
-/*
-** TODO : Mettre le bon nombre de fonction dans le malloc
-** getbox_nbstones(x, y, BOUFFE) - L: 47 - to replace 42
-*/
-
 bool graph_bct(t_fds *player, char *cmd)
 {
   char *to_send;
@@ -48,7 +43,7 @@ bool graph_bct(t_fds *player, char *cmd)
   if (!x || !y)
 	return (false);
   box = get_box(atoi(x), atoi(y));
-  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y), 42,
+  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y), 42 /* à modifier par la bouffe */,
 		   get_box_nbstones(atoi(x), atoi(y), LINEMATE),
 		   get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
 		   get_box_nbstones(atoi(x), atoi(y), SIBUR),

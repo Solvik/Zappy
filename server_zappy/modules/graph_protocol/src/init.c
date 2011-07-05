@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Mon Jul  4 19:29:37 2011 ramnes
+** Last update Tue Jul  5 16:34:41 2011 guillaume gelin
 */
 
 #include	<stdio.h>
@@ -37,10 +37,11 @@ t_module *	get_module(void)
   command_add(module->functions, "bct", graph_bct);
   command_add(module->functions, "mct", graph_mct);
   command_add(module->functions, "tna", graph_tna);
-  command_add(module->functions, "sgt", graph_sgt);
-  command_add(module->functions, "sst", graph_sst);
   command_add(module->functions, "ppo", graph_ppo);
   command_add(module->functions, "plv", graph_plv);
+  command_add(module->functions, "pin", graph_pin);
+  command_add(module->functions, "sgt", graph_sgt);
+  command_add(module->functions, "sst", graph_sst);
   command_add(module->functions, "graphic", graph_graphic);
   return (module);
 }

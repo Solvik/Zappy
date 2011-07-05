@@ -13,9 +13,11 @@ typedef		struct
 static bool	match_player(void * player, void * playerid)
 {
   if (((t_player *)player)->id == ((t_playerid *)playerid)->id)
-    return (false);
-  ((t_playerid *)playerid)->player = ((t_player *)player);
-  return (true);
+    {
+      ((t_playerid *)playerid)->player = ((t_player *)player);
+      return (true);
+    }
+  return (false);
 }
 
 static bool	match_team(void * team, void * playerid)

@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 14 16:08:10 2011 seb
-** Last update Mon Jul  4 19:48:54 2011 ramnes
+** Last update Tue Jul  5 16:28:42 2011 guillaume gelin
 */
 
 #define _GNU_SOURCE
@@ -15,6 +15,12 @@
 #include <string.h>
 #include "graph_player.h"
 #include "tserver.h"
+
+bool graph_pnw(t_fds *client, char *cmd __attribute__((unused)))
+{
+  sends(client, "pnw 0 2 5 1 1 LOL");
+  return (true);
+}
 
 /*
 ** ppo numero_joueur X Y orientation
@@ -73,12 +79,21 @@ bool graph_plv(t_fds *client, char *cmd)
 
 bool graph_pin(t_fds *client, char *cmd)
 {
+  char *id;
+  char *to_send;
+  unsigned int	x;
+  unsigned int	y;
 
-  return (true);
-}
-
-bool graph_pnw(t_fds *client, char *cmd)
-{
-  sends(client, "pnw 0 2 5 1 1 LOL");
+  to_send = NULL;
+  (void)strtok(cmd, " ");
+  id = strtok(NULL, " ");
+  if (!id || get_player_pos(atoi(id), &x, &y, NULL) == false)
+    {
+      sends(client, "sbp");
+      return (true);
+    }
+  asprintf(&to_send, "pin %s %d %d %s", id, x, y, "inventaire" /* à remplacer par l'inventaire du joueur */);
+  sends(client, to_send);
+  free(to_send);
   return (true);
 }
