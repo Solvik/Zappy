@@ -35,7 +35,7 @@ int		zappy_inventaire(t_fds *client, char *cmd)
 	       "phiras %u,"
 	       "thystame %u"
 	       "}",
-	       player_data->life,
+	       player_data->food,
 	       get_box_nbstones_by_player(player_data, LINEMATE),
 	       get_box_nbstones_by_player(player_data, DERAUMERE),
 	       get_box_nbstones_by_player(player_data, SIBUR),

@@ -41,6 +41,6 @@ uint			get_player_food(uint id)
 
   if (!(player = get_player_by_id(id)))
     return (0);
-  return (player->life);
+  return (player->food);
 }
 

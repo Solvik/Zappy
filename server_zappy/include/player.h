@@ -29,7 +29,7 @@ typedef struct	s_player
 {
   uint		id;
   uint		level;
-  uint		life;
+  uint		food;
   uint		x;
   uint		y;
   t_list 	*stones;

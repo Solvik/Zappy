@@ -16,7 +16,7 @@ static t_player *init_player(void)
   bzero(player, sizeof(*player));
   player->id = id;
   player->level = 1;
-  player->life = default_life;
+  player->food = default_life;
   player->x = rand() % get_map_width();
   player->y = rand() % get_map_height();
   player->stones = NULL;

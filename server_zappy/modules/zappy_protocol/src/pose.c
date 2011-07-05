@@ -31,7 +31,7 @@ static bool	pose_action(t_player *player, char *obj)
     }
   else if (!strcasecmp(obj, "nourriture"))
     {
-      player->life -= 1;
+      player->food -= 1;
       if (set_box_addfood(player->x, player->y, 1))
 	return (true);
       else
