@@ -9,7 +9,7 @@
 */
 
 #include	<unistd.h>
-#include	<Stdlib.h>
+#include	<stdlib.h>
 #include	<string.h>
 
 #include	"time_.h"
