@@ -114,8 +114,8 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   t_module *this;
 
   this = get_module_by_name("Zappy Protocol");
-  printf("%s\n", this->name)
-  (void)strtok(cmd, " ");
+  printf("%s\n", this->name);
+  strtok(cmd, " ");
   text = strtok(NULL, " ");
   if (!text)
 	{
