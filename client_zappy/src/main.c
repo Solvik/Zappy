@@ -11,7 +11,7 @@
 #include	<stdlib.h>
 #include	"client_zappy.h"
 
-int		main(void)
+int		main(int ac, char *av[])
 {
-  return (client_zappy() ? EXIT_SUCCESS : EXIT_FAILURE);
+  return (client_zappy(ac, av) ? EXIT_SUCCESS : EXIT_FAILURE);
 }

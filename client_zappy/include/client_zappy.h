@@ -13,8 +13,11 @@
 
 #  include	<stdbool.h>
 #  include	"ztypes.h"
+#  include	"list.h"
 
-bool		client_zappy(void);
+#  include	<SDL/SDL.h>
+
+bool		client_zappy(int, char *[]);
 
 typedef struct	s_sprite
 {

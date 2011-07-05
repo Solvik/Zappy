@@ -5,7 +5,11 @@ NAME		=	client_zappy
 SRC_DIR		=	src/
 CSRC_DIR	=	../common/src
 
-INCLUDE		=	-Iinclude/ -I../common/include/
+INCLUDE		=	-Iinclude/			\
+			-I../common/include/		\
+			-I../lib/network/include	\
+			-I../lib/List/include
+
 LIB_DIR		=	../lib/
 
 ## Files Prefixes
@@ -16,8 +20,8 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries
-#LIB		=	-L$(LIB_DIR)/gnl -lgnl			\
-#			-L$(LIB_DIR)/List -llist		\
+LIB		=	-L$(LIB_DIR)/network -lnet		\
+			-L$(LIB_DIR)/List -llist
 #			-L$(LIB_DIR)/itoa -litoa
 
 ## functions
