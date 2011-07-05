@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 18:51:14 2011 seb
-** Last update Tue Jul  5 16:05:44 2011 guillaume gelin
+** Last update Tue Jul  5 17:45:03 2011 guillaume gelin
 */
 
 #define _GNU_SOURCE
@@ -17,19 +17,19 @@
 #include "tserver.h"
 #include "graph_map.h"
 
-bool graph_msz(t_fds *player, char *_)
+bool graph_msz(t_fds *client, char *_)
 {
   char *to_send;
 
   (void)_;
   to_send = NULL;
   asprintf(&to_send, "msz %u %u", get_map_width(), get_map_height());
-  sends(player, to_send);
+  sends(client, to_send);
   free(to_send);
   return (true);
 }
 
-bool graph_bct(t_fds *player, char *cmd)
+bool graph_bct(t_fds *client, char *cmd)
 {
   char *to_send;
   t_box *box;
@@ -41,21 +41,25 @@ bool graph_bct(t_fds *player, char *cmd)
   x = strtok(NULL, " ");
   y = strtok(NULL, " ");
   if (!x || !y)
-	return (false);
+    {
+      sends(client, "sbp");
+      return (false);
+    }
   box = get_box(atoi(x), atoi(y));
-  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y), 42 /* à modifier par la bouffe */,
-		   get_box_nbstones(atoi(x), atoi(y), LINEMATE),
-		   get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
-		   get_box_nbstones(atoi(x), atoi(y), SIBUR),
-		   get_box_nbstones(atoi(x), atoi(y), MENDIANE),
-		   get_box_nbstones(atoi(x), atoi(y), PHIRAS),
-		   get_box_nbstones(atoi(x), atoi(y), THYSTAME));
-  sends(player, to_send);
+  asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y),
+	   get_box_nbfood(atoi(x), atoi(y)),
+	   get_box_nbstones(atoi(x), atoi(y), LINEMATE),
+	   get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
+	   get_box_nbstones(atoi(x), atoi(y), SIBUR),
+	   get_box_nbstones(atoi(x), atoi(y), MENDIANE),
+	   get_box_nbstones(atoi(x), atoi(y), PHIRAS),
+	   get_box_nbstones(atoi(x), atoi(y), THYSTAME));
+  sends(client, to_send);
   free(to_send);
   return (true);
 }
 
-bool graph_mct(t_fds *player, char *_)
+bool graph_mct(t_fds *client, char *_)
 {
   uint x;
   uint y;
@@ -72,7 +76,7 @@ bool graph_mct(t_fds *player, char *_)
       while (y < get_map_height())
 	{
 	  asprintf(&msg, "bct %d %d", x, y);
-	  graph_bct(player, msg);
+	  graph_bct(client, msg);
 	  free(msg);
 	  y++;
 	}

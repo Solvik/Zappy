@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 14 16:08:10 2011 seb
-** Last update Tue Jul  5 16:28:42 2011 guillaume gelin
+** Last update Tue Jul  5 17:45:10 2011 guillaume gelin
 */
 
 #define _GNU_SOURCE
@@ -33,14 +33,14 @@ bool graph_ppo(t_fds *client, char *cmd)
   unsigned int	x;
   unsigned int	y;
   unsigned int	o;
-
+  
   to_send = NULL;
   (void)strtok(cmd, " ");
   id = strtok(NULL, " ");
   if (!id || get_player_pos(atoi(id), &x, &y, &o) == false)
     {
       sends(client, "sbp");
-      return (true);
+      return (false);
     }
   asprintf(&to_send, "ppo %s %d %d %d", id, x, y, o);
   sends(client, to_send);
@@ -65,7 +65,7 @@ bool graph_plv(t_fds *client, char *cmd)
   if (!id || (level = get_player_level(atoi(id))) == 0)
     {
       sends(client, "sbp");
-      return (true);
+      return (false);
     }
   asprintf(&to_send, "plv %s %d", id, level);
   sends(client, to_send);
@@ -80,19 +80,28 @@ bool graph_plv(t_fds *client, char *cmd)
 bool graph_pin(t_fds *client, char *cmd)
 {
   char *id;
+  unsigned int iid;
   char *to_send;
-  unsigned int	x;
-  unsigned int	y;
+  unsigned int x;
+  unsigned int y;
 
   to_send = NULL;
   (void)strtok(cmd, " ");
   id = strtok(NULL, " ");
-  if (!id || get_player_pos(atoi(id), &x, &y, NULL) == false)
+  iid = atoi(id);
+  if (!id || get_player_pos(iid, &x, &y, NULL) == false)
     {
       sends(client, "sbp");
-      return (true);
+      return (false);
     }
-  asprintf(&to_send, "pin %s %d %d %s", id, x, y, "inventaire" /* à remplacer par l'inventaire du joueur */);
+  asprintf(&to_send, "pin %s %d %d %d %d %d %d %d %d %d", id, x, y,
+	   get_player_food(iid),
+	   get_player_nbstones(iid, LINEMATE),
+	   get_player_nbstones(iid, DERAUMERE),
+	   get_player_nbstones(iid, SIBUR),
+	   get_player_nbstones(iid, MENDIANE),
+	   get_player_nbstones(iid, PHIRAS),
+	   get_player_nbstones(iid, THYSTAME));
   sends(client, to_send);
   free(to_send);
   return (true);
