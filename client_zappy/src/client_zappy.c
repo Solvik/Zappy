@@ -37,7 +37,7 @@ void		connect_server(char *addr, int port)
   while (1)
     {
       pool(&pooler, NULL);
-      if (!pooler || pooler && pooler->fd == -1)
+      if (!pooler || (pooler && pooler->fd == -1))
 	break;
       printf("Command find: %s\n", getcmd(pooler));
     }
