@@ -1,11 +1,11 @@
 /*
 ** event.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Mon Jul  4 04:34:30 2011 Julien Di Marco
-** Last update Mon Jul  4 04:34:30 2011 Julien Di Marco
+** Last update Tue Jul  5 18:03:18 2011 solvik blum
 */
 
 #ifndef		EVENT_H_
@@ -44,6 +44,7 @@ bool		event_dispatch(char *, void *, double);
 bool		event_free(char *, void *, double);
 bool		event_relative_dispatch(char *, void *, double);
 bool		event_free_dispatch(char *, void *, double);
+bool		event_free_relative(char *, void *, double);
 
 bool		event_catch(char *, bool (*)(void*));
 
