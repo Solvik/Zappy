@@ -35,7 +35,7 @@ int		zappy_fork(t_fds *client, char *cmd)
   (void)cmd;
   if (!(egg = set_box_addegg(player_data)))
     return (0);
-  event_free_relative("egg_eclosion", egg, 600);
+  event_relative_dispatch("egg_eclosion", egg, 600);
   sends(client, "ok");
   return (1);
 }
