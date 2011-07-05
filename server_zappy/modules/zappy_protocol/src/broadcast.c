@@ -118,23 +118,23 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   strtok(cmd, " ");
   text = strtok(NULL, " ");
   if (!text)
-	{
-	  sends(client, "ko");
-	  return (1);
-	}
+  	{
+  	  sends(client, "ko");
+  	  return (1);
+  	}
   tr_x = get_map_width() / 2 - player_data->x;
   tr_y = get_map_height() / 2 - player_data->y;
   x = 0;
   while (x < get_map_width())
-	{
-	  y = 0;
-	  while (y < get_map_height())
-		{
-		  if ((players =  get_box_players(x, y)))
-			foreach_list(players, send_broadcast);
-		  y++;
-		}
-	  x++;
-	}
+  	{
+  	  y = 0;
+  	  while (y < get_map_height())
+  		{
+  		  if ((players =  get_box_players(x, y)))
+  			foreach_list(players, send_broadcast);
+  		  y++;
+  		}
+  	  x++;
+  	}
   return (1);
 }

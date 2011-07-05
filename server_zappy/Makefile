@@ -75,6 +75,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_setplayer_delstone.c	\
 	  \
 	  $(LOCAL)gserv_get_map.c		\
+	  $(LOCAL)gserv_get_module_by_name.c	\
 	  $(LOCAL)gserv_get_box_nbfood.c	\
 	  $(LOCAL)gserv_get_box_nbstones.c	\
 	  $(LOCAL)gserv_get_box_nbstones_by_player.c	\
