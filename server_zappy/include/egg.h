@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Sun Jul  3 20:32:25 2011 solvik blum
-** Last update Tue Jul  5 17:44:16 2011 solvik blum
+** Last update Tue Jul  5 18:05:39 2011 solvik blum
 */
 
 #ifndef			EGG_H_
@@ -28,5 +28,6 @@ typedef struct		s_egg
   t_team		*team;
 }			t_egg;
 
+bool			egg_eclosion(void *);
 
 #endif			/* !EGG_H_ */
