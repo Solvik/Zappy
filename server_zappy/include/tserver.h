@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Mon Jul  4 18:49:35 2011 ramnes
+** Last update Tue Jul  5 18:01:21 2011 solvik blum
 */
 
 #ifndef		TSERV_H_
@@ -18,6 +18,7 @@
 #  include	"player.h"
 #  include	"stone.h"
 #  include	"event.h"
+#  include	"egg.h"
 
 typedef		struct
 {
@@ -86,6 +87,7 @@ bool		set_box_delfood(uint, uint, uint);
 bool		setplayer_addstone(t_player *, e_stone, uint);
 bool		setplayer_delstone(t_player *, e_stone, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
+t_egg		*set_box_addegg(t_player *);
 
 bool		set_new_module(t_module *);
 bool		set_new_event(t_event *);
