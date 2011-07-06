@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Wed Jul  6 00:42:31 2011 guillaume gelin
+** Last update Wed Jul  6 16:48:38 2011 ramnes
 */
 
 #include	<stdio.h>
@@ -20,7 +20,7 @@
 #include	"graph_team.h"
 #include	"graph_time.h"
 #include	"graph_player.h"
-#include	"graph_event_global.h"
+#include	"graph_events.h"
 
 t_module *	get_module(void)
 {

@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 06:23:06 2011 guillaume gelin
+** Last update Wed Jul  6 16:44:28 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tserver.h"
-#include "graph_event_global.h"
+#include "graph_events.h"
 #include "sends_all.h"
 #include "player.h"
 
