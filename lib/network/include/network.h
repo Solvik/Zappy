@@ -37,6 +37,7 @@ typedef	struct _pool	t_pool;
 ** Functions
 */
 
+void		error(char const *format, ...);
 extern void             *(*free_data)(void *data);
 
 char            *getcmd(fds filed);

@@ -54,14 +54,16 @@ typedef struct _sock
 
 #define PROTO   "TCP"
 
-sock            *csocket(char *hostname, int port);
-sock            *ssocket(int port, int queue);
+sock            *csocket(char *, int);
+sock            *ssocket(int, int);
 ipv4            **gethostipv4(void);
-void            *socket_destroy(sock *ket);
-void            *freeipv4(ipv4 **local);
+void            *socket_destroy(sock *);
+void            *freeipv4(ipv4 **);
 
-char*		socket_addr(sock *et);
-int		socket_port(sock *et);
-int		socket_fd(sock *et);
+char*		socket_addr(sock *);
+int		socket_port(sock *);
+int		socket_fd(sock *);
+
+void		socket_close(sock *);
 
 #endif		/* !SOCKET_H_ */

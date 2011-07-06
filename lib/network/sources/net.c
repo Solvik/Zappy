@@ -15,6 +15,7 @@
 #include        <stdlib.h>
 #include        <string.h>
 #include        <stdio.h>
+#include	<errno.h>
 
 #include        <sys/types.h>
 #include        <sys/socket.h>
@@ -44,17 +45,12 @@ int             solimit(fds fd)
   r = 0;
   while (fd)
     {
-      if (fd->fd != -1)
-        i++;
+      i += (fds_alive(fd) ? 1 : 0);
       fd = fd->next;
     }
   if ((r = getrlimit(RLIMIT_NOFILE, &rl)) != -1 && (i < (int)rl.rlim_cur))
     return (0);
-#if defined(ERRORMSG)
-  else if (r == -1)
-    fprintf(stderr, "Pool: getrlimit: %s\n", strerror(errno));
-  else
-    fprintf(stderr, "Pool: filedescriptor limit exceed\n");
-#endif
+  error((r == 1) ? "getrlimit: %s" : "filedescriptor limit exceed",
+	strerror(errno));
   return (-1);
 }

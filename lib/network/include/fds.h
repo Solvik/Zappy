@@ -48,10 +48,13 @@ typedef struct  _fds
 
 typedef struct _fds	*fds;
 
-fds             fds_add(fds *l, int fd, int type);
-void            *fds_remove(fds *, fds e);
-void            *fds_destroy(fds *l);
+fds             fds_add(fds *, int, int);
+void            *fds_remove(fds *, fds);
+void            *fds_destroy(fds *);
 
-int             solimit(fds fd);
+int		fds_alive(fds);
+void		fds_close(fds);
+
+int             solimit(fds);
 
 #endif		/* !FDS_H_ */

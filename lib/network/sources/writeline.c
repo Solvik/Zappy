@@ -30,10 +30,9 @@
 
 void		writes(fds filed, char *s, int end)
 {
-  if (filed && filed->fd != -1)
+  if (filed && fds_alive(filed))
     {
-      if (s)
-	filed->anounce = 1;
+      filed->anounce = s ? 1 : filed->anounce;
       if (s)
 	buffer_add(&filed->write, s);
       if (s && end)
