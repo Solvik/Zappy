@@ -1,0 +1,77 @@
+GRAPHIC PROTOCOL EVENTS
+
+
+
+-> graph_event_server.c
+
+Event name 	: NewPlayer 
+Function	: graph_pnw
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name 	: PlayerDied
+Function	: graph_pdi
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name 	: GameOver
+Function	: graph_seg
+Data type	: char *
+Data inside	: Winner Team name
+
+Event name 	: ServerMsg
+Function	: graph_smg
+Data type	: char *
+Data inside	: Message to be displayed
+
+
+
+-> graph_event_player.c
+
+Event name	: KickAss
+Function	: graph_pex
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name	: Broadcast
+Function	: graph_pbc
+Data type	: t_bdata *
+Data inside	: Sender's id, message broadcasted (uint id, char *msg)
+
+Event name	: NewEgg
+Function	: graph_pfk
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name	: DropItem
+Function	: graph_pdr
+Data type	: t_bdata *
+Data inside	: Player id, ressource nb (uint id, uint resnb)
+
+Event name	: TakeItem
+Function	: graph_pgt
+Data type	: t_bdata *
+Data inside	: Player id, ressource nb (uint id, uint resnb)
+
+
+
+-> graph_event_cmd.c
+
+Event name	: UnknowCmd
+Function	: graph_suc
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name	: BadParams
+Function	: graph_sbp
+Data type	: t_fds *
+Data inside	: Client fds
+
+
+
+-> .c
+
+Event name	: 
+Function	: 
+Data type	: 
+Data inside	: 

@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 20:03:29 2011 ramnes
+** Last update Wed Jul  6 23:26:28 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -17,7 +17,7 @@
 #include "sends_all.h"
 #include "player.h"
 
-/* pnw: Connexion d'un nouveau joueur */
+/* pnw: NewPlayer */
 
 bool   	graph_pnw(void *data)
 {
@@ -38,7 +38,7 @@ bool   	graph_pnw(void *data)
   return (true);
 }
 
-/* pdi: Le joueur est mort de faim */
+/* pdi: PlayerDied */
 
 bool	graph_pdi(void *data)
 {
@@ -53,7 +53,7 @@ bool	graph_pdi(void *data)
   return (true);
 }
 
-/* seg: Game Over */
+/* seg: GameOver */
 
 bool	graph_seg(void *data)
 {
@@ -66,7 +66,7 @@ bool	graph_seg(void *data)
   return (true);
 }
 
-/* smg: Message du serveur */
+/* smg: ServerMsg */
 
 bool	graph_smg(void *data)
 {

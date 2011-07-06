@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Wed Jul  6 19:37:56 2011 ramnes
+** Last update Wed Jul  6 23:31:50 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -16,7 +16,7 @@
 #include "graph_events.h"
 #include "sends_all.h"
 
-/* suc: Unknow command */
+/* suc: UnknowCmd */
 
 bool	graph_suc(void *data)
 {
@@ -24,7 +24,7 @@ bool	graph_suc(void *data)
   return (true);
 }
 
-/* sbp: Bad command parameter */
+/* sbp: BadParams */
 
 bool	graph_sbp(void *data)
 {

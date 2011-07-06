@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Wed Jul  6 20:24:26 2011 ramnes
+** Last update Wed Jul  6 23:59:44 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -17,7 +17,7 @@
 #include "sends_all.h"
 #include "player.h"
 
-/* pex: Un joueur expulse */
+/* pex: KickAss */
 
 bool	graph_pex(void *data)
 {
@@ -32,7 +32,7 @@ bool	graph_pex(void *data)
   return (true);
 }
 
-/* pbc: Un joueur fait un broadcast */
+/* pbc: Broadcast */
 
 bool	graph_pbc(void *data)
 {
@@ -49,7 +49,7 @@ bool	graph_pbc(void *data)
   return (true);
 }
 
-/* pfk: Le joueur pond un oeuf */
+/* pfk: NewEgg */
 
 bool	graph_pfk(void *data)
 {
@@ -64,7 +64,7 @@ bool	graph_pfk(void *data)
   return (true);
 }
 
-/* pdr: Le joueur jette une ressource */
+/* pdr: DropItem */
 
 bool	graph_pdr(void *data)
 {
@@ -80,7 +80,7 @@ bool	graph_pdr(void *data)
   return (true);
 }
 
-/* pgt: Le joueur prend une ressource */
+/* pgt: TakeItem */
 
 bool	graph_pgt(void *data)
 {
