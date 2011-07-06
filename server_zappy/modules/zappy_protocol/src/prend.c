@@ -12,6 +12,7 @@
 #include	<stdlib.h>
 #include	<string.h>
 
+#include	"network.h"
 #include	"player.h"
 #include	"map.h"
 #include	"voir.h"

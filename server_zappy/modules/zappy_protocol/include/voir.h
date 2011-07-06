@@ -15,11 +15,24 @@
 #include	"player.h"
 #include	"zappy_protocol.h"
 
+typedef enum	translation_
+  {
+    VERTICAL,
+    HORIZONTAL,
+    NORMAL
+  }		e_translation;
+
 typedef struct	s_enum_to_ressource
 {
   e_stone	stone;
   char		*str;
 }		t_enum_to_ressource;
+
+typedef struct voir_algo
+{
+  e_direction	d;
+  e_translation	t;
+}		t_voir_algo;
 
 static t_enum_to_ressource     gl_ressource_name[] =
   {
@@ -32,12 +45,8 @@ static t_enum_to_ressource     gl_ressource_name[] =
   };
 
 #define SIZE_STONE (sizeof(gl_ressource_name) / sizeof(t_enum_to_ressource))
-static const int size_stone = SIZE_STONE;
+#define EDIRSIZE (sizeof(algo) / sizeof(t_voir_algo))
 
-typedef struct	s_zappy_voir
-{
-  e_direction	dir;
-  void		(*f)();
-}		t_zappy_voir;
+static const int size_stone = SIZE_STONE;
 
 #endif		/* !VOIR_H_ */

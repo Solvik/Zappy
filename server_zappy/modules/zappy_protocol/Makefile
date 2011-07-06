@@ -45,7 +45,6 @@ SOURCE	= $(LOCAL)get_module.c			\
 	  $(LOCAL)pose.c			\
 	  $(LOCAL)prend.c			\
 	  $(LOCAL)voir.c			\
-	  $(LOCAL)voir_dir.c			\
 	  $(LOCAL)is_stone.c			\
 	  $(LOCAL)main.c
 

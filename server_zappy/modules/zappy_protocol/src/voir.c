@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "tserver.h"
 
@@ -17,89 +18,114 @@
 #include "voir.h"
 #include "map.h"
 #include "server_zappy.h"
+#include "network.h"
 
-void	zappy_voir_east(int pos, int step, char **ret);
-void	zappy_voir_west(int pos, int step, char **ret);
-void	zappy_voir_south(int pos, int step, char **ret);
-void	zappy_voir_north(int pos, int step, char **ret);
-
-void		check_case(int _, char **ret);
-
-static const t_zappy_voir	voir_func[4] =
+static t_voir_algo	algo[] =
   {
-    {NORTH, zappy_voir_north},
-    {SOUTH, zappy_voir_south},
-    {WEST, zappy_voir_west},
-    {EAST, zappy_voir_east},
+    {NORTH, NORMAL},
+    {EAST, VERTICAL},
+    {NORTH, HORIZONTAL},
+    {EAST, NORMAL}
   };
 
-int	_voir_ns(char **ret, int i, int x, int pos)
+static void	voir_(t_fds *c, int index)
 {
-  int	check;
-
-  check = 0;
-  while (--x != 0)
-    {
-      if (((check =  (i - x)) / get_map_width()) != (pos / get_map_width()))
-	check += get_map_width();
-      check_case(check, ret);
-      if (((check = (i + x)) / get_map_width()) != (pos / get_map_width()))
-	check -= get_map_width();
-      check_case(check, ret);
-    }
-  return (check);
-}
-
-int	_voir_ne(char **ret, int i, int x, int _)
-{
-  int	check;
-
-  (void)_;
-  check = 0;
-  while (--x != 0)
-    {
-      if ((check = (i - (get_map_width() * x))) < 0)
-	check += get_map_max();
-      check_case(check, ret);
-      if ((check =  (i + (get_map_width() * x))) > (int)get_map_max())
-	check -= get_map_max();
-      check_case(check, ret);
-    }
-  return (check);
-}
-
-char     *concat(char *msg, char *concat)
-{
-  char          *new;
-  int           len;
-
-  len = (msg != NULL) ? strlen(msg) : 0;
-  new = realloc(msg, (len + strlen(concat) + 1));
-  strcat(new, concat);
-  return (new);
-}
-
-int		zappy_voir(t_fds *client, char *cmd)
-{
-  int		pos;
-  int		step;
-  int		size;
+  t_box		*map;
   int		i;
-  char		*ret;
+  int		j;
 
-  (void)cmd;
-  pos  = player_data->x + get_map_width() * player_data->y;
-  step = player_data->level;
-  if ((ret = strdup("{joueur")) == NULL)
-    return (0);
-  size = sizeof(voir_func) / sizeof(t_zappy_voir);
+  i = 0;
+  j = 0;
+  if (!c || !(map = get_map()))
+    return ;
+  while (i < get_list_len(map[index].players))
+    {
+      sendneof(c, " joueur");
+      i += 1;
+    }
+  i = 0;
+  while (i < (int)map[index].food)
+    {
+      sendneof(c, " nourriture");
+      i += 1;
+    }
+/*   while (i < get_list_len(map[index].stones)) */
+/*     { */
+/*       j = -1; */
+/*       while (++j < size_stone) */
+/* 	sendneof(c, gl_ressource_name[j].str); */
+/*       i += 1; */
+/*     } */
+}
+
+static void	voir_case(t_fds *c, int x, int y)
+{
+  int		index;
+
+  if (!c)
+    return ;
+#if !defined(NDEBUG)
+  printf("{x: %d, y: %d} ", x, y);
+#endif
+  x = ((x < 0) ? get_map_width() : 0) + (x % get_map_width());
+  y = ((y < 0) ? get_map_height() : 0) + (y % get_map_height());
+  index = x + get_map_width() * y;
+  if (index >= 0 && index < (int)(get_map_width() * get_map_height()))
+    voir_(c, index);
+}
+
+static void	voir_level(t_fds *c, t_player *p, int l)
+{
+  t_voir_algo	*d;
+  int		x;
+  int		y;
+  int		s;
+  int		i;
+
   i = -1;
-  while (++i < size)
-    if (player_data->direction == voir_func[i].dir)
-      voir_func[i].f(pos, step, &ret);
-  if ((ret = concat(ret, "}")) == NULL)
-    return (0);
-  sends(client, ret);
-  return (1);
+  if (!c || !p || l <= -1 || (p->direction >= EDIRSIZE))
+    return ;
+  d = &algo[p->direction];
+  s = (2 * 1) * d->d;
+  while (++i < (3 + (2 * (l - 1))))
+    {
+      x = ((p->x + (s % (3 + (2 * (l - 1))))) - l);
+      y = ((p->y + (s / (3 + (2 * (l - 1))))) - l);
+      x = (d->t != NORMAL) ? (int)p->x - (x - (int)p->x) : x;
+      y = (d->t == NORMAL) ? (int)p->y - (y - (int)p->y) : y;
+      voir_case(c, x, y);
+      s += (d->d == NORTH) ? 1 : (3 + (2 * (l - 1)));
+      if (!(l == (int)p->level && ((i + 1) == (3 + (2 * (l - 1))))))
+	sendneof(c, ",");
+    }
+#if !defined(NDEBUG)
+  printf("\n");
+#endif
+}
+
+static void	voir_algorithm(t_fds *c, t_player *p)
+{
+  int		i;
+
+  i = 0;
+  if (!c || !p)
+    return ;
+  voir_case(c, p->x, p->y);
+  sendneof(c, ",");
+  while (++i <= (int)p->level)
+    voir_level(c, p, i);
+}
+
+int		zappy_voir(t_fds *c, char *_)
+{
+  t_player	*p;
+  (void)_;
+
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  sendneof(c, "{");
+  voir_algorithm(c, p);
+  sends(c, "}");
+  return (true);
 }
 

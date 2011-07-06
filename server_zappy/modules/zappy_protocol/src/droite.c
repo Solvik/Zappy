@@ -13,6 +13,7 @@
 #include "network.h"
 #include "player.h"
 #include "server_zappy.h"
+#include "network.h"
 
 int		zappy_droite(t_fds *client, char *cmd)
 {

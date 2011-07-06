@@ -15,12 +15,12 @@ static t_player *init_player(void)
     return (NULL);
   bzero(player, sizeof(*player));
   player->id = id;
-  player->level = 1;
+  player->level = default_level;
   player->food = default_life;
   player->x = rand() % get_map_width();
   player->y = rand() % get_map_height();
   player->stones = NULL;
-  player->direction = EAST;
+  player->direction = rand() % (WEST + 1);
   ++id;
   return (player);
 }

@@ -8,7 +8,6 @@
 ** Last update Wed Jul  6 15:05:49 2011 Julien Di Marco
 */
 
-
 /*       1 2 3 4 5 6 7 8 9              0  1 2 3 4 5  6 */
 /*       1 2 3 4 5 6 7 8 9              7  0 1 2 3 4  13 */
 /*       1 2 3 4 5 6 7 8 9             14  5 0 1 2 9  20 */
@@ -29,7 +28,6 @@
 /* n = 0 */
 /* ... = n + 1 */
 /* -------------- */
-
 
 /* EST */
 /* -------- */
@@ -53,7 +51,7 @@ typedef enum	translation_
   {
     VERTICAL,
     HORIZONTAL,
-    NONE
+    NORMAL
   }		e_translation;
 
 typedef struct voir_algo
@@ -64,10 +62,10 @@ typedef struct voir_algo
 
 static t_voir_algo	algo[] =
   {
-    {NORTH, NONE},
+    {NORTH, NORMAL},
     {EAST, VERTICAL},
     {NORTH, HORIZONTAL},
-    {EAST, NONE}
+    {EAST, NORMAL}
   };
 
 #define EDIRSIZE sizeof(algo) / sizeof(t_voir_algo)
@@ -90,8 +88,10 @@ void		voir_iter(e_direction d, int l)
     {
       x = ( (5 + (s % (3 + (2 * (l - 1))))) - l );
       y = ( (5 + (s / (3 + (2 * (l - 1))))) - l );
+      printf("{ x = %d", x);
+      printf(", y = %d} - ", y);
       x = (dir->t == VERTICAL) ? 5 - (x - 5) : (dir->t == HORIZONTAL) ? 5 - (x - 5) : x;
-      y = (dir->t == VERTICAL) ? 5 - (y - 5) : (dir->t == HORIZONTAL) ? 5 - (y - 5) : y;
+      y = (dir->t == HORIZONTAL) ? 5 - (y - 5) : (dir->t == VERTICAL) ? 5 - (y - 5) : y;
       printf("{ x = %d", x);
       printf(", y = %d}\n", y);
       s += (dir->d == NORTH) ? 1 : (3 + (2 * (l - 1)));
@@ -104,3 +104,21 @@ int		main(int ac, char **av)
     voir_iter(atoi(av[1]), atoi(av[2]));
   return (0);
 }
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+  +
+  + .
+  +
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
