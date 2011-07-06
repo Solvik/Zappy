@@ -21,7 +21,7 @@
 
 int		tr_x;
 int		tr_y;
-  char		*text;
+char		*text;
 
 /* 12:42 < _Natas> Sud : + 2 % 8 | Ouest : + 4 % 8 | Nord : + 6 % 8 */
 
@@ -118,8 +118,7 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   t_bdata	*data;
 
   mod = get_module_by_name("Zappy Protocol");
-  strtok(cmd, " ");
-  text = strtok(NULL, " ");
+  (void)strtok_r(cmd, " ", &text);
   if (!text)
     {
       sends(client, "ko");
