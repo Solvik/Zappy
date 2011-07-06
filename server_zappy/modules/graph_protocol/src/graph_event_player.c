@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Wed Jul  6 19:34:27 2011 ramnes
+** Last update Wed Jul  6 20:24:26 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -25,7 +25,8 @@ bool	graph_pex(void *data)
   char	*to_send;
 
   client = (t_fds *)data;
-  asprintf(&to_send, "pex %d", player_data->id);
+  if (asprintf(&to_send, "pex %d", player_data->id) == -1)
+    return (false);
   sends_all(to_send);
   free(to_send);
   return (true);
@@ -37,7 +38,10 @@ bool	graph_pbc(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "pbc %d %s", ((t_bdata *)data)->id, ((t_bdata *)data)->msg);
+  if (asprintf(&to_send, "pbc %d %s",
+	       ((t_bdata *)data)->id,
+	       ((t_bdata *)data)->msg) == -1)
+    return (false);
   sends_all(to_send);
   free(((t_bdata *)data)->msg);
   free(data);
@@ -53,7 +57,8 @@ bool	graph_pfk(void *data)
   char	*to_send;
 
   client = (t_fds *)data;
-  asprintf(&to_send, "pfk %d", player_data->id);
+  if (asprintf(&to_send, "pfk %d", player_data->id) == -1)
+    return (false);
   sends_all(to_send);
   free(to_send);
   return (true);
@@ -65,7 +70,11 @@ bool	graph_pdr(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "pdr %d %d", 0 /* id */, 42 /* numero de ressource */);
+  (void)data;
+  if (asprintf(&to_send, "pdr %d %d",
+	       0 /* id */,
+	       42 /* numero de ressource */) == -1)
+    return (false);
   sends_all(to_send);
   free(to_send);
   return (true);
@@ -77,7 +86,11 @@ bool	graph_pgt(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "pgt %d %d", 0 /* id */, 42 /* numero de ressource */);
+  (void)data;
+  if (asprintf(&to_send, "pgt %d %d",
+	       0 /* id */,
+	       42 /* numero de ressource */) == -1)
+    return (false);
   sends_all(to_send);
   free(to_send);
   return (true);

@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jul  6 19:27:01 2011 ramnes
+** Last update Wed Jul  6 20:25:26 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -107,7 +107,8 @@ static void	send_broadcast(void *player)
 	    dir = get_sound_direction(5, ((t_player *)(((t_fds *)player)->data)));
 	}
     }
-  asprintf(&to_send, "broadcast %d,%s", dir, text);
+  if (asprintf(&to_send, "broadcast %d,%s", dir, text) == -1)
+    return;
   sends((t_fds *)player, to_send);
   free(to_send);
 }

@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 19:01:45 2011 seb
-** Last update Thu Jun 30 12:08:16 2011 guillaume gelin
+** Last update Wed Jul  6 20:23:10 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -13,29 +13,23 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-#include "napi.h"
-
 #include "tserver.h"
-#include "list.h"
-#include "team.h"
-#include "network.h"
 #include "graph_team.h"
 
-bool graph_tna(t_fds *player, char *_)
+bool graph_tna(t_fds *client, char *cmd __attribute__((unused)))
 {
   unsigned int	i;
   t_list	*teams;
   char		*to_send;
   void		*data;
 
-  (void)_;
   i = 0;
   teams = get_teams();
   while ((data = get_data_at(teams, i)) && ++i)
     {
-      asprintf(&to_send, "tna %s", ((t_team *)data)->name);
-      sends(player, to_send);
+      if (asprintf(&to_send, "tna %s", ((t_team *)data)->name) == -1)
+	return (false);
+      sends(client, to_send);
       free(to_send);
     }
   return (true);

@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jun 16 17:05:11 2011 seb
-** Last update Thu Jun 30 12:09:09 2011 guillaume gelin
+** Last update Wed Jul  6 20:21:12 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -17,35 +17,32 @@
 #include "tserver.h"
 #include "graph_time.h"
 
-/*
-** sgt unite_temps
-** get_Server_time() - l: 25
-*/
+/* sgt unite_temps */
 
-bool graph_sgt(t_fds *client, char *_)
+bool graph_sgt(t_fds *client, char *cmd __attribute__((unused)))
 {
   char *to_send;
 
-  (void)_;
-  to_send = NULL;
-  asprintf(&to_send, "sgt %f", get_delay());
+  if (asprintf(&to_send, "sgt %f", get_delay()) == -1)
+    return (false);
   sends(client, to_send);
   free(to_send);
   return (true);
 }
 
-/*
-** sgt unite_temps
-*/
+/* sgt unite_temps */
 
 bool graph_sst(t_fds *client, char *cmd)
 {
   char *delay;
 
-  (void)strtok(cmd, " ");
+  strtok(cmd, " ");
   delay = strtok(NULL, " ");
   if (!delay)
-	return (false);
+    {
+      sends(client, "sbp");
+      return (false);
+    }
   set_delay(atof(delay));
   graph_sgt(client, cmd);
   return (true);
