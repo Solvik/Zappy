@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Wed Jul  6 16:48:38 2011 ramnes
+** Last update Wed Jul  6 19:21:19 2011 ramnes
 */
 
 #include	<stdio.h>
@@ -22,6 +22,35 @@
 #include	"graph_player.h"
 #include	"graph_events.h"
 
+static void	_commands(t_module * module)
+{
+  command_add(module->functions, "graphic", graph_graphic);
+  command_add(module->functions, "msz", graph_msz);
+  command_add(module->functions, "bct", graph_bct);
+  command_add(module->functions, "mct", graph_mct);
+  command_add(module->functions, "tna", graph_tna);
+  command_add(module->functions, "ppo", graph_ppo);
+  command_add(module->functions, "plv", graph_plv);
+  command_add(module->functions, "pin", graph_pin);
+  command_add(module->functions, "sgt", graph_sgt);
+  command_add(module->functions, "sst", graph_sst);
+}
+
+static void	_events()
+{
+  event_catch("NewPlayer",	graph_pnw);
+  event_catch("PlayerKicked",	graph_pex);
+  event_catch("Broadcast",	graph_pbc);
+  event_catch("NewEgg",		graph_pfk);
+  event_catch("DropItem",	graph_pdr);
+  event_catch("TakeItem",	graph_pgt);
+  event_catch("PlayerDied",	graph_pdi);
+  event_catch("GameOver",	graph_seg);
+  event_catch("ServerMsg",	graph_smg);
+  event_catch("UnknowCmd",	graph_suc);
+  event_catch("BadParams",	graph_sbp);
+}
+
 t_module *	get_module(void)
 {
   t_module *	module;
@@ -34,19 +63,8 @@ t_module *	get_module(void)
   module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
-  command_add(module->functions, "graphic", graph_graphic);
-  command_add(module->functions, "msz", graph_msz);
-  command_add(module->functions, "bct", graph_bct);
-  command_add(module->functions, "mct", graph_mct);
-  command_add(module->functions, "tna", graph_tna);
-  command_add(module->functions, "ppo", graph_ppo);
-  command_add(module->functions, "plv", graph_plv);
-  command_add(module->functions, "pin", graph_pin);
-  command_add(module->functions, "sgt", graph_sgt);
-  command_add(module->functions, "sst", graph_sst);
-  event_catch("pnw", graph_pnw);
-  event_catch("pex", graph_pex);
-  event_catch("pbc", graph_pbc);
+  _commands(module);
+  _events();
   return (module);
 }
 

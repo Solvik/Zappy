@@ -5,11 +5,12 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 16:50:23 2011 solvik blum
-** Last update Wed Jun 29 16:30:54 2011 solvik blum
+** Last update Wed Jul  6 19:23:16 2011 ramnes
 */
 
 #include <stdlib.h>
 
+#include "network.h"
 #include "player.h"
 #include "server_zappy.h"
 
