@@ -24,12 +24,12 @@ t_cmd		*parse_cmd(char *str)
   if ((ret = strtok(str, " \t")))
     {
       s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1));
-      s->argv[len++] = ret;
+      s->argv[len++] = strdup(ret);
     }
   while ((ret = strtok(NULL, " \t")))
     {
       s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1));
-      s->argv[len++] = ret;
+      s->argv[len++] = strdup(ret);
     }
   s->argc = len;
   return (s);
