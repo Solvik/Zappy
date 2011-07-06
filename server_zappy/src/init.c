@@ -38,7 +38,7 @@ bool		init(int opt_size, char **opt)
       !init_names(&optab) ||
       !init_modules(&optab))
     return (false);
-  printf("d: %f - t: %f\n", optab.delay, optab.time);
+  
   set_run(true);
   return (true);
 }
