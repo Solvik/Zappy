@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 04:31:13 2011 guillaume gelin
+** Last update Wed Jul  6 04:36:44 2011 guillaume gelin
 */
 
 #define	_GNU_SOURCE
@@ -23,7 +23,6 @@ bool   	graph_pnw(void *data)
 {
   t_fds		*client;
   char		*to_send;
-  unsigned int	id;
 
   client = (t_fds *)data;
   asprintf(&to_send, "pnw %d %d %d %d %d %s",
