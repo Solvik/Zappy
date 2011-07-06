@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jul  6 06:21:10 2011 guillaume gelin
+** Last update Wed Jul  6 19:27:01 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -130,6 +130,6 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   data = malloc(sizeof(t_bdata));
   data->id = player_data->id;
   data->msg = strdup(text);
-  event_relative_dispatch("pbc", (void *)data, 0);
+  event_relative_dispatch("Broadcast", (void *)data, 0);
   return (1);
 }
