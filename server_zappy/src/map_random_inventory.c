@@ -16,7 +16,7 @@ static const e_stone stonetab[] =
 
 static e_stone	random_stone(void)
 {
-  return (stonetab[rand() % sizeof(stonetab) / sizeof(*stonetab)]);
+  return (stonetab[rand() % (sizeof(stonetab) / sizeof(*stonetab))]);
 }
 
 void		map_random_fill_stones(void)
