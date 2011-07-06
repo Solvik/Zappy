@@ -5,13 +5,14 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 03:17:03 2011 guillaume gelin
+** Last update Wed Jul  6 04:31:13 2011 guillaume gelin
 */
 
 #define	_GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "tserver.h"
 #include "graph_event_global.h"
 #include "sends_all.h"
 #include "player.h"
@@ -31,7 +32,7 @@ bool   	graph_pnw(void *data)
 	   player_data->y,
 	   ((uint)(player_data->direction)) + 1,
 	   player_data->level,
-	   "team_name");
+	   get_team_of_player(player_data)->name);
   sends_all(to_send);
   free(to_send);
   return (true);
