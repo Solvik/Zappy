@@ -22,8 +22,6 @@
 
 #include	"network.h"
 
-#define ERRORMSG
-
 /*
 ** Function: add_socket - public - user triggered
 **

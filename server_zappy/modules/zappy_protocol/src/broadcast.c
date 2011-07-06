@@ -5,9 +5,12 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Mon Jul  4 17:05:52 2011 Sebastien Blot
+** Last update Wed Jul  6 06:21:10 2011 guillaume gelin
 */
 
+#define _GNU_SOURCE
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -111,8 +114,8 @@ static void	send_broadcast(void *player)
 
 int		zappy_broadcast(t_fds *client, char *cmd)
 {
-  t_list	*players;
   t_module	*mod;
+  t_bdata	*data;
 
   mod = get_module_by_name("Zappy Protocol");
   strtok(cmd, " ");
@@ -125,5 +128,9 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   tr_x = get_map_width() / 2 - player_data->x;
   tr_y = get_map_height() / 2 - player_data->y;
   foreach_list(mod->clients, send_broadcast);
+  data = malloc(sizeof(t_bdata));
+  data->id = player_data->id;
+  data->msg = strdup(text);
+  event_relative_dispatch("pbc", (void *)data, 0);
   return (1);
 }

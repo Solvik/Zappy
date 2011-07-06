@@ -83,7 +83,7 @@ static char	*check_end(fds f, buffer node, char *d)
     if ((((d && d[0]) && strncmp(&node->buf[i], d, strlen(d)) == 0) ||
 	 ((!d || (d && !d[0])) && node->buf[i] == DELIM)) ||
 	(!node->next && !node->buf[i + 1] &&
-	 ((buffer_size(f->read) == READM) || f->fd == -1)))
+	 ((buffer_size(f->read) == READM) || !fds_alive(f))))
       {
 	i += (get_size(node) - strlen(node->buf));
 	if ((r = pop(&node)))
