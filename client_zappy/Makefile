@@ -22,6 +22,9 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)gere_cmd.c			\
 			$(SRC_DIR)bienvenue.c			\
 			$(SRC_DIR)msz.c				\
+			$(SRC_DIR)smg.c				\
+			$(SRC_DIR)suc.c				\
+			$(SRC_DIR)sbp.c				\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries

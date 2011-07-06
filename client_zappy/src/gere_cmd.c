@@ -24,7 +24,6 @@ static const t_ptr ptr[] =
     {"bienvenue", visu_bienvenue, 1},
     {"msz", visu_msz, 3},
     {"bct", lol, 10},
-    {"bct", lol, 10},
     {"tna", lol, 2},
     {"pnw", lol, 7},
     {"ppo", lol, 5},
@@ -45,9 +44,9 @@ static const t_ptr ptr[] =
     {"sgt", lol, 2},
     {"sgt", lol, 2},
     {"seg", lol, 2},
-    {"smg", lol, 2},
-    {"suc", lol, 2},
-    {"sbp", lol, 1},
+    {"smg", visu_smg, 2},
+    {"suc", visu_suc, 1},
+    {"sbp", visu_sbp, 1},
   };
 
 static const int	ptr_len = sizeof(ptr) / sizeof(t_ptr);
@@ -60,9 +59,13 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd)
   printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
   while (i < ptr_len)
     {
-      if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])) &&
-	  (inc_cmd->argc == ptr[i].argc))
-	return (ptr[i].f(pooler, inc_cmd));
+      if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
+	{
+	  if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
+	    return (ptr[i].f(pooler, inc_cmd));
+	  else
+	    return (0);
+	}
       i++;
     }
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 14 16:08:10 2011 seb
-** Last update Tue Jul  5 17:45:10 2011 guillaume gelin
+** Last update Wed Jul  6 00:39:37 2011 guillaume gelin
 */
 
 #define _GNU_SOURCE
@@ -15,12 +15,6 @@
 #include <string.h>
 #include "graph_player.h"
 #include "tserver.h"
-
-bool graph_pnw(t_fds *client, char *cmd __attribute__((unused)))
-{
-  sends(client, "pnw 0 2 5 1 1 LOL");
-  return (true);
-}
 
 /*
 ** ppo numero_joueur X Y orientation

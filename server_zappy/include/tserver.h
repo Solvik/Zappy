@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Tue Jul  5 17:46:27 2011 guillaume gelin
+** Last update Wed Jul  6 01:46:09 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -45,6 +45,8 @@ typedef		struct
   t_list 	*team;		/* t_team */
   bool		run;
 }		t_server;
+
+t_module	*get_module_by_name(char *);
 
 t_player *	new_player(char *);
 

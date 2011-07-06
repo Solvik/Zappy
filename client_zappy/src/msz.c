@@ -16,7 +16,10 @@
 /* Taille de la carte */
 /* */
 
-int		visu_msz(t_fds *pooler, t_cmd *cmd)
+int		visu_msz(t_fds *pooler, t_visu *visu, t_cmd *cmd)
 {
-  return (0);
+  visu->width = atoi(cmd->argv[1]);
+  visu->height = atoi(cmd->argv[2]);
+  sends(pooler, "msz");
+  return (1);
 }
