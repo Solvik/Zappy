@@ -19,8 +19,6 @@
 
 #  include	<SDL/SDL.h>
 
-bool		client_zappy(int, char *[]);
-
 typedef struct	s_cmd
 {
   int		argc;
@@ -66,7 +64,8 @@ typedef t_visualiseur t_visu;
 
 t_cmd		*parse_cmd(char *);
 int		gere_cmd(t_fds *, t_cmd *, t_visu *);
-
+bool		client_zappy(int, char *[]);
+void		free_cmd(t_cmd *);
 
 
 #endif		/* !CLIENT_ZAPPY_H_ */

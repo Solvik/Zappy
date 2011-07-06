@@ -29,22 +29,22 @@ void		create_window(t_visu *p)
   /* p->sprite->grass = "images/monster_left.png"; */
 }
 
-void		handle_event(t_fds *pooler, t_visu *v)
+void		handle_event(t_fds **pooler, t_visu *v)
 {
   char		*cmd;
   t_cmd		*inc_cmd;
 
   while (1)
     {
-      pool(&pooler, NULL);
-      if (!pooler || (pooler && pooler->fd == -1))
+      pool(pooler, NULL);
+      if (!(*pooler) || (*pooler && fds_alive(*pooler)))
 	break;
-      while ((cmd = getcmd(pooler)))
+      while ((cmd = getcmd(*pooler)))
 	{
 	  inc_cmd = parse_cmd(cmd);
-	  if (!gere_cmd(pooler, inc_cmd, v))
+	  if (!gere_cmd(*pooler, inc_cmd, v))
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
-	  /* free_cmd(inc_cmd); */
+	  free_cmd(inc_cmd);
 	}
       printf("lol\n");
     }
@@ -61,7 +61,7 @@ bool		client_zappy(int ac, char *av[])
     {
       create_window(&visu);
       add_co(&pooler, av[1], atoi(av[2]));
-      handle_event(pooler, &visu);
+      handle_event(&pooler, &visu);
     }
   // event (souris)
   // send > GRAPHIC
