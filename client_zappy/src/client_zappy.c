@@ -37,7 +37,7 @@ void		handle_event(t_fds **pooler, t_visu *v)
   while (1)
     {
       pool(pooler, NULL);
-      if (!(*pooler) || (*pooler && fds_alive(*pooler)))
+      if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
 	break;
       while ((cmd = getcmd(*pooler)))
 	{
