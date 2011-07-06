@@ -44,7 +44,7 @@ fds		fds_add(fds *l, int fd, int type)
   return (new);
 }
 
-void		*fds_remove(fds *l, fds e)
+void		*fds_remove(fds *l, fds e, void *(*free_data)(void *))
 {
   fds		prev;
   fds		next;
@@ -57,28 +57,31 @@ void		*fds_remove(fds *l, fds e)
 	next->prev = e->prev;
       if ((*l) == e)
 	(*l) = e->next;
-      free_data(e->data);
-      buffer_destroy(&e->read);
-      buffer_destroy(&e->write);
-      socket_destroy(e->s);
-      e->fd = -1;
-      free(e);
+      fds_free(e, free_data);
     }
   return (NULL);
 }
 
-void		*fds_destroy(fds *l)
+void		*fds_free(fds c, void *(*free_data)(void *))
+{
+  if (c)
+    {
+      c->data = free_data(c->data);
+      buffer_destroy(&c->read);
+      buffer_destroy(&c->write);
+      socket_destroy(c->s);
+      c->fd = -1;
+      free(c);
+    }
+  return ((c = NULL));
+}
+
+void		*fds_destroy(fds *l, void *(*free_data)(void*))
 {
   if ((*l))
     {
-      fds_destroy(&((*l)->next));
-      free_data((*l)->data);
-      buffer_destroy(&(*l)->read);
-      buffer_destroy(&(*l)->write);
-      socket_destroy((*l)->s);
-      (*l)->fd = -1;
-       free((*l));
-      *l = NULL;
+      fds_destroy(&((*l)->next), free_data);
+      *l = fds_free(*l, free_data);
     }
   return (NULL);
 }

@@ -38,10 +38,8 @@ typedef	struct _pool	t_pool;
 */
 
 void		error(char const *format, ...);
-extern void             *(*free_data)(void *data);
 
 char            *getcmd(fds filed);
-
 void            writes(fds filed, char *s, int end);
 
 int             add_socket(fds *pool, int p, int q);

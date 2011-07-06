@@ -21,8 +21,6 @@
 
 #include	"network.h"
 
-void		*(*free_data)(void *data) = NULL;
-
 static struct timeval	*timeval_(struct timeval *t, double time)
 {
   static struct timeval	tv;
