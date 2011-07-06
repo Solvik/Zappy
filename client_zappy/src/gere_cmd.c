@@ -44,9 +44,9 @@ static const t_ptr ptr[] =
     {"sgt", lol, 2},
     {"sgt", lol, 2},
     {"seg", lol, 2},
-    {"smg", lol, 2},
-    {"suc", lol, 2},
-    {"sbp", lol, 1},
+    {"smg", visu_smg, 2},
+    {"suc", visu_suc, 1},
+    {"sbp", visu_sbp, 1},
   };
 
 static const int	ptr_len = sizeof(ptr) / sizeof(t_ptr);
