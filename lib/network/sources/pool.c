@@ -11,6 +11,7 @@
 #include	<sys/select.h>
 #include	<sys/types.h>
 #include	<sys/time.h>
+#include	<time.h>
 
 #include	<unistd.h>
 #include	<stdlib.h>
@@ -21,6 +22,20 @@
 #include	"network.h"
 
 void		*(*free_data)(void *data) = NULL;
+
+static struct timeval	*timeval_(struct timeval *t, double time)
+{
+  static struct timeval	tv;
+
+  if ((time < 0))
+    return (t);
+  if (!t)
+    {
+      tv.tv_sec = time / 1;
+      tv.tv_usec = (time - tv.tv_sec) * 1000000.0;
+    }
+  return ((t ? t : &tv));
+}
 
 /*
 ** Function: pool - public
@@ -34,9 +49,13 @@ void		*(*free_data)(void *data) = NULL;
 fds		pool(fds *l, struct timeval *tv)
 {
   static t_pool	p;
+  int		t;
 
-  if ((*l) && (p.max = pool_fill((*l), &p)) != -1)
-    if ((pool_exec(&p, tv) != -1))
-      pool_handle(l, &p);
+  if ((*l) && ((t = pool_fill((*l), &p)) != -1))
+    {
+      tv = (t == 1 ? timeval_(tv, 0.05) : tv);
+      if ((pool_exec(&p, tv) != -1))
+	pool_handle(l, &p);
+    }
   return ((*l));
 }

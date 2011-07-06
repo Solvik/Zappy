@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Tue Jul  5 18:01:21 2011 solvik blum
+** Last update Tue Jul  5 17:46:27 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -55,6 +55,7 @@ uint		get_map_max(void);
 
 t_box 		*get_box(uint, uint);
 uint		get_box_nbstones(uint, uint, e_stone);
+uint		get_box_nbfood(uint, uint);
 uint		get_player_nbstones(uint, e_stone);
 uint		get_box_nbstones_by_player(t_player *, e_stone);
 

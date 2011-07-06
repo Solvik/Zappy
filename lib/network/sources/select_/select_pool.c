@@ -25,9 +25,20 @@
 ** and fill each set according to each specific fds.
 */
 
+/*
+** pool_fill is call by pool to set all the fd that need to be set.
+**
+** Return is important as:
+** -1 means no pool_exec is needed
+** 0  means pool_exec should exec normaly
+** 1  there is already something on, at least one, a read buffer
+*/
+
 int		pool_fill(fds l, t_select *p)
 {
-  if (!l || !p)
+  int		r;
+
+  if (!l || !p || ((r = 0) != 0))
     return (-1);
   p->max = -1;
   FD_ZERO(&p->read);
@@ -45,9 +56,10 @@ int		pool_fill(fds l, t_select *p)
 	    FD_SET(l->fd, &p->write);
 	  p->max = (l->fd > p->max ? l->fd : p->max);
 	}
+      r = (l && l->read) ? 1 : r;
       l = l->next;
     }
-  return (p->max);
+  return ((p->max == -1 ? -1 : (r ? 1 : 0)));
 }
 
 /*

@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Tue Jul  5 19:07:34 2011 solvik blum
+** Last update Wed Jul  6 01:15:47 2011 solvik blum
 */
 
 #ifndef		CLIENT_ZAPPY_H_
@@ -14,10 +14,17 @@
 #  include	<stdbool.h>
 #  include	"ztypes.h"
 #  include	"list.h"
+#  include	"network.h"
 
 #  include	<SDL/SDL.h>
 
 bool		client_zappy(int, char *[]);
+
+typedef struct	s_cmd
+{
+  int		argc;
+  char		**argv;
+}		t_cmd;
 
 typedef struct	s_sprite
 {
@@ -51,5 +58,10 @@ typedef struct	s_visualiseur
 }		t_visualiseur;
 
 typedef t_visualiseur t_visu;
+
+t_cmd		*parse_cmd(char *);
+int		gere_cmd(t_fds *, t_cmd *_);
+
+
 
 #endif		/* !CLIENT_ZAPPY_H_ */

@@ -5,11 +5,12 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Tue Jul  5 19:21:04 2011 solvik blum
+** Last update Wed Jul  6 01:15:03 2011 solvik blum
 */
 
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<errno.h>
 #include	<stdio.h>
 
 #include	"network.h"
@@ -31,35 +32,43 @@ void		create_window(t_visu *p)
 void		connect_server(char *addr, int port)
 {
   fds		pooler;
+  char		*cmd;
+  t_cmd		*inc_cmd;
 
   pooler = NULL;
   add_co(&pooler, addr, port);
   while (1)
     {
       pool(&pooler, NULL);
-      if (!pooler || pooler && pooler->fd == -1)
+      if (!pooler || (pooler && pooler->fd == -1))
 	break;
-      printf("Command find: %s\n", getcmd(pooler));
+      while ((cmd = getcmd(pooler)))
+	{
+	  inc_cmd = parse_cmd(cmd);
+	  if (!gere_cmd(pooler, inc_cmd))
+	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
+	  /* free_cmd(inc_cmd); */
+	}
+      printf("lol\n");
     }
-  sends(pooler, "GRAPHIC");
   // while on recoit, on traite selon cmd[0]
 }
 
-bool		client_zappy(int ac, char *av[])
-{
-  t_visu	visu;
+  bool		client_zappy(int ac, char *av[])
+  {
+    t_visu	visu;
 
-  create_window(&visu);
-  if (ac > 2)
-    connect_server(av[1], atoi(av[2]));
-  // event (souris)
-  // send > GRAPHIC
-  // on recupere les infos
-  // msz X Y > taille map
-  // sgt T > temps
-  // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
-  // tna N >> nom de chaque equipe
-  // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
-  // oeuf pondu >> ok
-  return (true);
-}
+    create_window(&visu);
+    if (ac > 2)
+      connect_server(av[1], atoi(av[2]));
+    // event (souris)
+    // send > GRAPHIC
+    // on recupere les infos
+    // msz X Y > taille map
+    // sgt T > temps
+    // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
+    // tna N >> nom de chaque equipe
+    // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
+    // oeuf pondu >> ok
+    return (true);
+  }

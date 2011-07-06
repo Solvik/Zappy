@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jun 29 17:47:20 2011 solvik blum
+** Last update Tue Jul  5 22:41:06 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -90,7 +90,7 @@ int		zappy_voir(t_fds *client, char *cmd)
   (void)cmd;
   pos  = player_data->x + get_map_width() * player_data->y;
   step = player_data->level;
-  if ((ret = strdup("{")) == NULL)
+  if ((ret = strdup("{joueur")) == NULL)
     return (0);
   size = sizeof(voir_func) / sizeof(t_zappy_voir);
   i = -1;

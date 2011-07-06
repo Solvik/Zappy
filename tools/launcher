@@ -1,0 +1,65 @@
+#! /bin/bash
+
+USAGE="Usage: $0: -a [arguments] -s [simultaneous] <number> <team>"
+v=0
+
+while getopts "va:s:" opt; do
+    case $opt in
+        a)
+	    arg=$OPTARG;
+            ;;
+        s)
+	    simul=$OPTARG;
+            ;;
+        v)
+	    echo "Verbose mode.";
+	    v=1;
+            ;;
+        \?)
+            echo $USAGE >&2
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ ! $1 ]
+then
+    echo $USAGE >&2;
+    exit 1;
+elif  [ -z "$simul" ]  &&  [ ! $2 ]
+then
+    echo $USAGE >&2;
+    exit 1;
+fi
+
+for (( i=1; i<=$1; i++ ))
+do
+    if [ -z "$simul" ]
+    then
+	if [ $v == 1 ]
+	then
+	    echo "./lemipc -q $arg $2 &> .lemi.log &"
+	fi
+	./zappyMoul $arg $2 &> .lemi.log &
+    elif [ -n "$simul" ] && [ ! $2 ]
+    then
+	for (( a=1; a<=$simul; a++ ))
+	do
+	    if [ $v == 1 ]
+	    then
+		echo "./zappyMoul $arg $(( $a * 5 )) &> .lemi.log &";
+	    fi
+	    ./zappyMoul $arg $(( $a * 5 )) &> .lemi.log &
+	done
+    else
+	for (( a=1; a<=$simul; a++))
+	do
+	    if [ $v == 1 ]
+	    then
+		echo "./zappyMoul $arg $(( $2 + $(( $a * 5 )))) &> .lemi.log &";
+	    fi
+	    ./zappyMoul $arg $(( $2 + $(( $a * 5 )))) &> .lemi.log &
+	done
+    fi
+done
