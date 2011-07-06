@@ -15,6 +15,7 @@
 #  include	"ztypes.h"
 #  include	"list.h"
 #  include	"network.h"
+#  include	"player.h"
 
 #  include	<SDL/SDL.h>
 
@@ -31,12 +32,6 @@ typedef struct	s_sprite
   char		*grass;
 }		t_sprite;
 
-typedef struct	s_ressource
-{
-  char		*name;
-  uint		nb;
-}		t_ressource;
-
 typedef struct	s_box
 {
   int		linemate;
@@ -49,12 +44,22 @@ typedef struct	s_box
   int		food;
 }		t_box;
 
+typedef struct	s_teams
+{
+  char		*name;
+  int		player_id;
+}		t_teams;
+
 typedef struct	s_visualiseur
 {
   SDL_Surface	*screen;
   t_sprite	*sprite;
   t_list	*map; // t_box
   t_list	*player; // t_player
+  t_list	*teams; // t_teams
+  int		width;
+  int		height;
+  int		time;
 }		t_visualiseur;
 
 typedef t_visualiseur t_visu;
