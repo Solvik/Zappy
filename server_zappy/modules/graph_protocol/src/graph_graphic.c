@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Wed Jul  6 02:39:19 2011 guillaume gelin
+** Last update Wed Jul  6 16:49:12 2011 ramnes
 */
 
 #include <stdlib.h>
@@ -16,7 +16,6 @@
 #include "graph_player.h"
 #include "graph_team.h"
 #include "graph_time.h"
-#include "graph_event_global.h"
 
 /*
 **   //graph_enw(client, NULL); - l: 24

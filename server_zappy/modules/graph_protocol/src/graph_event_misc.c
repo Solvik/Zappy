@@ -5,16 +5,15 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Wed Jul  6 16:30:34 2011 ramnes
+** Last update Wed Jul  6 16:44:47 2011 ramnes
 */
 
 #define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "tserver.h"
-#include "graph_event_misc.h"
+#include "graph_events.h"
 #include "sends_all.h"
 
 /* seg: Send winner team name */
