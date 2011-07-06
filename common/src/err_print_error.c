@@ -26,7 +26,7 @@ bool		print_perror(char *cmd)
 
 bool		syntax_print_error(char const *format, ...)
 {
-   va_list arguments;
+  va_list arguments;
 
   va_start(arguments, format);
   fprintf(stderr, "Error: ");
