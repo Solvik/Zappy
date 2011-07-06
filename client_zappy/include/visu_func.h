@@ -22,7 +22,7 @@ typedef struct	s_ptr
 
 int		visu_bienvenue(t_fds *, t_visu *, t_cmd *);
 int		visu_msz(t_fds *, t_visu *, t_cmd *);
-int		visu_msg(t_fds *, t_visu *, t_cmd *);
+int		visu_smg(t_fds *, t_visu *, t_cmd *);
 int		visu_suc(t_fds *, t_visu *, t_cmd *);
 int		visu_sbp(t_fds *, t_visu *, t_cmd *);
 
