@@ -33,12 +33,12 @@ bool		init(int opt_size, char **opt)
   gserv_const(true);
   if ((signal(SIGINT, sigint_handler) == SIG_ERR) ||
       !init_opt(opt_size, opt, &optab) ||
+      !init_random(&optab) ||
       !init_map(&optab) ||
       !init_network(&optab) ||
       !init_names(&optab) ||
       !init_modules(&optab))
     return (false);
-  
   set_run(true);
   return (true);
 }

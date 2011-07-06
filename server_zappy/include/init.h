@@ -17,6 +17,7 @@
 
 bool		init(int, char **);
 bool		init_opt(int, char **, t_zopt *);
+bool		init_random(t_zopt *);
 bool		init_network(t_zopt *);
 bool		init_map(t_zopt *);
 bool		init_names(t_zopt *);

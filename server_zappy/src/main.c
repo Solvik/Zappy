@@ -9,12 +9,10 @@
 */
 
 #include	<stdlib.h>
-#include	<time.h>
 
 #include	"server_zappy.h"
 
 int		main(int argc, char *argv[])
 {
-   srand(time(NULL));
   return (server_zappy(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);
 }

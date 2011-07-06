@@ -39,6 +39,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  \
 	  $(LOCAL)init.c			\
 	  $(LOCAL)init_opt.c			\
+	  $(LOCAL)init_random.c			\
 	  $(LOCAL)init_network.c		\
 	  $(LOCAL)init_map.c			\
 	  $(LOCAL)init_names.c			\
