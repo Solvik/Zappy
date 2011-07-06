@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 00:40:09 2011 solvik blum
-** Last update Wed Jul  6 01:13:13 2011 solvik blum
+** Last update Wed Jul  6 17:47:17 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -23,12 +23,12 @@ static const t_ptr ptr[] =
   {
     {"bienvenue", visu_bienvenue, 1},
     {"msz", visu_msz, 3},
-    {"bct", lol, 10},
-    {"tna", lol, 2},
-    {"pnw", lol, 7},
-    {"ppo", lol, 5},
-    {"plv", lol, 3},
-    {"pin", lol, 11},
+    {"bct", visu_bct, 10},
+    {"tna", visu_tna, 2},
+    {"pnw", visu_pnw, 7},
+    {"ppo", visu_ppo, 5},
+    {"plv", visu_plv, 3},
+    {"pin", visu_pin, 11},
     {"pex", lol, 2},
     {"pbc", lol, 3},
     {"pic", lol, -1},

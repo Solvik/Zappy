@@ -20,11 +20,18 @@ LIB_DIR		=	../lib/
 SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)parse_cmd.c			\
 			$(SRC_DIR)gere_cmd.c			\
+			$(SRC_DIR)get_player_by_id.c		\
 			$(SRC_DIR)bienvenue.c			\
 			$(SRC_DIR)msz.c				\
 			$(SRC_DIR)smg.c				\
 			$(SRC_DIR)suc.c				\
 			$(SRC_DIR)sbp.c				\
+			$(SRC_DIR)tna.c				\
+			$(SRC_DIR)bct.c				\
+			$(SRC_DIR)pnw.c				\
+			$(SRC_DIR)ppo.c				\
+			$(SRC_DIR)plv.c				\
+			$(SRC_DIR)pin.c				\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries

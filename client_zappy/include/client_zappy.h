@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Wed Jul  6 01:15:47 2011 solvik blum
+** Last update Wed Jul  6 18:03:01 2011 solvik blum
 */
 
 #ifndef		CLIENT_ZAPPY_H_
@@ -32,6 +32,8 @@ typedef struct	s_sprite
 
 typedef struct	s_box
 {
+  int		x;
+  int		y;
   int		linemate;
   int		deraumere;
   int		sibur;
@@ -41,12 +43,6 @@ typedef struct	s_box
   int		egg;
   int		food;
 }		t_box;
-
-typedef struct	s_teams
-{
-  char		*name;
-  int		player_id;
-}		t_teams;
 
 typedef struct	s_visualiseur
 {
@@ -66,6 +62,7 @@ t_cmd		*parse_cmd(char *);
 int		gere_cmd(t_fds *, t_cmd *, t_visu *);
 bool		client_zappy(int, char *[]);
 void		free_cmd(t_cmd *);
+t_player	*get_player_by_id(t_visu *, int );
 
 
 #endif		/* !CLIENT_ZAPPY_H_ */
