@@ -39,6 +39,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  \
 	  $(LOCAL)init.c			\
 	  $(LOCAL)init_opt.c			\
+	  $(LOCAL)init_random.c			\
 	  $(LOCAL)init_network.c		\
 	  $(LOCAL)init_map.c			\
 	  $(LOCAL)init_names.c			\
@@ -60,6 +61,8 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)event_internal.c		\
 	  \
 	  $(LOCAL)new_player.c			\
+	  \
+	  $(LOCAL)map_random_inventory.c	\
 	  \
 	  $(LOCAL)gserv_get.c			\
 	  $(LOCAL)gserv_set_info.c		\

@@ -13,6 +13,7 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<errno.h>
 
 #include	"network.h"
 #include	"select_.h"
@@ -34,7 +35,7 @@ int		handle_serv(fds *list, fds socket)
   socklen_t	len;
 
   len = sizeof(saddri);
-  if (socket && socket->fd != -1 && socket->type == SERV && \
+  if (socket && fds_alive(socket) && socket->type == SERV &&
       list && !solimit(*list) && (s = calloc(1, sizeof(*s))))
     {
       if ((s->socket = accept(socket->fd, \
@@ -48,10 +49,8 @@ int		handle_serv(fds *list, fds socket)
 	  else
 	    socket_destroy(s);
 	}
-#if defined(ERRORMSG)
       else
-	fprintf(stderr, "Pool: Accept: %s\n", strerror(errno));
-#endif
+	error("Accept: %s", strerror(errno));
     }
   return (0);
 }
@@ -73,18 +72,15 @@ int		handle_read(fds socket)
 
   i = 0;
   memset(tmp, 0, (READB + 1));
-  if (socket && (socket->fd != -1) && (buffer_size(socket->read) < READM))
+  if (socket && fds_alive(socket) && (buffer_size(socket->read) < READM))
     {
       if ((i = read(socket->fd, tmp, READB)) > 0)
 	buffer_add(&socket->read, tmp);
       else
 	{
-#if defined(ERRORMSG)
 	  if (i == -1)
-	    fprintf(stderr, "Pool: Read Handle: %s\n", strerror(errno));
-#endif
-	  close(socket->fd);
-	  socket->fd = -1;
+	    error("Read Handle: %s", strerror(errno));
+	  socket_close(socket->s);
 	  return (-1);
 	}
     }
@@ -108,22 +104,19 @@ int		handle_write(fds socket)
 {
   int		i;
 
-  if (socket && (socket->fd != -1) && socket->write)
+  if (socket && fds_alive(socket) && socket->write)
     {
       if ((i = write(socket->fd, socket->write->buf, \
 		     (((i = strlen(socket->write->buf)) > WRITEB) \
-		      ? i : WRITEB))) > 0)
+		      ? WRITEB : i))) > 0)
 	{
 	  if (buffer_move(socket->write, i) == -1)
 	    socket->write = buffer_remove(socket->write);
 	}
       else
       	{
-#if defined(ERRORMSG)
-      	  fprintf(stderr, "Pool: Write Handle: %s\n", strerror(errno));
-#endif
-	  close(socket->fd);
-      	  socket->fd = -1;
+	  error("Write Handle: %s", strerror(errno));
+	  socket_close(socket->s);
       	  return (-1);
       	}
     }

@@ -43,3 +43,11 @@ char*		socket_addr(sock *et)
     }
   return (net);
 }
+
+void		socket_close(sock *et)
+{
+  if (!et || (et && et->socket == -1))
+    return ;
+  close(et->socket);
+  et->socket = -1;
+}

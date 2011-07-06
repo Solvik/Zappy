@@ -37,10 +37,9 @@ typedef	struct _pool	t_pool;
 ** Functions
 */
 
-extern void             *(*free_data)(void *data);
+void		error(char const *format, ...);
 
 char            *getcmd(fds filed);
-
 void            writes(fds filed, char *s, int end);
 
 int             add_socket(fds *pool, int p, int q);

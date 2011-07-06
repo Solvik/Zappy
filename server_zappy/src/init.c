@@ -8,7 +8,7 @@
 ** Last update Thu Jun 30 05:05:01 2011 Julien Di Marco
 */
 
-#undef _FORTIFY_SOURCE
+#undef		_FORTIFY_SOURCE
 
 #include	<unistd.h>
 #include	<signal.h>
@@ -33,12 +33,12 @@ bool		init(int opt_size, char **opt)
   gserv_const(true);
   if ((signal(SIGINT, sigint_handler) == SIG_ERR) ||
       !init_opt(opt_size, opt, &optab) ||
+      !init_random(&optab) ||
       !init_map(&optab) ||
       !init_network(&optab) ||
       !init_names(&optab) ||
       !init_modules(&optab))
     return (false);
-  printf("d: %f - t: %f\n", optab.delay, optab.time);
   set_run(true);
   return (true);
 }

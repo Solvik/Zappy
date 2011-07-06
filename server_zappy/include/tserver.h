@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Wed Jul  6 01:46:09 2011 guillaume gelin
+** Last update Wed Jul  6 06:07:15 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -45,6 +45,12 @@ typedef		struct
   t_list 	*team;		/* t_team */
   bool		run;
 }		t_server;
+
+typedef		struct
+{
+  unsigned int	id;
+  char		*msg;
+}		t_bdata;
 
 t_module	*get_module_by_name(char *);
 

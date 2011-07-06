@@ -14,6 +14,7 @@
 #include	<string.h>
 #include	<errno.h>
 #include	<stdio.h>
+#include	<time.h>
 
 #include	"conf.h"
 #include	"zopt.h"
@@ -31,6 +32,7 @@ static void	init_opt_default(t_zopt	*optab)
   set_time(optab->time = default_time);
   optab->width = default_width;
   optab->height = default_height;
+  optab->seed = time(NULL);
 }
 
 static bool	multiple(char *opts[], t_list **list)
@@ -62,6 +64,8 @@ static bool	options(char opt, char *opts[], t_zopt *optab)
     optab->height = strtoul(optarg, NULL, 0);
   else if (opt == 'y')
     optab->height = strtoul(optarg, NULL, 0);
+  else if (opt == 's')
+    optab->seed = strtoul(optarg, NULL, 0);
   else if (opt == 'n')
     multiple(opts, &optab->team);
   else if (opt == 'm')
@@ -84,7 +88,7 @@ bool		init_opt(int ac, char *opt[], t_zopt *optab)
   char		option;
 
   init_opt_default(optab);
-  while ((option = getopt(ac, opt, "c:p:t:r:w:h:x:y:n:m:")) != -1)
+  while ((option = getopt(ac, opt, "s:c:p:t:r:w:h:x:y:n:m:")) != -1)
     if ((!options(option, opt, optab)))
       {
 	fprintf(stderr, "Usage: %s bla bla bla\n", (opt ? opt[0] : "Zappy"));

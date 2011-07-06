@@ -13,9 +13,11 @@ SRCS		= $(SRC_DIR)buffer.c			\
 		  $(SRC_DIR)buffer_destroy.c		\
 		  $(SRC_DIR)buffer_utils.c		\
 		  $(SRC_DIR)fds.c			\
+		  $(SRC_DIR)fds_toolkit.c		\
 		  $(SRC_DIR)socket.c			\
 		  $(SRC_DIR)socket_get.c		\
 		  $(SRC_DIR)getline.c			\
+		  $(SRC_DIR)error.c			\
 		  $(SRC_DIR)inet.c			\
 		  $(SRC_DIR)net.c			\
 		  $(SRC_DIR)network.c			\

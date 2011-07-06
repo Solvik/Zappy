@@ -5,13 +5,14 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 03:17:03 2011 guillaume gelin
+** Last update Wed Jul  6 06:23:06 2011 guillaume gelin
 */
 
 #define	_GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "tserver.h"
 #include "graph_event_global.h"
 #include "sends_all.h"
 #include "player.h"
@@ -22,7 +23,6 @@ bool   	graph_pnw(void *data)
 {
   t_fds		*client;
   char		*to_send;
-  unsigned int	id;
 
   client = (t_fds *)data;
   asprintf(&to_send, "pnw %d %d %d %d %d %s",
@@ -31,7 +31,7 @@ bool   	graph_pnw(void *data)
 	   player_data->y,
 	   ((uint)(player_data->direction)) + 1,
 	   player_data->level,
-	   "team_name");
+	   get_team_of_player(player_data)->name);
   sends_all(to_send);
   free(to_send);
   return (true);
@@ -41,9 +41,11 @@ bool   	graph_pnw(void *data)
 
 bool	graph_pex(void *data)
 {
+  t_fds *client;
   char	*to_send;
 
-  asprintf(&to_send, "pex %d", 0 /* id */);
+  client = (t_fds *)data;
+  asprintf(&to_send, "pex %d", player_data->id);
   sends_all(to_send);
   free(to_send);
   return (true);
@@ -55,8 +57,10 @@ bool	graph_pbc(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "pbc %d %s", 0 /* id*/, "message broadcasté");
+  asprintf(&to_send, "pbc %d %s", ((t_bdata *)data)->id, ((t_bdata *)data)->msg);
   sends_all(to_send);
+  free(((t_bdata *)data)->msg);
+  free(data);
   free(to_send);
   return (true);
 }

@@ -1,11 +1,11 @@
 /*
-** socket.c for  in /Users/Lifely/Developer/project/Zappy/lib/network/sources
+** socket.c for  in /home/di-mar_j/git/Zappy/lib/network/sources
 ** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
+** Made by julien di-marco
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Sun Jul  3 15:50:19 2011 Julien Di Marco
-** Last update Sun Jul  3 15:50:19 2011 Julien Di Marco
+** Started on  Wed Jul  6 04:03:28 2011 julien di-marco
+** Last update Wed Jul  6 04:03:28 2011 julien di-marco
 */
 
 #define		NETPRIVATE
@@ -15,9 +15,6 @@
 #include        <string.h>
 #include        <stdio.h>
 
-#include	"network.h"
-#include	"socket.h"
-
 #include        <sys/types.h>
 #include        <sys/socket.h>
 #include        <sys/time.h>
@@ -26,6 +23,9 @@
 #include        <ifaddrs.h>
 #include        <arpa/inet.h>
 #include	<netdb.h>
+
+#include	"network.h"
+#include	"socket.h"
 
 #define h_addr h_addr_list[0]
 
@@ -65,7 +65,7 @@ sock            *ssocket(int port, int queue)
                 sizeof(s->bind)) != -1) && (listen(s->socket, queue) != -1))
         if (getport(s) != -1)
           return (s);
-      close(s->socket);
+      socket_close(s);
     }
   free(s);
   return  (NULL);
@@ -92,7 +92,7 @@ sock            *csocket(char *hostname, int port)
             if (getport(s) != -1)
               return (s);
         }
-      close(s->socket);
+      socket_close(s);
     }
   free(s);
   return  (NULL);

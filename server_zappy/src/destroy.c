@@ -8,11 +8,19 @@
 ** Last update Thu Jun 30 05:06:03 2011 Julien Di Marco
 */
 
+#include	<unistd.h>
 #include	<stdlib.h>
+
 #include	"tserver.h"
-#include	"tserver.h"
+
+extern t_server	*gserv;
 
 void		destroy(void)
 {
+  if (gserv)
+    {
+      destroy_list(&gserv->names.modules, free);
+      destroy_list(&gserv->names.teams, free);
+    }
   free(get_map());
 }

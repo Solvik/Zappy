@@ -46,7 +46,7 @@ int		pool_fill(fds l, t_select *p)
   FD_ZERO(&p->error);
   while (l && p)
     {
-      if (l && l->fd != -1)
+      if (l && fds_alive(l))
 	{
 	  FD_SET(l->fd, &p->error);
 	  if (((l->type == READ || l->type == RDWR) && \
@@ -78,12 +78,13 @@ int		pool_handle(fds *l, t_select *p)
   i = 0;
   while (p && (i < p->isset) && tmp)
     {
-      if ((tmp->fd != -1) && tmp->type == SERV && FD_ISSET(tmp->fd, &p->read) && ++i)
+      if (fds_alive(tmp) && tmp->type == SERV &&
+	  FD_ISSET(tmp->fd, &p->read) && ++i)
 	handle_serv(l, tmp);
-      if ((tmp->fd != -1) && (tmp->type == READ || tmp->type == RDWR) && \
+      if (fds_alive(tmp) && (tmp->type == READ || tmp->type == RDWR) && \
 	  FD_ISSET(tmp->fd, &p->read) && ++i)
 	handle_read(tmp);
-      if ((tmp->fd != -1) && (tmp->type == WRITE || tmp->type == RDWR) && \
+      if (fds_alive(tmp) && (tmp->type == WRITE || tmp->type == RDWR) && \
 	  FD_ISSET(tmp->fd, &p->write) && ++i)
 	handle_write(tmp);
       tmp = tmp->next;

@@ -16,6 +16,7 @@
 
 typedef		struct
 {
+  uint		seed;
   uint		port;
   uint		width;
   uint		height;

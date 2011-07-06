@@ -10,7 +10,11 @@
 
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<string.h>
+#include	<stdio.h>
+#include	<errno.h>
 
+#include	"error.h"
 #include	"network.h"
 #include	"tserver.h"
 
@@ -32,10 +36,15 @@ bool	net_port_unique(int port)
 
 bool	net_bind(uint *port)
 {
+  int	a;
+
+  a = 0;
   if (!gserv_const(false))
     return (false);
   *port = (int)*port == -1 ? (unsigned)get_port() : *port;
-  if (net_port_unique(*port) && add_socket(get_pool(), *port, 10))
+  if (net_port_unique(*port) && !(a = add_socket(get_pool(), *port, 10)))
     return (true);
+  if (a == -1)
+    syntax_print_error("Connection failed: %s", strerror(errno));
   return (false);
 }
