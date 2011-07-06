@@ -1,11 +1,11 @@
 /*
-** graph_misc.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
+** graph_event_misc.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
 ** 
 ** Made by guillaume gelin
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Wed Jul  6 16:27:59 2011 ramnes
+** Last update Wed Jul  6 16:30:34 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 #include "tserver.h"
-#include "graph_misc.h"
+#include "graph_event_misc.h"
 #include "sends_all.h"
 
 /* seg: Send winner team name */
