@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Thu Jun 30 12:07:53 2011 guillaume gelin
+** Last update Wed Jul  6 16:27:59 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -15,43 +15,44 @@
 
 #include "tserver.h"
 #include "graph_misc.h"
+#include "sends_all.h"
 
-/* Send winner team name */
+/* seg: Send winner team name */
 
-bool	graph_seg(t_fds *client, char *cmd __attribute__((unused)))
+bool	graph_seg(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "seg %s", /* winner_team */ "toto");
-  sends(client, to_send);
+  asprintf(&to_send, "seg %s", (char*)data);
+  sends_all(to_send);
   free(to_send);
   return (true);
 }
 
-/* Send server msg */
+/* smg: Send server msg */
 
-bool	graph_smg(t_fds *client, char *cmd __attribute__((unused)))
+bool	graph_smg(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "smg %s", /* server msg */ "Top CoOl!");
-  sends(client, to_send);
+  asprintf(&to_send, "smg %s", (char*)data);
+  sends_all(to_send);
   free(to_send);
   return (true);
 }
 
-/* Unknow command */
+/* suc: Unknow command */
 
-bool	graph_suc(t_fds *client, char *cmd __attribute__((unused)))
+bool	graph_suc(void *data)
 {
-  sends(client, "suc");
+  sends((t_fds *)data, "suc");
   return (true);
 }
 
-/* Bad command parameter */
+/* sbp: Bad command parameter */
 
-bool	graph_sbp(t_fds *client, char *cmd __attribute__((unused)))
+bool	graph_sbp(void *data)
 {
-  sends(client, "sbp");
+  sends((t_fds *)data, "sbp");
   return (true);
 }

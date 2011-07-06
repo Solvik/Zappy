@@ -5,15 +5,15 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:32:47 2011 guillaume gelin
-** Last update Thu Jun 30 12:07:26 2011 guillaume gelin
+** Last update Wed Jul  6 16:28:08 2011 ramnes
 */
 
 #ifndef		GRAPH_MISC_H_
 # define	GRAPH_MISC_H_
 
-bool	graph_seg(t_fds *, char *);
-bool	graph_smg(t_fds *, char *);
-bool	graph_suc(t_fds *, char *);
-bool	graph_sbp(t_fds *, char *);
+bool	graph_seg(void *);
+bool	graph_smg(void *);
+bool	graph_suc(void *);
+bool	graph_sbp(void *);
 
 #endif		/* GRAPH_MISC_H_ */
