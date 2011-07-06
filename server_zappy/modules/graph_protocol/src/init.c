@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Tue Jul  5 16:34:41 2011 guillaume gelin
+** Last update Wed Jul  6 00:42:31 2011 guillaume gelin
 */
 
 #include	<stdio.h>
@@ -20,6 +20,7 @@
 #include	"graph_team.h"
 #include	"graph_time.h"
 #include	"graph_player.h"
+#include	"graph_event_global.h"
 
 t_module *	get_module(void)
 {
@@ -33,6 +34,7 @@ t_module *	get_module(void)
   module->port = 4242;
   module->antiflood = 10;
   module->clients = NULL;
+  command_add(module->functions, "graphic", graph_graphic);
   command_add(module->functions, "msz", graph_msz);
   command_add(module->functions, "bct", graph_bct);
   command_add(module->functions, "mct", graph_mct);
@@ -42,7 +44,9 @@ t_module *	get_module(void)
   command_add(module->functions, "pin", graph_pin);
   command_add(module->functions, "sgt", graph_sgt);
   command_add(module->functions, "sst", graph_sst);
-  command_add(module->functions, "graphic", graph_graphic);
+  event_catch("pnw", graph_pnw);
+  event_catch("pex", graph_pex);
+  event_catch("pbc", graph_pbc);
   return (module);
 }
 
