@@ -92,7 +92,7 @@ static void	voir_level(t_fds *c, t_player *p, int l)
       x = ((p->x + (s % (3 + (2 * (l - 1))))) - l);
       y = ((p->y + (s / (3 + (2 * (l - 1))))) - l);
       x = (d->t != NORMAL) ? (int)p->x - (x - (int)p->x) : x;
-      y = (d->t == NORMAL) ? (int)p->y - (y - (int)p->y) : y;
+      y = (d->t != NORMAL) ? (int)p->y - (y - (int)p->y) : y;
       voir_case(c, x, y);
       s += (d->d == NORTH) ? 1 : (3 + (2 * (l - 1)));
       if (!(l == (int)p->level && ((i + 1) == (3 + (2 * (l - 1))))))
@@ -112,6 +112,9 @@ static void	voir_algorithm(t_fds *c, t_player *p)
     return ;
   voir_case(c, p->x, p->y);
   sendneof(c, ",");
+#if !defined(NDEBUG)
+  printf("User: d[%d] {x: %d, y: %d}\n", p->direction, p->x, p->y);
+#endif
   while (++i <= (int)p->level)
     voir_level(c, p, i);
 }
