@@ -100,23 +100,18 @@ return a player by his id
 uint            get_player_level(uint id);
 return the level of a player or 0 if invalid id
 
-todo : levelup
-
 --- Position --
 
 bool            get_player_pos(uint id, uint *x, uint *y);
 set x, y to the position of the player id. return false if id is invalid
-
-todo : move_player
 
 --- Food ---
 
 uint get_player_food(uint id);
 return the food (= life) of the player (0 if invalid id)
 
-todo :
-bool            player_addfood(uint x, uint y, uint nb);
-bool            player_delfood(uint x, uint y, uint nb)
+bool            player_addfood(uint id, uint nb);
+bool            player_delfood(uint id, uint nb)
 
 
 --- Stones ---
