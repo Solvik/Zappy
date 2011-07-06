@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 03:41:59 2011 Julien Di Marco
-** Last update Sun Jul  3 17:25:22 2011 solvik blum
+** Last update Wed Jul  6 03:05:41 2011 guillaume gelin
 */
 
 #define		_GNU_SOURCE
@@ -56,6 +56,7 @@ bool		handshaking(t_fds *client, char *cmd)
       sends(client, ret);
       if (ret)
 	free(ret);
+      event_relative_dispatch("pnw", client, 0);
       return (true);
     }
   return (false);

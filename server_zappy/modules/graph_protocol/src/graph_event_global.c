@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 01:53:53 2011 guillaume gelin
+** Last update Wed Jul  6 03:17:03 2011 guillaume gelin
 */
 
 #define	_GNU_SOURCE
@@ -14,15 +14,24 @@
 #include <stdlib.h>
 #include "graph_event_global.h"
 #include "sends_all.h"
+#include "player.h"
 
 /* pnw: Connexion d'un nouveau joueur */
 
-bool	graph_pnw(void *data)
+bool   	graph_pnw(void *data)
 {
-  char	*to_send;
+  t_fds		*client;
+  char		*to_send;
+  unsigned int	id;
 
-  asprintf(&to_send, "pnw %d %d %d %d %d %s", 0 /* id */, 0 /* x */, 0 /* y*/,
-	    1 /* orient */, 1 /* level */, "team_name");
+  client = (t_fds *)data;
+  asprintf(&to_send, "pnw %d %d %d %d %d %s",
+	   player_data->id,
+	   player_data->x,
+	   player_data->y,
+	   ((uint)(player_data->direction)) + 1,
+	   player_data->level,
+	   "team_name");
   sends_all(to_send);
   free(to_send);
   return (true);
