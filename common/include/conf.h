@@ -23,4 +23,9 @@ static define		default_height		= 10;
 
 static define		default_life		= 10;
 
+static define		map_stones_density	= 30;//%
+static define		map_food_density	= 50;
+static define		map_nb_stones		= 10;
+static define		map_nb_food		= 10;
+
 #endif		/* !CONF_H_ */

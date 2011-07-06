@@ -30,4 +30,6 @@ typedef		struct
   uint		nb;
 }		t_stone;
 
+void		map_random_fill(void);
+
 #endif		/* !STONE_H_ */

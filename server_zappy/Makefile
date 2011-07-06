@@ -61,6 +61,8 @@ SOURCES	= $(LOCAL)main.c			\
 	  \
 	  $(LOCAL)new_player.c			\
 	  \
+	  $(LOCAL)map_random_inventory.c	\
+	  \
 	  $(LOCAL)gserv_get.c			\
 	  $(LOCAL)gserv_set_info.c		\
 	  $(LOCAL)gserv_set_map.c		\

@@ -8,7 +8,7 @@
 ** Last update Thu Jun 30 05:05:01 2011 Julien Di Marco
 */
 
-#undef _FORTIFY_SOURCE
+#undef		_FORTIFY_SOURCE
 
 #include	<unistd.h>
 #include	<signal.h>

@@ -28,5 +28,6 @@ bool		init_map(t_zopt *opt)
   bzero(map_ptr, (((get_map_width() * get_map_height()) + 1)
 		  * sizeof(*map_ptr)));
   set_map(map_ptr);
+  map_random_fill();
   return (true);
 }
