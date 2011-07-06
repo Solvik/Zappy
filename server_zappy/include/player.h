@@ -13,7 +13,6 @@
 
 #  include	"ztypes.h"
 #  include	"list.h"
-#  include	"network.h"
 
 #define		player_data	((t_player *)(client->data))
 
