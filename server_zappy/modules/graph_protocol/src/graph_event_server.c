@@ -1,11 +1,11 @@
 /*
-** graph_event_global.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
+** graph_event_server.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
 ** 
 ** Made by guillaume gelin
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 17:00:15 2011 ramnes
+** Last update Wed Jul  6 19:37:49 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -37,30 +37,40 @@ bool   	graph_pnw(void *data)
   return (true);
 }
 
-/* pex: Un joueur est expulsé */
+/* pdi: Le joueur est mort de faim */
 
-bool	graph_pex(void *data)
+bool	graph_pdi(void *data)
 {
   t_fds *client;
   char	*to_send;
 
   client = (t_fds *)data;
-  asprintf(&to_send, "pex %d", player_data->id);
+  asprintf(&to_send, "pdi %d", player_data->id);
   sends_all(to_send);
   free(to_send);
   return (true);
 }
 
-/* pbc: Un joueur fait un broadcast */
+/* seg: Game Over */
 
-bool	graph_pbc(void *data)
+bool	graph_seg(void *data)
 {
   char	*to_send;
 
-  asprintf(&to_send, "pbc %d %s", ((t_bdata *)data)->id, ((t_bdata *)data)->msg);
+  asprintf(&to_send, "seg %s", (char*)data);
   sends_all(to_send);
-  free(((t_bdata *)data)->msg);
-  free(data);
+  free(to_send);
+  return (true);
+}
+
+/* smg: Message du serveur */
+
+bool	graph_smg(void *data)
+{
+  char	*to_send;
+
+  asprintf(&to_send, "smg %s", (char*)data);
+  sends_all(to_send);
   free(to_send);
   return (true);
 }
