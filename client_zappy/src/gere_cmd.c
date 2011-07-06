@@ -51,7 +51,7 @@ static const t_ptr ptr[] =
 
 static const int	ptr_len = sizeof(ptr) / sizeof(t_ptr);
 
-int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd)
+int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
 {
   int			i;
 
@@ -62,7 +62,7 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd)
       if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
 	{
 	  if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
-	    return (ptr[i].f(pooler, inc_cmd));
+	    return (ptr[i].f(pooler, inc_cmd, v));
 	  else
 	    return (0);
 	}

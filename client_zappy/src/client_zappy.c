@@ -29,7 +29,7 @@ void		create_window(t_visu *p)
   /* p->sprite->grass = "images/monster_left.png"; */
 }
 
-void		connect_server(char *addr, int port)
+void		connect_server(char *addr, int port, t_visu *v)
 {
   fds		pooler;
   char		*cmd;
@@ -45,7 +45,7 @@ void		connect_server(char *addr, int port)
       while ((cmd = getcmd(pooler)))
 	{
 	  inc_cmd = parse_cmd(cmd);
-	  if (!gere_cmd(pooler, inc_cmd))
+	  if (!gere_cmd(pooler, inc_cmd, v))
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
 	  /* free_cmd(inc_cmd); */
 	}
@@ -60,7 +60,7 @@ void		connect_server(char *addr, int port)
 
     create_window(&visu);
     if (ac > 2)
-      connect_server(av[1], atoi(av[2]));
+      connect_server(av[1], atoi(av[2]), &visu);
     // event (souris)
     // send > GRAPHIC
     // on recupere les infos

@@ -12,7 +12,7 @@
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
-int		visu_bienvenue(t_fds *pooler, t_visu *visu, t_cmd *cmd)
+int		visu_bienvenue(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 {
   (void)cmd;
   (void)visu;

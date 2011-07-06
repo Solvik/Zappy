@@ -20,10 +20,10 @@ typedef struct	s_ptr
   int		argc;
 }               t_ptr;
 
-int		visu_bienvenue(t_fds *, t_visu *, t_cmd *);
-int		visu_msz(t_fds *, t_visu *, t_cmd *);
-int		visu_smg(t_fds *, t_visu *, t_cmd *);
-int		visu_suc(t_fds *, t_visu *, t_cmd *);
-int		visu_sbp(t_fds *, t_visu *, t_cmd *);
+int		visu_bienvenue(t_fds *, t_cmd *, t_visu *);
+int		visu_msz(t_fds *, t_cmd *, t_visu *);
+int		visu_smg(t_fds *, t_cmd *, t_visu *);
+int		visu_suc(t_fds *, t_cmd *, t_visu *);
+int		visu_sbp(t_fds *, t_cmd *, t_visu *);
 
 #endif		/* !VISU_FUNC_H_ */

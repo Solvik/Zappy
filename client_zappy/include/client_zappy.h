@@ -65,7 +65,7 @@ typedef struct	s_visualiseur
 typedef t_visualiseur t_visu;
 
 t_cmd		*parse_cmd(char *);
-int		gere_cmd(t_fds *, t_cmd *_);
+int		gere_cmd(t_fds *, t_cmd *, t_visu *);
 
 
 
