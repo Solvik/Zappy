@@ -29,14 +29,11 @@ void		create_window(t_visu *p)
   /* p->sprite->grass = "images/monster_left.png"; */
 }
 
-void		connect_server(char *addr, int port, t_visu *v)
+void		handle_event(t_fds *pooler, t_visu *v)
 {
-  fds		pooler;
   char		*cmd;
   t_cmd		*inc_cmd;
 
-  pooler = NULL;
-  add_co(&pooler, addr, port);
   while (1)
     {
       pool(&pooler, NULL);
@@ -54,21 +51,26 @@ void		connect_server(char *addr, int port, t_visu *v)
   // while on recoit, on traite selon cmd[0]
 }
 
-  bool		client_zappy(int ac, char *av[])
-  {
-    t_visu	visu;
+bool		client_zappy(int ac, char *av[])
+{
+  t_visu	visu;
+  t_fds		*pooler;
 
-    create_window(&visu);
-    if (ac > 2)
-      connect_server(av[1], atoi(av[2]), &visu);
-    // event (souris)
-    // send > GRAPHIC
-    // on recupere les infos
-    // msz X Y > taille map
-    // sgt T > temps
-    // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
-    // tna N >> nom de chaque equipe
-    // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
-    // oeuf pondu >> ok
-    return (true);
-  }
+  pooler = NULL;
+  if (ac > 2)
+    {
+      create_window(&visu);
+      add_co(&pooler, av[1], atoi(av[2]));
+      handle_event(pooler, &visu);
+    }
+  // event (souris)
+  // send > GRAPHIC
+  // on recupere les infos
+  // msz X Y > taille map
+  // sgt T > temps
+  // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
+  // tna N >> nom de chaque equipe
+  // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
+  // oeuf pondu >> ok
+  return (true);
+}
