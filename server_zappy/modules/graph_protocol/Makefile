@@ -5,7 +5,7 @@
 ## Login   <Lifely@epitech.net>
 ## 
 ## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Last update Wed Jul  6 17:05:32 2011 ramnes
+## Last update Wed Jul  6 19:40:15 2011 ramnes
 ##
 
 ############################################################
@@ -38,9 +38,9 @@ SOURCE	= $(LOCAL)init.c		\
 	  $(LOCAL)graph_graphic.c	\
 	  $(LOCAL)graph_egg.c		\
 	  $(LOCAL)graph_map.c		\
-	  $(LOCAL)graph_event_global.c	\
+	  $(LOCAL)graph_event_server.c	\
 	  $(LOCAL)graph_event_player.c	\
-	  $(LOCAL)graph_event_misc.c	\
+	  $(LOCAL)graph_event_cmd.c	\
 	  $(LOCAL)sends_all.c
 
 SOURCES	= $(SOURCE:.c=.o)
