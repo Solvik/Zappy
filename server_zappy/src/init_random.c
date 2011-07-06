@@ -22,9 +22,11 @@ bool		init_random(t_zopt *opt)
 {
   if (!opt)
     return (false);
+#if defined(_Darwin_)
   if ((int)opt->seed == -1)
     sranddev();
   else
+#endif
     srand(opt->seed);
   return (true);
 }
