@@ -47,28 +47,60 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<stdio.h>
+#include	"player.h"
 
-int		main(int ac, char **av)
+typedef enum	translation_
+  {
+    VERTICAL,
+    HORIZONTAL,
+    NONE
+  }		e_translation;
+
+typedef struct voir_algo
 {
+  e_direction	d;
+  e_translation	t;
+}		t_voir_algo;
+
+static t_voir_algo	algo[] =
+  {
+    {NORTH, NONE},
+    {EAST, VERTICAL},
+    {NORTH, HORIZONTAL},
+    {EAST, NONE}
+  };
+
+#define EDIRSIZE sizeof(algo) / sizeof(t_voir_algo)
+
+void		voir_iter(e_direction d, int l)
+{
+  t_voir_algo	*dir;
   int		x;
+  int		y;
   int		s;
-  int		l;
-  int		i;
   int		j;
 
-  if (ac < 3)
-    return (-1);
-  x = atoi(av[1]);
-  l = atoi(av[2]);
-  s = 0;
-  s = (2 * l);
+  if (d > EDIRSIZE)
+    return ;
+  dir = &algo[d];
+  s = (2 * 1) * dir->d;
+  printf("s: %d\n", s);
   j = -1;
   while (++j < (3 + (2 * (l - 1))))
     {
-      printf("{ x = %d", ( (x + (s % (3 + (2 * (l - 1))))) - l ));
-      printf(", y = %d}\n", ( (x + (s / (3 + (2 * (l - 1))))) - l ));
-      s += (3 + (2 * (l - 1)));
-/*       s += 1; */
+      x = ( (5 + (s % (3 + (2 * (l - 1))))) - l );
+      y = ( (5 + (s / (3 + (2 * (l - 1))))) - l );
+      x = (dir->t == VERTICAL) ? 5 - (x - 5) : (dir->t == HORIZONTAL) ? 5 - (x - 5) : x;
+      y = (dir->t == VERTICAL) ? 5 - (y - 5) : (dir->t == HORIZONTAL) ? 5 - (y - 5) : y;
+      printf("{ x = %d", x);
+      printf(", y = %d}\n", y);
+      s += (dir->d == NORTH) ? 1 : (3 + (2 * (l - 1)));
     }
+}
+
+int		main(int ac, char **av)
+{
+  if (ac >= 3)
+    voir_iter(atoi(av[1]), atoi(av[2]));
   return (0);
 }
