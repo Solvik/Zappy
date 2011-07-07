@@ -27,4 +27,9 @@ typedef struct _client
   t_module	*_m;
 }		t_client;
 
+bool		flood_destroy(t_client *);
+bool		scheduler_destroy(t_client *);
+
+void		*destroy_client(t_client *);
+
 #endif		/* !CLIENT_H_ */

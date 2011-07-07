@@ -19,4 +19,6 @@ bool	net_wait_clients(void);
 bool	net_port_unique(int);
 bool	net_bind(uint*);
 
+bool	net_close(fds);
+
 #endif		/* !SERV_ZAPPY_NET_H_ */

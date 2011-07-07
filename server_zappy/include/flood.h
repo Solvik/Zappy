@@ -21,7 +21,7 @@ typedef struct	_antiflood
   int		size;
 }		t_antiflood;
 
-char		*flood_check(fds pool, char *s);
-bool		flood_read(fds pool);
+char		*flood_check(fds, char *);
+bool		flood_read(fds);
 
 #endif		/* !FLOOD_H_ */

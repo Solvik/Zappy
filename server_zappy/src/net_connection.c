@@ -15,6 +15,7 @@
 #include	<errno.h>
 
 #include	"error.h"
+#include	"client.h"
 #include	"network.h"
 #include	"tserver.h"
 
@@ -47,4 +48,25 @@ bool	net_bind(uint *port)
   if (a == -1)
     syntax_print_error("Connection failed: %s", strerror(errno));
   return (false);
+}
+
+static bool	del_pointer(void *a, void *b)
+{
+  return ((a == b));
+}
+
+bool	net_close(fds c)
+{
+  t_client	*info;
+
+  if (!c)
+    return (false);
+  if ((info = c->trick))
+    {
+      if (info->_m)
+	del_node_as_arg(&info->_m->clients, del_pointer, c);
+      destroy_client(info);
+    }
+  fds_remove(get_pool(), c, NULL);
+  return (true);
 }
