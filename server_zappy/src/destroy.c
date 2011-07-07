@@ -12,8 +12,19 @@
 #include	<stdlib.h>
 
 #include	"tserver.h"
+#include	"client.h"
 
 extern t_server	*gserv;
+
+void		*destroy_client(t_client *c)
+{
+  if (!c)
+    return (NULL);
+  scheduler_destroy(c);
+  flood_destroy(c);
+  free(c);
+  return (NULL);
+}
 
 void		destroy(void)
 {

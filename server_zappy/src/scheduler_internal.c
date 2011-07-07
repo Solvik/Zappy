@@ -57,6 +57,7 @@ bool		scheduler_dispatch(fds c)
     out = true;
   if ((schedule->free))
     flood_read(c);
+  schedule->data = NULL;
   schedule->callback = NULL;
   schedule->state = (char)false;
   return (exec_client(c, time_d(t)));
@@ -74,4 +75,13 @@ double		scheduler_update(double r)
       return (o);
     }
   return ((dt = (r < dt || dt < 0.0 ? r : dt)));
+}
+
+bool		scheduler_destroy(t_client *c)
+{
+  t_scheduler	*schedule;
+
+  if (!c || !(schedule = &c->schedule))
+    return (false);
+  return (true);
 }

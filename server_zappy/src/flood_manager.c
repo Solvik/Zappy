@@ -66,3 +66,17 @@ bool		flood_read(fds pool)
     memset(&flood->read, 0, sizeof(flood->read) * 2);
   return (true);
 }
+
+bool		flood_destroy(t_client *c)
+{
+  t_antiflood	*flood;
+
+  if (!c || !(flood = &c->flood))
+    return (false);
+  if (c->command)
+    free(c->command);
+  while ((flood->write - flood->read) > 0)
+    free(flood->array[(flood->read++ % flood->size)]);
+  free(flood->array);
+  return (true);
+}
