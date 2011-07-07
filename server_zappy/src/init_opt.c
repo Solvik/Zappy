@@ -58,13 +58,9 @@ static bool	options(char opt, char *opts[], t_zopt *optab,
     optab->port = strtoul(optarg, NULL, 0);
   else if (opt == 'r')
     optab->time = strtod(optarg, NULL);
-  else if (opt == 'w')
+  else if (opt == 'x' || opt == 'w')
     optab->width = strtoul(optarg, NULL, 0);
-  else if (opt == 'x')
-    optab->width = strtoul(optarg, NULL, 0);
-  else if (opt == 'h')
-    optab->height = strtoul(optarg, NULL, 0);
-  else if (opt == 'y')
+  else if (opt == 'h' || opt == 'y')
     optab->height = strtoul(optarg, NULL, 0);
   else if (opt == 's')
     optab->seed = strtoul(optarg, NULL, 0);
