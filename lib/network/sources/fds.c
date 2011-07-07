@@ -66,7 +66,8 @@ void		*fds_free(fds c, void *(*free_data)(void *))
 {
   if (c)
     {
-      c->data = free_data(c->data);
+      if (free_data)
+	c->data = free_data(c->data);
       buffer_destroy(&c->read);
       buffer_destroy(&c->write);
       socket_destroy(c->s);
