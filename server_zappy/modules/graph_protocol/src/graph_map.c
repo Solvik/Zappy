@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 18:51:14 2011 seb
-** Last update Wed Jul  6 20:12:16 2011 ramnes
+** Last update Thu Jul  7 18:53:30 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -17,12 +17,10 @@
 #include "tserver.h"
 #include "graph_map.h"
 
-bool graph_msz(t_fds *client, char *_)
+bool graph_msz(t_fds *client, char *cmd __attribute__((unused)))
 {
   char *to_send;
 
-  (void)_;
-  to_send = NULL;
   if (asprintf(&to_send, "msz %u %u",
 	       get_map_width(),
 	       get_map_height()) == -1)
@@ -60,20 +58,15 @@ bool graph_bct(t_fds *client, char *cmd)
   return (true);
 }
 
-bool graph_mct(t_fds *client, char *_)
+bool graph_mct(t_fds *client, char *cmd __attribute__((unused)))
 {
   uint x;
   uint y;
   char *msg;
-  char *to_send;
 
-  (void)_;
   x = 0;
-  to_send = NULL;
-  msg = NULL;
   while (x < get_map_width())
     {
-      y = 0;
       while (y < get_map_height())
 	{
 	  if (asprintf(&msg, "bct %d %d", x, y) == -1)
@@ -82,6 +75,7 @@ bool graph_mct(t_fds *client, char *_)
 	  free(msg);
 	  y++;
 	}
+      y = 0;
       x++;
     }
   return (true);
