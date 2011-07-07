@@ -55,19 +55,16 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
 {
   int			i;
 
-  i = 0;
+  i = -1;
   printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
-  while (i < ptr_len)
-    {
-      if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
-	{
-	  if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
-	    return (ptr[i].f(pooler, inc_cmd, v));
-	  else
-	    return (0);
-	}
-      i++;
-    }
+  while (++i < ptr_len)
+    if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
+      {
+	if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
+	  return (ptr[i].f(pooler, inc_cmd, v));
+	else
+	  return (0);
+      }
   return (0);
 }
 
