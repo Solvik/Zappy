@@ -49,5 +49,7 @@ bool		eventm_dispatch(t_event *event)
   event_catch_dispatch(catchers, event);
   if (event->free)
     free(event->data);
+  if (event->name)
+    free(event->name);
   return (true);
 }
