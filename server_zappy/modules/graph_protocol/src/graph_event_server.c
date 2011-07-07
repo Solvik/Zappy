@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Wed Jul  6 23:26:28 2011 ramnes
+** Last update Thu Jul  7 20:46:43 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -77,4 +77,25 @@ bool	graph_smg(void *data)
   sends_all(to_send);
   free(to_send);
   return (true);
+}
+
+/* ppo: PlayerMove */
+/* Basically, this is a cmd, but we override it with */
+/* an event to send a ppo to all when a player moves. */
+
+bool	graph_eppo(void *data)
+{
+  t_fds	*client;
+  char	*to_send;
+  unsigned int	x;
+  unsigned int	y;
+  unsigned int	o;
+
+  client = (t_fds *)data;
+  get_player_pos(player_data->id, &x, &y, &o);
+  if (asprintf(&to_send, "ppo %d %d %d %d",
+	       player_data->id, x, y, o) == -1)
+    return (false);
+  sends_all(to_send);
+  return (true); 
 }

@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Wed Jul  6 23:59:21 2011 ramnes
+** Last update Thu Jul  7 20:47:59 2011 ramnes
 */
 
 #include	<stdio.h>
@@ -42,6 +42,7 @@ static void	_events()
   event_catch("PlayerDied",	graph_pdi);
   event_catch("GameOver",	graph_seg);
   event_catch("ServerMsg",	graph_smg);
+  event_catch("PlayerMove",	graph_eppo);
   event_catch("KickAss",	graph_pex);
   event_catch("Broadcast",	graph_pbc);
   event_catch("NewEgg",		graph_pfk);

@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Wed Jul  6 06:07:15 2011 guillaume gelin
+** Last update Thu Jul  7 20:38:05 2011 ramnes
 */
 
 #ifndef		TSERV_H_
@@ -48,8 +48,9 @@ typedef		struct
 
 typedef		struct
 {
-  unsigned int	id;
-  char		*msg;
+  unsigned int	ui1;
+  unsigned int	ui2;
+  char		*txt1;
 }		t_bdata;
 
 t_module	*get_module_by_name(char *);

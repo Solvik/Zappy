@@ -24,6 +24,11 @@ Function	: graph_smg
 Data type	: char *
 Data inside	: Message to be displayed
 
+Event name	: PlayerMove
+Function	: graph_eppo
+Data type	: t_fds *
+Data inside	: Client fds
+
 
 
 -> graph_event_player.c
@@ -36,7 +41,7 @@ Data inside	: Client fds
 Event name	: Broadcast
 Function	: graph_pbc
 Data type	: t_bdata *
-Data inside	: Sender's id, message broadcasted (uint id, char *msg)
+Data inside	: Sender's id, message broadcasted (uint ui1, char *txt1)
 
 Event name	: NewEgg
 Function	: graph_pfk
@@ -46,12 +51,12 @@ Data inside	: Client fds
 Event name	: DropItem
 Function	: graph_pdr
 Data type	: t_bdata *
-Data inside	: Player id, ressource nb (uint id, uint resnb)
+Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 Event name	: TakeItem
 Function	: graph_pgt
 Data type	: t_bdata *
-Data inside	: Player id, ressource nb (uint id, uint resnb)
+Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 
 

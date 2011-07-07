@@ -5,11 +5,11 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 15:55:53 2011 solvik blum
-** Last update Wed Jun 29 16:30:35 2011 solvik blum
+** Last update Thu Jul  7 20:53:57 2011 ramnes
 */
 
 #include	<stdlib.h>
-
+#include	"napi.h"
 #include	"map.h"
 #include	"player.h"
 #include	"server_zappy.h"
@@ -66,6 +66,7 @@ int		zappy_avance(t_fds *client, char *cmd)
       {
 	gl_tab[i].func(client);
 	sends(client, "ok");
+	event_relative_dispatch("PlayerMove", client, 0);
 	return (1);
       }
   return (0);

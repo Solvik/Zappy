@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Thu Jun 30 11:32:47 2011 guillaume gelin
-** Last update Wed Jul  6 19:37:37 2011 ramnes
+** Last update Thu Jul  7 20:55:09 2011 ramnes
 */
 
 #ifndef		GRAPH_EVENTS_H_
@@ -19,6 +19,7 @@ bool	graph_pnw(void *);
 bool	graph_pdi(void *);
 bool	graph_seg(void *);
 bool	graph_smg(void *);
+bool	graph_eppo(void *);
 
 /* graph_event_player.c */
 

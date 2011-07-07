@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jul  6 20:25:26 2011 ramnes
+** Last update Thu Jul  7 20:24:57 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -129,8 +129,8 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   tr_y = get_map_height() / 2 - player_data->y;
   foreach_list(mod->clients, send_broadcast);
   data = malloc(sizeof(t_bdata));
-  data->id = player_data->id;
-  data->msg = strdup(text);
+  data->ui1 = player_data->id;
+  data->txt1 = strdup(text);
   event_relative_dispatch("Broadcast", (void *)data, 0);
   return (1);
 }
