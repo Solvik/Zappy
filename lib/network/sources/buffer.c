@@ -95,7 +95,7 @@ int		buffer_move(buffer l, int i)
 {
   if (l && (i <= BUFFERS) && (strlen(&l->buf[i]) > 0))
     {
-      strncpy(l->buf, &l->buf[i], (BUFFERS - i));
+      strncpy(l->buf, &l->buf[i], strlen(&l->buf[i]) + 1);
       return (0);
     }
   else if (l && i <= BUFFERS && strlen(&l->buf[i]) == 0)

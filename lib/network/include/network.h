@@ -25,7 +25,7 @@
 #define READM   16
 #define READB   1024
 
-#define WRITEB  1024
+#define WRITEB  4096
 
 #define sends(a, b)     (writes(a, b, 1))
 #define eof(a)          (writes(a, NULL, 1))

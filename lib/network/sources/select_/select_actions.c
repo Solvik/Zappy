@@ -105,12 +105,13 @@ int		handle_read(fds socket)
 int		handle_write(fds socket)
 {
   int		i;
+  int		a;
 
   if (socket && fds_alive(socket) && socket->write)
     {
-      if ((i = write(socket->fd, socket->write->buf, \
-		     (((i = strlen(socket->write->buf)) > WRITEB) \
-		      ? WRITEB : i))) > 0)
+      if ((i = write(socket->fd, socket->write->buf,
+		     (a = strlen(socket->write->buf)) > WRITEB ?
+		     WRITEB : a)) > 0)
 	{
 	  if (buffer_move(socket->write, i) == -1)
 	    socket->write = buffer_remove(socket->write);
