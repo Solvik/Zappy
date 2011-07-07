@@ -22,10 +22,7 @@ void		map_random_stone(void)
 
   set_box_addstone(rand() % get_map_width(),
 		   rand() % get_map_height(),
-		   stonetab[i],
+		   stonetab[i++],
 		   rand() % map_nb_stones);
-  if (i < (sizeof(stonetab) / sizeof(*stonetab)))
-    i = 0;
-  else
-    ++i;
+  i = (i < (sizeof(stonetab) / sizeof(*stonetab)) ? i : 0);
 }
