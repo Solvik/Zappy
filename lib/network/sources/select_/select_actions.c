@@ -45,6 +45,8 @@ int		handle_serv(fds *list, fds socket)
 	    {
 	      new->s = s;
 	      new->port = (socket->s ? socket->s->port : -1);
+	      if (new->s)
+		new->s->port = new->port;
 	    }
 	  else
 	    socket_destroy(s);
