@@ -20,6 +20,12 @@
 # include	"map.h"
 # include	"tserver.h"
 
+#define X(a)	(((a < 0) ? (int)get_map_width() : 0) + \
+		 (a % ((int)get_map_width() - 1)))
+
+#define Y(a)	(((a < 0) ? (int)get_map_height() : 0) + \
+		 (a % ((int)get_map_height() - 1)))
+
 bool		command_add(t_mod_func *, char *, void *);
 bool		command_relative(t_mod_func*, char*, void*, double);
 bool		command_universel(t_mod_func*, char*, void*, double);

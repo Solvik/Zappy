@@ -29,8 +29,8 @@ typedef struct	s_player
   uint		id;
   uint		level;
   uint		food;
-  uint		x;
-  uint		y;
+  int		x;
+  int		y;
   t_list 	*stones;
   e_direction	direction;
 }		t_player;

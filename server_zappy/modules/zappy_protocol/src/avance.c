@@ -15,59 +15,23 @@
 #include	"server_zappy.h"
 #include	"tserver.h"
 
-typedef struct	s_avance
+#include	"napi.h"
+
+int		zappy_avance(t_fds *c, char *_)
 {
-  int		(*func)();
-  e_direction	dir;
-}		t_avance;
+  t_player	*p;
 
-static int	avance_haut(t_fds *client)
-{
-  player_data->y = (player_data->y - 1) % get_map_height();
-  return (1);
-}
-
-static int	avance_bas(t_fds *client)
-{
-  player_data->y = (player_data->y + 1) % get_map_height();
-  return (1);
-}
-
-static int	avance_droite(t_fds *client)
-{
-  player_data->x = (player_data->x + 1) % get_map_width();
-  return (1);
-}
-
-static int	avance_gauche(t_fds *client)
-{
-  player_data->x = (player_data->x - 1) % get_map_width();
-  return (1);
-}
-
-static const t_avance	gl_tab[4] =
-  {
-    {avance_haut, NORTH},
-    {avance_bas, SOUTH},
-    {avance_droite, EAST},
-    {avance_gauche, WEST},
-  };
-
-int		zappy_avance(t_fds *client, char *cmd)
-{
-  uint		i;
-  uint		size;
-
-  (void)cmd;
-  i = -1;
-  size = sizeof(gl_tab) / sizeof(t_avance);
-  while (++i < size)
-    if (player_data->direction == gl_tab[i].dir)
-      {
-	gl_tab[i].func(client);
-	sends(client, "ok");
-	event_relative_dispatch("PlayerMove", client, 0);
-	return (1);
-      }
-  return (0);
+  (void)_;
+  if (!c || !(p = *(t_player**)c))
+    {
+      sends(c, "ko");
+      return (false);
+    }
+  p->x += (p->direction == WEST) ? 1 : (p->direction == EAST) ? -1 : 0;
+  p->y += (p->direction == NORTH) ? 1 : (p->direction == SOUTH) ? -1 : 0;
+  p->x = X(p->x);
+  p->y = Y(p->y);
+  sends(c, "ok");
+  event_relative_dispatch("PlayerMove", c, 0);
+  return (true);
 }
