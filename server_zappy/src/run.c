@@ -37,7 +37,9 @@ bool            run(void)
       exec_pool(gserv->pool, time_d(t));
       exec_event(time_d(t));
       exec_timer(&tv, time_d(t));
+#if	!defined(NDEBUG)
       dbg_show_map();
+#endif
     }
   return (true);
 }
