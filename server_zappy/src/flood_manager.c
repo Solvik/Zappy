@@ -33,7 +33,7 @@ char		*flood_check(fds pool, char *s)
     memset(&flood->read, 0, sizeof(flood->read) * 2);
   if (s && (flood->write - flood->read) < flood->size)
     flood->array[(flood->write++) % flood->size] = s;
-   else
+  else if (s)
     {
       free(s);
       buffer_destroy(&pool->read);
