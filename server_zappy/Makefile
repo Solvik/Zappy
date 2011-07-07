@@ -111,6 +111,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)destroy.c			\
 	  \
 	  $(LOCAL)dbg_show_map.c		\
+	  $(LOCAL)err_usage.c			\
 	  \
 	  $(COMMON)util_string.c		\
 	  $(COMMON)time.c			\

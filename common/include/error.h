@@ -13,6 +13,7 @@
 
 #  include      <stdbool.h>
 
+bool		usage(char *);
 bool            print_error(char *);
 bool            print_perror(char *);
 bool		syntax_print_error(char const *format, ...);

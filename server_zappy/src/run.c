@@ -18,6 +18,7 @@
 #include        "run.h"
 #include        "exec.h"
 #include        "tserver.h"
+#include "dbg.h"
 
 extern t_server *gserv;
 
@@ -36,6 +37,7 @@ bool            run(void)
       exec_pool(gserv->pool, time_d(t));
       exec_event(time_d(t));
       exec_timer(&tv, time_d(t));
+      dbg_show_map();
     }
   return (true);
 }

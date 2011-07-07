@@ -16,6 +16,7 @@
 #include	<stdio.h>
 #include	<time.h>
 
+#include	"error.h"
 #include	"conf.h"
 #include	"zopt.h"
 #include	"map.h"
@@ -46,7 +47,8 @@ static bool	multiple(char *opts[], t_list **list)
   return (true);
 }
 
-static bool	options(char opt, char *opts[], t_zopt *optab)
+static bool	options(char opt, char *opts[], t_zopt *optab,
+			char * path)
 {
   if (opt == 't')
     optab->delay = strtod(optarg, NULL);
@@ -70,17 +72,28 @@ static bool	options(char opt, char *opts[], t_zopt *optab)
     multiple(opts, &optab->team);
   else if (opt == 'm')
     multiple(opts, &optab->module);
+  else if (opt == 'u')
+    return (usage(path));
   else if (opt == '?')
     return (false);
   return (true);
 }
 
-static void	epure(t_zopt *optab)
+static bool	epure(t_zopt *optab, char * path)
 {
   if (optab->time <= 0)
-    optab->time = default_time;
+    {
+      print_warning("Invalid time.");
+      optab->time = default_time;
+    }
   if (optab->delay <= 0)
-    optab->delay = default_delay;
+    {
+      print_warning("Invalid delay.");
+      optab->delay = default_delay;
+    }
+  if (get_list_len(optab->team) < 2)
+    return (usage(path));
+  return (true);
 }
 
 bool		init_opt(int ac, char *opt[], t_zopt *optab)
@@ -88,12 +101,8 @@ bool		init_opt(int ac, char *opt[], t_zopt *optab)
   char		option;
 
   init_opt_default(optab);
-  while ((option = getopt(ac, opt, "s:c:p:t:r:w:h:x:y:n:m:")) != -1)
-    if ((!options(option, opt, optab)))
-      {
-	fprintf(stderr, "Usage: %s bla bla bla\n", (opt ? opt[0] : "Zappy"));
-	return (false);
-      }
-  epure(optab);
-  return (true);
+  while ((option = getopt(ac, opt, "us:c:p:t:r:w:h:x:y:n:m:")) != -1)
+    if ((!options(option, opt, optab, *opt)))
+      return (usage(*opt));
+  return (epure(optab, *opt));
 }
