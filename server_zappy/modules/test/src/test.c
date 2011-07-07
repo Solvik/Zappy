@@ -17,6 +17,7 @@
 
 bool		test(fds client, char *cmd);
 bool		call(fds client, char *cmd);
+bool		shut(fds client, char *_);
 bool		load(fds client, char *_);
 
 bool		event(void *data)
@@ -29,7 +30,7 @@ t_module	*get_module(void)
 {
   t_module	*module;
 
-  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 5)))
+  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 10)))
     return (NULL);
   bzero(module, sizeof(*module) + sizeof(t_mod_func) * 5);
   module->name = strdup("test");
@@ -38,12 +39,21 @@ t_module	*get_module(void)
   module->antiflood = 10;
   module->clients = NULL;
   command_add(module->functions, "test", test);
+  command_add(module->functions, "shutdown", shut);
   command_add(module->functions, "callback", call);
   command_add(module->functions, "load", load);
   command_relative(module->functions, "testdelay", test, 4.2);
   event_catch("testEvent", event);
   event_catch("testEvent", event);
   return (module);
+}
+
+bool		shut(fds c, char *_)
+{
+  (void)_;
+  printf("Say Goodbye to your Son !\n");
+  net_close(c);
+  return (true);
 }
 
 bool		test(fds client, char *cmd)
