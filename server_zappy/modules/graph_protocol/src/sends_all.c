@@ -5,9 +5,13 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:59:13 2011 guillaume gelin
-** Last update Fri Jul  8 06:13:18 2011 ramnes
+** Last update Fri Jul  8 06:51:09 2011 ramnes
 */
 
+#define		_GNU_SOURCE
+
+#include	<stdio.h>
+#include	<stdarg.h>
 #include	"tserver.h"
 #include	"napi.h"
 #include	"sends_all.h"
@@ -23,4 +27,16 @@ void		sends_all(char *msg)
 
   mod = get_module_by_name("Graphic Protocol");
   foreach_arg_list(mod->clients, _sends, (void*)msg);
+}
+
+void		sendf_all(char const *format, ...)
+{
+  char		*string;
+  va_list	arguments;
+
+  va_start(arguments, format);
+  if (vasprintf(&string, format, arguments) == -1)
+    return;
+  va_end(arguments);
+  sends_all(string);
 }
