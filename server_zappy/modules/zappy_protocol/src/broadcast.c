@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Thu Jul  7 20:24:57 2011 ramnes
+** Last update Fri Jul  8 10:07:58 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -113,7 +113,7 @@ static void	send_broadcast(void *player)
 int		zappy_broadcast(t_fds *client, char *cmd)
 {
   t_module	*mod;
-  t_bdata	*data;
+  t_generic	*data;
 
   mod = get_module_by_name("Zappy Protocol");
   (void)strtok_r(cmd, " ", &text);
@@ -125,9 +125,11 @@ int		zappy_broadcast(t_fds *client, char *cmd)
   tr_x = get_map_width() / 2 - player_data->x;
   tr_y = get_map_height() / 2 - player_data->y;
   foreach_list(mod->clients, send_broadcast);
-  data = malloc(sizeof(t_bdata));
+  if (!(data = malloc(sizeof(t_generic))))
+      return (1);
   data->ui1 = player_data->id;
   data->txt1 = strdup(text);
-  event_relative_dispatch("Broadcast", (void *)data, 0);
-  return (1);
+  event_relative_dispatch("Broadcast", data, 0);
+  free(data);
+  return (0);
 }

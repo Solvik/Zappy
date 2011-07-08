@@ -51,7 +51,7 @@ typedef		struct
   unsigned int	ui1;
   unsigned int	ui2;
   char		*txt1;
-}		t_bdata;
+}		t_generic;
 
 t_module	*get_module_by_name(char *);
 

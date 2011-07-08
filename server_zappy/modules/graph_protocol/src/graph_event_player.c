@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Fri Jul  8 07:07:50 2011 ramnes
+** Last update Fri Jul  8 10:02:44 2011 ramnes
 */
 
 #include <stdlib.h>
@@ -30,8 +30,8 @@ bool	graph_pex(void *data)
 bool	graph_pbc(void *data)
 {
   sendf_all("pbc %d %s",
-	    ((t_bdata *)data)->ui1,
-	    ((t_bdata *)data)->txt1);
+	    ((t_generic *)data)->ui1,
+	    ((t_generic *)data)->txt1);
   return (true);
 }
 
@@ -50,10 +50,9 @@ bool	graph_pfk(void *data)
 
 bool	graph_pdr(void *data)
 {
-  (void)data;
   sendf_all("pdr %d %d",
-	    ((t_bdata *)data)->ui1,
-	    ((t_bdata *)data)->ui2);
+	    ((t_generic *)data)->ui1,
+	    ((t_generic *)data)->ui2);
   return (true);
 }
 
@@ -61,9 +60,8 @@ bool	graph_pdr(void *data)
 
 bool	graph_pgt(void *data)
 {
-  (void)data;
   sendf_all("pgt %d %d",
-	    ((t_bdata *)data)->ui1,
-	    ((t_bdata *)data)->ui2);
+	    ((t_generic *)data)->ui1,
+	    ((t_generic *)data)->ui2);
   return (true);
 }

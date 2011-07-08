@@ -40,7 +40,7 @@ Data inside	: Client fds
 
 Event name	: Broadcast
 Function	: graph_pbc
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: Sender's id, message broadcasted (uint ui1, char *txt1)
 
 Event name	: Fork
@@ -50,12 +50,12 @@ Data inside	: Client fds
 
 Event name	: DropItem
 Function	: graph_pdr
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 Event name	: TakeItem
 Function	: graph_pgt
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 
@@ -64,12 +64,12 @@ Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 Event name	: IncaNew
 Function	: graph_pic
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: TBA
 
 Event name	: IncaEnd
 Function	: graph_pie
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: TBA
 
 
@@ -78,7 +78,7 @@ Data inside	: TBA
 
 Event name	: EggNew
 Function	: graph_enw
-Data type	: t_bdata *
+Data type	: t_generic *
 Data inside	: TBA
 
 Event name	: EggHatch
