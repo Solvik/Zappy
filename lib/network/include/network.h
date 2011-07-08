@@ -37,13 +37,15 @@ typedef	struct _pool	t_pool;
 ** Functions
 */
 
-void		error(char const *format, ...);
+void		error(char const *, ...);
 
-char            *getcmd(fds filed);
-void            writes(fds filed, char *s, int end);
+char            *getcmd(fds);
+void            writes(fds, char *, int);
+int		send_format(fds, char const *, ...);
+int		send_format_(fds, int, char const *, ...);
 
-int             add_socket(fds *pool, int p, int q);
-int             add_co(fds *pool, char *hostname, int p);
+int             add_socket(fds *, int, int);
+int             add_co(fds *, char *, int);
 
 fds             pool(fds *, struct timeval *);
 

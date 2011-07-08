@@ -8,9 +8,12 @@
 ** Last update Fri Apr 22 17:34:29 2011 julien di-marco
 */
 
-#define NETPRIVATE
+#define		_GNU_SOURCE
+#define		NETPRIVATE
 
+#include	<stdbool.h>
 #include	<unistd.h>
+#include	<stdarg.h>
 #include	<stdlib.h>
 #include	<string.h>
 #include	<stdio.h>
@@ -39,3 +42,47 @@ void		writes(fds filed, char *s, int end)
 	buffer_add(&filed->write, CRLF);
     }
 }
+
+int		send_format(fds c, char const *format, ...)
+{
+  char		*string;
+  va_list	arguments;
+
+  if (!c || !fds_alive(c))
+    return (false);
+  string = NULL;
+  va_start(arguments, format);
+  if (vasprintf(&string, format, arguments) == -1)
+    return (false);
+  va_end(arguments);
+  if (string)
+    {
+      buffer_add(&c->write, string);
+      buffer_add(&c->write, CRLF);
+      free(string);
+    }
+  return (true);
+}
+
+int		send_format_(fds c, int s, char const *format, ...)
+{
+  char		*string;
+  va_list	arguments;
+
+  if (!c || !fds_alive(c))
+    return (false);
+  string = NULL;
+  va_start(arguments, format);
+  if (vasprintf(&string, format, arguments) == -1)
+    return (false);
+  va_end(arguments);
+  if (string)
+    {
+      buffer_add(&c->write, string);
+      if (s)
+	buffer_add(&c->write, CRLF);
+      free(string);
+    }
+  return (true);
+}
+
