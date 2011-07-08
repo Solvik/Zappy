@@ -3,7 +3,7 @@ NAME		=	client_zappy
 
 ## Directories
 SRC_DIR		=	src/
-CSRC_DIR	=	../common/src
+CSRC_DIR	=	../common/src/
 
 INCLUDE		=	-Iinclude/			\
 			-I../common/include/		\
@@ -32,11 +32,14 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)ppo.c				\
 			$(SRC_DIR)plv.c				\
 			$(SRC_DIR)pin.c				\
+			$(SRC_DIR)draw.c				\
+			$(CSRC_DIR)time.c				\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/network -lnet		\
-			-L$(LIB_DIR)/List -llist
+			-L$(LIB_DIR)/List -llist		\
+			`sdl-config --libs`
 #			-L$(LIB_DIR)/itoa -litoa
 
 ## functions
@@ -45,7 +48,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g3
+CFLAGS		+=	-W -Wall -g3 `sdl-config --cflags`
 
 ## RULES
 

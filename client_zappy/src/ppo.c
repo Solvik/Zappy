@@ -8,7 +8,6 @@
 ** Last update Wed Jul  6 18:01:35 2011 solvik blum
 */
 
-#define		_GNU_SOURCE
 #include	<stdlib.h>
 #include	<stdio.h>
 
@@ -26,6 +25,7 @@ int		visu_ppo(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   p->x = atoi(cmd->argv[2]);
   p->y = atoi(cmd->argv[3]);
   p->direction = atoi(cmd->argv[4]) - 1;
+  visu->refresh = true;
   return (1);
 }
 

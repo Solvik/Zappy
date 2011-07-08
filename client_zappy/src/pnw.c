@@ -40,5 +40,6 @@ int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   p->level = atoi(cmd->argv[5]);
   if (!put_in_list(&(visu->player), p))
     return (0);
+  visu->refresh = true;
   return (1);
 }

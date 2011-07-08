@@ -8,7 +8,6 @@
 ** Last update Wed Jul  6 18:01:31 2011 solvik blum
 */
 
-#define		_GNU_SOURCE
 #include	<stdlib.h>
 
 #include	"visu_func.h"
