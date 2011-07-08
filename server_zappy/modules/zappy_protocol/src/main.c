@@ -35,23 +35,14 @@ void	init_(void)
 
 bool		handshaking(t_fds *client, char *cmd)
 {
-  int		r;
-  char		*ret;
-
   if (!client->anounce)
     sends(client, "BIENVENUE");
   if (cmd)
     {
       if ((client->data = new_player(cmd)) == NULL)
 	return (false);
-      r = asprintf(&ret, "%d", player_data->id);
-      sends(client, ret);
-      if (ret)
-	free(ret);
-      r = asprintf(&ret, "%d %d", player_data->x, player_data->y);
-      sends(client, ret);
-      if (ret)
-	free(ret);
+      sendf(client, "%d", player_data->id);
+      sendf(client, "%d %d", (int)get_map_width(), (int)get_map_height());
       event_relative_dispatch("PlayerNew", client, 0);
       return (true);
     }
