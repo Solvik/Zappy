@@ -4,7 +4,7 @@ GRAPHIC PROTOCOL EVENTS
 
 -> graph_event_server.c
 
-Event name 	: NewPlayer 
+Event name 	: PlayerNew 
 Function	: graph_pnw
 Data type	: t_fds *
 Data inside	: Client fds
@@ -14,7 +14,7 @@ Function	: graph_pdi
 Data type	: t_fds *
 Data inside	: Client fds
 
-Event name 	: GameOver
+Event name 	: ServerEnd
 Function	: graph_seg
 Data type	: char *
 Data inside	: Winner Team name
@@ -33,7 +33,7 @@ Data inside	: Client fds
 
 -> graph_event_player.c
 
-Event name	: KickAss
+Event name	: Expulse
 Function	: graph_pex
 Data type	: t_fds *
 Data inside	: Client fds
@@ -43,7 +43,7 @@ Function	: graph_pbc
 Data type	: t_bdata *
 Data inside	: Sender's id, message broadcasted (uint ui1, char *txt1)
 
-Event name	: NewEgg
+Event name	: Fork
 Function	: graph_pfk
 Data type	: t_fds *
 Data inside	: Client fds
@@ -60,6 +60,44 @@ Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 
 
+-> graph_event_incant.c
+
+Event name	: IncaNew
+Function	: graph_pic
+Data type	: t_bdata *
+Data inside	: TBA
+
+Event name	: IncaEnd
+Function	: graph_pie
+Data type	: t_bdata *
+Data inside	: TBA
+
+
+
+-> graph_event_egg.c
+
+Event name	: EggNew
+Function	: graph_enw
+Data type	: t_bdata *
+Data inside	: TBA
+
+Event name	: EggHatch
+Function	: graph_eht
+Data type	: TBA
+Data inside	: TBA
+
+Event name	: EggBound
+Function	: graph_ebo
+Data type	: TBA
+Data inside	: TBA
+
+Event name	: EggDied
+Function	: graph_edi
+Data type	: TBA
+Data inside	: TBA
+
+
+
 -> graph_event_cmd.c
 
 Event name	: UnknowCmd
@@ -71,12 +109,3 @@ Event name	: BadParams
 Function	: graph_sbp
 Data type	: t_fds *
 Data inside	: Client fds
-
-
-
--> .c
-
-Event name	: 
-Function	: 
-Data type	: 
-Data inside	: 
