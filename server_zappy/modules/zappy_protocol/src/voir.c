@@ -12,6 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "napi.h"
+
 #include "tserver.h"
 
 #include "player.h"
@@ -64,9 +66,7 @@ static void	voir_case(t_fds *c, int x, int y)
 
   if (!c)
     return ;
-#if !defined(NDEBUG)
-  printf("{x: %d, y: %d} ", x, y);
-#endif
+  print_debug_(false, "{x: %d, y: %d} ", x, y);
   x = ((x < 0) ? get_map_width() : 0) + (x % get_map_width());
   y = ((y < 0) ? get_map_height() : 0) + (y % get_map_height());
   index = x + get_map_width() * y;
@@ -98,9 +98,7 @@ static void	voir_level(t_fds *c, t_player *p, int l)
       if (!(l == (int)p->level && ((i + 1) == (3 + (2 * (l - 1))))))
 	sendneof(c, ",");
     }
-#if !defined(NDEBUG)
-  printf("\n");
-#endif
+  print_debug_(false, "\n");
 }
 
 static void	voir_algorithm(t_fds *c, t_player *p)
@@ -110,11 +108,10 @@ static void	voir_algorithm(t_fds *c, t_player *p)
   i = 0;
   if (!c || !p)
     return ;
+  print_debug("User: d[%d] {x: %d, y: %d}", p->direction, p->x, p->y);
   voir_case(c, p->x, p->y);
+  print_debug_(false, "\n");
   sendneof(c, ",");
-#if !defined(NDEBUG)
-  printf("User: d[%d] {x: %d, y: %d}\n", p->direction, p->x, p->y);
-#endif
   while (++i <= (int)p->level)
     voir_level(c, p, i);
 }
@@ -131,4 +128,3 @@ int		zappy_voir(t_fds *c, char *_)
   sends(c, "}");
   return (true);
 }
-
