@@ -79,6 +79,7 @@ void		handle_event(t_fds **pooler, t_visu *v)
   SDL_Event	e;
   time__	tv;
 
+  camerasetting_(v);
   while (1)
     {
       pool(pooler, timeval_(&tv, 0.001));
@@ -91,7 +92,6 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
 	  free_cmd(inc_cmd);
 	}
-      camerasetting_(v);
       while (SDL_PollEvent(&e))
 	handle_mouse(v, &e);
       if (v->refresh)
@@ -105,7 +105,6 @@ void		handle_event(t_fds **pooler, t_visu *v)
       SDL_BlitSurface(v->draw, &v->camera, \
 		      v->screen, NULL);
       SDL_Flip(v->screen);
-
     }
   // while on recoit, on traite selon cmd[0]
 }
