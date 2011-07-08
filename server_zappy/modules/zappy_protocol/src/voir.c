@@ -24,6 +24,20 @@ static t_voir_algo	algo[] =
     {EAST, NORMAL}		/* e_direction WEST */
   };
 
+static void	stone(void *elem, void *arg)
+{
+  t_stone	*stone;
+  fds		c;
+  int		i;
+
+  if (!(stone = (t_stone*)elem) || !(c = (fds)arg))
+    return ;
+  i = -1;
+  while (++i < (int)stone->nb)
+    if ((int)stone->type < size_stone)
+      sendneof(c, gl_ressource_name[stone->type].str);
+}
+
 static void	voir_(t_fds *c, int index)
 {
   t_box		*map;
@@ -45,13 +59,7 @@ static void	voir_(t_fds *c, int index)
       sendneof(c, " nourriture");
       i += 1;
     }
-/*   while (i < get_list_len(map[index].stones)) */
-/*     { */
-/*       j = -1; */
-/*       while (++j < size_stone) */
-/* 	sendneof(c, gl_ressource_name[j].str); */
-/*       i += 1; */
-/*     } */
+  foreach_arg_list(map[index].stones, stone, c);
 }
 
 static void	voir_case(t_fds *c, int x, int y)
