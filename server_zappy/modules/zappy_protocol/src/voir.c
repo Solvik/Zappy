@@ -62,8 +62,8 @@ static void	voir_case(t_fds *c, int x, int y)
     return ;
   x = X(x);
   y = Y(y);
-  print_debug_(false, "{x: %d, y: %d} ", x, y);
   index = x + get_map_width() * y;
+  print_debug_(false, "{x: %d, y: %d, i: %d} ", x, y, index);
   if (index >= 0 && index < (int)(get_map_width() * get_map_height()))
     voir_(c, index);
 }
