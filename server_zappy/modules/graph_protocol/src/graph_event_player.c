@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Fri Jul  8 02:33:08 2011 ramnes
+** Last update Fri Jul  8 02:45:22 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -72,8 +72,8 @@ bool	graph_pdr(void *data)
 
   (void)data;
   if (asprintf(&to_send, "pdr %d %d",
-	       0 /* id */,
-	       42 /* numero de ressource */) == -1)
+	       ((t_bdata *)data)->ui1,
+	       ((t_bdata *)data)->ui2) == -1)
     return (false);
   sends_all(to_send);
   free(to_send);
@@ -88,8 +88,8 @@ bool	graph_pgt(void *data)
 
   (void)data;
   if (asprintf(&to_send, "pgt %d %d",
-	       0 /* id */,
-	       42 /* numero de ressource */) == -1)
+	       ((t_bdata *)data)->ui1,
+	       ((t_bdata *)data)->ui2) == -1)
     return (false);
   sends_all(to_send);
   free(to_send);
