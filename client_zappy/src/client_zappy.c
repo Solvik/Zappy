@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Sat Jul  9 00:44:31 2011 Sebastien Blot
+** Last update Sat Jul  9 01:02:00 2011 Sebastien Blot
 */
 
 #include	<unistd.h>
@@ -107,9 +107,12 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	  SDL_FillRect(v->screen, NULL, \
 				   SDL_MapRGB(v->screen->format, \
 							  255, 255, 255));
-	  if (v->draw)
-		SDL_BlitSurface(v->draw, &v->camera, \
-						v->screen, NULL);
+	  if (v->draw && v->info)
+		{
+		  SDL_BlitSurface(v->draw, &v->camera, \
+						  v->screen, NULL);
+		  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
+		}
 	  SDL_Flip(v->screen);
 	}
   // while on recoit, on traite selon cmd[0]
@@ -125,6 +128,7 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	visu.teams = NULL;
 	visu.player = NULL;
 	visu.draw = NULL;
+	visu.info = NULL;
 	if (ac > 2)
 	  {
 		create_window(&visu);

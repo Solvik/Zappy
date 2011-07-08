@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Wed Jul  6 18:03:01 2011 solvik blum
+** Last update Sat Jul  9 00:56:28 2011 Sebastien Blot
 */
 
 #ifndef		CLIENT_ZAPPY_H_
@@ -50,6 +50,7 @@ typedef struct	s_visualiseur
 {
   SDL_Surface	*screen;
   SDL_Surface	*draw;
+  SDL_Surface	*info;
   SDL_Rect	camera;
   t_sprite	*sprite;
   t_list	*map; // t_box
@@ -71,4 +72,5 @@ t_player	*get_player_by_id(t_visu *, int );
 void		draw_map(t_visu *);
 void		draw_player(void *, void *);
 void		refresh_screen(t_visu *);
+void		draw_info(t_visu *);
 #endif		/* !CLIENT_ZAPPY_H_ */
