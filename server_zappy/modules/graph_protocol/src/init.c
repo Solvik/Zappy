@@ -67,7 +67,7 @@ t_module *	get_module(void)
   bzero(module, sizeof(*module) + sizeof(t_mod_func) * 40);
   module->name = strdup("Graphic Protocol");
   module->delim = strdup("\n");
-  module->port = 4242;
+  module->port = -1;
   module->antiflood = 10;
   module->clients = NULL;
   _commands(module);
