@@ -20,5 +20,6 @@ bool	net_port_unique(int);
 bool	net_bind(uint*);
 
 bool	net_close(fds);
+bool	net_close_msg(fds, char const *, ...);
 
 #endif		/* !SERV_ZAPPY_NET_H_ */

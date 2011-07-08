@@ -8,6 +8,8 @@
 ** Last update Mon Jun 20 16:55:35 2011 Julien Di Marco
 */
 
+#define		_GNU_SOURCE
+#include	<stdarg.h>
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
@@ -58,15 +60,41 @@ static bool	del_pointer(void *a, void *b)
 bool	net_close(fds c)
 {
   t_client	*info;
+  t_module	*module;
 
   if (!c)
     return (false);
-  if ((info = c->trick))
+  if ((info = c->trick) && (module = info->_m))
     {
-      if (info->_m)
-	del_node_as_arg(&info->_m->clients, del_pointer, c);
-      destroy_client(info);
+      if (module->disconnection && !module->disconnection(c))
+	return (false);
+      del_node_as_arg(&module->clients, del_pointer, c);
     }
+  if ((info = c->trick))
+    destroy_client(info);
   fds_remove(get_pool(), c, NULL);
   return (true);
+}
+
+bool	net_close_msg(fds c, char const *format, ...)
+{
+  char		*string;
+  va_list	arguments;
+  t_client	*client;
+
+  if (!c || !(client = c->trick) || !fds_alive(c))
+    return (false);
+  buffer_destroy(&c->write);
+  string = NULL;
+  va_start(arguments, format);
+  if (vasprintf(&string, format, arguments) == -1)
+    return (false);
+  va_end(arguments);
+  if (string)
+    {
+      buffer_add(&c->write, string);
+      buffer_add(&c->write, CRLF);
+      free(string);
+    }
+  return ((client->close = true));
 }

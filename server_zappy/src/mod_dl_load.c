@@ -61,6 +61,9 @@ bool	mod_load(char *name)
   if (!module->handshaking && !(module->handshaking =
 				dlsym(handle, "handshaking")))
     return (print_error(dlerror()));
+  if (!module->disconnection && !(module->disconnection =
+			   dlsym(handle, "disconnection")))
+    print_warning(dlerror());
   if (!module->update && !(module->update = dlsym(handle, "update")))
     print_warning(dlerror());
   if (!module->timer && !(module->timer = dlsym(handle, "timer")))

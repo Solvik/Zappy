@@ -69,8 +69,9 @@ bool		exec_client(fds c, double tdt)
   char		*s;
 
   s = getcmd(c);
-  if (!fds_alive(c))
-    return (net_close(c));
+  if (((c && (c->trick) && (((t_client*)c->trick)->close)) ||
+       !fds_alive(c)) && net_close(c))
+    return (true);
   if (!(c->trick) || !(((t_client*)c->trick)->_m))
     return (mod_discovery(c, &s));
   s = flood_check(c, s);

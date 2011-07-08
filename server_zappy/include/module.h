@@ -36,6 +36,7 @@ typedef	struct	_module
   t_list 	*clients;
 
   bool		(*handshaking)(fds, char*);
+  bool		(*disconnection)(fds);
   bool		(*update)(double);
   double	(*timer)(void);
   t_mod_func	functions[1];
