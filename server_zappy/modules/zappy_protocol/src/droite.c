@@ -8,16 +8,17 @@
 ** Last update Thu Jul  7 20:54:42 2011 ramnes
 */
 
-#include "player.h"
-#include "server_zappy.h"
-#include "network.h"
 #include "napi.h"
 
-int		zappy_droite(t_fds *client, char *cmd)
+int		zappy_droite(t_fds *c, char *_)
 {
-  (void)cmd;
-  player_data->direction = (player_data->direction + 1) % 4;
-  sends(client, "ok");
-  event_relative_dispatch("PlayerMove", client, 0);
-  return (0);
+  t_player	*p;
+
+  (void)_;
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  p->direction = (p->direction + 1) % (WEST + 1);
+  sends(c, "ok");
+  event_relative_dispatch("PlayerMove", c, 0);
+  return (true);
 }

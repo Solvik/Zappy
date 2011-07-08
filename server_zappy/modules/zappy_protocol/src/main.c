@@ -33,19 +33,20 @@ void	init_(void)
 }
 #endif
 
-bool		handshaking(t_fds *client, char *cmd)
+bool		handshaking(t_fds *c, char *cmd)
 {
-  if (!client->anounce)
-    sends(client, "BIENVENUE");
-  if (cmd)
-    {
-      if (((client->data = new_player(cmd)) == NULL))
-	return ((strcmp(cmd, "GRAPHIC") == 0) ?
-		false : net_close_msg(client, "ko"));
-      sendf(client, "%d", player_data->team->max_conn);
-      sendf(client, "%d %d", (int)get_map_width(), (int)get_map_height());
-      event_relative_dispatch("PlayerNew", client, 0);
-      return (true);
-    }
-  return (false);
+  t_player	*p;
+
+  p = NULL;
+  if (c && !c->anounce)
+    sends(c, "BIENVENUE");
+  if (!c || !cmd)
+    return (false);
+  if (((c->data = new_player(cmd)) == NULL) || !(p = *(t_player**)c))
+    return ((strcmp(cmd, "GRAPHIC") == 0) ?
+	    false : net_close_msg(c, "ko"));
+  sendf(c, "%d", (p->team ? p->team->max_conn : 0));
+  sendf(c, "%d %d", (int)get_map_width(), (int)get_map_height());
+  event_relative_dispatch("PlayerNew", c, 0);
+  return (true);
 }

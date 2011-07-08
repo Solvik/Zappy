@@ -14,9 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "player.h"
-#include "server_zappy.h"
-#include "tserver.h"
+#include "napi.h"
 
 static const char	*enum_to_dir[4] =
   {

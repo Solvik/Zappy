@@ -10,11 +10,15 @@
 
 #include "napi.h"
 
-int		zappy_gauche(t_fds *client, char *cmd)
+int		zappy_gauche(t_fds *c, char *_)
 {
-  (void)cmd;
-  player_data->direction = (player_data->direction + 3) % 4;
-  sends(client, "ok");
-  event_relative_dispatch("PlayerMove", client, 0);
-  return (0);
+  t_player	*p;
+
+  (void)_;
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  p->direction = (p->direction + 3) % 4;
+  sends(c, "ok");
+  event_relative_dispatch("PlayerMove", c, 0);
+  return (true);
 }

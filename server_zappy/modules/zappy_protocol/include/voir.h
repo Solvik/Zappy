@@ -49,4 +49,6 @@ static t_enum_to_ressource     gl_ressource_name[] =
 
 static const int size_stone = SIZE_STONE;
 
+void		stone(void *elem, void *arg);
+
 #endif		/* !VOIR_H_ */

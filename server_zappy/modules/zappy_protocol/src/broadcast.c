@@ -15,9 +15,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "player.h"
-#include "server_zappy.h"
-#include "tserver.h"
+#include "napi.h"
 
 int		tr_x;
 int		tr_y;

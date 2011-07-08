@@ -12,23 +12,15 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 
-#include	"player.h"
-#include	"team.h"
-#include	"server_zappy.h"
-#include	"tserver.h"
+#include	"napi.h"
 
-
-int		zappy_connect_nbr(t_fds *client, char *cmd)
+int		zappy_connect_nbr(t_fds *c, char *_)
 {
-  int		r;
-  char		*msg;
-  t_team	*team;
+  t_player	*p;
 
-  (void)cmd;
-  team = get_team_of_player(player_data);
-  r = asprintf(&msg, "%d", team->max_conn);
-  sends(client, msg);
-  if (msg)
-    free(msg);
-  return (1);
+  (void)_;
+  if (!c || !(p = *(t_player**)c) || !p->team)
+    return (false);
+  sendf(c, "%d", p->team->max_conn);
+  return (true);
 }

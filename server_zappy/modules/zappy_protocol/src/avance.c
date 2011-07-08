@@ -13,11 +13,6 @@
 
 #include	"napi.h"
 
-#include	"map.h"
-#include	"player.h"
-#include	"server_zappy.h"
-#include	"tserver.h"
-
 int		zappy_avance(t_fds *c, char *_)
 {
   t_player	*p;

@@ -10,6 +10,8 @@
 
 #include	<string.h>
 
+#include	"napi.h"
+
 #include	"voir.h"
 #include	"zappy_protocol.h"
 
@@ -26,3 +28,18 @@ e_stone		is_stone(char *str)
     }
   return (NONE);
 }
+
+void		stone(void *elem, void *arg)
+{
+  t_stone	*stone;
+  fds		c;
+  int		i;
+
+  if (!(stone = (t_stone*)elem) || !(c = (fds)arg))
+    return ;
+  i = -1;
+  while (++i < (int)stone->nb)
+    if ((int)stone->type < size_stone)
+      sendneof(c, gl_ressource_name[stone->type].str);
+}
+
