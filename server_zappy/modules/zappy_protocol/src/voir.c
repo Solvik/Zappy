@@ -22,10 +22,10 @@
 
 static t_voir_algo	algo[] =
   {
-    {NORTH, NORMAL},
-    {EAST, VERTICAL},
-    {NORTH, HORIZONTAL},
-    {EAST, NORMAL}
+    {NORTH, NORMAL},	 /* e_direction NORTH */
+    {EAST, NORMAL},	 /* e_direction EAST */
+    {NORTH, HORIZONTAL}, /* e_direction SOUTH */
+    {EAST, VERTICAL}     /* e_direction WEST */
   };
 
 static void	voir_(t_fds *c, int index)
