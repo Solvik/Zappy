@@ -42,7 +42,7 @@ bool		handshaking(t_fds *client, char *cmd)
       if (((client->data = new_player(cmd)) == NULL))
 	return ((strcmp(cmd, "GRAPHIC") == 0) ?
 		false : net_close_msg(client, "ko"));
-      sendf(client, "%d", player_data->id);
+      sendf(client, "%d", player_data->team->max_conn);
       sendf(client, "%d %d", (int)get_map_width(), (int)get_map_height());
       event_relative_dispatch("PlayerNew", client, 0);
       return (true);
