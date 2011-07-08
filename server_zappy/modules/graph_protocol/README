@@ -78,23 +78,23 @@ Data inside	: TBA
 
 Event name	: EggNew
 Function	: graph_enw
-Data type	: t_generic *
-Data inside	: TBA
+Data type	: t_egg *
+Data inside	: An egg.
 
 Event name	: EggHatch
 Function	: graph_eht
-Data type	: TBA
-Data inside	: TBA
+Data type	: t_egg *
+Data inside	: An egg.
 
 Event name	: EggBound
 Function	: graph_ebo
-Data type	: TBA
-Data inside	: TBA
+Data type	: t_egg *
+Data inside	: An egg.
 
 Event name	: EggDied
 Function	: graph_edi
-Data type	: TBA
-Data inside	: TBA
+Data type	: t_egg *
+Data inside	: An egg.
 
 
 
