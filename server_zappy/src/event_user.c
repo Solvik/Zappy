@@ -20,62 +20,62 @@ extern t_server	*gserv;
 
 bool		event_dispatch(char *name, void *data, double delay)
 {
-  t_event	*to_dispatch;
+  t_event	*evnt;
 
-  if (!name || !(to_dispatch = calloc(1, sizeof(*to_dispatch))))
+  if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
-  to_dispatch->name = strdup(name);
-  to_dispatch->data = data;
-  to_dispatch->delay = delay;
-  to_dispatch->st = time_();
-  to_dispatch->lt = to_dispatch->st;
-  return (set_new_event(to_dispatch));
+  evnt->name = strdup(name);
+  evnt->data = data;
+  evnt->delay = delay;
+  evnt->st = time_();
+  evnt->lt = evnt->st;
+  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
 }
 
 bool		event_free(char *name, void *data, double delay)
 {
-  t_event	*to_dispatch;
+  t_event	*evnt;
 
-  if (!name || !(to_dispatch = calloc(1, sizeof(*to_dispatch))))
+  if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
-  to_dispatch->name = strdup(name);
-  to_dispatch->data = data;
-  to_dispatch->delay = delay;
-  to_dispatch->free = true;
-  to_dispatch->st = time_();
-  to_dispatch->lt = to_dispatch->st;
-  return (set_new_event(to_dispatch));
+  evnt->name = strdup(name);
+  evnt->data = data;
+  evnt->delay = delay;
+  evnt->free = true;
+  evnt->st = time_();
+  evnt->lt = evnt->st;
+  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
 }
 
 bool		event_relative_dispatch(char *name, void *data, double delay)
 {
-  t_event	*to_dispatch;
+  t_event	*evnt;
 
-  if (!name || !(to_dispatch = calloc(1, sizeof(*to_dispatch))))
+  if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
-  to_dispatch->name = strdup(name);
-  to_dispatch->data = data;
-  to_dispatch->delay = delay;
-  to_dispatch->relative = true;
-  to_dispatch->st = time_();
-  to_dispatch->lt = to_dispatch->st;
-  return (set_new_event(to_dispatch));
+  evnt->name = strdup(name);
+  evnt->data = data;
+  evnt->delay = delay;
+  evnt->relative = true;
+  evnt->st = time_();
+  evnt->lt = evnt->st;
+  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
 }
 
 bool		event_free_relative(char *name, void *data, double delay)
 {
-  t_event	*to_dispatch;
+  t_event	*evnt;
 
-  if (!name || !(to_dispatch = calloc(1, sizeof(*to_dispatch))))
+  if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
-  to_dispatch->name = strdup(name);
-  to_dispatch->data = data;
-  to_dispatch->delay = delay;
-  to_dispatch->free = true;
-  to_dispatch->relative = true;
-  to_dispatch->st = time_();
-  to_dispatch->lt = to_dispatch->st;
-  return (set_new_event(to_dispatch));
+  evnt->name = strdup(name);
+  evnt->data = data;
+  evnt->delay = delay;
+  evnt->free = true;
+  evnt->relative = true;
+  evnt->st = time_();
+  evnt->lt = evnt->st;
+  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
 }
 
 bool		event_catch(char *name, bool (*call)(void*))

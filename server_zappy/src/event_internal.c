@@ -40,7 +40,9 @@ bool		eventm_dispatch(t_event *event)
 {
   t_catch	*catchers;
 
+#if !defined(NDEBUG)
   printf("Event [%s] Dispatched\n", event->name);
+#endif
   if (!event || !event->name ||
       !(catchers = get_data_as_arg(get_catchers(), match_event, event)))
     return (true);
@@ -49,5 +51,7 @@ bool		eventm_dispatch(t_event *event)
   event_catch_dispatch(catchers, event);
   if (event->free)
     free(event->data);
+  if (event->name)
+    free(event->name);
   return (true);
 }

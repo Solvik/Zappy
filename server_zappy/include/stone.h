@@ -31,5 +31,7 @@ typedef		struct
 }		t_stone;
 
 void		map_random_fill(void);
+void		map_random_food(void);
+void		map_random_stone(void);
 
 #endif		/* !STONE_H_ */
