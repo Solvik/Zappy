@@ -107,7 +107,7 @@ static void	send_broadcast(void *player)
 	    dir = get_sound_direction(5, ((t_player *)(((t_fds *)player)->data)));
 	}
     }
-  send_format((t_fds *)player, "message %d,%s", dir, text);
+  sendf((t_fds *)player, "message %d,%s", dir, text);
 }
 
 int		zappy_broadcast(t_fds *client, char *cmd)

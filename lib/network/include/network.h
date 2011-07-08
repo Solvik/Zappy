@@ -41,8 +41,8 @@ void		error(char const *, ...);
 
 char            *getcmd(fds);
 void            writes(fds, char *, int);
-int		send_format(fds, char const *, ...);
-int		send_format_(fds, int, char const *, ...);
+int		sendf(fds, char const *, ...);
+int		sendf_(fds, int, char const *, ...);
 
 int             add_socket(fds *, int, int);
 int             add_co(fds *, char *, int);

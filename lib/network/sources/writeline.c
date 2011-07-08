@@ -43,7 +43,7 @@ void		writes(fds filed, char *s, int end)
     }
 }
 
-int		send_format(fds c, char const *format, ...)
+int		sendf(fds c, char const *format, ...)
 {
   char		*string;
   va_list	arguments;
@@ -64,7 +64,7 @@ int		send_format(fds c, char const *format, ...)
   return (true);
 }
 
-int		send_format_(fds c, int s, char const *format, ...)
+int		sendf_(fds c, int s, char const *format, ...)
 {
   char		*string;
   va_list	arguments;
