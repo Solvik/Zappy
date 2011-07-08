@@ -14,11 +14,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "stone.h"
-#include "player.h"
-#include "server_zappy.h"
+#include	"napi.h"
 
-#include "tserver.h"
+#include	"zappy_protocol.h"
 
 int		zappy_inventaire(t_fds *client, char *cmd)
 {

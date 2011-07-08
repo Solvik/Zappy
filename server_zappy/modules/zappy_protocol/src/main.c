@@ -16,11 +16,7 @@
 #include	<stdlib.h>
 
 #include	"napi.h"
-#include	"tserver.h"
 
-#include	"module.h"
-#include	"network.h"
-#include	"player.h"
 #include	"zappy_protocol.h"
 
 #if	defined(NOTSHARED)

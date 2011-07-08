@@ -12,12 +12,10 @@
 #include	<stdlib.h>
 #include	<string.h>
 
-#include	"player.h"
-#include	"map.h"
-#include	"voir.h"
-#include	"server_zappy.h"
+#include	"napi.h"
 
-#include	"tserver.h"
+#include	"voir.h"
+#include	"zappy_protocol.h"
 
 static bool	pose_action(t_player *player, char *obj)
 {

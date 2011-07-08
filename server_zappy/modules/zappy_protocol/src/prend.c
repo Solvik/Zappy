@@ -12,13 +12,10 @@
 #include	<stdlib.h>
 #include	<string.h>
 
-#include	"network.h"
-#include	"player.h"
-#include	"map.h"
-#include	"voir.h"
-#include	"server_zappy.h"
+#include	"napi.h"
 
-#include	"tserver.h"
+#include	"voir.h"
+#include	"zappy_protocol.h"
 
 static bool	prendre_action(int x, int y, char *obj)
 {

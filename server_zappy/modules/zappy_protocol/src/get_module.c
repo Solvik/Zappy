@@ -16,7 +16,6 @@
 #include	<stdio.h>
 
 #include	"napi.h"
-#include	"tserver.h"
 
 #include	"zappy_protocol.h"
 

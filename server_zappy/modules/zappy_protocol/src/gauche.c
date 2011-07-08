@@ -8,9 +8,6 @@
 ** Last update Thu Jul  7 20:54:12 2011 ramnes
 */
 
-#include "player.h"
-#include "server_zappy.h"
-#include "network.h"
 #include "napi.h"
 
 int		zappy_gauche(t_fds *client, char *cmd)

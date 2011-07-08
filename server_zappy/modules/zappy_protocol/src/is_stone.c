@@ -11,6 +11,7 @@
 #include	<string.h>
 
 #include	"voir.h"
+#include	"zappy_protocol.h"
 
 e_stone		is_stone(char *str)
 {

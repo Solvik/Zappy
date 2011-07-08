@@ -14,13 +14,7 @@
 
 #include "napi.h"
 
-#include "tserver.h"
-
-#include "player.h"
 #include "voir.h"
-#include "map.h"
-#include "server_zappy.h"
-#include "network.h"
 
 static t_voir_algo	algo[] =
   {

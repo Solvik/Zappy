@@ -11,11 +11,7 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 
-#include	"player.h"
-#include	"egg.h"
-#include	"server_zappy.h"
-#include	"tserver.h"
-#include	"event.h"
+#include	"napi.h"
 
 bool		egg_eclosion(void *data)
 {

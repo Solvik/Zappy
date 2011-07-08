@@ -13,10 +13,7 @@
 #include	<stdio.h>
 #include	<stdlib.h>
 
-#include	"player.h"
-#include	"stone.h"
-#include	"server_zappy.h"
-#include	"tserver.h"
+#include	"napi.h"
 
 typedef struct	s_elevation
 {
