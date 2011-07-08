@@ -16,10 +16,13 @@
 bool		usage(char *);
 bool            print_error(char *);
 bool            print_perror(char *);
-bool		syntax_print_error(char const *format, ...);
+bool		syntax_print_error(char const *, ...);
 void            print_warning(char *);
 void            print_pwarning(char *);
-void		syntax_print_warning(char const *format, ...);
+void		syntax_print_warning(char const *, ...);
 bool            syntax_error(char *, int);
+
+bool		print_debug(char const *, ...);
+bool		print_debug_(bool, char const *, ...);
 
 #endif          // !ERROR_H_

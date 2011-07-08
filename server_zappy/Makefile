@@ -120,6 +120,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(COMMON)err_print_error.c		\
 	  $(COMMON)err_print_warning.c		\
 	  $(COMMON)err_syntax_error.c		\
+	  $(COMMON)err_syntax_debug.c		\
 	  \
 	  $(LOCAL)napi_functions.c
 
