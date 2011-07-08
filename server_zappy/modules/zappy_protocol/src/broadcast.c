@@ -21,17 +21,17 @@ int		tr_x;
 int		tr_y;
 char		*text;
 
-/* 12:42 < _Natas> Sud : + 2 % 8 | Ouest : + 4 % 8 | Nord : + 6 % 8 */
 
+/* 12:42 < _Natas> Sud : + 2 % 8 | Ouest : + 4 % 8 | Nord : + 6 % 8 */
 
 static int get_sound_direction(int n, void *player)
 {
   if (((t_player *)(player))->direction == SOUTH)
-    return ((n + 2) % 8 + 1);
+    return ((n + 2) % 8);
   else if (((t_player *)(player))->direction == WEST)
-    return ((n + 4) % 8 + 1);
+    return ((n + 4) % 8);
   else if (((t_player *)(player))->direction == NORTH)
-    return ((n + 6) % 8 + 1);
+    return ((n + 6) % 8);
   else
     return (n);
 }
@@ -48,13 +48,28 @@ static void	send_broadcast(void *player)
 
   dir = 0;
   to_send = NULL;
-  new_x = (((t_player *)(((t_fds *)player)->data))->x + tr_x - get_map_width() / 2) % get_map_width();
-  new_y = (((t_player *)(((t_fds *)player)->data))->y + tr_y - get_map_height() / 2) % get_map_height();
+  new_x = (((t_player *)(((t_fds *)player)->data))->x + tr_x - get_map_width() / 2);
+  new_y = (((t_player *)(((t_fds *)player)->data))->y + tr_y - get_map_height() / 2);
+  if (abs(new_x) > get_map_width() / 2)
+    {
+      if (new_x > 0)
+	new_x -= get_map_width();
+      else
+	new_x += get_map_width();
+    }
+  if (abs(new_y) > get_map_height() / 2)
+    {
+      if (new_y > 0)
+	new_y -= get_map_height();
+      else
+	new_y += get_map_height();
+    }
   hyp = sqrt(pow(-new_x ,2) + pow(-new_y, 2));
   adj = abs(new_x);
   angle = acos(adj / hyp);
   angle = (angle * 180) / 3.1415;
   angle = 90 - (int)angle;
+  angle = abs(angle);
   if (0 == new_x || 0 == new_y)
     {
       if (0 == new_y && new_x < 0)
@@ -68,25 +83,25 @@ static void	send_broadcast(void *player)
     }
   else
     {
-      if (new_x <= 0 && new_y >= 0)
+      if (new_x > 0 && new_y < 0)
 	{
-	  if (angle <= -25)
-	    dir = get_sound_direction(3, ((t_player *)(((t_fds *)player)->data)));
-	  else if (angle > -25 && angle <= -65)
-	    dir = get_sound_direction(2, ((t_player *)(((t_fds *)player)->data)));
+	  if (angle <= 25)
+	    dir = get_sound_direction(7,((t_player *)(((t_fds *)player)->data)));
+	  else if (angle > 25 && angle <= 65)
+	    dir = get_sound_direction(6, ((t_player *)(((t_fds *)player)->data)));
 	  else
-	    dir = get_sound_direction(1, ((t_player *)(((t_fds *)player)->data)));
+	    dir = get_sound_direction(5, ((t_player *)(((t_fds *)player)->data)));
 	}
-      else if (new_x <= 0 && new_y <= 0)
+      else if (new_x < 0 && new_y < 0)
 	{
-	  if (angle >= -25)
-	    dir = get_sound_direction(1, ((t_player *)(((t_fds *)player)->data)));
-	  else if (angle < -25 && angle >= -65)
+	  if (angle <= 25)
+	    dir = get_sound_direction(7, ((t_player *)(((t_fds *)player)->data)));
+	  else if (angle > 25 && angle <= 65)
 	    dir = get_sound_direction(8, ((t_player *)(((t_fds *)player)->data)));
 	  else
-	    dir = get_sound_direction(7, ((t_player *)(((t_fds *)player)->data)));
+	    dir = get_sound_direction(1, ((t_player *)(((t_fds *)player)->data)));
 	}
-      else if (new_x >= 0 && new_y >= 0)
+      else if (new_x > 0 && new_y > 0)
 	{
 	  if (angle <= 25)
 	    dir = get_sound_direction(3, ((t_player *)(((t_fds *)player)->data)));
@@ -95,14 +110,14 @@ static void	send_broadcast(void *player)
 	  else
 	    dir = get_sound_direction(5, ((t_player *)(((t_fds *)player)->data)));
 	}
-      else
+      else if (new_x < 0 && new_y > 0)
 	{
 	  if (angle <= 25)
-	    dir = get_sound_direction(7,((t_player *)(((t_fds *)player)->data)));
+	    dir = get_sound_direction(3, ((t_player *)(((t_fds *)player)->data)));
 	  else if (angle > 25 && angle <= 65)
-	    dir = get_sound_direction(6, ((t_player *)(((t_fds *)player)->data)));
+	    dir = get_sound_direction(2, ((t_player *)(((t_fds *)player)->data)));
 	  else
-	    dir = get_sound_direction(5, ((t_player *)(((t_fds *)player)->data)));
+	    dir = get_sound_direction(1, ((t_player *)(((t_fds *)player)->data)));
 	}
     }
   sendf((t_fds *)player, "message %d,%s", dir, text);
