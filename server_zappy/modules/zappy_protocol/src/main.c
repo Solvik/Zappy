@@ -50,3 +50,13 @@ bool		handshaking(t_fds *c, char *cmd)
   event_relative_dispatch("PlayerNew", c, 0);
   return (true);
 }
+
+bool		disconnection(fds c)
+{
+  t_player	*p;
+
+  if (!c || !(p = *(t_player**)c))
+    return (true);
+  c->data = player_destroy(p);
+  return (true);
+}
