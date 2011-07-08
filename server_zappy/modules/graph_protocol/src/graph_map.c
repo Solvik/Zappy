@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 13 18:51:14 2011 seb
-** Last update Thu Jul  7 18:53:30 2011 ramnes
+** Last update Fri Jul  8 06:31:49 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -19,20 +19,12 @@
 
 bool graph_msz(t_fds *client, char *cmd __attribute__((unused)))
 {
-  char *to_send;
-
-  if (asprintf(&to_send, "msz %u %u",
-	       get_map_width(),
-	       get_map_height()) == -1)
-    return (false);
-  sends(client, to_send);
-  free(to_send);
+  sendf(client, "msz %u %u", get_map_width(), get_map_height());
   return (true);
 }
 
 bool graph_bct(t_fds *client, char *cmd)
 {
-  char *to_send;
   char *x;
   char *y;
 
@@ -44,27 +36,25 @@ bool graph_bct(t_fds *client, char *cmd)
       sends(client, "sbp");
       return (false);
     }
-  if (asprintf(&to_send, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y),
-	       get_box_nbfood(atoi(x), atoi(y)),
-	       get_box_nbstones(atoi(x), atoi(y), LINEMATE),
-	       get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
-	       get_box_nbstones(atoi(x), atoi(y), SIBUR),
-	       get_box_nbstones(atoi(x), atoi(y), MENDIANE),
-	       get_box_nbstones(atoi(x), atoi(y), PHIRAS),
-	       get_box_nbstones(atoi(x), atoi(y), THYSTAME)) == -1)
-    return (false);
-  sends(client, to_send);
-  free(to_send);
+  sendf(client, "bct %d %d %d %d %d %d %d %d %d", atoi(x), atoi(y),
+	get_box_nbfood(atoi(x), atoi(y)),
+	get_box_nbstones(atoi(x), atoi(y), LINEMATE),
+	get_box_nbstones(atoi(x), atoi(y), DERAUMERE),
+	get_box_nbstones(atoi(x), atoi(y), SIBUR),
+	get_box_nbstones(atoi(x), atoi(y), MENDIANE),
+	get_box_nbstones(atoi(x), atoi(y), PHIRAS),
+	get_box_nbstones(atoi(x), atoi(y), THYSTAME));
   return (true);
 }
 
 bool graph_mct(t_fds *client, char *cmd __attribute__((unused)))
 {
+  char *msg;
   uint x;
   uint y;
-  char *msg;
 
   x = 0;
+  y = 0;
   while (x < get_map_width())
     {
       while (y < get_map_height())

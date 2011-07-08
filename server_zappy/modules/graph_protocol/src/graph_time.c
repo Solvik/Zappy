@@ -5,12 +5,8 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jun 16 17:05:11 2011 seb
-** Last update Wed Jul  6 20:21:12 2011 ramnes
+** Last update Fri Jul  8 06:22:46 2011 ramnes
 */
-
-#define _GNU_SOURCE
-
-#include <stdio.h>
 
 #include <stdbool.h>
 #include <string.h>
@@ -21,12 +17,7 @@
 
 bool graph_sgt(t_fds *client, char *cmd __attribute__((unused)))
 {
-  char *to_send;
-
-  if (asprintf(&to_send, "sgt %f", get_delay()) == -1)
-    return (false);
-  sends(client, to_send);
-  free(to_send);
+  sendf(client, "sgt %f", get_delay());
   return (true);
 }
 

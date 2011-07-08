@@ -5,12 +5,9 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Fri Jul  8 03:27:24 2011 ramnes
+** Last update Fri Jul  8 06:24:36 2011 ramnes
 */
 
-#define _GNU_SOURCE
-
-#include <stdio.h>
 #include <stdlib.h>
 #include "tserver.h"
 #include "player.h"
@@ -23,19 +20,15 @@
 static void	_pnw(void *data, void *dest)
 {
   t_fds		*client;
-  char		*to_send;
 
   client = (t_fds *)data;
-  if (asprintf(&to_send, "pnw %d %d %d %d %d %s",
-	       player_data->id,
-	       player_data->x,
-	       player_data->y,
-	       ((uint)(player_data->direction)) + 1,
-	       player_data->level,
-	       get_team_of_player(player_data)->name) == -1)
-    return;
-  sends(dest, to_send);
-  free(to_send);
+  sendf(dest, "pnw %d %d %d %d %d %s",
+	player_data->id,
+	player_data->x,
+	player_data->y,
+	((uint)(player_data->direction)) + 1,
+	player_data->level,
+	get_team_of_player(player_data)->name);
 }
 
 /*

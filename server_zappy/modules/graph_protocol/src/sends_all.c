@@ -5,11 +5,11 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:59:13 2011 guillaume gelin
-** Last update Wed Jul  6 02:10:59 2011 guillaume gelin
+** Last update Fri Jul  8 06:13:18 2011 ramnes
 */
 
 #include	"tserver.h"
-#include	"network.h"
+#include	"napi.h"
 #include	"sends_all.h"
 
 static void    	_sends(void *player, void *msg)
