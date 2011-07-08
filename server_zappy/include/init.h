@@ -20,7 +20,7 @@ bool		init_opt(int, char **, t_zopt *);
 bool		init_random(t_zopt *);
 bool		init_network(t_zopt *);
 bool		init_map(t_zopt *);
-bool		init_names(t_zopt *);
+bool		init_team(t_zopt *);
 bool		init_modules(t_zopt *);
 
 #endif		/* !ZAPPY_INIT_H_ */

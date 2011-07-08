@@ -14,40 +14,26 @@
 
 extern t_server		*gserv;
 
-/*
-** delete stones - l: 23
-*/
-
-static void		delete_player(t_player *player)
-{
-  destroy_list(&player->stones, free);
-  free(player);
-}
-
 static bool		match_player(void *data, void *arg)
 {
   return (data == arg);
 }
 
-/*
-** delete on teams l :40
-** delete on map   l :45
-** delete player   l :50
-*/
-
 void			set_box_delplayer(t_player *player)
 {
-  t_team 		*team;
   t_box 		*box;
 
-  if (!(team = get_team_of_player(player)))
-    return ;
-  del_node_as_arg(&team->players, match_player, player);
-
-  if (!(box = get_box(player->x, player->y)))
+  if (!player || !(box = get_box(player->x, player->y)))
     return ;
   del_node_as_arg(&box->players, match_player, player);
+}
 
-  delete_player(player);
+void			set_box_delplayer_coor(t_player *player, uint x, uint y)
+{
+  t_box 		*box;
+
+  if (!player || !(box = get_box(x, y)))
+    return ;
+  del_node_as_arg(&box->players, match_player, player);
 }
 

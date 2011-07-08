@@ -14,6 +14,9 @@
 #  include	"ztypes.h"
 #  include	"list.h"
 
+# include	"team.h"
+# include	"net.h"
+
 #define		player_data	((t_player *)(client->data))
 
 typedef enum
@@ -33,6 +36,9 @@ typedef struct	s_player
   int		y;
   t_list 	*stones;
   e_direction	direction;
+
+  t_fds		*client;
+  t_team	*team;
 }		t_player;
 
 #endif /* PLAYER_H_ */

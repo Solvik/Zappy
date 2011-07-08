@@ -17,40 +17,12 @@
 
 extern t_server 	*gserv;
 
-static bool		match_team(void *data, void *name)
+bool		set_box_addplayer(t_player *player, uint x, uint y)
 {
-  return (!(strcmp(((t_team *)data)->name, (char *)name)));
-}
+  t_box		*box;
 
-static t_team 		*add_team(char *name)
-{
-  t_team 		*team;
-
-  if (!(team = malloc(sizeof(*team))))
-    return (NULL);
-  team->name = strdup(name);
-  team->players = NULL;
-  team->max_conn = 1;
-  team->egg_list = NULL;
-  if (!(put_in_list(&gserv->team, team)))
-    return (NULL);
-  return (team);
-}
-
-bool			set_box_addplayer(t_player *player,
-								  char *name,
-								  uint x, uint y)
-{
-  t_box 		*box;
-  t_team 		*team;
-
-  if (!(available_teams(name)) ||
-      !(box = get_box(x, y)))
-    return (false);
-  if ((!(team = get_data_as_arg(gserv->team, match_team, name)) &&
-       !(team = add_team(name))) ||
-      (!(put_in_list(&team->players, player))) ||
-      (!(put_in_list(&box->players, player))))
+  if (!player || !(box = get_box(x, y)) ||
+      !put_in_list(&box->players, player))
     return (false);
   return (true);
 }

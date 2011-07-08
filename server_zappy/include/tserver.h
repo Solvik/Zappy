@@ -30,19 +30,14 @@ typedef		struct
 
 typedef		struct
 {
-  t_list *	modules;
-  t_list *	teams;
-}		t_names;
-
-typedef		struct
-{
-  t_names	names;
+  t_eventManager event;
   t_info	info;
   t_map		map;
-  t_eventManager event;
-  fds		pool;
+
+  t_fds		*pool;
   t_list	*module;	/* t_module */
   t_list 	*team;		/* t_team */
+
   bool		run;
 }		t_server;
 
@@ -72,6 +67,8 @@ uint		get_box_nbstones_by_player(t_player *, e_stone);
 int		get_port(void);
 double		get_delay(void);
 double		get_time(void);
+uint		get_nb_clients(void);
+
 fds 		*get_pool(void);
 t_list		*get_teams(void);
 t_list		*get_box_players(uint, uint);
@@ -95,6 +92,8 @@ bool		set_box_addstone(uint, uint, e_stone, uint);
 bool		set_box_delstone(uint, uint, e_stone, uint);
 bool		set_box_addfood(uint, uint, uint);
 bool		set_box_delfood(uint, uint, uint);
+void		set_box_delplayer(t_player *);
+void		set_box_delplayer_coor(t_player *, uint, uint);
 bool		setplayer_addstone(t_player *, e_stone, uint);
 bool		setplayer_delstone(t_player *, e_stone, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
@@ -109,7 +108,7 @@ void		set_delay(double);
 void		set_time(double);
 void		set_nb_clients(uint);
 void		set_run(bool);
-bool		set_box_addplayer(t_player *, char *, uint, uint);
+bool		set_box_addplayer(t_player *, uint, uint);
 
 bool		available_modules(char *);
 bool		available_teams(char *);

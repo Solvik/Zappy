@@ -28,10 +28,5 @@ void		*destroy_client(t_client *c)
 
 void		destroy(void)
 {
-  if (gserv)
-    {
-      destroy_list(&gserv->names.modules, free);
-      destroy_list(&gserv->names.teams, free);
-    }
   free(get_map());
 }

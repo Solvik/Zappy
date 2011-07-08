@@ -36,7 +36,7 @@ bool		init(int opt_size, char **opt)
       !init_random(&optab) ||
       !init_map(&optab) ||
       !init_network(&optab) ||
-      !init_names(&optab) ||
+      !init_team(&optab) ||
       !init_modules(&optab))
     return (false);
   set_run(true);
