@@ -30,5 +30,5 @@ double		get_time(void)
 
 uint		get_nb_clients(void)
 {
-  return (gserv->info.time);
+  return (gserv->info.nb_clients);
 }

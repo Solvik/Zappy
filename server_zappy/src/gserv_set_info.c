@@ -8,6 +8,10 @@
 ** Last update Thu Jun 30 05:05:08 2011 Julien Di Marco
 */
 
+#include	<unistd.h>
+#include	<stdlib.h>
+#include	<stdio.h>
+
 #include	"tserver.h"
 #include	"server_zappy.h"
 
