@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jul  7 14:09:16 2011 seb
-** Last update Sat Jul  9 01:02:47 2011 Sebastien Blot
+** Last update Sat Jul  9 01:34:11 2011 Sebastien Blot
 */
 
 #include "client_zappy.h"
@@ -43,7 +43,7 @@ void		draw_info(t_visu *v)
 
   TTF_Font *police = NULL;
   TTF_Init();
-  police = TTF_OpenFont("/usr/share/cups/fonts/FreeMono.ttf", 12);
+  police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
   int toto[2];
   toto[1] = 0;
   toto[0] = 0;

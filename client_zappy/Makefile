@@ -33,6 +33,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)plv.c				\
 			$(SRC_DIR)pin.c				\
 			$(SRC_DIR)draw.c				\
+			$(SRC_DIR)get_info.c				\
 			$(CSRC_DIR)time.c				\
 			$(SRC_DIR)$(NAME).c
 

@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Sat Jul  9 00:56:28 2011 Sebastien Blot
+** Last update Sat Jul  9 01:37:45 2011 Sebastien Blot
 */
 
 #ifndef		CLIENT_ZAPPY_H_
@@ -73,4 +73,5 @@ void		draw_map(t_visu *);
 void		draw_player(void *, void *);
 void		refresh_screen(t_visu *);
 void		draw_info(t_visu *);
+void			get_info(int, int, t_visu *);
 #endif		/* !CLIENT_ZAPPY_H_ */
