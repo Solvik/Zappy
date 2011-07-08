@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Fri Jul  8 03:24:20 2011 ramnes
+** Last update Fri Jul  8 03:27:24 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -20,7 +20,7 @@
 #include "graph_time.h"
 #include "graph_events.h"
 
-static void	_pnw(void *data, void *client2)
+static void	_pnw(void *data, void *dest)
 {
   t_fds		*client;
   char		*to_send;
@@ -34,7 +34,7 @@ static void	_pnw(void *data, void *client2)
 	       player_data->level,
 	       get_team_of_player(player_data)->name) == -1)
     return;
-  sends(client2, to_send);
+  sends(dest, to_send);
   free(to_send);
 }
 
