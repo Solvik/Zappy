@@ -5,10 +5,11 @@
 ** Login   <Lifely@epitech.net>
 ** 
 ** Started on  Thu Jun 30 05:33:35 2011 Julien Di Marco
-** Last update Thu Jun 30 05:33:35 2011 Julien Di Marco
+** Last update Sat Jul  9 00:14:28 2011 Sebastien Blot
 */
 
 #include	<stdlib.h>
+#include	<SDL/SDL.h>
 #include	"client_zappy.h"
 
 int		main(int ac, char *av[])

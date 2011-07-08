@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Wed Jul  6 01:15:03 2011 solvik blum
+** Last update Sat Jul  9 00:36:16 2011 Sebastien Blot
 */
 
 #include	<unistd.h>
@@ -84,54 +84,56 @@ void		handle_event(t_fds **pooler, t_visu *v)
     {
       pool(pooler, timeval_(&tv, 0.001));
       if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
-	break;
+		break;
       while ((cmd = getcmd(*pooler)))
-	{
-	  inc_cmd = parse_cmd(cmd);
-	  if (!gere_cmd(*pooler, inc_cmd, v))
-	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
-	  free_cmd(inc_cmd);
-	}
+		{
+		  inc_cmd = parse_cmd(cmd);
+		  if (!gere_cmd(*pooler, inc_cmd, v))
+			fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
+		  free_cmd(inc_cmd);
+		}
       while (SDL_PollEvent(&e))
-	handle_mouse(v, &e);
+		handle_mouse(v, &e);
       if (v->refresh)
-	{
-	  refresh_screen(v);
-	  v->refresh = false;
-	}
+		{
+		  refresh_screen(v);
+		  v->refresh = false;
+		}
       SDL_FillRect(v->screen, NULL, \
-		   SDL_MapRGB(v->screen->format, \
-			      255, 255, 255));
-      SDL_BlitSurface(v->draw, &v->camera, \
-		      v->screen, NULL);
-      SDL_Flip(v->screen);
+				   SDL_MapRGB(v->screen->format, \
+							  255, 255, 255));
+	  if (v->draw)
+		SDL_BlitSurface(v->draw, &v->camera, \
+						v->screen, NULL);
+	  SDL_Flip(v->screen);
     }
   // while on recoit, on traite selon cmd[0]
 }
 
-  bool		client_zappy(int ac, char *av[])
-  {
-    t_visu	visu;
-    t_fds		*pooler;
+bool		client_zappy(int ac, char *av[])
+{
+  t_visu	visu;
+  t_fds		*pooler;
 
-    pooler = NULL;
-    visu.map = NULL;
-    visu.teams = NULL;
-    visu.player = NULL;
-    if (ac > 2)
-      {
-	create_window(&visu);
-	add_co(&pooler, av[1], atoi(av[2]));
-	handle_event(&pooler, &visu);
-      }
-    // event (souris)
-    // send > GRAPHIC
-    // on recupere les infos
-    // msz X Y > taille map
-    // sgt T > temps
-    // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
-    // tna N >> nom de chaque equipe
-    // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
-    // oeuf pondu >> ok
-    return (true);
-  }
+  pooler = NULL;
+  visu.map = NULL;
+  visu.teams = NULL;
+  visu.player = NULL;
+  visu.draw = NULL;
+  if (ac > 2)
+	{
+	  create_window(&visu);
+	  add_co(&pooler, av[1], atoi(av[2]));
+	  handle_event(&pooler, &visu);
+	}
+  // event (souris)
+  // send > GRAPHIC
+  // on recupere les infos
+  // msz X Y > taille map
+  // sgt T > temps
+  // "bct 0 0 q q q q q q q\n" >> contenu de chaque case
+  // tna N >> nom de chaque equipe
+  // "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
+  // oeuf pondu >> ok
+  return (true);
+}
