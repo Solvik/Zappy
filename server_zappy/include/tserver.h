@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Thu Jul  7 20:38:05 2011 ramnes
+** Last update Fri Jul  8 10:22:26 2011 ramnes
 */
 
 #ifndef		TSERV_H_
@@ -50,6 +50,7 @@ typedef		struct
 {
   unsigned int	ui1;
   unsigned int	ui2;
+  unsigned int	ui3;
   char		*txt1;
 }		t_generic;
 
