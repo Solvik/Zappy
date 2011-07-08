@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Thu Jul  7 20:46:43 2011 ramnes
+** Last update Fri Jul  8 02:32:40 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -17,7 +17,7 @@
 #include "sends_all.h"
 #include "player.h"
 
-/* pnw: NewPlayer */
+/* pnw: PlayerNew */
 
 bool   	graph_pnw(void *data)
 {
@@ -53,7 +53,7 @@ bool	graph_pdi(void *data)
   return (true);
 }
 
-/* seg: GameOver */
+/* seg: ServerEnd */
 
 bool	graph_seg(void *data)
 {

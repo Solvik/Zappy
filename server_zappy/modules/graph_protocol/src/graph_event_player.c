@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Thu Jul  7 20:26:47 2011 ramnes
+** Last update Fri Jul  8 02:33:08 2011 ramnes
 */
 
 #define	_GNU_SOURCE
@@ -17,7 +17,7 @@
 #include "sends_all.h"
 #include "player.h"
 
-/* pex: KickAss */
+/* pex: Expulse */
 
 bool	graph_pex(void *data)
 {
@@ -49,7 +49,7 @@ bool	graph_pbc(void *data)
   return (true);
 }
 
-/* pfk: NewEgg */
+/* pfk: Fork */
 
 bool	graph_pfk(void *data)
 {
