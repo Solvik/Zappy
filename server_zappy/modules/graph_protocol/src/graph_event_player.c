@@ -5,12 +5,9 @@
 ** <perso@ramnes.eu>
 ** 
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Fri Jul  8 02:45:22 2011 ramnes
+** Last update Fri Jul  8 07:07:50 2011 ramnes
 */
 
-#define	_GNU_SOURCE
-
-#include <stdio.h>
 #include <stdlib.h>
 #include "tserver.h"
 #include "graph_events.h"
@@ -22,13 +19,9 @@
 bool	graph_pex(void *data)
 {
   t_fds *client;
-  char	*to_send;
 
   client = (t_fds *)data;
-  if (asprintf(&to_send, "pex %d", player_data->id) == -1)
-    return (false);
-  sends_all(to_send);
-  free(to_send);
+  sendf_all("pex %d", player_data->id);
   return (true);
 }
 
@@ -36,16 +29,9 @@ bool	graph_pex(void *data)
 
 bool	graph_pbc(void *data)
 {
-  char	*to_send;
-
-  if (asprintf(&to_send, "pbc %d %s",
-	       ((t_bdata *)data)->ui1,
-	       ((t_bdata *)data)->txt1) == -1)
-    return (false);
-  sends_all(to_send);
-  free(((t_bdata *)data)->txt1);
-  free(data);
-  free(to_send);
+  sendf_all("pbc %d %s",
+	    ((t_bdata *)data)->ui1,
+	    ((t_bdata *)data)->txt1);
   return (true);
 }
 
@@ -54,13 +40,9 @@ bool	graph_pbc(void *data)
 bool	graph_pfk(void *data)
 {
   t_fds *client;
-  char	*to_send;
 
   client = (t_fds *)data;
-  if (asprintf(&to_send, "pfk %d", player_data->id) == -1)
-    return (false);
-  sends_all(to_send);
-  free(to_send);
+  sendf_all("pfk %d", player_data->id);
   return (true);
 }
 
@@ -68,15 +50,10 @@ bool	graph_pfk(void *data)
 
 bool	graph_pdr(void *data)
 {
-  char	*to_send;
-
   (void)data;
-  if (asprintf(&to_send, "pdr %d %d",
-	       ((t_bdata *)data)->ui1,
-	       ((t_bdata *)data)->ui2) == -1)
-    return (false);
-  sends_all(to_send);
-  free(to_send);
+  sendf_all("pdr %d %d",
+	    ((t_bdata *)data)->ui1,
+	    ((t_bdata *)data)->ui2);
   return (true);
 }
 
@@ -84,14 +61,9 @@ bool	graph_pdr(void *data)
 
 bool	graph_pgt(void *data)
 {
-  char	*to_send;
-
   (void)data;
-  if (asprintf(&to_send, "pgt %d %d",
-	       ((t_bdata *)data)->ui1,
-	       ((t_bdata *)data)->ui2) == -1)
-    return (false);
-  sends_all(to_send);
-  free(to_send);
+  sendf_all("pgt %d %d",
+	    ((t_bdata *)data)->ui1,
+	    ((t_bdata *)data)->ui2);
   return (true);
 }
