@@ -41,4 +41,6 @@ typedef struct	s_player
   t_team	*team;
 }		t_player;
 
+t_player        *player_destroy(t_player *);
+
 #endif /* PLAYER_H_ */
