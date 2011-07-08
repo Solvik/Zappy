@@ -1,9 +1,9 @@
 /*
 ** graph_events.h for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
-** 
+**
 ** Made by guillaume gelin
 ** Login   <gelin_g@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 11:32:47 2011 guillaume gelin
 ** Last update Fri Jul  8 02:28:29 2011 ramnes
 */
@@ -12,6 +12,8 @@
 # define	GRAPH_EVENTS_H_
 
 # include <stdbool.h>
+
+#include "tserver.h"
 
 /* graph_event_server.c */
 
