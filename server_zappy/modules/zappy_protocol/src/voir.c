@@ -24,10 +24,10 @@
 
 static t_voir_algo	algo[] =
   {
-    {NORTH, NORMAL},	 /* e_direction NORTH */
-    {EAST, NORMAL},	 /* e_direction EAST */
-    {NORTH, HORIZONTAL}, /* e_direction SOUTH */
-    {EAST, VERTICAL}     /* e_direction WEST */
+    {NORTH, HORIZONTAL},	/* e_direction NORTH */
+    {EAST, VERTICAL},		/* e_direction EAST */
+    {NORTH, NORMAL},		/* e_direction SOUTH */
+    {EAST, NORMAL}		/* e_direction WEST */
   };
 
 static void	voir_(t_fds *c, int index)
@@ -66,9 +66,9 @@ static void	voir_case(t_fds *c, int x, int y)
 
   if (!c)
     return ;
+  x = X(x);
+  y = Y(y);
   print_debug_(false, "{x: %d, y: %d} ", x, y);
-  x = ((x < 0) ? get_map_width() : 0) + (x % get_map_width());
-  y = ((y < 0) ? get_map_height() : 0) + (y % get_map_height());
   index = x + get_map_width() * y;
   if (index >= 0 && index < (int)(get_map_width() * get_map_height()))
     voir_(c, index);
