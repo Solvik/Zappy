@@ -47,7 +47,12 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 
 int		send_bct(t_fds *pooler, t_cmd *cmd)
 {
+  char		*cmd;
+
   (void)cmd;
-  sends(pooler, "bct");
+  asprintf(&cmd, "bct %d %d", cmd->argv[1], cmd->argv[2]);
+  sends(pooler, cmd);
+  if (cmd)
+    free(cmd);
   return (1);
 }
