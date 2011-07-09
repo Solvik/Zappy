@@ -46,7 +46,7 @@ static void	update_player(t_player *player, double *dt)
     timer_helper(((player->foodt * delay_life) * (get_time() / get_delay())));
 }
 
-static void	update_team(void *elem, void *arg)
+void	update_team(void *elem, void *arg)
 {
   t_team	*team;
 
@@ -55,6 +55,7 @@ static void	update_team(void *elem, void *arg)
   foreach_arg_list(team->players, (void (*)(void*, void*))update_player, arg);
 }
 
+#if	defined(NDEBUG)
 bool		update(double dt)
 {
   t_list	*teams;
@@ -64,9 +65,9 @@ bool		update(double dt)
   foreach_arg_list(teams, update_team, (void*)&dt);
   return (true);
 }
+#endif
 
 double	timer(void)
 {
-  printf("Updates Zappy\n");
   return (timer_helper(-1));
 }
