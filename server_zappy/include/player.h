@@ -43,6 +43,10 @@ typedef struct	s_player
   double	foodt;
 }		t_player;
 
+/*
+** See destroy.c
+*/
+
 t_player        *player_destroy(t_player *);
 
 #endif /* PLAYER_H_ */

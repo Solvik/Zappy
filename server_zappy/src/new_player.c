@@ -53,18 +53,6 @@ static bool             match_pointer(void *data, void *name)
   return ((data == name));
 }
 
-t_player        *player_destroy(t_player *p)
-{
-  if (!p || p->food > 0)
-    return ((p ? (void*)(p->client = NULL) : NULL));
-  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p))
-    p->team->max_conn += 1;
-  set_box_delplayer(p);
-  destroy_list(&p->stones, free);
-  free(p);
-  return (NULL);
-}
-
 static bool	find_ghost(void *elem)
 {
   t_player	*p;

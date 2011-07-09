@@ -26,6 +26,18 @@ void		*destroy_client(t_client *c)
   return (NULL);
 }
 
+t_player        *player_destroy(t_player *p)
+{
+  if (!p || p->food > 0)
+    return ((p ? (void*)(p->client = NULL) : NULL));
+  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p))
+    p->team->max_conn += 1;
+  set_box_delplayer(p);
+  destroy_list(&p->stones, free);
+  free(p);
+  return (NULL);
+}
+
 void		destroy(void)
 {
   free(get_map());
