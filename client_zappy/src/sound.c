@@ -25,5 +25,7 @@ int		play_sound(t_fds *f, t_cmd *c, t_visu *v)
   FMOD_System_CreateSound(system, "nyan.wav", FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &musique);
   FMOD_Sound_SetLoopCount(musique, -1);
   FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, musique, 0, NULL);
+  FMOD_System_Close(system);
+  FMOD_System_Release(system);
   return (0);
 }

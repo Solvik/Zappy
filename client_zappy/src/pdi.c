@@ -25,5 +25,6 @@ int		visu_pdi(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   if (!(p = get_player_by_id(visu, atoi(cmd->argv[1]))))
     return (0);
   del_node_as_arg(&visu->player, match_player, p);
+  visu->refresh = true;
   return (1);
 }

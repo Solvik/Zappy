@@ -36,7 +36,7 @@ static const t_ptr ptr[] =
     {"pfk", lol, 2},
     {"pdr", lol, 3},
     {"pgt", lol, 3},
-    {"pdi", lol, 2},
+    {"pdi", visu_pdi, 2},
     {"enw", lol, 5},
     {"eht", lol, 2},
     {"ebo", lol, 2},

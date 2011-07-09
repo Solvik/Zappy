@@ -54,16 +54,15 @@ void		create_window(t_visu *p)
   SDL_WM_SetCaption("Zappy", NULL);
   p->camera.h = HEIGHT;
   p->camera.w = WIDTH;
-  p->refresh = true;
+  p->refresh = false;
 }
 
-void		handle_mouse(t_visu *v, SDL_Event *event, t_fds ** pooler)
+static void		handle_mouse(t_visu *v, SDL_Event *event)
 {
   static int space = 0;
 
   if (event)
     {
-
       if ((event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_ESCAPE)
       	  || event->type == SDL_QUIT)
       	exit(EXIT_SUCCESS);
@@ -80,7 +79,6 @@ void		handle_mouse(t_visu *v, SDL_Event *event, t_fds ** pooler)
 	}
       if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
 	{
-
 	  if (v->info)
 	    SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
 	  draw_info(v);
@@ -110,7 +108,7 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	  free_cmd(inc_cmd);
 	}
       while (SDL_PollEvent(&e))
-	handle_mouse(v, &e, pooler);
+	handle_mouse(v, &e);
       if (v->refresh)
 	{
 	  refresh_screen(v);
@@ -118,11 +116,10 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	}
       SDL_FillRect(v->screen, NULL, SDL_MapRGB(v->screen->format,
 					       255, 255, 255));
-      if (v->draw && v->info)
-      	{
-      	  SDL_BlitSurface(v->draw, &v->camera, v->screen, NULL);
-      	  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
-      	}
+      if (v->draw)
+	SDL_BlitSurface(v->draw, &v->camera, v->screen, NULL);
+      if (v->info)
+	SDL_BlitSurface(v->info, NULL, v->screen, NULL);
       SDL_Flip(v->screen);
     }
 }
@@ -138,6 +135,8 @@ bool		client_zappy(int ac, char *av[])
   visu.player = NULL;
   visu.draw = NULL;
   visu.info = NULL;
+  visu.height = 0;
+  visu.width = 0;
   camerasetting_(&visu);
   TTF_Init();
   visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
