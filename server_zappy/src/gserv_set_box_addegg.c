@@ -28,6 +28,7 @@ static t_egg		*new_egg(t_player *player)
   egg->status = GROWING;
   egg->father = player;
   egg->team = get_team_of_player(player);
+  put_in_list(&gserv->egg, egg);
   ++id;
   return (egg);
 }

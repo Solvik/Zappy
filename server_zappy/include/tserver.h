@@ -37,6 +37,7 @@ typedef		struct
   t_fds		*pool;
   t_list	*module; /* t_module */
   t_list 	*team; /* t_team */
+  t_list 	*egg; /* t_egg */
 
   bool		run;
 }		t_server;
