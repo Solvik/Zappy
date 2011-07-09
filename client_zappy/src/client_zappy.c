@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Sat Jul  9 02:00:07 2011 Sebastien Blot
+** Last update Sat Jul  9 02:52:22 2011 Sebastien Blot
 */
 
 #include	<unistd.h>
@@ -74,7 +74,13 @@ void		handle_mouse(t_visu *v, SDL_Event *event)
 						 (v->camera.h / 2));
 		}
 	  if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
-		get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
+		{
+		  
+		  if (v->info)
+			SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
+		  draw_info(v);
+		  get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
+		}
 	  return;
 	}
 }

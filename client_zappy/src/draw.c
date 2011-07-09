@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jul  7 14:09:16 2011 seb
-** Last update Sat Jul  9 01:34:11 2011 Sebastien Blot
+** Last update Sat Jul  9 02:52:10 2011 Sebastien Blot
 */
 
 #include "client_zappy.h"
@@ -30,6 +30,7 @@ void		draw_text(t_visu *visu, char *text, int coor[2])
   position.y = coor[1];  
   texte = TTF_RenderText_Blended(visu->police, text, couleurNoire);
   SDL_BlitSurface(texte, NULL, base, &position);
+  SDL_FreeSurface(texte);
 }
 
 void		draw_info(t_visu *v)
