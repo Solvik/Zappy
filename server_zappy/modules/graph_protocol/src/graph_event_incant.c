@@ -5,21 +5,38 @@
 ** <perso@ramnes.eu>
 **
 ** Started on  Fri Jul  8 02:34:53 2011 by ramnes
-** Last update Fri Jul  8 10:36:02 2011 ramnes
+** Last update Sat Jul  9 02:12:27 2011 ramnes
 */
 
+#define	_GNU_SOURCE
+
+#include <stdio.h>
+#include "player.h"
 #include "graph_events.h"
+#include "sends_all.h"
 
 /* pic: IncaNew */
 
 bool	graph_pic(void *data)
 {
-  /*
-  ** ramnes: TODO
-  ** understand the shit
-  ** and code the shit
-  ** but b4 : dodo
-  */
+  t_list *players;
+  t_list *pdata;
+  t_fds *client;
+  char *to_send;
+  int i;
+
+  i = 0;
+  client = (t_fds *)data;
+  if (asprintf(&to_send, "pic %d %d %d",
+	       player_data->x, player_data->y,
+	       player_data->level + 1) == -1)
+    return (false);
+  players = get_box_players(player_data->x, player_data->y);
+  while ((pdata = get_data_at(players, i)) && ++i)
+    if (asprintf(&to_send, "%s %d", to_send, ((t_player *)pdata)->id) == -1)
+      return (false);
+  printf("%s", to_send);
+  sends_all(to_send);
   return (true);
 }
 

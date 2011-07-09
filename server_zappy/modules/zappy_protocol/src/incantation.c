@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Mon Jul  4 01:21:55 2011 solvik blum
+** Last update Sat Jul  9 02:24:12 2011 ramnes
 */
 
 #define		_GNU_SOURCE
@@ -65,6 +65,7 @@ int		zappy_incantation(t_fds *client, char *cmd)
       sends(client, "ko");
       return (0);
     }
+  event_relative_dispatch("IncaNew", client, 0);
   sends(client, "elevation en cours");
   player_data->level += 1;
   r = asprintf(&msg, "niveau actuel : %d", player_data->level);
