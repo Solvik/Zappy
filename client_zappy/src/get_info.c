@@ -36,7 +36,8 @@ void		get_info(int x, int y, t_visu *v)
 
   pos[0] = x;
   pos[1] = y;
-  box = get_data_as_arg(v->map, match_box, pos);
+  if (!(box = get_data_as_arg(v->map, match_box, pos)))
+    return ;
   coor[1] = 0;
   coor[0] = 55;
   write_stone(v, box->linemate, coor);
