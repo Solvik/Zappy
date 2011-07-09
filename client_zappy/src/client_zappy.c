@@ -41,12 +41,12 @@ void		create_window(t_visu *p)
       fprintf(stderr, "Can't init SDL. We're going to die\n");
       exit(EXIT_FAILURE);
     }
-  p->screen = SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+  p->screen = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   atexit(SDL_Quit);
   SDL_EnableKeyRepeat(1, 1);
   SDL_WM_SetCaption("Zappy", NULL);
-  p->camera.h = 600;
-  p->camera.w = 800;
+  p->camera.h = HEIGHT;
+  p->camera.w = WIDTH;
   p->refresh = false;
 }
 

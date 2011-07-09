@@ -20,7 +20,9 @@
 #  include	<SDL/SDL.h>
 #  include	<SDL/SDL_ttf.h>
 
-#  define SCROLL 2
+#  define WIDTH		1024
+#  define HEIGHT	768
+#  define SCROLL	2
 
 typedef struct	s_cmd
 {

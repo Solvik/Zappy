@@ -27,7 +27,7 @@ void		draw_text(t_visu *visu, char *text, int coor[2])
 
   base = visu->info;
   position.x = coor[0];
-  position.y = coor[1];  
+  position.y = coor[1];
   texte = TTF_RenderText_Blended(visu->police, text, couleurNoire);
   SDL_BlitSurface(texte, NULL, base, &position);
   SDL_FreeSurface(texte);
@@ -38,9 +38,9 @@ void		draw_info(t_visu *v)
   SDL_Rect pos;
 
   if (!v->info)
-	v->info =  SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF, 800,  32, 32, 0, 0, 0, 0);
+	v->info =  SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF, WIDTH,  32, 32, 0, 0, 0, 0);
   pos.x = 0;
-  pos.y = 600 - 32;
+  pos.y = HEIGHT - 32;
   SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
 
   int toto[2];
