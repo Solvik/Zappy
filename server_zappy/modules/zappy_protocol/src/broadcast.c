@@ -26,14 +26,15 @@ char		*text;
 
 static int get_sound_direction(int n, void *player)
 {
-  if (((t_player *)(player))->direction == SOUTH)
+  if (((t_player *)(player))->direction == NORTH)
     return ((n + 2) % 8);
-  else if (((t_player *)(player))->direction == WEST)
+  else if (((t_player *)(player))->direction == EAST)
     return ((n + 4) % 8);
-  else if (((t_player *)(player))->direction == NORTH)
+  else if (((t_player *)(player))->direction == SOUTH)
     return ((n + 6) % 8);
-  else
+  else  if (((t_player *)(player))->direction == WEST)
     return (n);
+  return (0);
 }
 
 static void	send_broadcast(void *player)
