@@ -26,7 +26,7 @@ void		draw_text(t_visu *visu, char *text, int coor[2])
   SDL_Surface	*base;
 
   texte = NULL;
-  couleurNoire = {0, 0, 0, 0};
+  memset(&couleurNoire, 0, sizeof(couleurNoire));
   base = visu->info;
   position.x = coor[0];
   position.y = coor[1];

@@ -30,7 +30,7 @@ static const t_ptr ptr[] =
     {"plv", visu_plv, 3},
     {"pin", visu_pin, 11},
     {"pex", lol, 2},
-    {"pbc", lol, 3},
+    {"pbc", play_sound, 3},
     {"pic", lol, -1},
     {"pie", lol, 4},
     {"pfk", lol, 2},

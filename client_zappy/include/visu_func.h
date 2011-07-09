@@ -31,6 +31,6 @@ int		visu_ppo(t_fds *, t_cmd *, t_visu *);
 int		visu_plv(t_fds *, t_cmd *, t_visu *);
 int		visu_pin(t_fds *, t_cmd *, t_visu *);
 int		visu_bct(t_fds *, t_cmd *, t_visu *);
-
+void		play_sound();
 
 #endif		/* !VISU_FUNC_H_ */

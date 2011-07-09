@@ -32,6 +32,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)ppo.c				\
 			$(SRC_DIR)plv.c				\
 			$(SRC_DIR)pin.c				\
+			$(SRC_DIR)sound.c				\
 			$(SRC_DIR)draw.c				\
 			$(SRC_DIR)get_info.c				\
 			$(CSRC_DIR)time.c				\
@@ -42,7 +43,8 @@ LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
 			`sdl-config --libs`			\
 			-lSDL_ttf				\
-			-L$(LIB_DIR)/itoa -litoa
+			-L$(LIB_DIR)/itoa -litoa		\
+			-lfmodex
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
