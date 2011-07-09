@@ -44,5 +44,6 @@ int		send_pin(t_fds *pooler, t_cmd *cmd)
 
   r = asprintf(&a, "pin %s", cmd->argv[0]);
   sends(pooler, a);
+  free(a);
   return (0);
 }

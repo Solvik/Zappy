@@ -15,7 +15,7 @@ void		refresh_screen(t_visu *v)
 {
   draw_map(v);
   foreach_arg_list(v->player, draw_player, v);
-  draw_info(v);
+  //  draw_info(v);
 }
 
 void		draw_text(t_visu *visu, char *text, int coor[2])
@@ -76,6 +76,8 @@ void		draw_map(t_visu *v)
 				   v->width * 32,
 				   (v->height) * 32, 32, 0, 0, 0, 0);
   img = SDL_LoadBMP("grass.bmp");
+  if (!img)
+    return;
   while (x < v->width)
     {
       y = 0;
@@ -88,7 +90,7 @@ void		draw_map(t_visu *v)
 	}
       x++;
     }
-  free(img);
+  SDL_FreeSurface(img);
 }
 
 void		draw_player(void *p, void *v)
@@ -99,7 +101,9 @@ void		draw_player(void *p, void *v)
   pos.y = 32 * ((t_player *)p)->y;
   pos.x = 32 * ((t_player *)p)->x;
   img = SDL_LoadBMP("blob.bmp");
+  if (!img)
+    return;
   SDL_SetColorKey(img, SDL_SRCCOLORKEY, SDL_MapRGB(img->format, 0, 0, 0));
   SDL_BlitSurface(img, NULL, ((t_visu *)v)->draw, &pos);
-  free(img);
+  SDL_FreeSurface(img);
 }

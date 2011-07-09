@@ -32,5 +32,6 @@ int		send_plv(t_fds *pooler, t_cmd *cmd)
 
   r = asprintf(&a, "plv %s", cmd->argv[0]);
   sends(pooler, a);
+  free(a);
   return (0);
 }

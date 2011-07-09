@@ -77,5 +77,7 @@ void		draw_map(t_visu *);
 void		draw_player(void *, void *);
 void		refresh_screen(t_visu *);
 void		draw_info(t_visu *);
-void			get_info(int, int, t_visu *);
+void		get_info(int, int, t_visu *);
+int		send_bct(t_fds *, t_cmd *);
+
 #endif		/* !CLIENT_ZAPPY_H_ */

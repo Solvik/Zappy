@@ -17,6 +17,12 @@
 #include	"client_zappy.h"
 #include	"time_.h"
 
+void			quit()
+{
+  SDL_Quit();
+  TTF_Quit();
+}
+
 static void            camerasetting_(t_visu *v)
 {
   if (v->camera.x < ((-1 * SCROLL) * 20))
@@ -43,15 +49,15 @@ void		create_window(t_visu *p)
     }
   p->screen = SDL_SetVideoMode(WIDTH,
 			       HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  atexit(SDL_Quit);
+  atexit(quit);
   SDL_EnableKeyRepeat(1, 1);
   SDL_WM_SetCaption("Zappy", NULL);
   p->camera.h = HEIGHT;
   p->camera.w = WIDTH;
-  p->refresh = false;
+  p->refresh = true;
 }
 
-void		handle_mouse(t_visu *v, SDL_Event *event)
+void		handle_mouse(t_visu *v, SDL_Event *event, t_fds ** pooler)
 {
   static int space = 0;
 
@@ -65,14 +71,12 @@ void		handle_mouse(t_visu *v, SDL_Event *event)
 	space = !space;
       if ((event->type == SDL_MOUSEMOTION) && !space)
 	{
-	  v->camera.x = ((((float)(event->motion.x + 1) *	\
-			   (float)((float)v->width * 32 /	\
-				   (float)v->camera.w)))	\
-			 - v->camera.w / 2);
-	  v->camera.y = ((((float)event->motion.y + 1.0f) *	\
-			  ((float)v->height * 32 /		\
-			   (float)v->camera.h)) -		\
-			 (v->camera.h / 2));
+	  v->camera.x = ((((float)(event->motion.x + 1) *
+			   (float)((float)v->width * 32 /
+				   (float)v->camera.w))) - v->camera.w / 2);
+	  v->camera.y = ((((float)event->motion.y + 1.0f) *
+			  ((float)v->height * 32 /
+			   (float)v->camera.h)) - (v->camera.h / 2));
 	}
       if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
 	{
@@ -93,7 +97,6 @@ void		handle_event(t_fds **pooler, t_visu *v)
   SDL_Event	e;
   time__	tv;
 
-  camerasetting_(v);
   while (1)
     {
       pool(pooler, timeval_(&tv, 0.001));
@@ -107,21 +110,19 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	  free_cmd(inc_cmd);
 	}
       while (SDL_PollEvent(&e))
-	handle_mouse(v, &e);
+	handle_mouse(v, &e, pooler);
       if (v->refresh)
 	{
 	  refresh_screen(v);
 	  v->refresh = false;
 	}
-      SDL_FillRect(v->screen, NULL, \
-		   SDL_MapRGB(v->screen->format, \
-			      255, 255, 255));
+      SDL_FillRect(v->screen, NULL, SDL_MapRGB(v->screen->format,
+					       255, 255, 255));
       if (v->draw && v->info)
-	{
-	  SDL_BlitSurface(v->draw, &v->camera, \
-			  v->screen, NULL);
-	  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
-	}
+      	{
+      	  SDL_BlitSurface(v->draw, &v->camera, v->screen, NULL);
+      	  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
+      	}
       SDL_Flip(v->screen);
     }
 }
@@ -137,6 +138,7 @@ bool		client_zappy(int ac, char *av[])
   visu.player = NULL;
   visu.draw = NULL;
   visu.info = NULL;
+  camerasetting_(&visu);
   TTF_Init();
   visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
   if (ac > 2)

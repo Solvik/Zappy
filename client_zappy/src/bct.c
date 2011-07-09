@@ -49,8 +49,7 @@ int		send_bct(t_fds *pooler, t_cmd *cmd)
 {
   char		*ret;
 
-  (void)cmd;
-  asprintf(&ret, "bct %d %d", cmd->argv[1], cmd->argv[2]);
+  asprintf(&ret, "bct %s %s", cmd->argv[1], cmd->argv[2]);
   sends(pooler, ret);
   if (ret)
     free(ret);
