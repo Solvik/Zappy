@@ -30,7 +30,6 @@ void		draw_text(t_visu *visu, char *text, int coor[2])
   position.y = coor[1];  
   texte = TTF_RenderText_Blended(visu->police, text, couleurNoire);
   SDL_BlitSurface(texte, NULL, base, &position);
-  printf("[[%s]]\n", text);
 }
 
 void		draw_info(t_visu *v)
@@ -50,12 +49,14 @@ void		draw_info(t_visu *v)
   toto[0] = 100;
   draw_text(v, "Deraumere:", toto);
   toto[0] = 200;
-  draw_text(v, "Mendiane:", toto);
+  draw_text(v, "Sibur:", toto);
   toto[0] = 300;
-  draw_text(v, "Phiras:", toto);
+  draw_text(v, "Mendiane:", toto);
   toto[0] = 400;
-  draw_text(v, "Thystame:", toto);
+  draw_text(v, "Phiras:", toto);
   toto[0] = 500;
+  draw_text(v, "Thystame:", toto);
+  toto[0] = 600;
   draw_text(v, "Food:", toto);
 }
 

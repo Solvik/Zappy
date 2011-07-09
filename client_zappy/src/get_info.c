@@ -18,7 +18,15 @@ static bool	match_box(void *data, void *arg)
 
 void		draw_text(t_visu *visu, char *text, int coor[2]);
 
-char		*itoadup(int input, int radix);
+void		write_stone(t_visu *v, int amount, int *coor)
+{
+  char		*text;
+
+  asprintf(&text, "%d", amount);
+  draw_text(v, text, coor);
+  if (text)
+    free(text);
+}
 
 void		get_info(int x, int y, t_visu *v)
 {
@@ -30,16 +38,18 @@ void		get_info(int x, int y, t_visu *v)
   pos[1] = y;
   box = get_data_as_arg(v->map, match_box, pos);
   coor[1] = 0;
-  coor[0] = 50;
-  draw_text(v, itoadup(box->linemate, 10), coor);
-  coor[0] = 150;
-  draw_text(v, itoadup(box->deraumere, 10), coor);
-  coor[0] = 250;
-  draw_text(v, itoadup(box->mendiane, 10), coor);
-  coor[0] = 350;
-  draw_text(v, itoadup(box->phiras, 10), coor);
-  coor[0] = 450;
-  draw_text(v, itoadup(box->thystame, 10), coor);
-  coor[0] = 550;
-  draw_text(v, itoadup(box->food, 10), coor);
+  coor[0] = 55;
+  write_stone(v, box->linemate, coor);
+  coor[0] = 165;
+  write_stone(v, box->deraumere, coor);
+  coor[0] = 235;
+  write_stone(v, box->sibur, coor);
+  coor[0] = 360;
+  write_stone(v, box->mendiane, coor);
+  coor[0] = 440;
+  write_stone(v, box->phiras, coor);
+  coor[0] = 560;
+  write_stone(v, box->thystame, coor);
+  coor[0] = 630;
+  write_stone(v, box->food, coor);
 }
