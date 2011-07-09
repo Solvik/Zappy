@@ -21,7 +21,7 @@ void		refresh_screen(t_visu *v)
 void		draw_text(t_visu *visu, char *text, int coor[2])
 {
   SDL_Surface	*texte;
-  SDL_Color	couleurNoire;
+  SDL_Color	couleurNoire ;
   SDL_Rect	position;
   SDL_Surface	*base;
 
