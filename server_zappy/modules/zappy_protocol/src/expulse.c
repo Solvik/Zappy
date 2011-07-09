@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 18:46:19 2011 solvik blum
+** Last update Sat Jul  9 18:43:54 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -40,7 +40,7 @@ int		zappy_expulse(t_fds *client, char *cmd)
       if (ret)
 	free(ret);
       sends(client, "ok");
-      event_relative_dispatch("pex", client, 0);
+      event_relative_dispatch("Expulse", client, 0);
     }
   else
     sends(client, "ko");
