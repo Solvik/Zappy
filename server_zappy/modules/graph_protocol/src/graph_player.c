@@ -5,19 +5,18 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 14 16:08:10 2011 seb
-** Last update Fri Jul  8 06:22:34 2011 ramnes
+** Last update Sat Jul  9 18:43:19 2011 solvik blum
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include "graph_player.h"
-#include "tserver.h"
+#include	<stdlib.h>
+#include	<string.h>
+#include	"graph_player.h"
+#include	"tserver.h"
 
 /* ppo numero_joueur X Y orientation */
-
-bool graph_ppo(t_fds *client, char *cmd)
+bool		graph_ppo(t_fds *client, char *cmd)
 {
-  char *id;
+  char		*id;
   unsigned int	x;
   unsigned int	y;
   unsigned int	o;
@@ -34,11 +33,10 @@ bool graph_ppo(t_fds *client, char *cmd)
 }
 
 /* plv numero_joueur niveau */
-
-bool graph_plv(t_fds *client, char *cmd)
+bool		graph_plv(t_fds *client, char *cmd)
 {
-  char *id;
-  int	level;
+  char		*id;
+  int		level;
 
   strtok(cmd, " ");
   id = strtok(NULL, " ");
@@ -52,12 +50,11 @@ bool graph_plv(t_fds *client, char *cmd)
 }
 
 /* pin numero_joueur X Y quantite_pierre quantite_bouffe */
-
-bool graph_pin(t_fds *client, char *cmd)
+bool		graph_pin(t_fds *client, char *cmd)
 {
-  char *id;
-  unsigned int x;
-  unsigned int y;
+  char		*id;
+  unsigned int	x;
+  unsigned int	y;
 
   strtok(cmd, " ");
   id = strtok(NULL, " ");

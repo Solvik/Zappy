@@ -1,3 +1,12 @@
+/*
+** err_usage.c for  in /home/solvik/tek2/proj/Zappy/server_zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sat Jul  9 18:52:15 2011 solvik blum
+** Last update Sat Jul  9 18:52:16 2011 solvik blum
+*/
 
 #include	<time.h>
 #include	<stdio.h>
@@ -25,8 +34,7 @@ time            = %.2f second\n\
 -> Reference time\n\
 width           = %u\n\
 height          = %u\n\
--> Map size\n\
-\n\
+-> Map size\n\n\
 -m is the list of modules to load (.so files).\n\
 -u print this usage/help\n\n\
 ", path, default_port, default_nb_clients, default_delay,

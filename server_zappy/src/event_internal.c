@@ -1,11 +1,11 @@
 /*
 ** event_internal.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Tue Jul  5 00:36:57 2011 Julien Di Marco
-** Last update Tue Jul  5 00:36:57 2011 Julien Di Marco
+** Last update Sat Jul  9 18:41:43 2011 solvik blum
 */
 
 #include	<unistd.h>
@@ -46,7 +46,7 @@ bool		eventm_dispatch(t_event *event)
       !(catchers = get_data_as_arg(get_catchers(), match_event, event)))
     return (true);
   foreach_arg_list(catchers->catch,
-		   (void(*)(void*,void*))event_catch_dispatch, event);
+		   (void(*)(void*, void*))event_catch_dispatch, event);
   event_catch_dispatch(catchers, event);
   if (event->free)
     free(event->data);

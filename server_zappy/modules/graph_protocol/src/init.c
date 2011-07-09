@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Fri Jul  8 02:30:23 2011 ramnes
+** Last update Sat Jul  9 18:45:19 2011 solvik blum
 */
 
 #include	<stdio.h>
@@ -38,24 +38,24 @@ static void	_commands(t_module * module)
 
 static void	_events()
 {
-  event_catch("PlayerNew",	graph_pnw);
-  event_catch("PlayerDied",	graph_pdi);
-  event_catch("ServerEnd",	graph_seg);
-  event_catch("ServerMsg",	graph_smg);
-  event_catch("PlayerMove",	graph_eppo);
-  event_catch("Expulse",	graph_pex);
-  event_catch("Broadcast",	graph_pbc);
-  event_catch("Fork",		graph_pfk);
-  event_catch("DropItem",      	graph_pdr);
-  event_catch("TakeItem",      	graph_pgt);
-  event_catch("IncaNew",	graph_pic);
-  event_catch("IncaEnd",	graph_pie);
-  event_catch("EggNew",		graph_enw);
-  event_catch("EggHatch",	graph_eht);
-  event_catch("EggBound",	graph_ebo);
-  event_catch("EggDied",	graph_edi);
-  event_catch("UnknowCmd",	graph_suc);
-  event_catch("BadParams",	graph_sbp);
+  event_catch("PlayerNew", graph_pnw);
+  event_catch("PlayerDied", graph_pdi);
+  event_catch("ServerEnd", graph_seg);
+  event_catch("ServerMsg", graph_smg);
+  event_catch("PlayerMove", graph_eppo);
+  event_catch("Expulse", graph_pex);
+  event_catch("Broadcast", graph_pbc);
+  event_catch("Fork",  graph_pfk);
+  event_catch("DropItem", graph_pdr);
+  event_catch("TakeItem", graph_pgt);
+  event_catch("IncaNew", graph_pic);
+  event_catch("IncaEnd", graph_pie);
+  event_catch("EggNew",  graph_enw);
+  event_catch("EggHatch", graph_eht);
+  event_catch("EggBound", graph_ebo);
+  event_catch("EggDied", graph_edi);
+  event_catch("UnknowCmd", graph_suc);
+  event_catch("BadParams", graph_sbp);
 }
 
 t_module *	get_module(void)

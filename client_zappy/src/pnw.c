@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 17:28:22 2011 solvik blum
-** Last update Wed Jul  6 17:55:42 2011 solvik blum
+** Last update Sat Jul  9 18:50:01 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -21,8 +21,6 @@ static bool	match_team(void *data, void *arg)
   n = !strcmp(((t_team *)data)->name, (char *)arg);
   return ((!n) ? true : false);
 }
-
-
 
 int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 {

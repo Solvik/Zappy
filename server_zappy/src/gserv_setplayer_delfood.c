@@ -1,3 +1,12 @@
+/*
+** gserv_setplayer_delfood.c for  in /home/solvik/tek2/proj/Zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sat Jul  9 18:39:30 2011 solvik blum
+** Last update Sat Jul  9 18:39:30 2011 solvik blum
+*/
 
 #include		<stdlib.h>
 #include		"tserver.h"

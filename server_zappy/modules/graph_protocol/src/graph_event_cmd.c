@@ -1,11 +1,11 @@
 /*
 ** graph_event_cmd.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
-** 
+**
 ** Made by guillaume gelin
 ** Login   <gelin_g@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Wed Jul  6 23:31:50 2011 ramnes
+** Last update Sat Jul  9 18:42:27 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -17,7 +17,6 @@
 #include "sends_all.h"
 
 /* suc: UnknowCmd */
-
 bool	graph_suc(void *data)
 {
   sends((t_fds *)data, "suc");
@@ -25,7 +24,6 @@ bool	graph_suc(void *data)
 }
 
 /* sbp: BadParams */
-
 bool	graph_sbp(void *data)
 {
   sends((t_fds *)data, "sbp");

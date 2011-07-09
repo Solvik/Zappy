@@ -1,3 +1,12 @@
+/*
+** gserv_get_player_info.c for  in /home/solvik/tek2/proj/Zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sat Jul  9 18:39:47 2011 solvik blum
+** Last update Sat Jul  9 18:39:57 2011 solvik blum
+*/
 
 #include		<stdlib.h>
 #include		"tserver.h"
@@ -26,7 +35,7 @@ bool			get_player_pos(uint id, uint * x, uint * y, uint * o)
   return (true);
 }
 
-t_list * /* t_stone */	get_player_stones(uint id)
+t_list *		get_player_stones(uint id)
 {
   t_player *		player;
 

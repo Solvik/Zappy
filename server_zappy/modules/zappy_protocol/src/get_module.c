@@ -1,4 +1,3 @@
-
 /*
 ** get_module.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/zappy_protocol
 **
@@ -6,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 03:50:51 2011 Julien Di Marco
-** Last update Tue Jul  5 18:04:51 2011 solvik blum
+** Last update Sat Jul  9 18:46:03 2011 solvik blum
 */
 
 #include	<strings.h>
@@ -19,37 +18,20 @@
 
 #include	"zappy_protocol.h"
 
-/*
-**
-** avance : OK
-** droite : OK
-** gauche : OK
-** voir : OK
-** inventaire : OK
-** expulse : OK
-** prend : OK
-** pose
-** broadcast
-** incantation
-** fork
-** connect_nbr
-**
-*/
-
 static void		init_commands(t_mod_func *func)
 {
-  command_relative(func, "avance",	zappy_avance, 7);
-  command_relative(func, "droite",	zappy_droite, 7);
-  command_relative(func, "gauche",	zappy_gauche, 7);
-  command_relative(func, "voir",	zappy_voir, 7);
-  command_relative(func, "inventaire",	zappy_inventaire, 1);
-  command_relative(func, "prend",	zappy_prend, 7);
-  command_relative(func, "pose",	zappy_pose, 7);
-  command_relative(func, "expulse",	zappy_expulse, 7);
-  command_relative(func, "broadcast",	zappy_broadcast, 7);
-  command_relative(func, "incantation",	zappy_incantation, 300);
-  command_relative(func, "fork",	zappy_fork, 42);
-  command_add(func, "connect_nbr",	zappy_connect_nbr);
+  command_relative(func, "avance", zappy_avance, 7);
+  command_relative(func, "droite", zappy_droite, 7);
+  command_relative(func, "gauche", zappy_gauche, 7);
+  command_relative(func, "voir", zappy_voir, 7);
+  command_relative(func, "inventaire", zappy_inventaire, 1);
+  command_relative(func, "prend", zappy_prend, 7);
+  command_relative(func, "pose", zappy_pose, 7);
+  command_relative(func, "expulse", zappy_expulse, 7);
+  command_relative(func, "broadcast", zappy_broadcast, 7);
+  command_relative(func, "incantation", zappy_incantation, 300);
+  command_relative(func, "fork", zappy_fork, 42);
+  command_add(func, "connect_nbr", zappy_connect_nbr);
   event_catch("egg_eclosion", egg_eclosion);
 }
 

@@ -1,11 +1,11 @@
 /*
 ** run.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Thu Jun 30 05:01:56 2011 Julien Di Marco
-** Last update Thu Jun 30 05:01:56 2011 Julien Di Marco
+** Last update Sat Jul  9 18:41:24 2011 solvik blum
 */
 
 #include        <stdbool.h>
@@ -32,7 +32,6 @@ bool            run(void)
     {
       t = time_();
       pool(&gserv->pool, tv);
-      /* printf("Updates: T[%f] d[%f]\n", t, time_d(t)); */
       exec_updates(time_d(t));
       exec_pool(gserv->pool, time_d(t));
       exec_event(time_d(t));
