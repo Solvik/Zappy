@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 **
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Sat Jul  9 18:44:42 2011 solvik blum
+** Last update Sat Jul  9 23:00:25 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -33,10 +33,7 @@ bool   	graph_pnw(void *data)
 /* pdi: PlayerDied */
 bool	graph_pdi(void *data)
 {
-  t_fds *client;
-
-  client = (t_fds *)data;
-  sendf_all("pdi %d", player_data->id);
+  sendf_all("pdi %d", ((t_player *)data)->id);
   return (true);
 }
 
