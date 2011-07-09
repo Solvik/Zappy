@@ -18,6 +18,7 @@
 #  include	"player.h"
 
 #  include	<SDL/SDL.h>
+#  include	<SDL/SDL_ttf.h>
 
 #  define SCROLL 2
 
@@ -52,6 +53,7 @@ typedef struct	s_visualiseur
   SDL_Surface	*draw;
   SDL_Surface	*info;
   SDL_Rect	camera;
+  TTF_Font	*police;
   t_sprite	*sprite;
   t_list	*map; // t_box
   t_list	*player; // t_player

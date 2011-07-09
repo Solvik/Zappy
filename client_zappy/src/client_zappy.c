@@ -131,6 +131,8 @@ void		handle_event(t_fds **pooler, t_visu *v)
 	visu.player = NULL;
 	visu.draw = NULL;
 	visu.info = NULL;
+	TTF_Init();
+	visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
 	if (ac > 2)
 	  {
 		create_window(&visu);

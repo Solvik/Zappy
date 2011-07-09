@@ -41,8 +41,8 @@ SRCS		=	$(SRC_DIR)main.c			\
 LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
 			`sdl-config --libs`			\
-			-lSDL_ttf
-#			-L$(LIB_DIR)/itoa -litoa
+			-lSDL_ttf				\
+			-L$(LIB_DIR)/itoa -litoa
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
