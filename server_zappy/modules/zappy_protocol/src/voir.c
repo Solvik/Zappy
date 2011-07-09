@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Tue Jul  5 22:41:06 2011 solvik blum
+** Last update Sat Jul  9 18:46:49 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -18,10 +18,10 @@
 
 static t_voir_algo	algo[] =
   {
-    {NORTH, HORIZONTAL},	/* e_direction NORTH */
-    {EAST, VERTICAL},		/* e_direction EAST */
-    {NORTH, NORMAL},		/* e_direction SOUTH */
-    {EAST, NORMAL}		/* e_direction WEST */
+    {NORTH, HORIZONTAL}, /* e_direction NORTH */
+    {EAST, VERTICAL}, /* e_direction EAST */
+    {NORTH, NORMAL}, /* e_direction SOUTH */
+    {EAST, NORMAL} /* e_direction WEST */
   };
 
 static void	voir_(t_fds *c, int index)

@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Wed Jul  6 05:02:21 2011 guillaume gelin
+** Last update Sat Jul  9 18:43:54 2011 ramnes
 */
 
 #define _GNU_SOURCE
@@ -34,12 +34,13 @@ int		zappy_expulse(t_fds *client, char *cmd)
   list = get_box_players(player_data->x, player_data->y);
   if (get_list_len(list))
     {
-      r = asprintf(&ret, "deplacement %s", enum_to_dir[player_data->direction]);
+      r = asprintf(&ret, "deplacement %s",
+		   enum_to_dir[player_data->direction]);
       sends(client, ret);
       if (ret)
 	free(ret);
       sends(client, "ok");
-      event_relative_dispatch("pex", client, 0);
+      event_relative_dispatch("Expulse", client, 0);
     }
   else
     sends(client, "ko");

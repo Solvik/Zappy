@@ -82,7 +82,7 @@ bool	net_close_msg(fds c, char const *format, ...)
   va_list	arguments;
   t_client	*client;
 
-  if (!c || !(client = c->trick) || !fds_alive(c))
+  if (!c || !(client = c->trick) || !fds_alive(c) || (client->close))
     return (false);
   buffer_destroy(&c->write);
   string = NULL;

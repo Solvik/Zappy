@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Sat Jul  9 02:52:22 2011 Sebastien Blot
+** Last update Sat Jul  9 18:51:06 2011 solvik blum
 */
 
 #include	<unistd.h>
@@ -41,7 +41,8 @@ void		create_window(t_visu *p)
       fprintf(stderr, "Can't init SDL. We're going to die\n");
       exit(EXIT_FAILURE);
     }
-  p->screen = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+  p->screen = SDL_SetVideoMode(WIDTH,
+			       HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   atexit(SDL_Quit);
   SDL_EnableKeyRepeat(1, 1);
   SDL_WM_SetCaption("Zappy", NULL);
@@ -60,29 +61,29 @@ void		handle_mouse(t_visu *v, SDL_Event *event)
       if ((event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_ESCAPE)
       	  || event->type == SDL_QUIT)
       	exit(EXIT_SUCCESS);
-	  if ((event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_SPACE))
-		space = !space;
-	  if ((event->type == SDL_MOUSEMOTION) && !space)
-		{
-		  v->camera.x = ((((float)(event->motion.x + 1) *	\
-						   (float)((float)v->width * 32 /	\
-								   (float)v->camera.w)))	\
-						 - v->camera.w / 2);
-		  v->camera.y = ((((float)event->motion.y + 1.0f) *	\
-						  ((float)v->height * 32 /		\
-						   (float)v->camera.h)) -		\
-						 (v->camera.h / 2));
-		}
-	  if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
-		{
-		  
-		  if (v->info)
-			SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
-		  draw_info(v);
-		  get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
-		}
-	  return;
+      if ((event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_SPACE))
+	space = !space;
+      if ((event->type == SDL_MOUSEMOTION) && !space)
+	{
+	  v->camera.x = ((((float)(event->motion.x + 1) *	\
+			   (float)((float)v->width * 32 /	\
+				   (float)v->camera.w)))	\
+			 - v->camera.w / 2);
+	  v->camera.y = ((((float)event->motion.y + 1.0f) *	\
+			  ((float)v->height * 32 /		\
+			   (float)v->camera.h)) -		\
+			 (v->camera.h / 2));
 	}
+      if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
+	{
+
+	  if (v->info)
+	    SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
+	  draw_info(v);
+	  get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
+	}
+      return;
+    }
 }
 
 void		handle_event(t_fds **pooler, t_visu *v)
@@ -94,65 +95,55 @@ void		handle_event(t_fds **pooler, t_visu *v)
 
   camerasetting_(v);
   while (1)
+    {
+      pool(pooler, timeval_(&tv, 0.001));
+      if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
+	break;
+      while ((cmd = getcmd(*pooler)))
 	{
-	  pool(pooler, timeval_(&tv, 0.001));
-	  if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
-		break;
-	  while ((cmd = getcmd(*pooler)))
-		{
-		  inc_cmd = parse_cmd(cmd);
-		  if (!gere_cmd(*pooler, inc_cmd, v))
-			fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
-		  free_cmd(inc_cmd);
-		}
-	  while (SDL_PollEvent(&e))
-		handle_mouse(v, &e);
-	  if (v->refresh)
-		{
-		  refresh_screen(v);
-		  v->refresh = false;
-		}
-	  SDL_FillRect(v->screen, NULL, \
-				   SDL_MapRGB(v->screen->format, \
-							  255, 255, 255));
-	  if (v->draw && v->info)
-		{
-		  SDL_BlitSurface(v->draw, &v->camera, \
-						  v->screen, NULL);
-		  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
-		}
-	  SDL_Flip(v->screen);
+	  inc_cmd = parse_cmd(cmd);
+	  if (!gere_cmd(*pooler, inc_cmd, v))
+	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
+	  free_cmd(inc_cmd);
 	}
-  // while on recoit, on traite selon cmd[0]
+      while (SDL_PollEvent(&e))
+	handle_mouse(v, &e);
+      if (v->refresh)
+	{
+	  refresh_screen(v);
+	  v->refresh = false;
+	}
+      SDL_FillRect(v->screen, NULL, \
+		   SDL_MapRGB(v->screen->format, \
+			      255, 255, 255));
+      if (v->draw && v->info)
+	{
+	  SDL_BlitSurface(v->draw, &v->camera, \
+			  v->screen, NULL);
+	  SDL_BlitSurface(v->info, NULL, v->screen, NULL);
+	}
+      SDL_Flip(v->screen);
+    }
 }
 
-  bool		client_zappy(int ac, char *av[])
-  {
-	t_visu	visu;
-	t_fds		*pooler;
+bool		client_zappy(int ac, char *av[])
+{
+  t_visu	visu;
+  t_fds		*pooler;
 
-	pooler = NULL;
-	visu.map = NULL;
-	visu.teams = NULL;
-	visu.player = NULL;
-	visu.draw = NULL;
-	visu.info = NULL;
-	TTF_Init();
-	visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
-	if (ac > 2)
-	  {
-		create_window(&visu);
-		add_co(&pooler, av[1], atoi(av[2]));
-		handle_event(&pooler, &visu);
-	  }
-	// event (souris)
-	// send > GRAPHIC
-	// on recupere les infos
-	// msz X Y > taille map
-	// sgt T > temps
-	// "bct 0 0 q q q q q q q\n" >> contenu de chaque case
-	// tna N >> nom de chaque equipe
-	// "pnw #n X Y O L N\n" >> connexion d'un nouveau joueur
-	// oeuf pondu >> ok
-	return (true);
-  }
+  pooler = NULL;
+  visu.map = NULL;
+  visu.teams = NULL;
+  visu.player = NULL;
+  visu.draw = NULL;
+  visu.info = NULL;
+  TTF_Init();
+  visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
+  if (ac > 2)
+    {
+      create_window(&visu);
+      add_co(&pooler, av[1], atoi(av[2]));
+      handle_event(&pooler, &visu);
+    }
+  return (true);
+}

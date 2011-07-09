@@ -14,7 +14,7 @@
 
 bool		print_debug(char const *format, ...)
 {
-#if !defined(NDEGUB)
+#if !defined(NDEBUG)
   va_list arguments;
 
   va_start(arguments, format);
@@ -24,13 +24,14 @@ bool		print_debug(char const *format, ...)
   fprintf(stderr, "\n");
   return (true);
 #else
+  (void)format;
   return (false);
 #endif
 }
 
 bool		print_debug_(bool a, char const *format, ...)
 {
-#if !defined(NDEGUB)
+#if !defined(NDEBUG)
   va_list arguments;
 
   va_start(arguments, format);
@@ -40,6 +41,8 @@ bool		print_debug_(bool a, char const *format, ...)
   va_end(arguments);
   return (true);
 #else
+  (void)a;
+  (void)format;
   return (false);
 #endif
 }

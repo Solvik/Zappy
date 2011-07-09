@@ -31,7 +31,6 @@ typedef struct	s_player
 {
   uint		id;
   uint		level;
-  uint		food;
   int		x;
   int		y;
   t_list 	*stones;
@@ -39,7 +38,14 @@ typedef struct	s_player
 
   t_fds		*client;
   t_team	*team;
+
+  uint		food;
+  double	foodt;
 }		t_player;
+
+/*
+** See destroy.c
+*/
 
 t_player        *player_destroy(t_player *);
 

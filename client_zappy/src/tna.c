@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 17:18:49 2011 solvik blum
-** Last update Wed Jul  6 17:52:21 2011 solvik blum
+** Last update Sat Jul  9 18:49:52 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -33,7 +33,6 @@ int		visu_tna(t_fds *pooler, t_cmd *cmd, t_visu *visu)
     return (0);
   return (1);
 }
-
 
 int		send_tna(t_fds *pooler, t_cmd *cmd)
 {

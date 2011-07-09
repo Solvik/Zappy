@@ -1,3 +1,12 @@
+/*
+** gserv_get_player_nbstones.c for  in /home/solvik/tek2/proj/Zappy/server_zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sat Jul  9 18:42:02 2011 solvik blum
+** Last update Sat Jul  9 18:42:02 2011 solvik blum
+*/
 
 #include		<stdlib.h>
 #include		"stone.h"

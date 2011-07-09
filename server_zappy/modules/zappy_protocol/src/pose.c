@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Mon Jul  4 01:23:17 2011 solvik blum
+** Last update Sat Jul  9 16:35:03 2011 ramnes
 */
 
 #include	<unistd.h>
@@ -42,18 +42,23 @@ static bool	pose_action(t_player *player, char *obj)
 
 int		zappy_pose(t_fds *client, char *cmd)
 {
+  t_player	*p;
+  t_generic	*data;
   char		*obj;
 
-  strtok(cmd, " \t");
-  obj = strtok(NULL, " \t");
-  if (obj)
+  if (!client || !(p = *(t_player**)client) || !cmd ||
+      !(strtok(cmd, " \t")) || !(obj = strtok(NULL, " \t")) ||
+      !pose_action(p, obj))
     {
-      if (pose_action(player_data, obj))
-	{
-	  sends(client, "ok");
-	  return (1);
-	}
+      sends(client, "ko");
+      return (false);
     }
-  sends(client, "ko");
+  if ((data = malloc(sizeof(*data))))
+    {
+      data->ui1 = p->id;
+      data->ui2 = get_ressource_id(obj);
+      event_relative_dispatch("DropItem", data, 0);
+    }
+  sends(client, "ok");
   return (0);
 }

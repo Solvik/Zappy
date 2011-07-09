@@ -5,9 +5,8 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Sun Jul  3 16:04:23 2011 solvik blum
-** Last update Sun Jul  3 16:06:24 2011 solvik blum
+** Last update Sat Jul  9 18:39:36 2011 solvik blum
 */
-
 
 #include		<stdlib.h>
 #include		"stone.h"

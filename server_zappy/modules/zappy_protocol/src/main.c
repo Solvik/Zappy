@@ -19,6 +19,8 @@
 
 #include	"zappy_protocol.h"
 
+t_module	*zappy_module;
+
 #if	defined(NOTSHARED)
 __attribute__ ((constructor))
 void	init_(void)
@@ -45,6 +47,7 @@ bool		handshaking(t_fds *c, char *cmd)
   if (((c->data = new_player(cmd)) == NULL) || !(p = *(t_player**)c))
     return ((strcmp(cmd, "GRAPHIC") == 0) ?
 	    false : net_close_msg(c, "ko"));
+  p->client = c;
   sendf(c, "%d", (p->team ? p->team->max_conn : 0));
   sendf(c, "%d %d", (int)get_map_width(), (int)get_map_height());
   event_relative_dispatch("PlayerNew", c, 0);

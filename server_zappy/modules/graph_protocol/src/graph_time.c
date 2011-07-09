@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Thu Jun 16 17:05:11 2011 seb
-** Last update Fri Jul  8 06:22:46 2011 ramnes
+** Last update Sat Jul  9 18:44:03 2011 solvik blum
 */
 
 #include <stdbool.h>
@@ -14,18 +14,16 @@
 #include "graph_time.h"
 
 /* sgt unite_temps */
-
-bool graph_sgt(t_fds *client, char *cmd __attribute__((unused)))
+bool	graph_sgt(t_fds *client, char *cmd __attribute__((unused)))
 {
   sendf(client, "sgt %f", get_delay());
   return (true);
 }
 
 /* sgt unite_temps */
-
-bool graph_sst(t_fds *client, char *cmd)
+bool	graph_sst(t_fds *client, char *cmd)
 {
-  char *delay;
+  char	*delay;
 
   strtok(cmd, " ");
   delay = strtok(NULL, " ");

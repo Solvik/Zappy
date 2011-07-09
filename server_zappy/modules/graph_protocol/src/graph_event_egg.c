@@ -1,11 +1,11 @@
 /*
 ** graph_event_egg.c for zappy project
-** 
+**
 ** Made by ramnes
 ** <perso@ramnes.eu>
-** 
+**
 ** Started on  Fri Jul  8 02:37:42 2011 by ramnes
-** Last update Fri Jul  8 09:53:33 2011 ramnes
+** Last update Sat Jul  9 18:44:14 2011 solvik blum
 */
 
 #include "graph_events.h"
@@ -13,7 +13,6 @@
 #include "sends_all.h"
 
 /* EggNew */
-
 bool	graph_enw(void *data)
 {
   t_egg	*egg;
@@ -24,7 +23,6 @@ bool	graph_enw(void *data)
 }
 
 /* EggHatch */
-
 bool	graph_eht(void *data)
 {
   sendf_all("eht %d", ((t_egg *)data)->id);
@@ -32,7 +30,6 @@ bool	graph_eht(void *data)
 }
 
 /* EggBound */
-
 bool	graph_ebo(void *data)
 {
   sendf_all("ebo %d", ((t_egg *)data)->id);
@@ -40,7 +37,6 @@ bool	graph_ebo(void *data)
 }
 
 /* EggDied */
-
 bool	graph_edi(void *data)
 {
   sendf_all("edi %d", ((t_egg *)data)->id);

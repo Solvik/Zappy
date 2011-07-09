@@ -1,3 +1,12 @@
+/*
+** map_random_stone.c for  in /home/solvik/tek2/proj/Zappy/server_zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sat Jul  9 18:41:58 2011 solvik blum
+** Last update Sat Jul  9 18:41:58 2011 solvik blum
+*/
 
 #include	<stdlib.h>
 #include	<stdio.h>

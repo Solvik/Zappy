@@ -1,11 +1,11 @@
 /*
 ** graph_event_server.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
-** 
+**
 ** Made by guillaume gelin
 ** Login   <gelin_g@epitech.net>
-** 
+**
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Fri Jul  8 07:00:24 2011 ramnes
+** Last update Sat Jul  9 18:44:42 2011 solvik blum
 */
 
 #include <stdlib.h>
@@ -15,10 +15,9 @@
 #include "player.h"
 
 /* pnw: PlayerNew */
-
 bool   	graph_pnw(void *data)
 {
-  t_fds		*client;
+  t_fds	*client;
 
   client = (t_fds *)data;
   sendf_all("pnw %d %d %d %d %d %s",
@@ -32,7 +31,6 @@ bool   	graph_pnw(void *data)
 }
 
 /* pdi: PlayerDied */
-
 bool	graph_pdi(void *data)
 {
   t_fds *client;
@@ -43,7 +41,6 @@ bool	graph_pdi(void *data)
 }
 
 /* seg: ServerEnd */
-
 bool	graph_seg(void *data)
 {
   sendf_all("seg %s", (char*)data);
@@ -51,7 +48,6 @@ bool	graph_seg(void *data)
 }
 
 /* smg: ServerMsg */
-
 bool	graph_smg(void *data)
 {
   sendf_all("smg %s", (char*)data);
@@ -63,16 +59,15 @@ bool	graph_smg(void *data)
 ** Basically, this is a cmd, but we override it with
 ** an event to send a ppo to all when a player moves.
 */
-
 bool	graph_eppo(void *data)
 {
   t_fds	*client;
-  unsigned int	x;
-  unsigned int	y;
-  unsigned int	o;
+  uint	x;
+  uint	y;
+  uint	o;
 
   client = (t_fds *)data;
   get_player_pos(player_data->id, &x, &y, &o);
   sendf_all("ppo %d %d %d %d", player_data->id, x, y, o);
-  return (true); 
+  return (true);
 }

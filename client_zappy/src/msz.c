@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 01:09:28 2011 solvik blum
-** Last update Wed Jul  6 17:59:09 2011 solvik blum
+** Last update Sat Jul  9 18:49:37 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -26,7 +26,6 @@ int		visu_msz(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   visu->refresh = true;
   return (1);
 }
-
 
 int		send_msz(t_fds *pooler, t_cmd *cmd)
 {

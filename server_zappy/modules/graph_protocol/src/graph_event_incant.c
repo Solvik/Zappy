@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 **
 ** Started on  Fri Jul  8 02:34:53 2011 by ramnes
-** Last update Sat Jul  9 02:12:27 2011 ramnes
+** Last update Sat Jul  9 18:42:38 2011 solvik blum
 */
 
 #define	_GNU_SOURCE
@@ -16,7 +16,6 @@
 #include "sends_all.h"
 
 /* pic: IncaNew */
-
 bool	graph_pic(void *data)
 {
   t_list *players;
@@ -41,7 +40,6 @@ bool	graph_pic(void *data)
 }
 
 /* pie: IncaEnd */
-
 bool	graph_pie(void *data)
 {
   sendf_all("pie %d %d %d",

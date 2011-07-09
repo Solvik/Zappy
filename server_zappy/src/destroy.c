@@ -16,6 +16,13 @@
 
 extern t_server	*gserv;
 
+static bool             match_pointer(void *data, void *name)
+{
+  if (!data || !name)
+    return (false);
+  return ((data == name));
+}
+
 void		*destroy_client(t_client *c)
 {
   if (!c)
@@ -23,6 +30,18 @@ void		*destroy_client(t_client *c)
   scheduler_destroy(c);
   flood_destroy(c);
   free(c);
+  return (NULL);
+}
+
+t_player        *player_destroy(t_player *p)
+{
+  if (!p || p->food > 0)
+    return ((p ? (void*)(p->client = NULL) : NULL));
+  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p))
+    p->team->max_conn += 1;
+  set_box_delplayer(p);
+  destroy_list(&p->stones, free);
+  free(p);
   return (NULL);
 }
 

@@ -14,6 +14,7 @@
 #include	"napi.h"
 #include	"module.h"
 
+extern t_module	*zappy_module;
 t_module	*get_module(void);
 
 int		zappy_avance(t_fds *, char *);
