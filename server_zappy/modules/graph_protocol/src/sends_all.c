@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:59:13 2011 guillaume gelin
-** Last update Fri Jul  8 06:51:09 2011 ramnes
+** Last update Sat Jul  9 01:19:51 2011 ramnes
 */
 
 #define		_GNU_SOURCE
@@ -40,3 +40,4 @@ void		sendf_all(char const *format, ...)
   va_end(arguments);
   sends_all(string);
 }
+

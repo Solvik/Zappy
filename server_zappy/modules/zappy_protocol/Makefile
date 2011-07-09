@@ -46,6 +46,7 @@ SOURCE	= $(LOCAL)get_module.c			\
 	  $(LOCAL)prend.c			\
 	  $(LOCAL)voir.c			\
 	  $(LOCAL)is_stone.c			\
+	  $(LOCAL)get_ressource_id.c		\
 	  $(LOCAL)main.c
 
 SOURCES	= $(SOURCE:.c=.o)
