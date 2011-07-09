@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jun 29 10:24:19 2011 solvik blum
-** Last update Sun Jul  3 16:24:34 2011 solvik blum
+** Last update Sat Jul  9 03:03:26 2011 ramnes
 */
 
 #ifndef		ZAPPY_PROTOCOL_H_
@@ -30,6 +30,6 @@ int		zappy_connect_nbr(t_fds *, char *);
 int		zappy_fork(t_fds *, char *);
 
 e_stone		is_stone(char *);
-
+uint		get_ressource_id(char *);
 
 #endif		/* !ZAPPY_PROTOCOL_H_ */
