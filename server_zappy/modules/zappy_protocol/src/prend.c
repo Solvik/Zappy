@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 03:02:06 2011 ramnes
+** Last update Sat Jul  9 18:24:37 2011 solvik blum
 */
 
 #include	<unistd.h>
@@ -18,18 +18,20 @@
 #include	"voir.h"
 #include	"zappy_protocol.h"
 
-static bool	prendre_action(int x, int y, char *obj)
+static bool	prendre_action(t_player *p, char *obj)
 {
   e_stone	stone;
 
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (!set_box_delstone(x, y, stone, 1))
+      if (!set_box_delstone(p->x, p->y, stone, 1) ||
+	  !setplayer_addstone(p, stone, 1))
 	return (false);
     }
   else if (!strcasecmp(obj, "nourriture"))
     {
-      if (!set_box_delfood(x, y, 1))
+      if (!set_box_delfood(p->x, p->y, 1) ||
+	  !setplayer_addfood(p->id, 1))
 	return (false);
     }
   else
@@ -45,7 +47,7 @@ int		zappy_prend(t_fds *c, char *cmd)
 
   if (!c || !(p = *(t_player**)c) || !cmd ||
       !(strtok(cmd, " \t")) || !(obj = strtok(NULL, " \t")) ||
-      !prendre_action(p->x, p->y, obj))
+      !prendre_action(p, obj))
     {
       sends(c, "ko");
       return (false);

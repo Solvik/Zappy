@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Fri Jul  8 10:22:26 2011 ramnes
+** Last update Sat Jul  9 18:27:32 2011 solvik blum
 */
 
 #ifndef		TSERV_H_
@@ -96,6 +96,7 @@ void		set_box_delplayer(t_player *);
 void		set_box_delplayer_coor(t_player *, uint, uint);
 bool		setplayer_addstone(t_player *, e_stone, uint);
 bool		setplayer_delstone(t_player *, e_stone, uint);
+bool		setplayer_addfood(uint, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
 t_egg		*set_box_addegg(t_player *);
 
