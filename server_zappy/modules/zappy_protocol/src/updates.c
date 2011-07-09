@@ -52,7 +52,7 @@ static void	update_team(void *elem, void *arg)
 
   if (!(team = elem) || !arg)
     return ;
-  foreach_arg_list(team->players, (void (*)(void*,void*))update_player, arg);
+  foreach_arg_list(team->players, (void (*)(void*, void*))update_player, arg);
 }
 
 bool		update(double dt)
