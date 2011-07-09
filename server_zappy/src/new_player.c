@@ -42,7 +42,6 @@ static bool             match_team(void *data, void *name)
 {
   if (!data || !name)
     return (false);
-  printf("[%s] vs [%s]\n", ((t_team *)data)->name, (char *)name);
   return ((strcmp(((t_team *)data)->name, (char *)name) == 0));
 }
 
@@ -55,14 +54,23 @@ static bool             match_pointer(void *data, void *name)
 
 t_player        *player_destroy(t_player *p)
 {
-  if (!p)
-    return (NULL);
+  if (!p || p->food)
+    return ((p ? (void*)(p->client = NULL) : NULL));
   if (p->team && del_node_as_arg(&p->team->players, match_pointer, p))
     p->team->max_conn += 1;
   set_box_delplayer(p);
   destroy_list(&p->stones, free);
   free(p);
   return (NULL);
+}
+
+static bool	find_ghost(void *elem)
+{
+  t_player	*p;
+
+  if (!(p = (t_player*)elem))
+    return (false);
+  return ((p->client ? false : true));
 }
 
 t_player *      new_player(char * teamname)
@@ -73,9 +81,10 @@ t_player *      new_player(char * teamname)
   player = NULL;
   if (!teamname || !gserv_const(false) || !gserv ||
       !(team = get_data_as_arg(gserv->team, match_team, teamname)) ||
-      (team->max_conn == 0) || !(player = init_player(team)) ||
-      !put_in_list(&team->players, player) ||
-      !set_box_addplayer(player, player->x, player->y))
+      !((player = get_data_as(team->players, find_ghost)) ||
+	((team->max_conn > 0) && (player = init_player(team)) &&
+	 put_in_list(&team->players, player) &&
+	 set_box_addplayer(player, player->x, player->y))))
     return (player_destroy(player));
   return (player);
 }
