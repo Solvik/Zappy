@@ -11,6 +11,7 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<stdio.h>
 
 #include	"napi.h"
 
@@ -19,10 +20,8 @@
 
 static bool	prendre_action(int x, int y, char *obj)
 {
-  t_box		*map;
   e_stone	stone;
 
-  map = get_map();
   if ((stone = is_stone(obj)) != NONE)
     {
       if (!set_box_delstone(x, y, stone, 1))
@@ -38,26 +37,25 @@ static bool	prendre_action(int x, int y, char *obj)
   return (true);
 }
 
-int		zappy_prend(t_fds *client, char *cmd)
+int		zappy_prend(t_fds *c, char *cmd)
 {
+  t_player	*p;
   t_generic	*data;
   char		*obj;
 
-  if (!(data = malloc(sizeof(*data))))
-    return (false);
-  strtok(cmd, " \t");
-  obj = strtok(NULL, " \t");
-  if (obj)
+  if (!c || !(p = *(t_player**)c) || !cmd ||
+      !(strtok(cmd, " \t")) || !(obj = strtok(NULL, " \t")) ||
+      !prendre_action(p->x, p->y, obj))
     {
-      if (prendre_action(player_data->x, player_data->y, obj))
-	{
-	  data->ui1 = player_data->id;
-	  data->ui2 = get_ressource_id(obj);
-	  event_relative_dispatch("TakeItem", data, 0);
-	  sends(client, "ok");
-	  return (1);
-	}
+      sends(c, "ko");
+      return (false);
     }
-  sends(client, "ko");
-  return (0);
+  if (!(data = malloc(sizeof(*data))))
+    {
+      data->ui1 = p->id;
+      data->ui2 = get_ressource_id(obj);
+      event_relative_dispatch("TakeItem", data, 0);
+    }
+  sends(c, "ok");
+  return (true);
 }
