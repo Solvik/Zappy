@@ -23,11 +23,11 @@ static bool	pose_action(t_player *player, char *obj)
 
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (!set_box_addstone(player->x, player->y, stone, 1) ||
-	  !setplayer_delstone(player, stone, 1))
+      if (!setplayer_delstone(player, stone, 1) ||
+	  !set_box_addstone(player->x, player->y, stone, 1))
 	return (false);
     }
-  else if (!strcasecmp(obj, "nourriture"))
+  else if (!strcasecmp(obj, "nourriture") && player->food > 0)
     {
       player->food -= 1;
       if (set_box_addfood(player->x, player->y, 1))
