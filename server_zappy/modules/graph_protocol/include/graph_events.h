@@ -12,10 +12,11 @@
 # define	GRAPH_EVENTS_H_
 
 # include <stdbool.h>
+# include "tserver.h"
 
-#include "tserver.h"
-
-/* graph_event_server.c */
+/*
+** graph_event_server.c
+*/
 
 bool	graph_pnw(void *);
 bool	graph_pdi(void *);
@@ -23,7 +24,9 @@ bool	graph_seg(void *);
 bool	graph_smg(void *);
 bool	graph_eppo(void *);
 
-/* graph_event_player.c */
+/*
+** graph_event_player.c
+*/
 
 bool	graph_pex(void *);
 bool	graph_pbc(void *);
@@ -31,19 +34,25 @@ bool	graph_pfk(void *);
 bool	graph_pdr(void *);
 bool	graph_pgt(void *);
 
-/* graph_event_incant.c */
+/*
+** graph_event_incant.c
+*/
 
 bool	graph_pic(void *);
 bool	graph_pie(void *);
 
-/* graph_event_egg.c */
+/*
+** graph_event_egg.c
+*/
 
 bool	graph_enw(void *);
 bool	graph_eht(void *);
 bool	graph_ebo(void *);
 bool	graph_edi(void *);
 
-/* graph_event_cmd.c */
+/*
+** graph_event_cmd.c
+*/
 
 bool	graph_suc(void *);
 bool	graph_sbp(void *);
