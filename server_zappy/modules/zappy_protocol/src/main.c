@@ -19,6 +19,8 @@
 
 #include	"zappy_protocol.h"
 
+t_module	*zappy_module;
+
 #if	defined(NOTSHARED)
 __attribute__ ((constructor))
 void	init_(void)

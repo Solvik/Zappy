@@ -39,7 +39,7 @@ static bool	prendre_action(t_player *p, char *obj)
   return (true);
 }
 
-int		zappy_prend(t_fds *client, char *cmd)
+int		zappy_prend(t_fds *c, char *cmd)
 {
   t_player	*p;
   t_generic	*data;

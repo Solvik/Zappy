@@ -37,16 +37,14 @@ static void		init_commands(t_mod_func *func)
 
 t_module	*get_module(void)
 {
-  t_module	*module;
-
-  if (!(module = malloc(sizeof(*module) + sizeof(t_mod_func) * 12)))
+  if (!(zappy_module = malloc(SIZEMODULE(12))))
     return (NULL);
-  bzero(module, sizeof(*module) + sizeof(t_mod_func) * 12);
-  module->name = strdup("Zappy Protocol");
-  module->delim = strdup("\r\n");
-  module->port = -1;
-  module->antiflood = 10;
-  module->clients = NULL;
-  init_commands(module->functions);
-  return (module);
+  bzero(zappy_module, SIZEMODULE(12));
+  zappy_module->name = strdup("Zappy Protocol");
+  zappy_module->delim = strdup("\r\n");
+  zappy_module->port = -1;
+  zappy_module->antiflood = 10;
+  zappy_module->clients = NULL;
+  init_commands(zappy_module->functions);
+  return (zappy_module);
 }

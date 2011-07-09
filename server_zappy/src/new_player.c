@@ -30,6 +30,7 @@ static t_player *init_player(t_team *team)
   player->id = id++;
   player->level = default_level;
   player->food = default_life;
+  player->foodt = default_life;
   player->x = rand() % get_map_width();
   player->y = rand() % get_map_height();
   player->direction = rand() % (WEST + 1);
@@ -54,7 +55,7 @@ static bool             match_pointer(void *data, void *name)
 
 t_player        *player_destroy(t_player *p)
 {
-  if (!p || p->food)
+  if (!p || p->food > 0)
     return ((p ? (void*)(p->client = NULL) : NULL));
   if (p->team && del_node_as_arg(&p->team->players, match_pointer, p))
     p->team->max_conn += 1;
