@@ -35,7 +35,6 @@
 #define Y(a)	(((a < 0) ? (int)get_map_height() : 0) + \
 		 (a % ((int)get_map_height() - ((a < 0) ? -1 : 0))))
 
-
 #define SIZEMODULE(f)	((sizeof(t_module) + (sizeof(t_mod_func) * f)))
 
 bool		command_add(t_mod_func *, char *, void *);
