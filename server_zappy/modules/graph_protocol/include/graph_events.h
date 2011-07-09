@@ -5,14 +5,21 @@
 ** Login   <gelin_g@epitech.net>
 **
 ** Started on  Thu Jun 30 11:32:47 2011 guillaume gelin
-** Last update Fri Jul  8 02:28:29 2011 ramnes
+** Last update Sat Jul  9 23:59:41 2011 guillaume gelin
 */
 
 #ifndef		GRAPH_EVENTS_H_
 # define	GRAPH_EVENTS_H_
 
 # include <stdbool.h>
-# include "tserver.h"
+
+/*
+** graph_event_over.c
+*/
+
+bool	graph_eppo(void *);
+bool	graph_ebct(void *);
+bool	graph_epin(void *);
 
 /*
 ** graph_event_server.c
@@ -22,7 +29,6 @@ bool	graph_pnw(void *);
 bool	graph_pdi(void *);
 bool	graph_seg(void *);
 bool	graph_smg(void *);
-bool	graph_eppo(void *);
 
 /*
 ** graph_event_player.c

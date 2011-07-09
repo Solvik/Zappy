@@ -5,10 +5,9 @@
 ** Login   <gelin_g@epitech.net>
 **
 ** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Sat Jul  9 23:00:25 2011 guillaume gelin
+** Last update Sat Jul  9 23:56:46 2011 guillaume gelin
 */
 
-#include <stdlib.h>
 #include "tserver.h"
 #include "graph_events.h"
 #include "sends_all.h"
@@ -48,23 +47,5 @@ bool	graph_seg(void *data)
 bool	graph_smg(void *data)
 {
   sendf_all("smg %s", (char*)data);
-  return (true);
-}
-
-/*
-** ppo: PlayerMove
-** Basically, this is a cmd, but we override it with
-** an event to send a ppo to all when a player moves.
-*/
-bool	graph_eppo(void *data)
-{
-  t_fds	*client;
-  uint	x;
-  uint	y;
-  uint	o;
-
-  client = (t_fds *)data;
-  get_player_pos(player_data->id, &x, &y, &o);
-  sendf_all("ppo %d %d %d %d", player_data->id, x, y, o);
   return (true);
 }

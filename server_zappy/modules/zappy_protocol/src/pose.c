@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 16:35:03 2011 ramnes
+** Last update Sun Jul 10 00:22:53 2011 guillaume gelin
 */
 
 #include	<unistd.h>
@@ -55,8 +55,8 @@ int		zappy_pose(t_fds *client, char *cmd)
     }
   if ((data = malloc(sizeof(*data))))
     {
-      data->ui1 = p->id;
-      data->ui2 = get_ressource_id(obj);
+      data->ui1 = get_ressource_id(obj);
+      data->client = client;
       event_relative_dispatch("DropItem", data, 0);
     }
   sends(client, "ok");

@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Sat Jul  9 18:27:32 2011 solvik blum
+** Last update Sun Jul 10 00:19:38 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -47,6 +47,7 @@ typedef		struct
   unsigned int	ui2;
   unsigned int	ui3;
   char		*txt1;
+  fds		client;
 }		t_generic;
 
 t_module	*get_module_by_name(char *);

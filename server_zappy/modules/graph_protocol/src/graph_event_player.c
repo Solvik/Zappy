@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 **
 ** Started on  Wed Jul  6 16:43:06 2011 by ramnes
-** Last update Sat Jul  9 18:43:55 2011 solvik blum
+** Last update Sun Jul 10 00:28:20 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -46,17 +46,21 @@ bool	graph_pfk(void *data)
 /* pdr: DropItem */
 bool	graph_pdr(void *data)
 {
-  sendf_all("pdr %d %d",
-	    ((t_generic *)data)->ui1,
-	    ((t_generic *)data)->ui2);
+  fds	client;
+
+  client = ((t_generic *)data)->client;
+  sendf_all("pdr %d %d", player_data->id,
+	    ((t_generic *)data)->ui1);
   return (true);
 }
 
 /* pgt: TakeItem */
 bool	graph_pgt(void *data)
 {
-  sendf_all("pgt %d %d",
-	    ((t_generic *)data)->ui1,
-	    ((t_generic *)data)->ui2);
+  fds	client;
+
+  client = ((t_generic *)data)->client;
+  sendf_all("pgt %d %d", player_data->id,
+	    ((t_generic *)data)->ui1);
   return (true);
 }

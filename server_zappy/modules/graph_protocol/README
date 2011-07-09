@@ -2,6 +2,25 @@ GRAPHIC PROTOCOL EVENTS
 
 
 
+-> graph_event_over.c
+
+Event name	: PlayerMove
+Function	: graph_eppo
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name	: TakeItem/DropItem
+Function	: graph_epin
+Data type	: t_fds *
+Data inside	: Client fds
+
+Event name	: PlayerMove
+Function	: graph_ebct
+Data type	: t_generic *
+Data inside	: Client fds
+
+
+
 -> graph_event_server.c
 
 Event name 	: PlayerNew 
@@ -23,11 +42,6 @@ Event name 	: ServerMsg
 Function	: graph_smg
 Data type	: char *
 Data inside	: Message to be displayed
-
-Event name	: PlayerMove
-Function	: graph_eppo
-Data type	: t_fds *
-Data inside	: Client fds
 
 
 
@@ -51,12 +65,12 @@ Data inside	: Client fds
 Event name	: DropItem
 Function	: graph_pdr
 Data type	: t_generic *
-Data inside	: Player id, ressource nb (uint ui1, uint ui2)
+Data inside	: Player fds, ressource nb (fds client, uint ui1)
 
 Event name	: TakeItem
 Function	: graph_pgt
 Data type	: t_generic *
-Data inside	: Player id, ressource nb (uint ui1, uint ui2)
+Data inside	: Player fds, ressource nb (fds client, uint ui1)
 
 
 
@@ -64,13 +78,13 @@ Data inside	: Player id, ressource nb (uint ui1, uint ui2)
 
 Event name	: IncaNew
 Function	: graph_pic
-Data type	: t_generic *
-Data inside	: TBA
+Data type	: t_fds *
+Data inside	: Client fds
 
 Event name	: IncaEnd
 Function	: graph_pie
 Data type	: t_generic *
-Data inside	: TBA
+Data inside	: ui1 ui2 ui3
 
 
 
