@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:33:31 2011 Julien Di Marco
-** Last update Sat Jul  9 01:38:56 2011 Sebastien Blot
+** Last update Sat Jul  9 02:00:07 2011 Sebastien Blot
 */
 
 #include	<unistd.h>
@@ -74,11 +74,7 @@ void		handle_mouse(t_visu *v, SDL_Event *event)
 						 (v->camera.h / 2));
 		}
 	  if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
-		{
-		  printf("clic ! x = %d y = %d\n", event->button.x, event->button.y);
-		  get_info(4, 4, v);
-		  //		  printf("Camera x= %d y = %d\n", );
-		}
+		get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
 	  return;
 	}
 }
