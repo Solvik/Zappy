@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Sun Jul 10 01:33:50 2011 guillaume gelin
+** Last update Sun Jul 10 01:44:58 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -53,6 +53,6 @@ bool graph_graphic(t_fds *client, char *cmd __attribute__((unused)))
   graph_mct(client, NULL);
   graph_tna(client, NULL);
   foreach_arg_list(mod->clients, _pnw, client);
-  foreach_arg_list(mod->clients, _enw, client);
+  /* foreach_arg_list(mod->clients, _enw, client); */
   return (true);
 }
