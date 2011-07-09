@@ -46,13 +46,6 @@ static bool             match_team(void *data, void *name)
   return ((strcmp(((t_team *)data)->name, (char *)name) == 0));
 }
 
-static bool             match_pointer(void *data, void *name)
-{
-  if (!data || !name)
-    return (false);
-  return ((data == name));
-}
-
 static bool	find_ghost(void *elem)
 {
   t_player	*p;

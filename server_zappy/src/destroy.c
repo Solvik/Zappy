@@ -16,6 +16,13 @@
 
 extern t_server	*gserv;
 
+static bool             match_pointer(void *data, void *name)
+{
+  if (!data || !name)
+    return (false);
+  return ((data == name));
+}
+
 void		*destroy_client(t_client *c)
 {
   if (!c)
