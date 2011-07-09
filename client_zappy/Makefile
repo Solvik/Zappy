@@ -45,7 +45,7 @@ LIB		=	-L$(LIB_DIR)/network -lnet		\
 			`sdl-config --libs`			\
 			-lSDL_ttf				\
 			-L$(LIB_DIR)/itoa -litoa		\
-			-lfmodex
+			-L/usr/local/lib/ -lfmodex-4.30.06
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
