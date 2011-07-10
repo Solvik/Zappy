@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 00:40:09 2011 solvik blum
-** Last update Wed Jul  6 17:47:17 2011 solvik blum
+** Last update Sun Jul 10 16:30:11 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -33,7 +33,7 @@ static const t_ptr ptr[] =
     {"pbc", play_sound, 3},
     {"pic", lol, -1},
     {"pie", lol, 4},
-    {"pfk", lol, 2},
+    {"pfk", visu_pfk, 2},
     {"pdr", lol, 3},
     {"pgt", lol, 3},
     {"pdi", visu_pdi, 2},
@@ -58,15 +58,11 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
   i = -1;
   if (!inc_cmd)
     return (0);
-  //  printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
   while (++i < ptr_len)
     if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
       {
-	if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
-	  {
-	    //	    printf("%s", inc_cmd->argv[0]);
-	    return (ptr[i].f(pooler, inc_cmd, v));
-	  }
+	if (inc_cmd->argc == ptr[i].argc)
+	  return (ptr[i].f(pooler, inc_cmd, v));
 	else
 	  return (0);
       }

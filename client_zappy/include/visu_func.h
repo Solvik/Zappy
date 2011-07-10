@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 00:58:14 2011 solvik blum
-** Last update Wed Jul  6 17:50:34 2011 solvik blum
+** Last update Sun Jul 10 16:13:20 2011 solvik blum
 */
 
 #ifndef		VISU_FUNC_H_
@@ -32,6 +32,7 @@ int		visu_plv(t_fds *, t_cmd *, t_visu *);
 int		visu_pin(t_fds *, t_cmd *, t_visu *);
 int		visu_bct(t_fds *, t_cmd *, t_visu *);
 int		visu_pdi(t_fds *, t_cmd *, t_visu *);
+int		visu_pfk(t_fds *, t_cmd *, t_visu *);
 int		play_sound(t_fds *, t_cmd *, t_visu *);
 
 #endif		/* !VISU_FUNC_H_ */
