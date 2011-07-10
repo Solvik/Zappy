@@ -56,9 +56,9 @@ typedef struct	s_visualiseur
   SDL_Rect	camera;
   TTF_Font	*police;
   t_sprite	*sprite;
-  t_list	*map;/* t_box */
-  t_list	*player;/* t_player */
-  t_list	*teams;/* t_team */
+  t_list	*map; /* t_box */
+  t_list	*player; /* t_player */
+  t_list	*teams; /* t_team */
   int		width;
   int		height;
   int		time;
