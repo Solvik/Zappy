@@ -14,7 +14,7 @@
 
 int		lol(t_cmd *lol)
 {
-  //  (void)lol;
+  (void)lol;
   printf("rofl\n");
   return (1);
 }
@@ -55,6 +55,8 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
   int			i;
 
   i = -1;
+  if (!inc_cmd)
+    return (0);
   printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
   while (++i < ptr_len)
     if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
@@ -76,9 +78,6 @@ void			free_cmd(t_cmd *c)
 
   i = 0;
   while (c && c->argv && i < c->argc)
-    {
-      free(c->argv[i++]);
-    }
+    free(c->argv[i++]);
   free(c->argv);
-  //  free(c);
 }

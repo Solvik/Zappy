@@ -15,13 +15,6 @@
 #include	<fmodex/fmod_errors.h>
 #include	"client_zappy.h"
 
-/*
-** if(system && (result = FMOD_System_Close(system)) != FMOD_OK)
-**   return (1);
-** if(system && (result = FMOD_System_Release(system)) != FMOD_OK)
-**  return (1);
-*/
-
 int		play_sound(t_fds *f, t_cmd *c, t_visu *v)
 {
   static FMOD_SYSTEM *system = NULL;
@@ -29,18 +22,23 @@ int		play_sound(t_fds *f, t_cmd *c, t_visu *v)
   FMOD_CHANNEL    *channel;
   FMOD_RESULT      result;
 
-
-  if(!system && (result = FMOD_System_Create(&system)) != FMOD_OK)
+  (void)f;
+  (void)c;
+  (void)v;
+  if (!system && (result = FMOD_System_Create(&system)) != FMOD_OK)
     return (1);
-  if(!sound && (result = FMOD_System_Init(system, 2,
-				FMOD_INIT_NORMAL, NULL)) != FMOD_OK)
+  if (!sound && (result = FMOD_System_Init(system, 2,
+					   FMOD_INIT_NORMAL, NULL)) != FMOD_OK)
     return (1);
-  if(!sound && (result = FMOD_System_CreateSound(system, "nyan.wav",
-						 FMOD_HARDWARE | FMOD_LOOP_OFF |
-						 FMOD_2D, 0, &sound)) != FMOD_OK)
+  if (!sound && (result = FMOD_System_CreateSound(system,
+						  "nyan.wav",
+						  FMOD_HARDWARE | FMOD_LOOP_OFF
+						  | FMOD_2D, 0, &sound))
+      != FMOD_OK)
     return (1);
-  if((result = FMOD_System_PlaySound(system,
-				     FMOD_CHANNEL_FREE, sound, 0, &channel)) != FMOD_OK)
+  if ((result = FMOD_System_PlaySound(system,
+				      FMOD_CHANNEL_FREE, sound, 0, &channel))
+      != FMOD_OK)
     return (1);
   return (0);
 }

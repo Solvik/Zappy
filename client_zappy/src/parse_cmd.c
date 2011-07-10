@@ -19,16 +19,20 @@ t_cmd		*parse_cmd(char *str)
   char		*ret;
 
   len = 0;
-  s = malloc(sizeof(*s));
-  s->argv = malloc(sizeof(*(s->argv)));
+  if (!(s = malloc(sizeof(*s))))
+    return (NULL);
+  if (!(s->argv = malloc(sizeof(*(s->argv)))))
+    return (NULL);
   if ((ret = strtok(str, " \t")))
     {
-      s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1));
+      if (!(s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1))))
+	return (NULL);
       s->argv[len++] = strdup(ret);
     }
   while ((ret = strtok(NULL, " \t")))
     {
-      s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1));
+      if (!(s->argv = realloc(s->argv, sizeof(*(s->argv)) * (len + 1))))
+	return (NULL);
       s->argv[len++] = strdup(ret);
     }
   s->argc = len;

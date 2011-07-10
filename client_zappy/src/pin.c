@@ -24,7 +24,8 @@ int		visu_pin(t_fds *pooler, t_cmd *cmd, t_visu *visu)
     return (0);
   p->x = atoi(cmd->argv[2]);
   p->y = atoi(cmd->argv[3]);
-  box = malloc(sizeof(*box));
+  if (!(box = malloc(sizeof(*box))))
+    return (0);
   box->food = atoi(cmd->argv[4]);
   box->linemate = atoi(cmd->argv[5]);
   box->deraumere = atoi(cmd->argv[6]);

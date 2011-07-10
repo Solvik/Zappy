@@ -28,7 +28,8 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   (void)pooler;
   coor[0] = atoi(cmd->argv[1]);
   coor[1] = atoi(cmd->argv[2]);
-  box = malloc(sizeof(*box));
+  if (!(box = malloc(sizeof(*box))))
+    return (0);
   box->x = coor[0];
   box->y = coor[1];
   box->food = atoi(cmd->argv[3]);

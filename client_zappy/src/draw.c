@@ -15,7 +15,6 @@ void		refresh_screen(t_visu *v)
 {
   draw_map(v);
   foreach_arg_list(v->player, draw_player, v);
-  //  draw_info(v);
 }
 
 void		draw_text(t_visu *visu, char *text, int coor[2])
@@ -75,8 +74,7 @@ void		draw_map(t_visu *v)
     v->draw = SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF,
 				   v->width * 32,
 				   (v->height) * 32, 32, 0, 0, 0, 0);
-  img = SDL_LoadBMP("grass.bmp");
-  if (!img)
+  if (!(img = SDL_LoadBMP("grass.bmp")))
     return;
   while (x < v->width)
     {

@@ -20,6 +20,7 @@ LIB_DIR		=	../lib/
 SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)parse_cmd.c			\
 			$(SRC_DIR)gere_cmd.c			\
+			$(SRC_DIR)handle.c			\
 			$(SRC_DIR)get_player_by_id.c		\
 			$(SRC_DIR)bienvenue.c			\
 			$(SRC_DIR)msz.c				\
