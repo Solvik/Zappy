@@ -37,6 +37,7 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
     tmp_box = box;
   else if (!put_in_list(&(visu->map), box))
     return (0);
+  draw_stones(visu, box->x, box->y);
   return (1);
 }
 
