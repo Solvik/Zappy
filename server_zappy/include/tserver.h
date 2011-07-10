@@ -94,12 +94,13 @@ void		set_map(t_box *);
 bool		set_box_addstone(uint, uint, e_stone, uint);
 uint		set_box_delstone(uint, uint, e_stone, uint);
 bool		set_box_addfood(uint, uint, uint);
-bool		set_box_delfood(uint, uint, uint);
+uint		set_box_delfood(uint, uint, uint);
 void		set_box_delplayer(t_player *);
 void		set_box_delplayer_coor(t_player *, uint, uint);
 bool		set_player_addstone(t_player *, e_stone, uint);
 uint		set_player_delstone(t_player *, e_stone, uint);
 bool		set_player_addfood(uint, uint);
+uint		set_player_delfood(uint, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
 t_egg		*set_box_addegg(t_player *);
 

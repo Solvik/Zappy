@@ -15,15 +15,18 @@
 
 extern t_server 	*gserv;
 
-bool			set_box_delfood(uint x, uint y, uint nb)
+uint			set_box_delfood(uint x, uint y, uint nb)
 {
   t_box 		*box;
+  uint			tmp;
 
   if (!(box = get_box(x, y)))
-    return (false);
-  if (box->food < nb)
-    box->food = 0;
-  else
-    box->food -= nb;
-  return (true);
+    return (0);
+  if ((tmp = box->food) < nb)
+    {
+      box->food = 0;
+      return (tmp);
+    }
+  box->food -= nb;
+  return (nb);
 }
