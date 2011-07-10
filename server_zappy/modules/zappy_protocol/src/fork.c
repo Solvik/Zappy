@@ -27,6 +27,10 @@ bool            egg_eclosion(void *data)
   egg->team->max_conn++;
   if (!(player = new_player(egg->team->name)))
     return (false);
+  set_box_delplayer(player);
+  player->x = egg->x;
+  player->y = egg->y;
+  set_box_addplayer(player, player->x, player->y);
   player->fork = true;
   return (true);
 }
