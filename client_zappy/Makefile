@@ -35,6 +35,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)pin.c				\
 			$(SRC_DIR)pdi.c				\
 			$(SRC_DIR)pfk.c				\
+			$(SRC_DIR)enw.c				\
 			$(SRC_DIR)sound.c				\
 			$(SRC_DIR)draw.c				\
 			$(SRC_DIR)get_info.c				\

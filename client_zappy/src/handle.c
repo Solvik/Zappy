@@ -11,7 +11,19 @@
 #include		"time_.h"
 #include		"client_zappy.h"
 
-static void		handle_mouse(t_visu *v, SDL_Event *event)
+static void		request_info(t_visu *v, t_fds **pooler,
+				     SDL_Event *event)
+{
+  char			*to_send;
+
+  to_send = NULL;
+  asprintf(&to_send, "bct %d %d", (event->button.x + v->camera.x) / 64,
+	   (event->button.y + v->camera.y) / 64);
+  sends(*pooler, to_send);
+  free(to_send);
+}
+
+static void		handle_mouse(t_visu *v, SDL_Event *event, t_fds **pooler)
 {
   static int space = 0;
 
@@ -31,6 +43,7 @@ static void		handle_mouse(t_visu *v, SDL_Event *event)
     }
   if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
     {
+      request_info(v, pooler, event);
       if (v->info)
 	SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format,
 					       253, 63, 146));
@@ -65,9 +78,11 @@ void			handle_event(t_fds **pooler, t_visu *v)
 
   while (1)
     {
+      while (SDL_PollEvent(&e))
+	handle_mouse(v, &e, pooler);
       pool(pooler, timeval_(&tv, 0.001));
       if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
-	break;
+	return ;
       while ((cmd = getcmd(*pooler)))
 	{
 	  inc_cmd = parse_cmd(cmd);
@@ -75,8 +90,6 @@ void			handle_event(t_fds **pooler, t_visu *v)
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
 	  free_cmd(inc_cmd);
 	}
-      while (SDL_PollEvent(&e))
-	handle_mouse(v, &e);
       sdl_manage(v);
     }
 }
