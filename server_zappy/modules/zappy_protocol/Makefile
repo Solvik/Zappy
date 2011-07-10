@@ -35,6 +35,7 @@ LOCAL	= ./src/
 SOURCE	= $(LOCAL)get_module.c			\
 	  $(LOCAL)avance.c			\
 	  $(LOCAL)broadcast.c			\
+	  $(LOCAL)direction.c			\
 	  $(LOCAL)connect_nbr.c			\
 	  $(LOCAL)droite.c			\
 	  $(LOCAL)expulse.c			\

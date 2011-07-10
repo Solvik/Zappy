@@ -33,4 +33,11 @@ int		zappy_fork(t_fds *, char *);
 e_stone		is_stone(char *);
 uint		get_ressource_id(char *);
 
+int		first_quad(int, void *);
+int		second_quad(int, void *);
+int		third_quad(int, void *);
+int		fourth_quad(int, void *);
+
+int		get_sound_direction(int, void *);
+
 #endif		/* !ZAPPY_PROTOCOL_H_ */
