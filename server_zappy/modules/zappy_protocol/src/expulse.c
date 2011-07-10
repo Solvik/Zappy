@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 18:17:12 2011 solvik blum
+** Last update Sun Jul 10 19:17:28 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -15,6 +15,14 @@
 #include <stdio.h>
 
 #include "napi.h"
+
+static const int        gl_exp_dirs[][4] =
+  {
+    {5, 7, 1, 3},
+    {3, 5, 7, 1},
+    {1, 3, 5, 7},
+    {7, 1, 3, 5}
+  };
 
 static int	zappy_avance(t_fds *client, e_direction direction)
 {
@@ -33,17 +41,23 @@ static int	zappy_avance(t_fds *client, e_direction direction)
 
 static void	expulse_players(void *data, void *dest)
 {
+  char		*ret;
   t_fds		*client;
+  int		r;
 
   client = (t_fds *)data;
   if (player_data != (t_player *)dest)
-    zappy_avance(client, (((t_player *)dest)->direction + 2) % 4);
+    {
+      zappy_avance(client, gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
+      r = asprintf(&ret, "deplacement %d", gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
+      sends(client, ret);
+      if (ret)
+	free(ret);
+    }
 }
 
 int		zappy_expulse(t_fds *client, char *cmd)
 {
-  int		r;
-  char		*ret;
   t_list	*list;
   t_module      *mod;
 
@@ -53,11 +67,6 @@ int		zappy_expulse(t_fds *client, char *cmd)
     {
       mod = get_module_by_name("Zappy Protocol");
       foreach_arg_list(mod->clients, expulse_players, player_data);
-      r = asprintf(&ret, "deplacement %d",
-		   (player_data->direction + 2) % 4);
-      sends(client, ret);
-      if (ret)
-	free(ret);
       sends(client, "ok");
       event_relative_dispatch("Expulse", client, 0);
     }
