@@ -8,8 +8,8 @@
 ** Last update Sun Jul 10 07:32:44 2011 seb
 */
 
-#include	"time_.h"
-#include "client_zappy.h"
+#include		"time_.h"
+#include		"client_zappy.h"
 
 static void		handle_mouse(t_visu *v, SDL_Event *event)
 {
@@ -40,7 +40,7 @@ static void		handle_mouse(t_visu *v, SDL_Event *event)
     }
 }
 
-static void	sdl_manage(t_visu *v)
+static void		sdl_manage(t_visu *v)
 {
   if (v->refresh)
     {
@@ -56,7 +56,7 @@ static void	sdl_manage(t_visu *v)
   SDL_Flip(v->screen);
 }
 
-void		handle_event(t_fds **pooler, t_visu *v)
+void			handle_event(t_fds **pooler, t_visu *v)
 {
   char		*cmd;
   t_cmd		*inc_cmd;

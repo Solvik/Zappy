@@ -12,13 +12,12 @@
 # define	CLIENT_ZAPPY_H_
 
 #  include	<stdbool.h>
+#  include	<SDL/SDL.h>
+#  include	<SDL/SDL_ttf.h>
 #  include	"ztypes.h"
 #  include	"list.h"
 #  include	"network.h"
 #  include	"player.h"
-
-#  include	<SDL/SDL.h>
-#  include	<SDL/SDL_ttf.h>
 
 #  define WIDTH		1024
 #  define HEIGHT	768

@@ -9,6 +9,7 @@
 */
 
 #include	<stdlib.h>
+
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
