@@ -14,7 +14,7 @@
 #  include	"ztypes.h"
 
 static define		default_port		= 1337;
-static define		default_nb_clients	= 5;
+static define		default_nb_clients	= 1;
 static const double	default_delay		= 100;
 static const double	default_time		= 1;
 

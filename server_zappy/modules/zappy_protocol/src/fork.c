@@ -22,16 +22,13 @@ bool            egg_eclosion(void *data)
   t_player      *player;
   t_egg         *egg;
 
-  if (!(egg = (t_egg*)data))
+  if (!(egg = (t_egg*)data) || !(player = egg->himself) || !player->team)
     return (false);
-  egg->team->max_conn++;
-  if (!(player = new_player(egg->team->name)))
-    return (false);
-  set_box_delplayer(player);
-  player->x = egg->x;
-  player->y = egg->y;
-  set_box_addplayer(player, player->x, player->y);
+  if (!put_in_list(&player->team->players, player) ||
+      !set_box_addplayer(player, player->x, player->y))
+    return (false);;
   player->fork = true;
+  set_box_delegg(egg);
   return (true);
 }
 

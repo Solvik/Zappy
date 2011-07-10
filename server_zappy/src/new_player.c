@@ -21,7 +21,7 @@
 
 extern t_server *gserv;
 
-static t_player *init_player(t_team *team)
+t_player *init_player(t_team *team)
 {
   static uint   id = 0;
   t_player      *player;
