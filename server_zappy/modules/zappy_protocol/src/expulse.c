@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 18:43:54 2011 ramnes
+** Last update Sun Jul 10 19:52:48 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -16,12 +16,12 @@
 
 #include "napi.h"
 
-static const char	*enum_to_dir[4] =
+static const int        gl_exp_dirs[][4] =
   {
-    "NORTH",
-    "EAST",
-    "SOUTH",
-    "WEST",
+    {5, 7, 1, 3},
+    {3, 5, 7, 1},
+    {1, 3, 5, 7},
+    {7, 1, 3, 5}
   };
 
 static int	zappy_avance(t_fds *client, e_direction direction)
@@ -45,13 +45,14 @@ static void	expulse_players(void *data, void *dest)
 
   client = (t_fds *)data;
   if (player_data != (t_player *)dest)
-    zappy_avance(client, ((t_player *)dest)->direction);
+    {
+      zappy_avance(client, ((t_player *)dest)->direction);
+      sendf(client, "deplacement %d", gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
+    }
 }
 
 int		zappy_expulse(t_fds *client, char *cmd)
 {
-  int		r;
-  char		*ret;
   t_list	*list;
   t_module      *mod;
 
@@ -61,11 +62,6 @@ int		zappy_expulse(t_fds *client, char *cmd)
     {
       mod = get_module_by_name("Zappy Protocol");
       foreach_arg_list(mod->clients, expulse_players, player_data);
-      r = asprintf(&ret, "deplacement %s",
-		   enum_to_dir[player_data->direction]);
-      sends(client, ret);
-      if (ret)
-	free(ret);
       sends(client, "ok");
       event_relative_dispatch("Expulse", client, 0);
     }

@@ -104,6 +104,7 @@ bool		set_player_addfood(uint, uint);
 uint		set_player_delfood(uint, uint);
 bool		set_box_add_player(t_player *, char *, uint, uint);
 t_egg		*set_box_addegg(t_player *);
+void		set_box_delegg(t_egg * egg);
 
 bool		set_new_module(t_module *);
 bool		set_new_event(t_event *);

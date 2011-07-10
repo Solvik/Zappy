@@ -12,13 +12,7 @@
 
 NAME	= zappyModule
 
-INCLUDE	= .				\
-	  ./include/			\
-	  $(SERVER)include/		\
-	  $(COMMONS)include/		\
-	  $(LIBRARY)List/include/	\
-	  $(LIBRARY)itoa/include/	\
-	  $(LIBRARY)network/include/
+INCLUDE	=
 
 ############################################################
 
@@ -32,26 +26,18 @@ LOCAL	= ./src/
 
 ############################################################
 
-SOURCE	= $(LOCAL)get_module.c			\
-	  $(LOCAL)avance.c			\
-	  $(LOCAL)broadcast.c			\
-	  $(LOCAL)direction.c			\
-	  $(LOCAL)connect_nbr.c			\
-	  $(LOCAL)droite.c			\
-	  $(LOCAL)expulse.c			\
-	  $(LOCAL)fork.c			\
-	  $(LOCAL)gauche.c			\
-	  $(LOCAL)incantation.c			\
-	  $(LOCAL)inventaire.c			\
-	  $(LOCAL)pose.c			\
-	  $(LOCAL)prend.c			\
-	  $(LOCAL)voir.c			\
-	  $(LOCAL)is_stone.c			\
-	  $(LOCAL)get_ressource_id.c		\
-	  $(LOCAL)updates.c			\
-	  $(LOCAL)main.c
+SOURCES =
 
-SOURCES	= $(SOURCE:.c=.o)
+include ./zappyModule.mk
+
+############################################################
+
+SOURCES := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(SOURCES))))
+INCLUDE := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(INCLUDE))))
+
+############################################################
+
+OBJECTS	= $(SOURCES:.c=.o)
 
 ARCHIVE	= $(LIBRARY)List/liblist.a	\
 	  $(LIBRARY)network/libnet.a
@@ -99,15 +85,15 @@ endif
 
 all		: $(NAME).so
 
-$(NAME).so	: $(SOURCES)
+$(NAME).so	: $(OBJECTS)
 		  @ $(PRINTF) "\nFlag used with $(CC): \033[33m$(MFLAG) $(CFLAGS)\033[m\n"
 		  @ $(PRINTF) "Module name is: \033[33m$@\033[m\n"
-		  $(CC) $(MFLAG) $(CFLAGS) $(SOURCES) $(ARCHIVE) -o $@
+		  $(CC) $(MFLAG) $(CFLAGS) $(OBJECTS) $(ARCHIVE) -o $@
 
 mrpropre	: all clean
 
 clean		:
-		  $(RM) $(SOURCES)
+		  $(RM) $(OBJECTS)
 
 fclean		: clean
 		  $(RM) $(NAME).so

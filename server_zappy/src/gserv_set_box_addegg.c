@@ -15,9 +15,8 @@
 
 extern t_server		*gserv;
 
-static t_egg		*new_egg(t_player *player)
+static t_egg		*new_egg(t_player *player, uint id)
 {
-  static uint		id = 0;
   t_egg 		*egg;
 
   if (!player || !(egg = calloc(1, sizeof(*egg))))
@@ -30,19 +29,25 @@ static t_egg		*new_egg(t_player *player)
   egg->father = player;
   egg->team = get_team_of_player(player);
   put_in_list(&gserv->egg, egg);
-  ++id;
   return (egg);
 }
 
 t_egg			*set_box_addegg(t_player *player)
 {
+  t_player		*p;
   t_box 		*box;
   t_egg 		*egg;
 
   if (!player || !(box = get_box(player->x, player->y)))
     return (NULL);
-  if (!(egg = new_egg(player)) ||
+  if (!player->team || !(p = init_player(player->team)))
+    return (NULL);
+  player->team->max_conn += 1;
+  p->x = player->x;
+  p->y = player->y;
+  if (!(egg = new_egg(player, p->id)) ||
       !put_in_list(&(box->eggs), egg))
     return (NULL);
+  egg->himself = p;
   return (egg);
 }

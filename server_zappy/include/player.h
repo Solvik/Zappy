@@ -56,6 +56,7 @@ struct		s_player
   bool		fork;
   uint		food;
   double	foodt;
+  double	foodlt;
 };
 
 /*
@@ -63,6 +64,7 @@ struct		s_player
 */
 
 t_player        *player_destroy(t_player *);
+t_player	*init_player(t_team *team);
 
 # define _PLAYER_H_
 #endif /* PLAYER_H_ */

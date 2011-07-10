@@ -35,6 +35,7 @@ struct		s_egg
   enum e_egg_state	status;
 
   t_player		*father;
+  t_player		*himself;
   t_team	       	*team;
 };
 

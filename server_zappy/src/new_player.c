@@ -14,13 +14,14 @@
 #include	<stdio.h>
 #include        <time.h>
 
+#include	"time_.h"
 #include        "tserver.h"
 #include        "conf.h"
 #include        "player.h"
 
 extern t_server *gserv;
 
-static t_player *init_player(t_team *team)
+t_player *init_player(t_team *team)
 {
   static uint   id = 0;
   t_player      *player;
@@ -31,6 +32,7 @@ static t_player *init_player(t_team *team)
   player->level = default_level;
   player->food = default_life;
   player->foodt = default_life;
+  player->foodlt = time_();
   player->x = rand() % get_map_width();
   player->y = rand() % get_map_height();
   player->direction = rand() % (WEST + 1);
