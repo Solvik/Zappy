@@ -19,7 +19,7 @@ INCLUDE	= .				\
 	  $(LIBRARY)List/include/	\
 	  $(LIBRARY)network/include/
 
-MODULES	+=
+MODULES	+= ./modules/zappy_protocol/zappyModule.mk
 
 ############################################################
 
@@ -203,7 +203,7 @@ re		: fclean all
 ############################################################
 
 %.o		: %.c
-		  @ $(CC) $(OFLAG) $(CFLAGS) -o $@ -c $<
+		  @ $(CC) $(CFLAGS) -o $@ -c $<
 #		  @ $(if $$?, echo "hello", echo "hella")
 		  @ $(PRINTF) "\033[32m[OK]\033[m --> $< \n"
 

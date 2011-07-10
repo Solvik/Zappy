@@ -40,4 +40,14 @@ int		fourth_quad(int, void *);
 
 int		get_sound_direction(int, void *);
 
+bool		handshaking(t_fds *, char *);
+bool		disconnection(fds);
+double		timer(void);
+bool		update(double);
+
+bool		zappy_handshaking(t_fds *, char *);
+bool		zappy_disconnection(fds);
+double		zappy_timer(void);
+bool		zappy_update(double);
+
 #endif		/* !ZAPPY_PROTOCOL_H_ */
