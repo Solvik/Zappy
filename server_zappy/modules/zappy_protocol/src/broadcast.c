@@ -37,7 +37,7 @@ static int get_sound_direction(int n, void *player)
   return (0);
 }
 
-static void	send_broadcast(void *player)
+static void	send_broadcast(void *player, void *dest)
 {
   int		new_x;
   int		new_y;
@@ -46,7 +46,14 @@ static void	send_broadcast(void *player)
   float		angle;
   int		dir;
   char		*to_send;
+  t_fds *client;
 
+  client = (t_fds *)player;
+  if (player_data == (t_player *)dest)
+    {
+      sends(client, "ok");
+      return;
+    }
   dir = 0;
   to_send = NULL;
   new_x = (((t_player *)(((t_fds *)player)->data))->x + tr_x - get_map_width() / 2);
@@ -138,7 +145,7 @@ int		zappy_broadcast(t_fds *client, char *cmd)
     }
   tr_x = get_map_width() / 2 - player_data->x;
   tr_y = get_map_height() / 2 - player_data->y;
-  foreach_list(mod->clients, send_broadcast);
+  foreach_arg_list(mod->clients, send_broadcast, player_data);
   if (!(data = malloc(sizeof(t_generic))))
       return (1);
   data->ui1 = player_data->id;
