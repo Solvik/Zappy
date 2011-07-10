@@ -67,6 +67,6 @@ t_player *      new_player(char * teamname)
 	((team->max_conn > 0) && (player = init_player(team)) &&
 	 put_in_list(&team->players, player) &&
 	 set_box_addplayer(player, player->x, player->y))))
-    return (player_destroy(player));
+    return (player ? player_destroy(player) : NULL);
   return (player);
 }
