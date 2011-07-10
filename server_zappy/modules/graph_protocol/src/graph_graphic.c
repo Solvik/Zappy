@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Sun Jul 10 19:59:02 2011 guillaume gelin
+** Last update Sun Jul 10 20:02:10 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -36,7 +36,7 @@ static void	_enw(void *data, void *dest)
   t_egg		*egg;
 
   if ((egg = (t_egg *)data) && dest)
-    sendf(dest, "enw %d %d %d %d", egg->id, egg->father->id, egg->x, egg->y);
+    sendf(dest, "enw %d %d %d %d", egg->id, egg->idf, egg->x, egg->y);
 }
 
 bool graph_graphic(t_fds *client, char *_)
