@@ -10,10 +10,14 @@
 
 #define		_GNU_SOURCE
 
-#include	<stdio.h>
+#include	<unistd.h>
 #include	<stdlib.h>
+#include	<string.h>
+#include	<stdio.h>
 
 #include	"napi.h"
+
+#include	"zappy_protocol.h"
 
 typedef struct	s_elevation
 {
@@ -26,7 +30,7 @@ typedef struct	s_elevation
   uint		thystame;
 }		t_elevation;
 
-static const t_elevation      gl_elevation_infos[] =
+static const t_elevation	elevation[] =
   {
     {1, 1, 0, 0, 0, 0, 0},
     {2, 1, 1, 1, 0, 0, 0},
@@ -37,48 +41,104 @@ static const t_elevation      gl_elevation_infos[] =
     {6, 2, 2, 2, 2, 2, 1}
   };
 
-#define ELV	gl_elevation_infos[player->level]
+#define ELV	elevation[level]
 
-static bool	verif_incantation(t_player *player)
+static bool	verif_incantation(t_player *p)
 {
-  if (ELV.linemate == get_box_nbstones_by_player(player, LINEMATE) &&
-      ELV.deraumere == get_box_nbstones_by_player(player, DERAUMERE) &&
-      ELV.sibur == get_box_nbstones_by_player(player, SIBUR) &&
-      ELV.mendiane == get_box_nbstones_by_player(player, MENDIANE) &&
-      ELV.phiras == get_box_nbstones_by_player(player, PHIRAS) &&
-      ELV.thystame == get_box_nbstones_by_player(player, THYSTAME) &&
-      ELV.nb_players == (uint)get_list_len(get_box_players_by_level(player->x,
-								player->y,
-								player->level)))
-    return (true);
-  return (false);
+  int		level;
+  bool		out;
+  int		x;
+  int		y;
+
+  out = false;
+  if (!p || ((level = (p->level - 1)) < 0) ||
+      (level >= (int)(sizeof(elevation) / sizeof(t_elevation))))
+    return (out);
+  x = p->x;
+  y = p->y;
+  memcpy(&p->x, &p->inca.x, (sizeof(p->x) * 2));
+  if ((ELV.linemate == get_box_nbstones(p->x, p->y, LINEMATE)) &&
+      (ELV.deraumere == get_box_nbstones(p->x, p->y, DERAUMERE)) &&
+      (ELV.sibur == get_box_nbstones(p->x, p->y, SIBUR)) &&
+      (ELV.mendiane == get_box_nbstones(p->x, p->y, MENDIANE)) &&
+      (ELV.phiras == get_box_nbstones(p->x, p->y, PHIRAS)) &&
+      (ELV.thystame == get_box_nbstones(p->x, p->y, THYSTAME)) &&
+      ELV.nb_players == (uint)get_list_len(get_box_players_by_level(p->x, p->y,
+								    level + 1)))
+    out = true;
+  p->x = x;
+  p->y = y;
+  return (out);
 }
 
-int		zappy_incantation(t_fds *client, char *cmd)
+static int	first_test(fds c)
 {
-  int		r;
-  bool		res;
-  char		*msg;
-  t_generic	data;
+  t_player	*p;
 
-  (void)cmd;
-  res = true;
-  if (!verif_incantation(player_data))
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  p->inca.x = p->x;
+  p->inca.y = p->y;
+  sends(c, "elevation en cours");
+  scheduler_relative(c, schedule_incantation,
+		     (bool(*)(fds, void*))zappy_incantation, NULL);
+  scheduler_free(c);
+  return (-1);
+}
+
+static	void	send_elev(void *e, void *a)
+{
+  t_player	*p;
+  fds		c;
+  int		*b;
+
+  if (!(p = (t_player*)e) || !(b = (int*)a))
+    return ;
+  p->team += 1;
+  if ((c = p->client))
+    sendf(c, "niveau actuel : %d", *b);
+}
+
+static int	second_test(fds c)
+{
+  t_player	*p;
+  t_list	*players;
+  int		level;
+
+  players = NULL;
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  if (!verif_incantation(p) ||
+      !(players = get_box_players_by_level(p->inca.x, p->inca.y, p->level)))
     {
-      sends(client, "ko");
-      return (0);
+      sends(c, "ko");
+      return (false);
     }
-  event_relative_dispatch("IncaNew", client, 0);
-  sends(client, "elevation en cours");
-  /* ramnes: need scheduler of 300/t here */
-  player_data->level += 1;
-  r = asprintf(&msg, "niveau actuel : %d", player_data->level);
-  data.ui1 = player_data->x;
-  data.ui2 = player_data->y;
-  data.ui3 = res ? 1 : 0; 
-  event_relative_dispatch("IncaEnd", &data, 0);
-  sends(client, msg);
-  if (msg)
-    free(msg);
-  return (1);
+  level = p->level + 1;
+  foreach_arg_list(players, send_elev, &level);
+  return (true);
+}
+
+
+int		zappy_incantation(fds c, char *_)
+{
+  t_generic	data;
+  t_player	*p;
+
+  (void)_;
+  memset(&data, 0, sizeof(data));
+  if (!c || !(p = *(t_player**)c))
+    return (false);
+  if (!scheduler_active(c))
+    return (first_test(c));
+  else
+    {
+      if (second_test(c))
+	data.ui3 = 1;
+      data.ui1 = p->inca.x;
+      data.ui2 = p->inca.y;
+      event_relative_dispatch("IncaEnd", &data, 0);
+      return (data.ui3);
+    }
+  return (true);
 }
