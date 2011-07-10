@@ -14,17 +14,8 @@
 #include	"client_zappy.h"
 #include	"player.h"
 
-static bool	match_team(void *data, void *arg)
-{
-  int		n;
-
-  n = !strcmp(((t_team *)data)->name, (char *)arg);
-  return ((!n) ? true : false);
-}
-
 int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 {
-  t_team	*t;
   t_player	*p;
 
   (void)pooler;
@@ -34,9 +25,6 @@ int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   p->x = atoi(cmd->argv[2]);
   p->y = atoi(cmd->argv[3]);
   p->stones = NULL;
-  /* if ((t = get_data_as_arg(visu->teams, match_team, cmd->argv[6]))) */
-  /*   p->team = t;
-   */
   p->team = strdup(cmd->argv[6]);
   p->direction = atoi(cmd->argv[4]) - 1;
   p->level = atoi(cmd->argv[5]);

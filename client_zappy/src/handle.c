@@ -11,19 +11,7 @@
 #include		"time_.h"
 #include		"client_zappy.h"
 
-static void		request_info(t_visu *v, t_fds **pooler,
-				     SDL_Event *event)
-{
-  char			*to_send;
-
-  to_send = NULL;
-  asprintf(&to_send, "bct %d %d", (event->button.x + v->camera.x) / 64,
-	   (event->button.y + v->camera.y) / 64);
-  sends(*pooler, to_send);
-  free(to_send);
-}
-
-static void		handle_mouse(t_visu *v, SDL_Event *event, t_fds **pooler)
+static void		handle_mouse(t_visu *v, SDL_Event *event)
 {
   static int space = 0;
 
@@ -43,7 +31,6 @@ static void		handle_mouse(t_visu *v, SDL_Event *event, t_fds **pooler)
     }
   if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
     {
-      /*     request_info(v, pooler, event); */
       if (v->info)
   	SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format,
   					       253, 63, 146));
@@ -79,7 +66,7 @@ static void		handle_mouse(t_visu *v, SDL_Event *event, t_fds **pooler)
     while (1)
       {
 	while (SDL_PollEvent(&e))
-	  handle_mouse(v, &e, pooler);
+	  handle_mouse(v, &e);
 	pool(pooler, timeval_(&tv, 0.001));
 	if (!(*pooler) || (*pooler && !fds_alive(*pooler)))
 	  return ;
