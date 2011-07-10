@@ -1,11 +1,11 @@
 /*
-** sbp.c for  in /home/solvik/tek2/proj/Zappy/client_zappy
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Sat Jul  9 18:50:18 2011 solvik blum
-** Last update Sat Jul  9 18:50:20 2011 solvik blum
+** sbp.c for Zappy in ./client_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<stdlib.h>

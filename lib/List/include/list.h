@@ -1,11 +1,11 @@
 /*
-** list.h for  in /Users/Lifely/Developer/project/Zappy/lib/List
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Thu Jun 30 05:39:38 2011 Julien Di Marco
-** Last update Sun Jul  3 23:19:33 2011 solvik blum
+** list.h for Zappy in ./lib/List/include
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef			LIST_H_

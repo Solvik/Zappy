@@ -1,11 +1,11 @@
 /*
-** sends_all.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
+** sends_all.c for Zappy in ./server_zappy/modules/graph_protocol/src
 ** 
-** Made by guillaume gelin
-** Login   <gelin_g@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Wed Jul  6 00:59:13 2011 guillaume gelin
-** Last update Sun Jul 10 21:29:59 2011 guillaume gelin
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define		_GNU_SOURCE

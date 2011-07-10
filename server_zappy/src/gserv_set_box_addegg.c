@@ -1,11 +1,11 @@
 /*
-** gserv_setbox_addegg.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/modules/zappy_protocol
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Sun Jul  3 20:45:10 2011 solvik blum
-** Last update Fri Jul  8 09:49:00 2011 ramnes
+** gserv_set_box_addegg.c for Zappy in ./server_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include		<stdlib.h>

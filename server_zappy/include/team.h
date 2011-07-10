@@ -1,11 +1,11 @@
 /*
-** team.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Thu Jun 30 05:07:38 2011 Julien Di Marco
-** Last update Sun Jul  3 22:26:12 2011 solvik blum
+** team.h for Zappy in ./server_zappy/include
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef		ZAPPY_TEAM_H_

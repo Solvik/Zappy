@@ -1,11 +1,11 @@
 /*
-** graph_event_cmd.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
-**
-** Made by guillaume gelin
-** Login   <gelin_g@epitech.net>
-**
-** Started on  Thu Jun 30 11:30:48 2011 guillaume gelin
-** Last update Sat Jul  9 18:42:27 2011 solvik blum
+** graph_event_cmd.c for Zappy in ./server_zappy/modules/graph_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define _GNU_SOURCE

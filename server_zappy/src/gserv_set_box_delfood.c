@@ -1,11 +1,11 @@
 /*
-** gserv_set_box_delfood.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Sun Jul  3 16:04:23 2011 solvik blum
-** Last update Sat Jul  9 18:39:36 2011 solvik blum
+** gserv_set_box_delfood.c for Zappy in ./server_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include		<stdlib.h>

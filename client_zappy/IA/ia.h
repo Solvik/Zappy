@@ -1,5 +1,5 @@
 /*
-** dump_list.c for Zappy in ./lib/List/src
+** ia.h for Zappy in ./client_zappy/IA
 ** 
 ** Made by di-mar_j
 ** Login   <di-mar_j@epitech.net>
@@ -8,10 +8,9 @@
 ** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
-#include	"list.h"
+#ifndef IA_H__
+#define IA_H__
 
-void		dump_list(t_list * list, void (*displayer)(void *))
-{
-  foreach_list(list, displayer);
-}
+int		get_eat(char *);
 
+#endif

@@ -1,11 +1,11 @@
 /*
-** gserv_get_box_nbstones_by_player.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Mon Jul  4 01:14:16 2011 solvik blum
-** Last update Mon Jul  4 01:20:29 2011 solvik blum
+** gserv_get_box_nbstones_by_player.c for Zappy in ./server_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include		<stdlib.h>

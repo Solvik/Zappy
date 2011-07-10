@@ -1,11 +1,11 @@
 /*
-** sub_list_arg.c for  in /Users/Lifely/Developer/project/Zappy/lib/List
+** sub_list_arg.c for Zappy in ./lib/List/src
 ** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Thu Jun 30 05:34:47 2011 Julien Di Marco
-** Last update Thu Jun 30 05:34:47 2011 Julien Di Marco
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<stdlib.h>

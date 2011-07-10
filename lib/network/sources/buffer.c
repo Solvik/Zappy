@@ -1,11 +1,11 @@
 /*
-** buffer.c for  in /home/di-mar_j//svn/irc/branches/network
-**
-** Made by julien di-marco
+** buffer.c for Zappy in ./lib/network/sources
+** 
+** Made by di-mar_j
 ** Login   <di-mar_j@epitech.net>
-**
-** Started on  Tue Apr 19 17:44:38 2011 julien di-marco
-** Last update Tue Apr 19 17:44:38 2011 julien di-marco
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define		NETPRIVATE

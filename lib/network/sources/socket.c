@@ -1,11 +1,11 @@
 /*
-** socket.c for  in /home/di-mar_j/git/Zappy/lib/network/sources
+** socket.c for Zappy in ./lib/network/sources
 ** 
-** Made by julien di-marco
+** Made by di-mar_j
 ** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Wed Jul  6 04:03:28 2011 julien di-marco
-** Last update Wed Jul  6 04:03:28 2011 julien di-marco
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define		NETPRIVATE

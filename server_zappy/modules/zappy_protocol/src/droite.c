@@ -1,11 +1,11 @@
 /*
-** droite.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src/protocol
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Mon Jun 13 16:50:23 2011 solvik blum
-** Last update Thu Jul  7 20:54:42 2011 ramnes
+** droite.c for Zappy in ./server_zappy/modules/zappy_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include "napi.h"

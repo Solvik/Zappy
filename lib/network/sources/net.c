@@ -1,11 +1,11 @@
 /*
-** network.c for  in /home/di-mar_j//svn/ftp/trunk/server
-**
-** Made by julien di-marco
+** net.c for Zappy in ./lib/network/sources
+** 
+** Made by di-mar_j
 ** Login   <di-mar_j@epitech.net>
-**
-** Started on  Thu Mar 31 17:17:22 2011 julien di-marco
-** Last update Thu Mar 31 17:17:22 2011 julien di-marco
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define		NETPRIVATE

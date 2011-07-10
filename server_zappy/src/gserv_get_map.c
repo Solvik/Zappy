@@ -1,11 +1,11 @@
 /*
-** gserv_get_map.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
+** gserv_get_map.c for Zappy in ./server_zappy/src
 ** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Thu Jun 30 05:05:34 2011 Julien Di Marco
-** Last update Mon Jul  4 15:57:20 2011 Sebastien Blot
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<stdlib.h>

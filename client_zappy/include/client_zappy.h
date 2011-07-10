@@ -1,11 +1,11 @@
 /*
-** client_zappy.h for  in /Users/Lifely/Developer/project/Zappy/client_zappy
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Thu Jun 30 05:33:40 2011 Julien Di Marco
-** Last update Sat Jul  9 01:37:45 2011 Sebastien Blot
+** client_zappy.h for Zappy in ./client_zappy/include
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef		CLIENT_ZAPPY_H_

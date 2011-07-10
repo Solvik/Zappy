@@ -1,11 +1,11 @@
 /*
-** scheduler_relative.c for  in /home/di-mar_j/git/Zappy/server_zappy
+** scheduler_relative.c for Zappy in ./server_zappy/src
 ** 
-** Made by julien di-marco
+** Made by di-mar_j
 ** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Wed Jun 29 15:03:19 2011 julien di-marco
-** Last update Wed Jun 29 15:03:19 2011 julien di-marco
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<unistd.h>

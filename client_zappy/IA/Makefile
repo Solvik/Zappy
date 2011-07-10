@@ -1,3 +1,12 @@
+##
+## Makefile for Zappy in ./client_zappy/IA
+## 
+## Made by di-mar_j
+## Login   <di-mar_j@epitech.net>
+## 
+## Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+## Last update Sun Jul 10 23:15:49 2011 di-mar_j
+##
 
 NAME		=	client_zappy_IA
 
@@ -21,12 +30,9 @@ SRCS		=	ia.c					\
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/network -lnet		\
-			-L$(LIB_DIR)/List -llist		\
-			-L$(LIB_DIR)/itoa -litoa		\
-			-Wl,-rpath -Wl,$(LIB_DIR)		\
-			-L$(LIB_DIR) -lfmodex			\
-			 `sdl-config --libs`			\
-			-lSDL_ttf				\
+			-L$(LIB_DIR)/List -llist
+
+
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
@@ -34,7 +40,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -Wextra -ggdb `sdl-config --cflags`
+CFLAGS		+=	-W -Wall -Wextra -ggdb
 
 ## RULES
 
