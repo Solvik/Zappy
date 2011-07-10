@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Sun Jul 10 00:19:38 2011 guillaume gelin
+** Last update Sun Jul 10 02:04:39 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -72,6 +72,7 @@ double		get_time(void);
 uint		get_nb_clients(void);
 
 fds 		*get_pool(void);
+t_list		*get_eggs(void);
 t_list		*get_teams(void);
 t_list		*get_box_players(uint, uint);
 t_team		*get_team_of_player(t_player *);
