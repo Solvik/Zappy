@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 03:50:51 2011 Julien Di Marco
-** Last update Sat Jul  9 18:49:11 2011 ramnes
+** Last update Sun Jul 10 04:10:01 2011 guillaume gelin
 */
 
 #include	<strings.h>
@@ -29,8 +29,8 @@ static void		init_commands(t_mod_func *func)
   command_relative(func, "pose", zappy_pose, 7);
   command_relative(func, "expulse", zappy_expulse, 7);
   command_relative(func, "broadcast", zappy_broadcast, 7);
-  command_relative(func, "incantation", zappy_incantation, 300);
-  command_relative(func, "fork", zappy_fork, 42);
+  command_add(func, "fork", zappy_fork);
+  command_add(func, "incantation", zappy_incantation);
   command_add(func, "connect_nbr", zappy_connect_nbr);
   event_catch("EggHatch", egg_eclosion);
 }
