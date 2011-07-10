@@ -27,6 +27,24 @@ void		sigint_handler(__attribute__((unused))int _)
   write(STDOUT_FILENO, "\b\b", 2);
 }
 
+static bool	check_network(void)
+{
+  fds		*pool;
+  fds		tmp;
+  bool		out;
+
+  out = false;
+  if (!(pool = get_pool()) || !(tmp = *pool))
+    return ((out = false));
+  while (tmp)
+    {
+      if (fds_alive(tmp))
+	out = true;
+      tmp = tmp->next;
+    }
+  return (out);
+}
+
 bool		init(int opt_size, char **opt)
 {
   t_zopt	optab;
@@ -40,10 +58,11 @@ bool		init(int opt_size, char **opt)
       !init_map(&optab) ||
       !init_network(&optab) ||
       !init_team(&optab) ||
-      !init_modules(&optab))
+      !init_modules(&optab) ||
+      !check_network())
     out = false;
   destroy_list(&optab.team, free);
   destroy_list(&optab.module, free);
-  set_run(true);
+  set_run((out));
   return (out);
 }

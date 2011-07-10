@@ -1,27 +1,27 @@
 /*
 ** exec_timer.c for  in /home/di-mar_j/git/Zappy/server_zappy
-** 
+**
 ** Made by julien di-marco
 ** Login   <di-mar_j@epitech.net>
-** 
+**
 ** Started on  Wed Jun 29 01:07:29 2011 julien di-marco
 ** Last update Wed Jun 29 01:07:29 2011 julien di-marco
 */
 
-#include	<stdbool.h>
-#include	<unistd.h>
-#include	<stdlib.h>
-#include	<stdio.h>
+#include        <stdbool.h>
+#include        <unistd.h>
+#include        <stdlib.h>
+#include        <stdio.h>
 
-#include	"time_.h"
-#include	"scheduler.h"
-#include	"event.h"
-#include	"module.h"
-#include	"tserver.h"
+#include        "time_.h"
+#include        "scheduler.h"
+#include        "event.h"
+#include        "module.h"
+#include        "tserver.h"
 
-static void		module_timer(t_module *elem, double *arg)
+static void             module_timer(t_module *elem, double *arg)
 {
-  double	out;
+  double        out;
 
   if (!elem || !arg)
     return ;
@@ -30,17 +30,18 @@ static void		module_timer(t_module *elem, double *arg)
   *arg = (out = elem->timer()) < *arg || (*arg <= -1.0) ? out : *arg;
 }
 
-bool		exec_timer(time__ **tv, double tdt)
+bool            exec_timer(time__ **tv, double tdt)
 {
-  static time__	*t = NULL;
-  t_list	*modules;
-  double	idle;
-  double	time;
+  static time__ *t = NULL;
+  t_list        *modules;
+  double        idle;
+  double        time;
 
   idle = -1.0;
-  if ((tv == (time__**)-1) && (tdt == -133742) && t)
+  if ((tv == (time__**)-1) && (tdt == -133742))
     {
-      free(t);
+      if (t)
+        free(t);
       return (true);
     }
   if (!tv || (!t && !(t = calloc(1, sizeof(*t)))))
