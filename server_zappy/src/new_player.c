@@ -14,6 +14,7 @@
 #include	<stdio.h>
 #include        <time.h>
 
+#include	"time_.h"
 #include        "tserver.h"
 #include        "conf.h"
 #include        "player.h"
