@@ -129,14 +129,7 @@ bool		client_zappy(int ac, char *av[])
   t_visu	visu;
   t_fds		*pooler;
 
-  pooler = NULL;
-  visu.map = NULL;
-  visu.teams = NULL;
-  visu.player = NULL;
-  visu.draw = NULL;
-  visu.info = NULL;
-  visu.height = 0;
-  visu.width = 0;
+  memset(&visu, 0, sizeof(visu));
   camerasetting_(&visu);
   TTF_Init();
   visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
