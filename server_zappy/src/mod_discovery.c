@@ -12,6 +12,7 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 
+#include	"error.h"
 #include	"tserver.h"
 #include	"module.h"
 #include	"client.h"
@@ -28,7 +29,8 @@ static bool		mod_handshaking(void *elem, void *arg)
   if (module->handshaking &&
       module->handshaking(client, ((t_client*)client->trick)->command))
     {
-      printf("Congrat to them - they just share a beer !\n");
+      print_debug("New client on [%s] < -- > [%d].",
+		  module->name, socket_fd(client->s));
       ((t_client*)client->trick)->_m = module;
       put_in_list(&module->clients, client);
       if ((int)module->antiflood > 0)
