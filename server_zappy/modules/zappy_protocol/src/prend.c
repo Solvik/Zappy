@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 00:39:25 2011 guillaume gelin
+** Last update Sun Jul 10 14:11:22 2011 guillaume gelin
 */
 
 #include	<unistd.h>
@@ -42,7 +42,7 @@ static bool	prendre_action(t_player *p, char *obj)
 int		zappy_prend(t_fds *client, char *cmd)
 {
   t_player	*p;
-  t_generic	*data;
+  t_generic	data;
   char		*obj;
 
   if (!client || !(p = *(t_player**)client) || !cmd ||
@@ -52,12 +52,9 @@ int		zappy_prend(t_fds *client, char *cmd)
       sends(client, "ko");
       return (false);
     }
-  if ((data = malloc(sizeof(*data))))
-    {
-      data->ui1 = get_ressource_id(obj);
-      data->client = client;
-      event_relative_dispatch("TakeItem", data, 0);
-    }
+  data.ui1 = get_ressource_id(obj);
+  data.client = client;
+  event_relative_dispatch("TakeItem", &data, 0);
   sends(client, "ok");
   return (true);
 }

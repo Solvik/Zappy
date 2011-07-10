@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 04:21:21 2011 guillaume gelin
+** Last update Sun Jul 10 14:00:14 2011 guillaume gelin
 */
 
 #define		_GNU_SOURCE
@@ -59,7 +59,7 @@ int		zappy_incantation(t_fds *client, char *cmd)
   int		r;
   bool		res;
   char		*msg;
-  t_generic	*data;
+  t_generic	data;
 
   (void)cmd;
   res = true;
@@ -73,12 +73,10 @@ int		zappy_incantation(t_fds *client, char *cmd)
   /* ramnes: need scheduler of 300/t here */
   player_data->level += 1;
   r = asprintf(&msg, "niveau actuel : %d", player_data->level);
-  if (!(data = malloc(sizeof(*data))))
-    return (0);
-  data->ui1 = player_data->x;
-  data->ui2 = player_data->y;
-  data->ui3 = res ? 1 : 0; 
-  event_relative_dispatch("IncaEnd", data, 0);
+  data.ui1 = player_data->x;
+  data.ui2 = player_data->y;
+  data.ui3 = res ? 1 : 0; 
+  event_relative_dispatch("IncaEnd", &data, 0);
   sends(client, msg);
   if (msg)
     free(msg);
