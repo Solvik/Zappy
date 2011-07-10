@@ -37,7 +37,7 @@ void		draw_info(t_visu *v)
     v->info =  SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF, WIDTH,
 				    32, 32, 0, 0, 0, 0);
   pos.x = 0;
-  pos.y = HEIGHT - 64;
+  pos.y = 32;
   SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format,  253, 63, 146));
   coor[1] = 0;
   coor[0] = 0;
@@ -74,7 +74,7 @@ void		draw_stones(t_visu *v, int x, int y)
   pos[1] = y;
   if (!(box = get_data_as_arg(v->map, match_box, pos)))
     return ;
-  asprintf(&nb, "%s%s%s%s%s%s%s", box->food ?  "F" : "",
+  asprintf(&nb, "%s%s%s%s%s%s%s ", box->food ?  "F" : "",
 	   box->linemate ?  "L" : "",
 	   box->deraumere ?  "D" : "", box->sibur ?  "S" : "",
 	   box->mendiane ?  "M" : "",
@@ -101,13 +101,13 @@ void		draw_map(t_visu *v)
     return;
   while (x < v->width)
     {
-      y = -1;
-      while (y++ < v->height)
+      y = 0;
+      while (y < v->height)
 	{
 	  pos.x = x * 64;
 	  pos.y = y * 64;
 	  SDL_BlitSurface(img, NULL, v->draw, &pos);
-	  draw_stones(v, x, y);
+	  y++;
 	}
       x++;
     }

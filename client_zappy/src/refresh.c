@@ -12,6 +12,20 @@
 
 void		refresh_screen(t_visu *v)
 {
+  int		x;
+  int		y;
+
   draw_map(v);
   foreach_arg_list(v->player, draw_player, v);
+  x = 0;
+  while (x < v->width)
+    {
+      y = 0;
+      while (y < v->height)
+	{
+	  draw_stones(v, x, y);
+	  y++;
+	}
+      x++;
+    }
 }

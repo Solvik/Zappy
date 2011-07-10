@@ -58,13 +58,13 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
   i = -1;
   if (!inc_cmd)
     return (0);
-  printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
+  //  printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
   while (++i < ptr_len)
     if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
       {
 	if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
 	  {
-	    printf("%s", inc_cmd->argv[0]);
+	    //	    printf("%s", inc_cmd->argv[0]);
 	    return (ptr[i].f(pooler, inc_cmd, v));
 	  }
 	else
