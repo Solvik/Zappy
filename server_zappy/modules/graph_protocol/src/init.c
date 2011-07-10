@@ -45,7 +45,6 @@ static void	_events()
   event_catch("PlayerMove", graph_eppo);
   event_catch("Expulse", graph_pex);
   event_catch("Broadcast", graph_pbc);
-  event_catch("Fork",  graph_pfk);
   event_catch("DropItem", graph_pdr);
   event_catch("DropItem", graph_epin);
   event_catch("DropItem", graph_ebct);
@@ -54,6 +53,7 @@ static void	_events()
   event_catch("TakeItem", graph_ebct);
   event_catch("IncaNew", graph_pic);
   event_catch("IncaEnd", graph_pie);
+  event_catch("EggNew",  graph_pfk);
   event_catch("EggNew",  graph_enw);
   event_catch("EggHatch", graph_eht);
   event_catch("EggBound", graph_ebo);

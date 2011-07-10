@@ -12,32 +12,41 @@
 >>>>>>> Stashed changes
 */
 
-#include	<stdlib.h>
+#include        <stdlib.h>
 
-#include	"napi.h"
+#include        "napi.h"
+#include        "zappy_protocol.h"
 
-bool		egg_eclosion(void *data)
+/*
+** Del egg todo.
+*/
+
+bool            egg_eclosion(void *data)
 {
-  t_player	*player;
+  t_player      *player;
+  t_egg         *egg;
 
-  ((t_egg *)data)->team->max_conn++;
-  if ((player = new_player(((t_egg *)data)->team->name)) == NULL)
+  if (!(egg = (t_egg*)data))
     return (false);
+  egg->team->max_conn++;
+  if (!(player = new_player(egg->team->name)))
+    return (false);
+  player->fork = true;
   return (true);
 }
 
-int		zappy_fork(t_fds *client, char *_)
+int             zappy_fork(t_fds *client, char *_)
 {
-  t_player	*p;
-  t_egg		*egg;
+  t_player      *p;
 
-  (void)_;
-  if (!client || !(p = *(t_player**)client) || !(egg = set_box_addegg(p)))
-    return (false);
-  event_relative_dispatch("Fork", client, 0);
-  /* ramnes: need sheduler 42/t */
-  event_relative_dispatch("EggNew", egg, 0);
-  event_relative_dispatch("EggHatch", egg, 600);
+  if (!client || !(p = *(t_player**)client) ||
+      !(p->egg = set_box_addegg(p)))
+    {
+      sends(client, "ko");
+      return (false);
+    }
   sends(client, "ok");
-  return (1);
+  event_relative_dispatch("EggNew", p->egg, 0);
+  event_relative_dispatch("EggHatch", p->egg, 600);
+  return (true);
 }

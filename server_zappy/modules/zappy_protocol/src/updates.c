@@ -39,9 +39,9 @@ static void	update_player(t_player *player, double *dt)
     return ;
   c = player->client;
   player->foodt -= (*dt / (((double)delay_life / get_delay()) * get_time()));
+  player->food = (uint)abs(player->foodt);
   if (player->foodt <= 0)
     c ? (void)net_close_msg(c, "mort") : (void)player_destroy(player);
-  player->food = (uint)abs(player->foodt);
   if (player->foodt > 0)
     timer_helper(((player->foodt * delay_life) * (get_time() / get_delay())));
 }

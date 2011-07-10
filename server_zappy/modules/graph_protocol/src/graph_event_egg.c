@@ -18,7 +18,7 @@ bool	graph_enw(void *data)
   t_egg	*egg;
 
   egg = (t_egg *)data;
-  sendf_all("enw %d %d %d %d", egg->id, egg->father->id, egg->x, egg->y);
+  sendf_all("enw %d %d %d %d", egg->id, egg->idf, egg->x, egg->y);
   return (true);
 }
 

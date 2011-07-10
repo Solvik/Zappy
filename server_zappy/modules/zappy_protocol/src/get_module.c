@@ -29,7 +29,7 @@ static void		init_commands(t_mod_func *func)
   command_relative(func, "pose", zappy_pose, 7);
   command_relative(func, "expulse", zappy_expulse, 7);
   command_relative(func, "broadcast", zappy_broadcast, 7);
-  command_add(func, "fork", zappy_fork);
+  command_relative(func, "fork", zappy_fork, 42);
   command_add(func, "incantation", zappy_incantation);
   command_add(func, "connect_nbr", zappy_connect_nbr);
   event_catch("EggHatch", egg_eclosion);

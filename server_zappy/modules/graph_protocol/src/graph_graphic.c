@@ -43,11 +43,12 @@ static void	_enw(void *data, void *dest)
 **   //graph_enw(client, NULL); - l: 24
 */
 
-bool graph_graphic(t_fds *client, char *cmd __attribute__((unused)))
+bool graph_graphic(t_fds *client, char *_)
 {
   t_module	*mod;
   t_list	*eggs;
 
+  (void)_;
   mod = get_module_by_name("Zappy Protocol");
   eggs = get_eggs();
   graph_msz(client, NULL);

@@ -36,10 +36,12 @@ bool	graph_pbc(void *data)
 /* pfk: Fork */
 bool	graph_pfk(void *data)
 {
-  t_fds *client;
+  t_player *p;
+  t_egg	*egg;
 
-  client = (t_fds *)data;
-  sendf_all("pfk %d", player_data->id);
+  if (!(egg = (t_egg*)data) || !(p = (t_player*)egg->father))
+    return (false);
+  sendf_all("pfk %d", p->id);
   return (true);
 }
 
