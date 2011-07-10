@@ -80,7 +80,7 @@ static void		handle_mouse(t_visu *v, SDL_Event *event)
       if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
 	{
 	  if (v->info)
-	    SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
+	    SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 253, 63, 146));
 	  draw_info(v);
 	  get_info((event->button.x + v->camera.x) / 32, (event->button.y + v->camera.y) / 32, v);
 	}

@@ -14,7 +14,7 @@
 
 int		lol(t_cmd *lol)
 {
-  (void)lol;
+  //  (void)lol;
   printf("rofl\n");
   return (1);
 }
@@ -29,7 +29,6 @@ static const t_ptr ptr[] =
     {"ppo", visu_ppo, 5},
     {"plv", visu_plv, 3},
     {"pin", visu_pin, 11},
-    {"pex", lol, 2},
     {"pbc", play_sound, 3},
     {"pic", lol, -1},
     {"pie", lol, 4},
@@ -61,7 +60,10 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
     if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
       {
 	if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
-	  return (ptr[i].f(pooler, inc_cmd, v));
+	  {
+	    printf("%s", inc_cmd->argv[0]);
+	    return (ptr[i].f(pooler, inc_cmd, v));
+	  }
 	else
 	  return (0);
       }
@@ -74,7 +76,9 @@ void			free_cmd(t_cmd *c)
 
   i = 0;
   while (c && c->argv && i < c->argc)
-    free(c->argv[i++]);
+    {
+      free(c->argv[i++]);
+    }
   free(c->argv);
-  free(c);
+  //  free(c);
 }
