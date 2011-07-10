@@ -5,7 +5,7 @@
 ** <perso@ramnes.eu>
 **
 ** Started on  Fri Jul  8 02:37:42 2011 by ramnes
-** Last update Sun Jul 10 01:06:08 2011 guillaume gelin
+** Last update Sun Jul 10 20:17:22 2011 guillaume gelin
 */
 
 #include "graph_events.h"
@@ -32,7 +32,7 @@ bool	graph_eht(void *data)
 /* EggBound */
 bool	graph_ebo(void *data)
 {
-  sendf_all("ebo %d", ((t_egg *)data)->id);
+  sendf_all("ebo %d", ((t_player *)data)->id);
   return (true);
 }
 
