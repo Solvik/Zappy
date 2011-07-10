@@ -1,3 +1,12 @@
+##
+## client_zappy/Makefile for  in /home/di-mar_j/git/Zappy/lib
+## 
+## Made by julien di-marco
+## Login   <di-mar_j@epitech.net>
+## 
+## Started on  Sun Jul 10 23:13:42 2011 julien di-marco
+## Last update Sun Jul 10 23:13:42 2011 julien di-marco
+##
 
 NAME		=	client_zappy
 
@@ -56,13 +65,13 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -Wextra -ggdb `sdl-config --cflags`
+CFLAGS		+=	-W -Wall -Wextra `sdl-config --cflags`
 
 ## RULES
 
-all		:	$(NAME)
+all		:	lib $(NAME)
 
-$(NAME)		:	lib $(OBJS)
+$(NAME)		:	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB)
 
 # libs
@@ -79,14 +88,14 @@ libfclean	:
 			@(cd $(LIB_DIR) && make fclean)
 
 ## clean
-clean		:	libclean
+clean		:
 			$(RM) $(OBJS)
 
-fclean		:	libfclean clean
+fclean		: clean
 			$(RM) $(NAME)
 
 ## re
-re		:	fclean libre all
+re		:	fclean all
 
 .c.o		:
 			$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) $(INCLUDE)

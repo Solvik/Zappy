@@ -1,4 +1,14 @@
 ##
+## Makefile for  in /home/di-mar_j/git/Zappy/lib
+## 
+## Made by julien di-marco
+## Login   <di-mar_j@epitech.net>
+## 
+## Started on  Sun Jul 10 23:11:26 2011 julien di-marco
+## Last update Sun Jul 10 23:11:26 2011 julien di-marco
+##
+
+##
 ## Made by	db0
 ## Contact	db0company@gmail.com
 ## Site		http://db0.fr/
@@ -59,7 +69,7 @@ OBJ		=	$(SRCS:.c=.o)
 
 CC		?=	gcc
 
-CFLAGS		+=	-W -Wall -ansi -pedantic -ggdb #
+CFLAGS		+=	-W -Wall -ansi -pedantic
 
 INCLUDE		=	-Iinclude
 
