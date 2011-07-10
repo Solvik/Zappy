@@ -17,7 +17,7 @@
 
 static bool	match_player_different_level(void * player, void * level)
 {
-  return (((t_player *)player)->level != *(uint*)level)
+  return (((t_player *)player)->level != *(uint*)level);
 }
 
 t_list		*get_box_players_by_level(uint x, uint y, uint level)

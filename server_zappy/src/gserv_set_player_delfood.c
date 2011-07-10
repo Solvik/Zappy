@@ -11,15 +11,18 @@
 #include		<stdlib.h>
 #include		"tserver.h"
 
-bool			set_player_delfood(uint id, uint nb)
+uint			set_player_delfood(uint id, uint nb)
 {
   t_player *		player;
+  uint			tmp;
 
   if (!(player = get_player_by_id(id)))
-    return (false);
-  if (player->food < nb)
-    player->food = 0;
-  else
-    player->food -= nb;
-  return (true);
+    return (0);
+  if ((tmp = player->food) < nb)
+    {
+      player->food = 0;
+      return (tmp);
+    }
+  player->food -= nb;
+  return (nb);
 }
