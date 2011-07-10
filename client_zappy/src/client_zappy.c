@@ -42,7 +42,7 @@ static void            camerasetting_(t_visu *v)
 void		create_window(t_visu *p)
 {
   (void)p;
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) == -1)
+  if (SDL_Init(SDL_INIT_VIDEO) == -1)
     {
       fprintf(stderr, "Can't init SDL. We're going to die\n");
       exit(EXIT_FAILURE);

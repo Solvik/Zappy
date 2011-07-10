@@ -42,10 +42,10 @@ SRCS		=	$(SRC_DIR)main.c			\
 ## Libraries
 LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
-			`sdl-config --libs`			\
-			-lSDL_ttf				\
 			-L$(LIB_DIR)/itoa -litoa		\
-			-L/usr/local/lib/ -lfmodex-4.30.06
+			-L/usr/local/lib/ -lfmodex		\
+			 `sdl-config --libs`			\
+			-lSDL_ttf				\
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
@@ -53,7 +53,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g3 `sdl-config --cflags`
+CFLAGS		+=	-W -Wall -Wextra -ggdb `sdl-config --cflags`
 
 ## RULES
 
