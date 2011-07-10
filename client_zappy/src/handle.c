@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Sun Jul 10 07:32:44 2011 seb
-** Last update Sun Jul 10 07:32:44 2011 seb
+** Last update Sun Jul 10 16:30:18 2011 solvik blum
 */
 
 #include		"time_.h"
@@ -74,7 +74,6 @@ void			handle_event(t_fds **pooler, t_visu *v)
 	  if (!gere_cmd(*pooler, inc_cmd, v))
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
 	  free_cmd(inc_cmd);
-	  free(cmd);
 	}
       while (SDL_PollEvent(&e))
 	handle_mouse(v, &e);

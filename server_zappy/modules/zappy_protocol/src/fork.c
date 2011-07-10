@@ -1,15 +1,11 @@
 /*
-** voir.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
+** fork.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
 **
 ** Made by solvik blum
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-<<<<<<< Updated upstream
-** Last update Sun Jul 10 04:43:09 2011 guillaume gelin
-=======
-** Last update Sun Jul 10 04:38:10 2011 guillaume gelin
->>>>>>> Stashed changes
+** Last update Sun Jul 10 14:12:32 2011 guillaume gelin
 */
 
 #include        <stdlib.h>
@@ -31,6 +27,10 @@ bool            egg_eclosion(void *data)
   egg->team->max_conn++;
   if (!(player = new_player(egg->team->name)))
     return (false);
+  set_box_delplayer(player);
+  player->x = egg->x;
+  player->y = egg->y;
+  set_box_addplayer(player, player->x, player->y);
   player->fork = true;
   return (true);
 }

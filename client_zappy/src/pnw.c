@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 17:28:22 2011 solvik blum
-** Last update Sat Jul  9 18:50:01 2011 solvik blum
+** Last update Sun Jul 10 15:57:31 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -34,11 +34,6 @@ int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   p->y = atoi(cmd->argv[3]);
   if ((t = get_data_as_arg(visu->teams, match_team, cmd->argv[6])))
     p->team = t;
-  else
-    {
-      p->team = malloc(sizeof(*(p->team)));
-      p->team->name = strdup(cmd->argv[6]);
-    }
   p->direction = atoi(cmd->argv[4]) - 1;
   p->level = atoi(cmd->argv[5]);
   if (!put_in_list(&(visu->player), p))

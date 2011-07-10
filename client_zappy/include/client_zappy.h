@@ -81,4 +81,5 @@ int		send_bct(t_fds *, t_cmd *);
 void		draw_text(t_visu *, char *, int [2]);
 void		handle_event(t_fds **, t_visu *);
 bool		match_box(void *, void *);
+void		draw_stones(t_visu *, int, int);
 #endif		/* !CLIENT_ZAPPY_H_ */

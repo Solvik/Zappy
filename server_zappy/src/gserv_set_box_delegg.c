@@ -1,3 +1,12 @@
+/*
+** gserv_set_box_delegg.c for  in /home/solvik/tek2/proj/Zappy
+**
+** Made by solvik blum
+** Login   <blum_s@epitech.net>
+**
+** Started on  Sun Jul 10 16:34:09 2011 solvik blum
+** Last update Sun Jul 10 16:34:10 2011 solvik blum
+*/
 
 #include	<stdlib.h>
 #include	"egg.h"

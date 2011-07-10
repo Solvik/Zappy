@@ -31,5 +31,6 @@ static define		map_nb_food		= 10;
 
 static define		delay_life		= 126;
 static define		schedule_fork		= 42;
+static define		schedule_incantation	= 300;
 
 #endif		/* !CONF_H_ */

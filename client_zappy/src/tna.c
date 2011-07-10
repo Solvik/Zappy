@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Wed Jul  6 17:18:49 2011 solvik blum
-** Last update Sat Jul  9 18:49:52 2011 solvik blum
+** Last update Sun Jul 10 15:57:43 2011 solvik blum
 */
 
 #include	<stdlib.h>
@@ -28,7 +28,7 @@ int		visu_tna(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   (void)pooler;
   if (!(t = malloc(sizeof(*t))))
     return (0);
-  t->name = cmd->argv[1];
+  t->name = strdup(cmd->argv[1]);
   if (!(tmp = get_data_as_arg(visu->teams, match_team, cmd->argv[1])) &&
       (!put_in_list(&(visu->teams), t)))
     {

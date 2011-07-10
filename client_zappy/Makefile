@@ -34,6 +34,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)plv.c				\
 			$(SRC_DIR)pin.c				\
 			$(SRC_DIR)pdi.c				\
+			$(SRC_DIR)pfk.c				\
 			$(SRC_DIR)sound.c				\
 			$(SRC_DIR)draw.c				\
 			$(SRC_DIR)get_info.c				\
@@ -45,8 +46,8 @@ SRCS		=	$(SRC_DIR)main.c			\
 LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
 			-L$(LIB_DIR)/itoa -litoa		\
-			-Wl,-rpath -Wl,/usr/local/lib	\
-			-L/usr/local/lib/ -lfmodex		\
+			-Wl,-rpath -Wl,$(LIB_DIR)		\
+			-L$(LIB_DIR) -lfmodex			\
 			 `sdl-config --libs`			\
 			-lSDL_ttf				\
 
