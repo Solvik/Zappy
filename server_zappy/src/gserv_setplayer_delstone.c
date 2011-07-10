@@ -20,16 +20,19 @@ static bool		match_stone(void *data, void *stone)
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-bool			setplayer_delstone(t_player *player, e_stone type,
+uint			setplayer_delstone(t_player *player, e_stone type,
 					   uint nb)
 {
   t_stone 		*stone;
+  uint			tmp;
 
   if (!(stone = get_data_as_arg(player->stones, match_stone, &type)))
-    return (false);
-  if (stone->nb < nb)
-    stone->nb = 0;
-  else
-    stone->nb -= nb;
-  return (true);
+    return (0);
+  if ((tmp = stone->nb) < nb)
+    {
+      stone->nb = 0;
+      return (tmp);
+    }
+  stone->nb -= nb;
+  return (nb);
 }
