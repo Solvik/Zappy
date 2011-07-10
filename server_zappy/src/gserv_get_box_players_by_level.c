@@ -15,20 +15,17 @@
 #include	"tserver.h"
 #include	"server_zappy.h"
 
-static bool	match_player(void * player, void* level)
+static bool	match_player_different_level(void * player, void * level)
 {
-  if (((t_player *)player)->level != *(uint*)level)
-    return (false);
-  return (true);
+  return (((t_player *)player)->level != *(uint*)level)
 }
 
 t_list		*get_box_players_by_level(uint x, uint y, uint level)
 {
-  t_list	*players;
   t_box		*box;
 
-  if (!(box = get_box(x, y)))
-    return (false);
-  players = sub_list_arg(box->players, match_player, &level);
-  return (players);
+  if (!(box = get_box(x, y)) ||
+      get_data_as_arg(box->players, match_player_different_level, &level))
+    return (NULL);
+  return (box->players);
 }
