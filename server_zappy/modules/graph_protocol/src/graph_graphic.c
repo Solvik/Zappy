@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Sun Jul 10 01:44:58 2011 guillaume gelin
+** Last update Sun Jul 10 02:07:54 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -46,13 +46,15 @@ static void	_enw(void *data, void *dest)
 bool graph_graphic(t_fds *client, char *cmd __attribute__((unused)))
 {
   t_module	*mod;
+  t_list	*eggs;
 
   mod = get_module_by_name("Zappy Protocol");
+  eggs = get_eggs();
   graph_sgt(client, NULL);
   graph_msz(client, NULL);
   graph_mct(client, NULL);
   graph_tna(client, NULL);
   foreach_arg_list(mod->clients, _pnw, client);
-  /* foreach_arg_list(mod->clients, _enw, client); */
+  foreach_arg_list(eggs, _enw, client);
   return (true);
 }
