@@ -56,7 +56,11 @@ void	update_team(void *elem, void *arg)
 }
 
 #if	defined(NDEBUG)
+#if	defined(NOTSHARED)
+bool		zappy_update(double dt)
+#else
 bool		update(double dt)
+#endif
 {
   t_list	*teams;
 
@@ -67,7 +71,11 @@ bool		update(double dt)
 }
 #endif
 
+#if	defined(NOTSHARED)
+double	zappy_timer(void)
+#else
 double	timer(void)
+#endif
 {
   return (timer_helper(-1));
 }

@@ -29,13 +29,20 @@ void	init_(void)
 
   if ((info = get_module()))
     {
-      info->handshaking = handshaking;
+      info->handshaking = zappy_handshaking;
+      info->disconnection = zappy_disconnection;
+      info->update = zappy_update;
+      info->timer = zappy_timer;
       mod_register(info);
     }
 }
 #endif
 
+#if	defined(NOTSHARED)
+bool		zappy_handshaking(t_fds *c, char *cmd)
+#else
 bool		handshaking(t_fds *c, char *cmd)
+#endif
 {
   t_player	*p;
 
@@ -57,7 +64,11 @@ bool		handshaking(t_fds *c, char *cmd)
   return (true);
 }
 
+#if	defined(NOTSHARED)
+bool		zappy_disconnection(fds c)
+#else
 bool		disconnection(fds c)
+#endif
 {
   t_player	*p;
 
