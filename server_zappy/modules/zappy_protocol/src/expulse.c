@@ -47,7 +47,8 @@ static void	expulse_players(void *data, void *dest)
   if (player_data != (t_player *)dest)
     {
       zappy_avance(client, ((t_player *)dest)->direction);
-      sendf(client, "deplacement %d", gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
+      sendf(client, "deplacement %d",
+	    gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
     }
 }
 
