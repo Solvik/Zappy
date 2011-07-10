@@ -29,10 +29,8 @@ static bool	pose_action(t_player *player, char *obj)
     }
   else if (!strcasecmp(obj, "nourriture") && player->food > 0)
     {
-      player->food -= 1;
-      if (set_box_addfood(player->x, player->y, 1))
-	return (true);
-      else
+      if (!(set_player_delfood(player->id, 1)) ||
+	  !(set_box_addfood(player->x, player->y, 1)))
 	return (false);
     }
   else

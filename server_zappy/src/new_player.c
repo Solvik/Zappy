@@ -5,7 +5,7 @@
 ** Login   <di-mar_j@epitech.net>
 ** 
 ** Started on  Fri Jul  8 16:55:38 2011 julien di-marco
-** Last update Fri Jul  8 16:55:38 2011 julien di-marco
+** Last update Sun Jul 10 20:17:12 2011 guillaume gelin
 */
 
 #include	<unistd.h>
@@ -54,6 +54,8 @@ static bool	find_ghost(void *elem)
 
   if (!(p = (t_player*)elem))
     return (false);
+  if (p->fork)
+    event_relative_dispatch("EggBound", p, 0);
   return ((p->client ? false : true));
 }
 

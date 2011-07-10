@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 14:00:14 2011 guillaume gelin
+** Last update Sun Jul 10 21:14:12 2011 guillaume gelin
 */
 
 #define		_GNU_SOURCE
@@ -96,7 +96,10 @@ static	void	send_elev(void *e, void *a)
     return ;
   p->level += 1;
   if ((c = p->client))
-    sendf(c, "niveau actuel : %d", *b);
+    {
+      sendf(c, "niveau actuel : %d", *b);
+      event_relative_dispatch("PlayerLvl", c, 0);
+    }
 }
 
 static int	second_test(fds c)

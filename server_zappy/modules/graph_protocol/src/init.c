@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Mon Jun 20 12:10:00 2011 seb
-** Last update Sun Jul 10 00:02:30 2011 guillaume gelin
+** Last update Sun Jul 10 20:59:52 2011 guillaume gelin
 */
 
 #include	<stdio.h>
@@ -43,6 +43,7 @@ static void	_events()
   event_catch("ServerEnd", graph_seg);
   event_catch("ServerMsg", graph_smg);
   event_catch("PlayerMove", graph_eppo);
+  event_catch("PlayerLvl", graph_eplv);
   event_catch("Expulse", graph_pex);
   event_catch("Broadcast", graph_pbc);
   event_catch("DropItem", graph_pdr);

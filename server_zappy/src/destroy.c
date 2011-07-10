@@ -53,6 +53,7 @@ static void	destroy_team(void * team)
   free(((t_team *)team)->name);
   destroy_list(&((t_team *)team)->players, NULL);
   destroy_list(&((t_team *)team)->egg_list, NULL);
+  free(team);
 }
 
 void		destroy(void)

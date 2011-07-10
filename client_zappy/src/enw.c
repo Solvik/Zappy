@@ -20,7 +20,7 @@ int		visu_enw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   (void)pooler;
   pos.y = 64 * atoi(cmd->argv[4]);
   pos.x = 64 * atoi(cmd->argv[3]);
-  img = SDL_LoadBMP("egg.bmp");
+  img = SDL_LoadBMP("data/egg.bmp");
   if (!img)
     return (0);
   SDL_SetColorKey(img, SDL_SRCCOLORKEY, SDL_MapRGB(img->format, 0, 0, 0));

@@ -37,7 +37,8 @@ typedef struct	s_player
   uint		y;
   t_list 	*stones;
   e_direction	direction;
-  t_team	*team;
+  //  t_team	*team;
+  char		*team;
 }		t_player;
 
 #endif /* PLAYER_H_ */

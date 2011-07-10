@@ -13,10 +13,6 @@
 #include        "napi.h"
 #include        "zappy_protocol.h"
 
-/*
-** Del egg todo.
-*/
-
 bool            egg_eclosion(void *data)
 {
   t_player      *player;

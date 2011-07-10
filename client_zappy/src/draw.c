@@ -96,7 +96,7 @@ void		draw_map(t_visu *v)
     v->draw = SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF,
 				   v->width * 64,
 				   (v->height) * 64, 32, 0, 0, 0, 0);
-  if (!(img = SDL_LoadBMP("grass.bmp")))
+  if (!(img = SDL_LoadBMP("data/grass.bmp")))
     return;
   while (x < v->width)
     {
@@ -120,7 +120,7 @@ void		draw_player(void *p, void *v)
 
   pos.y = 64 * ((t_player *)p)->y;
   pos.x = 64 * ((t_player *)p)->x;
-  img = SDL_LoadBMP("blob.bmp");
+  img = SDL_LoadBMP("data/blob.bmp");
   if (!img)
     return;
   SDL_SetColorKey(img, SDL_SRCCOLORKEY, SDL_MapRGB(img->format, 0, 0, 0));

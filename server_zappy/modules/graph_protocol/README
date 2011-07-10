@@ -19,7 +19,10 @@ Function	: graph_ebct
 Data type	: t_generic *
 Data inside	: Client fds
 
-
+Event name	: PlayerLvl
+Function	: graph_eplv
+Data type	: t_fds *
+Data inside	: Client fds
 
 -> graph_event_server.c
 
