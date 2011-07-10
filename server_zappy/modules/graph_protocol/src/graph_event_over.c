@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Sat Jul  9 23:55:39 2011 guillaume gelin
-** Last update Sun Jul 10 00:36:13 2011 guillaume gelin
+** Last update Sun Jul 10 21:05:35 2011 guillaume gelin
 */
 
 #include "tserver.h"
@@ -60,5 +60,15 @@ bool	graph_epin(void *data)
 	get_player_nbstones(player_data->id, MENDIANE),
 	get_player_nbstones(player_data->id, PHIRAS),
 	get_player_nbstones(player_data->id, THYSTAME));
+  return (true);
+}
+
+/* eplv: IncaEnd */
+bool	graph_eplv(void *data)
+{
+  t_fds *client;
+
+  client = (t_fds *)data;
+  sendf_all("plv %d %d", player_data->id, player_data->level);
   return (true);
 }

@@ -5,7 +5,7 @@
 ** Login   <gelin_g@epitech.net>
 **
 ** Started on  Thu Jun 30 11:32:47 2011 guillaume gelin
-** Last update Sat Jul  9 23:59:41 2011 guillaume gelin
+** Last update Sun Jul 10 20:53:47 2011 guillaume gelin
 */
 
 #ifndef		GRAPH_EVENTS_H_
@@ -20,6 +20,7 @@
 bool	graph_eppo(void *);
 bool	graph_ebct(void *);
 bool	graph_epin(void *);
+bool	graph_eplv(void *);
 
 /*
 ** graph_event_server.c
