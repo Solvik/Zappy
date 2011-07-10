@@ -113,6 +113,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)exec_timer.c			\
 	  \
 	  $(LOCAL)destroy.c			\
+	  $(LOCAL)destroy_player.c		\
 	  \
 	  $(LOCAL)dbg_show_map.c		\
 	  $(LOCAL)err_usage.c			\
