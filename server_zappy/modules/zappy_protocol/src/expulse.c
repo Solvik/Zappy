@@ -49,7 +49,6 @@ int		zappy_expulse(t_fds *client, char *cmd)
       r = asprintf(&ret, "deplacement %s",
 		   enum_to_dir[player_data->direction]);
       sends(client, ret);
-      expulse_players(list, player_data);
       if (ret)
 	free(ret);
       sends(client, "ok");
