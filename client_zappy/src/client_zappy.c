@@ -129,6 +129,7 @@ bool		client_zappy(int ac, char *av[])
   t_visu	visu;
   t_fds		*pooler;
 
+  pooler = NULL;
   memset(&visu, 0, sizeof(visu));
   camerasetting_(&visu);
   TTF_Init();
