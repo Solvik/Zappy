@@ -8,7 +8,6 @@
 ** Last update Sat Jul  9 18:50:56 2011 solvik blum
 */
 
-#include <SDL/SDL.h>
 #include "client_zappy.h"
 
 void		draw_text(t_visu *visu, char *text, int coor[2])
