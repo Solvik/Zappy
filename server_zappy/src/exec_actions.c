@@ -53,7 +53,7 @@ int		find_action(fds client, char *s)
 	  schedule = (void*)((*functions).relative ?
 		      scheduler_relative : scheduler_action);
 	  if ((*functions).delay <= 0.0)
-	    return ((*functions).action(client, s));
+	    return (((int (*)(fds, char*))(*functions).action)(client, s));
 	  else
 	    schedule(client, (*functions).delay, (*functions).action, s);
 	  scheduler_free(client);
@@ -77,7 +77,7 @@ bool		exec_client(fds c, double tdt)
   s = flood_check(c, s);
   if (scheduler_(c, tdt))
     return (scheduler_dispatch(c));
-  else if (callback_(c, s, tdt))
+  else if (!scheduler_active(c) && callback_(c, s, tdt))
     return (callback_handler(c, s));
   else if (s && !scheduler_active(c) && (find_action(c, s) != -1))
     flood_read(c);
