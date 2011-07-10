@@ -45,7 +45,7 @@ bool		handshaking(t_fds *c, char *cmd)
   if (!c || !cmd)
     return (false);
   if ((!(c->data = new_player(cmd)) || !(p = *(t_player**)c)))
-
+    {
       if ((strcmp(cmd, "GRAPHIC") == 0))
 	return (false);
       return (net_close_msg(c, "ko") && false);

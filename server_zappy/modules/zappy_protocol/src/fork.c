@@ -39,6 +39,7 @@ int             zappy_fork(t_fds *client, char *_)
 {
   t_player      *p;
 
+  (void)_;
   if (!client || !(p = *(t_player**)client) ||
       !(p->egg = set_box_addegg(p)))
     {

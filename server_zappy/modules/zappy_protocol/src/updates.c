@@ -50,7 +50,7 @@ void	update_team(void *elem, void *arg)
 {
   t_team	*team;
 
-  if (!(team = elem) || !arg)
+  if (!(team = (t_team*)elem) || !arg)
     return ;
   foreach_arg_list(team->players, (void (*)(void*, void*))update_player, arg);
 }
