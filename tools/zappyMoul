@@ -12,7 +12,7 @@ simpleCommand = ["avance",
                  "expulse",
                  "fork",
                  "connect_nbr",
-                 "prend nouriture"
+                 "prend nourriture"
                  ]
 
 CRLF = "\r\n"
