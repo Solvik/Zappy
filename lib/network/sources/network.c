@@ -8,7 +8,7 @@
 ** Last update Tue Apr 19 22:15:47 2011 julien di-marco
 */
 
-#define NETPRIVATE
+#define		NETPRIVATE
 
 #include	<sys/select.h>
 #include	<sys/types.h>

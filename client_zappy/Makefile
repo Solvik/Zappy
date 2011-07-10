@@ -12,8 +12,6 @@ INCLUDE		=	-Iinclude/			\
 
 LIB_DIR		=	../lib/
 
-## Files Prefixes
-
 
 ## Sources
 
@@ -36,11 +34,11 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)pdi.c				\
 			$(SRC_DIR)pfk.c				\
 			$(SRC_DIR)enw.c				\
-			$(SRC_DIR)sound.c				\
-			$(SRC_DIR)draw.c				\
-			$(SRC_DIR)get_info.c				\
-			$(SRC_DIR)refresh.c				\
-			$(CSRC_DIR)time.c				\
+			$(SRC_DIR)sound.c			\
+			$(SRC_DIR)draw.c			\
+			$(SRC_DIR)get_info.c			\
+			$(SRC_DIR)refresh.c			\
+			$(CSRC_DIR)time.c			\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries

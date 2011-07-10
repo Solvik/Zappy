@@ -8,8 +8,8 @@
 ** Last update Wed Jun 29 10:56:57 2011 solvik blum
 */
 
-#ifndef PLAYER_H_
-# define PLAYER_H_
+#ifndef		PLAYER_H_
+# define	PLAYER_H_
 
 #  include	"ztypes.h"
 #  include	"list.h"
@@ -33,7 +33,7 @@ typedef struct s_egg	t_egg;
 typedef struct s_player	t_player;
 #endif
 
-typedef struct		_case
+typedef struct	_case
 {
   int	x;
   int	y;
@@ -66,5 +66,5 @@ struct		s_player
 t_player        *player_destroy(t_player *);
 t_player	*init_player(t_team *team);
 
-# define _PLAYER_H_
-#endif /* PLAYER_H_ */
+# define	_PLAYER_H_
+#endif		/* PLAYER_H_ */

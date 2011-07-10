@@ -18,7 +18,7 @@
 #include	"error.h"
 #include	"module.h"
 
-void	*mod_dl_load(char *name)
+void		*mod_dl_load(char *name)
 {
   int		ace;
   char		*plus;
@@ -44,9 +44,9 @@ void	*mod_dl_load(char *name)
   return (handle);
 }
 
-bool	mod_load(char *name)
+bool		mod_load(char *name)
 {
-  t_module *(*get_module)(void);
+  t_module	*(*get_module)(void);
   t_module	*module;
   void		*handle;
 

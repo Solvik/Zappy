@@ -17,7 +17,7 @@
 
 # include	"module.h"
 
-typedef struct _client
+typedef struct	_client
 {
   char		*command;
   t_scheduler	schedule;

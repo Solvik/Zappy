@@ -9,13 +9,12 @@
 */
 
 #include	<stdlib.h>
-
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
-int		lol(t_cmd *lol)
+int		nothing(t_cmd *nothing)
 {
-  (void)lol;
+  (void)nothing;
   return (1);
 }
 
@@ -30,19 +29,19 @@ static const t_ptr ptr[] =
     {"plv", visu_plv, 3},
     {"pin", visu_pin, 11},
     {"pbc", play_sound, 3},
-    {"pic", lol, -1},
-    {"pie", lol, 4},
+    {"pic", nothing, -1},
+    {"pie", nothing, 4},
     {"pfk", visu_pfk, 2},
-    {"pdr", lol, 3},
-    {"pgt", lol, 3},
+    {"pdr", nothing, 3},
+    {"pgt", nothing, 3},
     {"pdi", visu_pdi, 2},
     {"enw", visu_enw, 5},
-    {"eht", lol, 2},
-    {"ebo", lol, 2},
-    {"edi", lol, 2},
-    {"sgt", lol, 2},
-    {"sgt", lol, 2},
-    {"seg", lol, 2},
+    {"eht", nothing, 2},
+    {"ebo", nothing, 2},
+    {"edi", nothing, 2},
+    {"sgt", nothing, 2},
+    {"sgt", nothing, 2},
+    {"seg", nothing, 2},
     {"smg", visu_smg, 2},
     {"suc", visu_suc, 1},
     {"sbp", visu_sbp, 1},

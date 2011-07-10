@@ -9,7 +9,6 @@
 */
 
 #include	<stdlib.h>
-
 #include	"itoa.h"
 
 char		*itoadup(int input, int radix)
