@@ -40,13 +40,16 @@ void		write_player(t_visu *v, t_player *p)
   char		*text;
   int		coor[2];
 
-  coor[0] = 700;
-  coor[1] = 0;
-  asprintf(&text, "Team : %s Level : %u Life : %u ID : %u", p->team->name,
-	   p->level, p->life, p->id);
-  draw_text(v, text, coor);
-  if (text)
-    free(text);
+  if (p)
+    {
+      coor[0] = 700;
+      coor[1] = 0;
+      asprintf(&text, "Team : %s Level : %u Dir : %u ID : %u", p->team,
+	       p->level, p->direction, p->id);
+      draw_text(v, text, coor);
+      if (text)
+	free(text);
+    }
 }
 
 void		get_info(int x, int y, t_visu *v)
