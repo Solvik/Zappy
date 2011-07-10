@@ -37,6 +37,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)sound.c				\
 			$(SRC_DIR)draw.c				\
 			$(SRC_DIR)get_info.c				\
+			$(SRC_DIR)refresh.c				\
 			$(CSRC_DIR)time.c				\
 			$(SRC_DIR)$(NAME).c
 

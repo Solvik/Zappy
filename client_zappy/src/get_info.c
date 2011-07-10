@@ -10,7 +10,7 @@
 
 #include	"client_zappy.h"
 
-static bool	match_box(void *data, void *arg)
+bool		match_box(void *data, void *arg)
 {
   return (((t_box *)data)->x == ((int *)arg)[0] &&
 	  ((t_box *)data)->y == ((int *)arg)[1]);

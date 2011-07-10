@@ -23,10 +23,10 @@ static void		handle_mouse(t_visu *v, SDL_Event *event)
   if ((event->type == SDL_MOUSEMOTION) && !space)
     {
       v->camera.x = ((((float)(event->motion.x + 1) *
-		       (float)((float)v->width * 32 /
+		       (float)((float)v->width * 64 /
 			       (float)v->camera.w))) - v->camera.w / 2);
       v->camera.y = ((((float)event->motion.y + 1.0f) *
-		      ((float)v->height * 32 /
+		      ((float)v->height * 64 /
 		       (float)v->camera.h)) - (v->camera.h / 2));
     }
   if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == 1)
@@ -35,8 +35,8 @@ static void		handle_mouse(t_visu *v, SDL_Event *event)
 	SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format,
 					       253, 63, 146));
       draw_info(v);
-      get_info((event->button.x + v->camera.x) / 32,
-	       (event->button.y + v->camera.y) / 32, v);
+      get_info((event->button.x + v->camera.x) / 64,
+	       (event->button.y + v->camera.y) / 64, v);
     }
 }
 
@@ -74,6 +74,7 @@ void			handle_event(t_fds **pooler, t_visu *v)
 	  if (!gere_cmd(*pooler, inc_cmd, v))
 	    fprintf(stderr, "error unknown or wrong cmd %s\n", cmd);
 	  free_cmd(inc_cmd);
+	  free(cmd);
 	}
       while (SDL_PollEvent(&e))
 	handle_mouse(v, &e);

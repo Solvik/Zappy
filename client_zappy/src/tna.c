@@ -31,7 +31,10 @@ int		visu_tna(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   t->name = cmd->argv[1];
   if (!(tmp = get_data_as_arg(visu->teams, match_team, cmd->argv[1])) &&
       (!put_in_list(&(visu->teams), t)))
-    return (0);
+    {
+      free(t);
+      return (0);
+    }
   return (1);
 }
 

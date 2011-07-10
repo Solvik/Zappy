@@ -29,14 +29,14 @@ static void            camerasetting_(t_visu *v)
     v->camera.x = (-1 * SCROLL) * 20;
   if (v->camera.y < ((-1 * SCROLL) * 20))
     v->camera.y = (-1 * SCROLL) * 20;
-  if (v->camera.x > ((v->width * 32 - v->camera.w) + (SCROLL * 20)))
-    v->camera.x = (v->width * 32 - v->camera.w) + (SCROLL * 20);
-  if (v->camera.y > ((v->height * 32 - v->camera.h) + (SCROLL * 20)))
-    v->camera.y = (v->height * 32 - v->camera.h) + (SCROLL * 20);
-  if (v->width * 32 < v->camera.w)
-    v->camera.x = ((v->camera.w - v->width * 32) / 2) * -1;
-  if (v->height * 32 < v->camera.h)
-    v->camera.y = ((v->camera.h - v->height * 32) / 2) * -1;
+  if (v->camera.x > ((v->width * 64 - v->camera.w) + (SCROLL * 20)))
+    v->camera.x = (v->width * 64 - v->camera.w) + (SCROLL * 20);
+  if (v->camera.y > ((v->height * 64 - v->camera.h) + (SCROLL * 20)))
+    v->camera.y = (v->height * 64 - v->camera.h) + (SCROLL * 20);
+  if (v->width * 64 < v->camera.w)
+    v->camera.x = ((v->camera.w - v->width * 64) / 2) * -1;
+  if (v->height * 64 < v->camera.h)
+    v->camera.y = ((v->camera.h - v->height * 64) / 2) * -1;
 }
 
 void		create_window(t_visu *p)

@@ -13,12 +13,6 @@
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
-static bool             match_box(void *data, void *coor)
-{
-  return ((((t_box *)data)->x == ((int *)coor)[0]) &&
-	  (((t_box *)data)->y == ((int *)coor)[1]));
-}
-
 int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 {
   int		coor[2];

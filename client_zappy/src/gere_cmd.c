@@ -81,4 +81,6 @@ void			free_cmd(t_cmd *c)
   while (c && c->argv && i < c->argc)
     free(c->argv[i++]);
   free(c->argv);
+  if (c)
+    free(c);
 }
