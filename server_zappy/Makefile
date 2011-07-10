@@ -136,9 +136,9 @@ INCLUDE := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(INCLUD
 
 OBJECTS	= $(SOURCES:.c=.o)
 
-
 LIBRARIES = $(LIBRARY)List			\
 	    $(LIBRARY)network
+
 ############################################################
 
 NDEBUG	?= 1
