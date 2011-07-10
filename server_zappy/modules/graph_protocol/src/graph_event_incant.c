@@ -5,12 +5,13 @@
 ** <perso@ramnes.eu>
 **
 ** Started on  Fri Jul  8 02:34:53 2011 by ramnes
-** Last update Sun Jul 10 00:11:35 2011 guillaume gelin
+** Last update Sun Jul 10 21:30:16 2011 guillaume gelin
 */
 
 #define	_GNU_SOURCE
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "tserver.h"
 #include "player.h"
 #include "graph_events.h"
@@ -37,6 +38,7 @@ bool	graph_pic(void *data)
       return (false);
   printf("%s", to_send);
   sends_all(to_send);
+  free(to_send);
   return (true);
 }
 

@@ -5,12 +5,13 @@
 ** Login   <gelin_g@epitech.net>
 ** 
 ** Started on  Wed Jul  6 00:59:13 2011 guillaume gelin
-** Last update Sat Jul  9 01:19:51 2011 ramnes
+** Last update Sun Jul 10 21:29:59 2011 guillaume gelin
 */
 
 #define		_GNU_SOURCE
 
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<stdarg.h>
 #include	"tserver.h"
 #include	"napi.h"
@@ -39,5 +40,6 @@ void		sendf_all(char const *format, ...)
     return;
   va_end(arguments);
   sends_all(string);
+  free(string);
 }
 
