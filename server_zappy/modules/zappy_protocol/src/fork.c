@@ -26,7 +26,7 @@ bool            egg_eclosion(void *data)
     return (false);
   if (!put_in_list(&player->team->players, player) ||
       !set_box_addplayer(player, player->x, player->y))
-    return (false);;
+    return (false);
   player->fork = true;
   set_box_delegg(egg);
   return (true);

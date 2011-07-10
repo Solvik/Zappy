@@ -94,7 +94,7 @@ static	void	send_elev(void *e, void *a)
 
   if (!(p = (t_player*)e) || !(b = (int*)a))
     return ;
-  p->team += 1;
+  p->level += 1;
   if ((c = p->client))
     sendf(c, "niveau actuel : %d", *b);
 }
@@ -118,7 +118,6 @@ static int	second_test(fds c)
   foreach_arg_list(players, send_elev, &level);
   return (true);
 }
-
 
 int		zappy_incantation(fds c, char *_)
 {
