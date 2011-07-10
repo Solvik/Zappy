@@ -24,7 +24,6 @@ static const char	*enum_to_dir[4] =
     "WEST",
   };
 
-
 static int	zappy_avance(t_fds *client, e_direction direction)
 {
   t_player	*p;
