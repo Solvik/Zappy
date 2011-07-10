@@ -38,6 +38,12 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   else if (!put_in_list(&(visu->map), box))
     return (0);
   draw_stones(visu, box->x, box->y);
+  if (visu->info)
+    SDL_FillRect(visu->info, NULL, SDL_MapRGB(visu->screen->format,
+					   253, 63, 146));
+  draw_info(visu);
+  get_info((box->x) / 64,
+	   (box->y) / 64, visu);
   return (1);
 }
 

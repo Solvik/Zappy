@@ -31,7 +31,7 @@ int		play_sound(t_fds *f, t_cmd *c, t_visu *v)
 					   FMOD_INIT_NORMAL, NULL)) != FMOD_OK)
     return (1);
   if (!sound && (result = FMOD_System_CreateSound(system,
-						  "nyan.wav",
+						  "data/nyan.wav",
 						  FMOD_HARDWARE | FMOD_LOOP_OFF
 						  | FMOD_2D, 0, &sound))
       != FMOD_OK)
