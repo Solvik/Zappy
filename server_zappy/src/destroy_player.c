@@ -8,14 +8,14 @@
 ** Last update Sat Jul  9 22:28:20 2011 guillaume gelin
 */
 
-#include	<unistd.h>
-#include	<stdlib.h>
-#include	<stdio.h>
+#include        <unistd.h>
+#include        <stdlib.h>
+#include        <stdio.h>
 
-#include	"tserver.h"
-#include	"client.h"
+#include        "tserver.h"
+#include        "client.h"
 
-extern t_server	*gserv;
+extern t_server *gserv;
 
 static bool             match_pointer(void *data, void *name)
 {
@@ -24,7 +24,7 @@ static bool             match_pointer(void *data, void *name)
   return ((data == name));
 }
 
-void		*destroy_client(t_client *c)
+void            *destroy_client(t_client *c)
 {
   if (!c)
     return (NULL);
@@ -36,11 +36,13 @@ void		*destroy_client(t_client *c)
 
 t_player        *player_destroy(t_player *p)
 {
+  bool		f;
+
   if (!p || p->food > 0)
     return ((p ? (void*)(p->client = NULL) : NULL));
+  f = (p ? p->fork : false);
   event_relative_dispatch("PlayerDied", p, 0);
-  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p)
-      && !p->fork)
+  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p) && !f)
     p->team->max_conn += 1;
   if (p->egg)
     p->egg = NULL;

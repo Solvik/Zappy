@@ -21,7 +21,9 @@ extern t_server	*gserv;
 bool		event_dispatch(char *name, void *data, double delay)
 {
   t_event	*evnt;
+  bool		out;
 
+  out = false;
   if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
   evnt->name = strdup(name);
@@ -29,13 +31,22 @@ bool		event_dispatch(char *name, void *data, double delay)
   evnt->delay = delay;
   evnt->st = time_();
   evnt->lt = evnt->st;
-  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
+  if (delay > 0.0)
+    out = set_new_event(evnt);
+  else
+    {
+      out = eventm_dispatch(evnt);
+      free(evnt);
+    }
+  return (out);
 }
 
 bool		event_free(char *name, void *data, double delay)
 {
   t_event	*evnt;
+  bool		out;
 
+  out = false;
   if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
   evnt->name = strdup(name);
@@ -44,13 +55,22 @@ bool		event_free(char *name, void *data, double delay)
   evnt->free = true;
   evnt->st = time_();
   evnt->lt = evnt->st;
-  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
+  if (delay > 0.0)
+    out = set_new_event(evnt);
+  else
+    {
+      out = eventm_dispatch(evnt);
+      free(evnt);
+    }
+  return (out);
 }
 
 bool		event_relative_dispatch(char *name, void *data, double delay)
 {
   t_event	*evnt;
+  bool		out;
 
+  out = false;
   if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
   evnt->name = strdup(name);
@@ -59,13 +79,22 @@ bool		event_relative_dispatch(char *name, void *data, double delay)
   evnt->relative = true;
   evnt->st = time_();
   evnt->lt = evnt->st;
-  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
+  if (delay > 0.0)
+    out = set_new_event(evnt);
+  else
+    {
+      out = eventm_dispatch(evnt);
+      free(evnt);
+    }
+  return (out);
 }
 
 bool		event_free_relative(char *name, void *data, double delay)
 {
   t_event	*evnt;
+  bool		out;
 
+  out = false;
   if (!name || !(evnt = calloc(1, sizeof(*evnt))))
     return (false);
   evnt->name = strdup(name);
@@ -75,7 +104,14 @@ bool		event_free_relative(char *name, void *data, double delay)
   evnt->relative = true;
   evnt->st = time_();
   evnt->lt = evnt->st;
-  return (delay > 0.0 ? set_new_event(evnt) : eventm_dispatch(evnt));
+  if (delay > 0.0)
+    out = set_new_event(evnt);
+  else
+    {
+      out = eventm_dispatch(evnt);
+      free(evnt);
+    }
+  return (out);
 }
 
 bool		event_catch(char *name, bool (*call)(void*))

@@ -16,7 +16,6 @@
 #include "graph_events.h"
 #include "sends_all.h"
 
-/* pic: IncaNew */
 bool	graph_pic(void *data)
 {
   t_list *players;
@@ -40,7 +39,6 @@ bool	graph_pic(void *data)
   return (true);
 }
 
-/* pie: IncaEnd */
 bool	graph_pie(void *data)
 {
   sendf_all("pie %d %d %d",

@@ -11,6 +11,7 @@
 #ifndef		EXEC_H_
 # define	EXEC_H_
 
+# include	<stdbool.h>
 # include	"time_.h"
 # include	"network.h"
 

@@ -44,7 +44,13 @@ bool		eventm_dispatch(t_event *event)
   print_debug("Event [%s] Dispatched", event->name);
   if (!event || !event->name ||
       !(catchers = get_data_as_arg(get_catchers(), match_event, event)))
-    return (true);
+    {
+      if (event->free)
+	free(event->data);
+      if (event->name)
+	free(event->name);
+      return (true);
+    }
   foreach_arg_list(catchers->catch,
 		   (void(*)(void*, void*))event_catch_dispatch, event);
   event_catch_dispatch(catchers, event);

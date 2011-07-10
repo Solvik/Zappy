@@ -46,7 +46,7 @@ static void	update_player(t_player *player, double *tdt)
   player->food = (uint)abs(player->foodt);
   if (player->foodt <= 0)
     c ? (void)net_close_msg(c, "mort") : (void)player_destroy(player);
-  if (player->foodt > 0)
+  else if (player->foodt > 0)
     timer_helper(((player->foodt * delay_life) * (get_time() / get_delay())));
 }
 
@@ -54,7 +54,7 @@ void	update_team(void *elem, void *arg)
 {
   t_team	*team;
 
-  if (!(team = (t_team*)elem) || !arg)
+  if (!(team = (t_team*)elem) || !arg || !team->players)
     return ;
   foreach_arg_list(team->players, (void (*)(void*, void*))update_player, arg);
 }

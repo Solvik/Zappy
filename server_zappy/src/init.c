@@ -11,6 +11,7 @@
 #undef		_FORTIFY_SOURCE
 
 #include	<unistd.h>
+#include	<stdlib.h>
 #include	<signal.h>
 #include	<stdio.h>
 
@@ -29,7 +30,9 @@ void		sigint_handler(__attribute__((unused))int _)
 bool		init(int opt_size, char **opt)
 {
   t_zopt	optab;
+  bool		out;
 
+  out = true;
   gserv_const(true);
   if ((signal(SIGINT, sigint_handler) == SIG_ERR) ||
       !init_opt(opt_size, opt, &optab) ||
@@ -38,7 +41,9 @@ bool		init(int opt_size, char **opt)
       !init_network(&optab) ||
       !init_team(&optab) ||
       !init_modules(&optab))
-    return (false);
+    out = false;
+  destroy_list(&optab.team, free);
+  destroy_list(&optab.module, free);
   set_run(true);
-  return (true);
+  return (out);
 }

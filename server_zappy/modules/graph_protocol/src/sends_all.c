@@ -10,6 +10,7 @@
 
 #define		_GNU_SOURCE
 
+#include	<stdlib.h>
 #include	<stdio.h>
 #include	<stdarg.h>
 #include	"tserver.h"
@@ -39,5 +40,6 @@ void		sendf_all(char const *format, ...)
     return;
   va_end(arguments);
   sends_all(string);
+  free(string);
 }
 
