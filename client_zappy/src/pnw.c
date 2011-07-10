@@ -32,6 +32,7 @@ int		visu_pnw(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   p->id = atoi(cmd->argv[1]);
   p->x = atoi(cmd->argv[2]);
   p->y = atoi(cmd->argv[3]);
+  p->stones = NULL;
   if ((t = get_data_as_arg(visu->teams, match_team, cmd->argv[6])))
     p->team = t;
   p->direction = atoi(cmd->argv[4]) - 1;
