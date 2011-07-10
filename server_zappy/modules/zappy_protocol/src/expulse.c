@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 19:17:28 2011 solvik blum
+** Last update Sun Jul 10 19:52:48 2011 solvik blum
 */
 
 #define _GNU_SOURCE
@@ -41,18 +41,13 @@ static int	zappy_avance(t_fds *client, e_direction direction)
 
 static void	expulse_players(void *data, void *dest)
 {
-  char		*ret;
   t_fds		*client;
-  int		r;
 
   client = (t_fds *)data;
   if (player_data != (t_player *)dest)
     {
-      zappy_avance(client, gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
-      r = asprintf(&ret, "deplacement %d", gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
-      sends(client, ret);
-      if (ret)
-	free(ret);
+      zappy_avance(client, ((t_player *)dest)->direction);
+      sendf(client, "deplacement %d", gl_exp_dirs[((t_player *)dest)->direction][player_data->direction]);
     }
 }
 
