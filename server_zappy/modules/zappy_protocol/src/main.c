@@ -45,8 +45,8 @@ bool		handshaking(t_fds *c, char *cmd)
   if (!c || !cmd)
     return (false);
   if (((c->data = new_player(cmd)) == NULL) || !(p = *(t_player**)c))
-    return ((strcmp(cmd, "GRAPHIC") == 0) ?
-	    false : net_close_msg(c, "ko"));
+    return (((strcmp(cmd, "GRAPHIC") == 0) ?
+	    false : net_close_msg(c, "ko")) && false);
   p->client = c;
   sendf(c, "%d", (p->team ? p->team->max_conn : 0));
   sendf(c, "%d %d", (int)get_map_width(), (int)get_map_height());

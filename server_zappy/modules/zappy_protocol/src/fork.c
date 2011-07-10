@@ -5,7 +5,11 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 18:52:08 2011 ramnes
+<<<<<<< Updated upstream
+** Last update Sun Jul 10 04:43:09 2011 guillaume gelin
+=======
+** Last update Sun Jul 10 04:38:10 2011 guillaume gelin
+>>>>>>> Stashed changes
 */
 
 #include	<stdlib.h>
@@ -22,13 +26,16 @@ bool		egg_eclosion(void *data)
   return (true);
 }
 
-int		zappy_fork(t_fds *client, char *cmd)
+int		zappy_fork(t_fds *client, char *_)
 {
+  t_player	*p;
   t_egg		*egg;
 
-  (void)cmd;
-  if (!(egg = set_box_addegg(player_data)))
-    return (0);
+  (void)_;
+  if (!client || !(p = *(t_player**)client) || !(egg = set_box_addegg(p)))
+    return (false);
+  event_relative_dispatch("Fork", client, 0);
+  /* ramnes: need sheduler 42/t */
   event_relative_dispatch("EggNew", egg, 0);
   event_relative_dispatch("EggHatch", egg, 600);
   sends(client, "ok");

@@ -13,12 +13,6 @@
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
-static bool             match_box(void *data, void *coor)
-{
-  return ((((t_box *)data)->x == ((int *)coor)[0]) &&
-	  (((t_box *)data)->y == ((int *)coor)[1]));
-}
-
 int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 {
   int		coor[2];
@@ -28,7 +22,8 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
   (void)pooler;
   coor[0] = atoi(cmd->argv[1]);
   coor[1] = atoi(cmd->argv[2]);
-  box = malloc(sizeof(*box));
+  if (!(box = malloc(sizeof(*box))))
+    return (0);
   box->x = coor[0];
   box->y = coor[1];
   box->food = atoi(cmd->argv[3]);
@@ -47,7 +42,11 @@ int		visu_bct(t_fds *pooler, t_cmd *cmd, t_visu *visu)
 
 int		send_bct(t_fds *pooler, t_cmd *cmd)
 {
-  (void)cmd;
-  sends(pooler, "bct");
+  char		*ret;
+
+  asprintf(&ret, "bct %s %s", cmd->argv[1], cmd->argv[2]);
+  sends(pooler, ret);
+  if (ret)
+    free(ret);
   return (1);
 }

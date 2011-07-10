@@ -5,7 +5,7 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sat Jul  9 16:35:03 2011 ramnes
+** Last update Sun Jul 10 00:22:53 2011 guillaume gelin
 */
 
 #include	<unistd.h>
@@ -23,11 +23,11 @@ static bool	pose_action(t_player *player, char *obj)
 
   if ((stone = is_stone(obj)) != NONE)
     {
-      if (!set_box_addstone(player->x, player->y, stone, 1) ||
-	  !setplayer_delstone(player, stone, 1))
+      if (!setplayer_delstone(player, stone, 1) ||
+	  !set_box_addstone(player->x, player->y, stone, 1))
 	return (false);
     }
-  else if (!strcasecmp(obj, "nourriture"))
+  else if (!strcasecmp(obj, "nourriture") && player->food > 0)
     {
       player->food -= 1;
       if (set_box_addfood(player->x, player->y, 1))
@@ -55,8 +55,8 @@ int		zappy_pose(t_fds *client, char *cmd)
     }
   if ((data = malloc(sizeof(*data))))
     {
-      data->ui1 = p->id;
-      data->ui2 = get_ressource_id(obj);
+      data->ui1 = get_ressource_id(obj);
+      data->client = client;
       event_relative_dispatch("DropItem", data, 0);
     }
   sends(client, "ok");

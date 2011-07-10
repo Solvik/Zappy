@@ -92,6 +92,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_get_box_players_by_level.c	\
 	  $(LOCAL)gserv_get_player_info.c	\
 	  $(LOCAL)gserv_get_player_nbstones.c	\
+	  $(LOCAL)gserv_get_eggs.c		\
 	  $(LOCAL)gserv_get_teams.c		\
 	  $(LOCAL)gserv_get_team_of_player.c	\
 	  $(LOCAL)gserv_get_team_by_name.c	\
@@ -135,9 +136,9 @@ INCLUDE := $(patsubst $(realpath $(ROOT))/%,$(ROOT)%, $(sort $(realpath $(INCLUD
 
 OBJECTS	= $(SOURCES:.c=.o)
 
-
 LIBRARIES = $(LIBRARY)List			\
 	    $(LIBRARY)network
+
 ############################################################
 
 NDEBUG	?= 1

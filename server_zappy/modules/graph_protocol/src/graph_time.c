@@ -16,7 +16,7 @@
 /* sgt unite_temps */
 bool	graph_sgt(t_fds *client, char *cmd __attribute__((unused)))
 {
-  sendf(client, "sgt %f", get_delay());
+  sendf(client, "sgt %d", (int)get_delay());
   return (true);
 }
 
@@ -32,7 +32,7 @@ bool	graph_sst(t_fds *client, char *cmd)
       sends(client, "sbp");
       return (false);
     }
-  set_delay(atof(delay));
+  set_delay(atoi(delay));
   graph_sgt(client, cmd);
   return (true);
 }

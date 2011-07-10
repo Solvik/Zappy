@@ -5,7 +5,7 @@
 ** Login   <seb@epitech.net>
 **
 ** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Fri Jul  8 06:24:36 2011 ramnes
+** Last update Sun Jul 10 02:07:54 2011 guillaume gelin
 */
 
 #include <stdlib.h>
@@ -31,6 +31,14 @@ static void	_pnw(void *data, void *dest)
 	get_team_of_player(player_data)->name);
 }
 
+static void	_enw(void *data, void *dest)
+{
+  t_egg		*egg;
+
+  egg = (t_egg *)data;
+  sendf(dest, "enw %d %d %d %d", egg->id, egg->father->id, egg->x, egg->y);
+}
+
 /*
 **   //graph_enw(client, NULL); - l: 24
 */
@@ -38,12 +46,15 @@ static void	_pnw(void *data, void *dest)
 bool graph_graphic(t_fds *client, char *cmd __attribute__((unused)))
 {
   t_module	*mod;
+  t_list	*eggs;
 
   mod = get_module_by_name("Zappy Protocol");
-  graph_sgt(client, NULL);
+  eggs = get_eggs();
   graph_msz(client, NULL);
+  graph_sgt(client, NULL);
   graph_mct(client, NULL);
   graph_tna(client, NULL);
   foreach_arg_list(mod->clients, _pnw, client);
+  foreach_arg_list(eggs, _enw, client);
   return (true);
 }

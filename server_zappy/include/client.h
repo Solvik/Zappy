@@ -23,7 +23,7 @@ typedef struct _client
   t_scheduler	schedule;
   t_callback	callback;
   t_antiflood	flood;
-  int		close;
+  bool		close;
 
   t_module	*_m;
 }		t_client;

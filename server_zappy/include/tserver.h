@@ -5,7 +5,7 @@
 ** Login   <Lifely@epitech.net>
 **
 ** Started on  Thu Jun 30 05:07:36 2011 Julien Di Marco
-** Last update Sat Jul  9 18:27:32 2011 solvik blum
+** Last update Sun Jul 10 02:04:39 2011 guillaume gelin
 */
 
 #ifndef		TSERV_H_
@@ -37,6 +37,7 @@ typedef		struct
   t_fds		*pool;
   t_list	*module; /* t_module */
   t_list 	*team; /* t_team */
+  t_list 	*egg; /* t_egg */
 
   bool		run;
 }		t_server;
@@ -47,6 +48,7 @@ typedef		struct
   unsigned int	ui2;
   unsigned int	ui3;
   char		*txt1;
+  fds		client;
 }		t_generic;
 
 t_module	*get_module_by_name(char *);
@@ -70,6 +72,7 @@ double		get_time(void);
 uint		get_nb_clients(void);
 
 fds 		*get_pool(void);
+t_list		*get_eggs(void);
 t_list		*get_teams(void);
 t_list		*get_box_players(uint, uint);
 t_team		*get_team_of_player(t_player *);

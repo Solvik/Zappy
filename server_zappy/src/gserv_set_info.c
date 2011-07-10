@@ -24,13 +24,13 @@ void		set_port(int port)
 
 void		set_delay(double delay)
 {
-  if (delay != 0.0)
+  if (delay >= 1)
     gserv->info.delay = delay;
 }
 
 void		set_time(double time)
 {
-  if (time != 0.0)
+  if (time >= 1)
     gserv->info.time = time;
 }
 

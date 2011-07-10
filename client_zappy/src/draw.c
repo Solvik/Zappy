@@ -11,13 +11,6 @@
 #include <SDL/SDL.h>
 #include "client_zappy.h"
 
-void		refresh_screen(t_visu *v)
-{
-  draw_map(v);
-  foreach_arg_list(v->player, draw_player, v);
-  draw_info(v);
-}
-
 void		draw_text(t_visu *visu, char *text, int coor[2])
 {
   SDL_Surface	*texte;
@@ -26,7 +19,7 @@ void		draw_text(t_visu *visu, char *text, int coor[2])
   SDL_Surface	*base;
 
   texte = NULL;
-  couleurNoire = {0, 0, 0, 0};
+  memset(&couleurNoire, 0, sizeof(couleurNoire));
   base = visu->info;
   position.x = coor[0];
   position.y = coor[1];
@@ -41,11 +34,11 @@ void		draw_info(t_visu *v)
   int		coor[2];
 
   if (!v->info)
-	v->info =  SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF, WIDTH,
-					32, 32, 0, 0, 0, 0);
+    v->info =  SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF, WIDTH,
+				    32, 32, 0, 0, 0, 0);
   pos.x = 0;
-  pos.y = HEIGHT - 32;
-  SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format, 0, 255, 0));
+  pos.y = HEIGHT - 64;
+  SDL_FillRect(v->info, NULL, SDL_MapRGB(v->screen->format,  253, 63, 146));
   coor[1] = 0;
   coor[0] = 0;
   draw_text(v, "Linemate:", coor);
@@ -63,6 +56,35 @@ void		draw_info(t_visu *v)
   draw_text(v, "Food:", coor);
 }
 
+void		draw_stones(t_visu *v, int x, int y)
+{
+  SDL_Surface	*texte;
+  SDL_Color	couleurNoire;
+  SDL_Rect	position;
+  char		*nb;
+  t_box		*box;
+  int		pos[2];
+
+  texte = NULL;
+  nb = NULL;
+  memset(&couleurNoire, 0, sizeof(couleurNoire));
+  position.x = x * 64;
+  position.y = y * 64;
+  pos[0] = x;
+  pos[1] = y;
+  if (!(box = get_data_as_arg(v->map, match_box, pos)))
+    return ;
+  asprintf(&nb, "%s%s%s%s%s%s%s", box->food ?  "F" : "",
+	   box->linemate ?  "L" : "",
+	   box->deraumere ?  "D" : "", box->sibur ?  "S" : "",
+	   box->mendiane ?  "M" : "",
+	   box->phiras ?  "P" : "", box->thystame ?  "T" : "");
+  texte = TTF_RenderText_Blended(v->police, nb, couleurNoire);
+  SDL_BlitSurface(texte, NULL, v->draw, &position);
+  SDL_FreeSurface(texte);
+  free(nb);
+}
+
 void		draw_map(t_visu *v)
 {
   SDL_Rect	pos;
@@ -73,22 +95,23 @@ void		draw_map(t_visu *v)
   x = 0;
   if (!v->draw)
     v->draw = SDL_CreateRGBSurface(SDL_HWSURFACE | SDL_DOUBLEBUF,
-				   v->width * 32,
-				   (v->height) * 32, 32, 0, 0, 0, 0);
-  img = SDL_LoadBMP("grass.bmp");
+				   v->width * 64,
+				   (v->height) * 64, 32, 0, 0, 0, 0);
+  if (!(img = SDL_LoadBMP("grass.bmp")))
+    return;
   while (x < v->width)
     {
-      y = 0;
-      while (y < v->height)
+      y = -1;
+      while (y++ < v->height)
 	{
-	  pos.x = x * 32;
-	  pos.y = y * 32;
+	  pos.x = x * 64;
+	  pos.y = y * 64;
 	  SDL_BlitSurface(img, NULL, v->draw, &pos);
-	  y++;
+	  draw_stones(v, x, y);
 	}
       x++;
     }
-  free(img);
+  SDL_FreeSurface(img);
 }
 
 void		draw_player(void *p, void *v)
@@ -96,10 +119,12 @@ void		draw_player(void *p, void *v)
   SDL_Rect	pos;
   SDL_Surface	*img;
 
-  pos.y = 32 * ((t_player *)p)->y;
-  pos.x = 32 * ((t_player *)p)->x;
+  pos.y = 64 * ((t_player *)p)->y;
+  pos.x = 64 * ((t_player *)p)->x;
   img = SDL_LoadBMP("blob.bmp");
+  if (!img)
+    return;
   SDL_SetColorKey(img, SDL_SRCCOLORKEY, SDL_MapRGB(img->format, 0, 0, 0));
   SDL_BlitSurface(img, NULL, ((t_visu *)v)->draw, &pos);
-  free(img);
+  SDL_FreeSurface(img);
 }

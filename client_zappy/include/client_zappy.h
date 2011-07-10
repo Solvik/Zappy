@@ -12,13 +12,12 @@
 # define	CLIENT_ZAPPY_H_
 
 #  include	<stdbool.h>
+#  include	<SDL/SDL.h>
+#  include	<SDL/SDL_ttf.h>
 #  include	"ztypes.h"
 #  include	"list.h"
 #  include	"network.h"
 #  include	"player.h"
-
-#  include	<SDL/SDL.h>
-#  include	<SDL/SDL_ttf.h>
 
 #  define WIDTH		1024
 #  define HEIGHT	768
@@ -77,5 +76,9 @@ void		draw_map(t_visu *);
 void		draw_player(void *, void *);
 void		refresh_screen(t_visu *);
 void		draw_info(t_visu *);
-void			get_info(int, int, t_visu *);
+void		get_info(int, int, t_visu *);
+int		send_bct(t_fds *, t_cmd *);
+void		draw_text(t_visu *, char *, int [2]);
+void		handle_event(t_fds **, t_visu *);
+bool		match_box(void *, void *);
 #endif		/* !CLIENT_ZAPPY_H_ */

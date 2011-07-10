@@ -20,6 +20,7 @@ LIB_DIR		=	../lib/
 SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)parse_cmd.c			\
 			$(SRC_DIR)gere_cmd.c			\
+			$(SRC_DIR)handle.c			\
 			$(SRC_DIR)get_player_by_id.c		\
 			$(SRC_DIR)bienvenue.c			\
 			$(SRC_DIR)msz.c				\
@@ -32,17 +33,21 @@ SRCS		=	$(SRC_DIR)main.c			\
 			$(SRC_DIR)ppo.c				\
 			$(SRC_DIR)plv.c				\
 			$(SRC_DIR)pin.c				\
+			$(SRC_DIR)pdi.c				\
+			$(SRC_DIR)sound.c				\
 			$(SRC_DIR)draw.c				\
 			$(SRC_DIR)get_info.c				\
+			$(SRC_DIR)refresh.c				\
 			$(CSRC_DIR)time.c				\
 			$(SRC_DIR)$(NAME).c
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
-			`sdl-config --libs`			\
+			-L$(LIB_DIR)/itoa -litoa		\
+			-L/usr/local/lib/ -lfmodex		\
+			 `sdl-config --libs`			\
 			-lSDL_ttf				\
-			-L$(LIB_DIR)/itoa -litoa
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
@@ -50,7 +55,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -g3 `sdl-config --cflags`
+CFLAGS		+=	-W -Wall -Wextra -ggdb `sdl-config --cflags`
 
 ## RULES
 

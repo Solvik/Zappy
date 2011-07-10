@@ -39,6 +39,7 @@ typedef struct	s_player
   t_fds		*client;
   t_team	*team;
 
+  bool		fork;
   uint		food;
   double	foodt;
 }		t_player;

@@ -1,9 +1,9 @@
 /*
 ** select_pool.c for  in /Users/Lifely/Developer/project/Zappy/lib/network/sources
-** 
+**
 ** Made by Julien Di Marco
 ** Login   <Lifely@epitech.net>
-** 
+**
 ** Started on  Sun Jul  3 17:12:21 2011 Julien Di Marco
 ** Last update Sun Jul  3 17:12:21 2011 Julien Di Marco
 */
@@ -21,7 +21,7 @@
 ** Function: fdfull - private
 ** Called by pool
 **
-** This function handle the different fd_set (read,write,error)
+** This function handle the different fd_set (read, write, error)
 ** and fill each set according to each specific fds.
 */
 
@@ -56,7 +56,7 @@ int		pool_fill(fds l, t_select *p)
 	    FD_SET(l->fd, &p->write);
 	  p->max = (l->fd > p->max ? l->fd : p->max);
 	}
-      r = (l && l->read) ? 1 : r;
+      r = (l && l->read && l->read->update) ? 1 : r;
       l = l->next;
     }
   return ((p->max == -1 ? -1 : (r ? 1 : 0)));

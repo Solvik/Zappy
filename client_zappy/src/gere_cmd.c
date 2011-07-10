@@ -9,6 +9,7 @@
 */
 
 #include	<stdlib.h>
+
 #include	"visu_func.h"
 #include	"client_zappy.h"
 
@@ -29,14 +30,13 @@ static const t_ptr ptr[] =
     {"ppo", visu_ppo, 5},
     {"plv", visu_plv, 3},
     {"pin", visu_pin, 11},
-    {"pex", lol, 2},
-    {"pbc", lol, 3},
+    {"pbc", play_sound, 3},
     {"pic", lol, -1},
     {"pie", lol, 4},
     {"pfk", lol, 2},
     {"pdr", lol, 3},
     {"pgt", lol, 3},
-    {"pdi", lol, 2},
+    {"pdi", visu_pdi, 2},
     {"enw", lol, 5},
     {"eht", lol, 2},
     {"ebo", lol, 2},
@@ -56,12 +56,17 @@ int			gere_cmd(t_fds *pooler, t_cmd *inc_cmd, t_visu *v)
   int			i;
 
   i = -1;
+  if (!inc_cmd)
+    return (0);
   printf("Command find: %s %d\n", inc_cmd->argv[0], inc_cmd->argc);
   while (++i < ptr_len)
     if ((!strcasecmp(ptr[i].cmd, inc_cmd->argv[0])))
       {
 	if (inc_cmd->argc == ptr[i].argc || inc_cmd->argc == -1)
-	  return (ptr[i].f(pooler, inc_cmd, v));
+	  {
+	    printf("%s", inc_cmd->argv[0]);
+	    return (ptr[i].f(pooler, inc_cmd, v));
+	  }
 	else
 	  return (0);
       }
@@ -76,5 +81,6 @@ void			free_cmd(t_cmd *c)
   while (c && c->argv && i < c->argc)
     free(c->argv[i++]);
   free(c->argv);
-  free(c);
+  if (c)
+    free(c);
 }
