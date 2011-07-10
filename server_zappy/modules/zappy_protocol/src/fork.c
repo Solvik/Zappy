@@ -5,7 +5,11 @@
 ** Login   <blum_s@epitech.net>
 **
 ** Started on  Mon Jun 13 12:46:13 2011 solvik blum
-** Last update Sun Jul 10 04:40:23 2011 guillaume gelin
+<<<<<<< Updated upstream
+** Last update Sun Jul 10 04:43:09 2011 guillaume gelin
+=======
+** Last update Sun Jul 10 04:38:10 2011 guillaume gelin
+>>>>>>> Stashed changes
 */
 
 #include	<stdlib.h>
@@ -22,8 +26,9 @@ bool		egg_eclosion(void *data)
   return (true);
 }
 
-int		zappy_fork(t_fds *client, char *cmd)
+int		zappy_fork(t_fds *client, char *_)
 {
+  t_player	*p;
   t_egg		*egg;
 
   (void)_;
@@ -34,5 +39,5 @@ int		zappy_fork(t_fds *client, char *cmd)
   event_relative_dispatch("EggNew", egg, 0);
   event_relative_dispatch("EggHatch", egg, 600);
   sends(client, "ok");
-  return (true);
+  return (1);
 }
