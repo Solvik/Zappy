@@ -76,6 +76,7 @@ SOURCES	= $(LOCAL)main.c			\
 	  $(LOCAL)gserv_set_box_addplayer.c	\
 	  $(LOCAL)gserv_set_box_delplayer.c	\
 	  $(LOCAL)gserv_set_box_addegg.c	\
+	  $(LOCAL)gserv_set_box_delegg.c	\
 	  $(LOCAL)gserv_set_player_addstone.c	\
 	  $(LOCAL)gserv_set_player_delstone.c	\
 	  $(LOCAL)gserv_set_player_addfood.c	\
