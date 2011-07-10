@@ -119,7 +119,6 @@ static int	second_test(fds c)
   return (true);
 }
 
-
 int		zappy_incantation(fds c, char *_)
 {
   t_generic	data;
