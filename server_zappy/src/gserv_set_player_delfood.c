@@ -1,5 +1,5 @@
 /*
-** gserv_setplayer_delfood.c for  in /home/solvik/tek2/proj/Zappy
+** gserv_set_player_delfood.c for  in /home/solvik/tek2/proj/Zappy
 **
 ** Made by solvik blum
 ** Login   <blum_s@epitech.net>
@@ -11,7 +11,7 @@
 #include		<stdlib.h>
 #include		"tserver.h"
 
-bool			setplayer_delfood(uint id, uint nb)
+bool			set_player_delfood(uint id, uint nb)
 {
   t_player *		player;
 

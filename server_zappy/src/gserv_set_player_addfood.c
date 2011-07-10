@@ -1,5 +1,5 @@
 /*
-** gserv_setplayer_addfood.c for  in /home/solvik/tek2/proj/Zappy/server_zappy
+** gserv_set_player_addfood.c for  in /home/solvik/tek2/proj/Zappy/server_zappy
 **
 ** Made by solvik blum
 ** Login   <blum_s@epitech.net>
@@ -11,7 +11,7 @@
 #include		<stdlib.h>
 #include		"tserver.h"
 
-bool			setplayer_addfood(uint id, uint nb)
+bool			set_player_addfood(uint id, uint nb)
 {
   t_player *		player;
 

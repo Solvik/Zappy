@@ -1,5 +1,5 @@
 /*
-** setplayer_delstone.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
+** set_player_delstone.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src
 **
 ** Made by solvik blum
 ** Login   <blum_s@epitech.net>
@@ -20,7 +20,7 @@ static bool		match_stone(void *data, void *stone)
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-uint			setplayer_delstone(t_player *player, e_stone type,
+uint			set_player_delstone(t_player *player, e_stone type,
 					   uint nb)
 {
   t_stone 		*stone;

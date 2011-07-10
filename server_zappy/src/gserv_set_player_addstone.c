@@ -31,7 +31,7 @@ static bool		match_stone(void *data, void *stone)
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-bool			setplayer_addstone(t_player *player, e_stone type,
+bool			set_player_addstone(t_player *player, e_stone type,
 					   uint nb)
 {
   t_stone 		*stone;

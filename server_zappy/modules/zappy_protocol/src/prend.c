@@ -25,13 +25,13 @@ static bool	prendre_action(t_player *p, char *obj)
   if ((stone = is_stone(obj)) != NONE)
     {
       if (!set_box_delstone(p->x, p->y, stone, 1) ||
-	  !setplayer_addstone(p, stone, 1))
+	  !set_player_addstone(p, stone, 1))
 	return (false);
     }
   else if (!strcasecmp(obj, "nourriture"))
     {
       if (!set_box_delfood(p->x, p->y, 1) ||
-	  !setplayer_addfood(p->id, 1))
+	  !set_player_addfood(p->id, 1))
 	return (false);
     }
   else
