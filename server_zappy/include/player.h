@@ -14,6 +14,7 @@
 #  include	"ztypes.h"
 #  include	"list.h"
 
+# include	"egg.h"
 # include	"team.h"
 # include	"net.h"
 
@@ -27,7 +28,12 @@ typedef enum
     WEST
   }		e_direction;
 
-typedef struct	s_player
+#if !defined(_EGG_H_)
+typedef struct s_egg	t_egg;
+typedef struct s_player	t_player;
+#endif
+
+struct		s_player
 {
   uint		id;
   uint		level;
@@ -38,11 +44,12 @@ typedef struct	s_player
 
   t_fds		*client;
   t_team	*team;
+  t_egg		*egg;
 
   bool		fork;
   uint		food;
   double	foodt;
-}		t_player;
+};
 
 /*
 ** See destroy.c
@@ -50,4 +57,5 @@ typedef struct	s_player
 
 t_player        *player_destroy(t_player *);
 
+# define _PLAYER_H_
 #endif /* PLAYER_H_ */

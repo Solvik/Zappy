@@ -21,16 +21,24 @@ enum			e_egg_state
     HATCHED
   };
 
-typedef struct		s_egg
+#if !defined(_PLAYER_H_)
+typedef struct s_player	t_player;
+typedef struct s_egg	t_egg;
+#endif
+
+struct		s_egg
 {
   uint			id;
+  uint			idf;
   uint			x;
   uint			y;
   enum e_egg_state	status;
+
   t_player		*father;
-  t_team		*team;
-}			t_egg;
+  t_team	       	*team;
+};
 
 bool			egg_eclosion(void *);
 
+# define		_EGG_H_
 #endif			/* !EGG_H_ */

@@ -30,5 +30,6 @@ static define		map_nb_stones		= 10;
 static define		map_nb_food		= 10;
 
 static define		delay_life		= 126;
+static define		schedule_fork		= 42;
 
 #endif		/* !CONF_H_ */

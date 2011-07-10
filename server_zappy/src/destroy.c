@@ -10,6 +10,7 @@
 
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<stdio.h>
 
 #include	"tserver.h"
 #include	"client.h"
@@ -41,6 +42,8 @@ t_player        *player_destroy(t_player *p)
   if (p->team && del_node_as_arg(&p->team->players, match_pointer, p)
       && !p->fork)
     p->team->max_conn += 1;
+  if (p->egg)
+    p->egg = NULL;
   set_box_delplayer(p);
   destroy_list(&p->stones, free);
   free(p);

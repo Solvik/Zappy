@@ -20,9 +20,10 @@ static t_egg		*new_egg(t_player *player)
   static uint		id = 0;
   t_egg 		*egg;
 
-  if (!(egg = malloc(sizeof(*egg))))
+  if (!player || !(egg = calloc(1, sizeof(*egg))))
     return (NULL);
   egg->id = id;
+  egg->idf = player->id;
   egg->x = player->x;
   egg->y = player->y;
   egg->status = GROWING;
@@ -38,11 +39,10 @@ t_egg			*set_box_addegg(t_player *player)
   t_box 		*box;
   t_egg 		*egg;
 
-  if (!(box = get_box(player->x, player->y)))
+  if (!player || !(box = get_box(player->x, player->y)))
     return (NULL);
   if (!(egg = new_egg(player)) ||
       !put_in_list(&(box->eggs), egg))
     return (NULL);
   return (egg);
 }
-
