@@ -69,9 +69,8 @@ bool		exec_client(fds c, double tdt)
   char		*s;
 
   s = getcmd(c);
-  if (((c && (c->trick) && (((t_client*)c->trick)->close) &&
-	((t_client*)c->trick)->close++ >= 2) ||
-       !fds_alive(c)) && net_close(c))
+  if (((c && (c->trick) && ((t_client*)c->trick)->close) || !fds_alive(c)) &&
+      (c->write || net_close(c)))
     return (true);
   if (!(c->trick) || !(((t_client*)c->trick)->_m))
     return (mod_discovery(c, &s));
