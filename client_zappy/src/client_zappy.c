@@ -66,7 +66,7 @@ bool		client_zappy(int ac, char *av[])
   memset(&visu, 0, sizeof(visu));
   camerasetting_(&visu);
   TTF_Init();
-  visu.police = TTF_OpenFont("./Comic Sans MS.ttf", 12);
+  visu.police = TTF_OpenFont("data/comic.ttf", 12);
   if (ac > 2)
     {
       create_window(&visu);
