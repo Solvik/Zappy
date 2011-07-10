@@ -45,6 +45,7 @@ SRCS		=	$(SRC_DIR)main.c			\
 LIB		=	-L$(LIB_DIR)/network -lnet		\
 			-L$(LIB_DIR)/List -llist		\
 			-L$(LIB_DIR)/itoa -litoa		\
+			-Wl,-rpath -Wl,/usr/local/lib	\
 			-L/usr/local/lib/ -lfmodex		\
 			 `sdl-config --libs`			\
 			-lSDL_ttf				\
