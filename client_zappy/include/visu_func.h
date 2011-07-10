@@ -1,11 +1,11 @@
 /*
-** visu_func.h for  in /home/solvik/tek2/proj/Zappy/client_zappy
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Wed Jul  6 00:58:14 2011 solvik blum
-** Last update Sun Jul 10 16:43:01 2011 solvik blum
+** visu_func.h for Zappy in ./client_zappy/include
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef		VISU_FUNC_H_

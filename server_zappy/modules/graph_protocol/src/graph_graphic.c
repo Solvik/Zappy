@@ -1,11 +1,11 @@
 /*
-** graph_graphic.c for  in /home/seb/git/Zappy/server_zappy/modules/graph_protocol
-**
-** Made by seb
-** Login   <seb@epitech.net>
-**
-** Started on  Tue Jun 28 15:12:30 2011 seb
-** Last update Sun Jul 10 20:02:10 2011 guillaume gelin
+** graph_graphic.c for Zappy in ./server_zappy/modules/graph_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include <stdlib.h>

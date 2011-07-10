@@ -1,11 +1,11 @@
 /*
-** graph_event_server.c for zappy in /home/gelin_g/Zappy/server_zappy/modules/graph_protocol
-**
-** Made by guillaume gelin
-** Login   <gelin_g@epitech.net>
-**
-** Started on  Wed Jul  6 00:29:49 2011 guillaume gelin
-** Last update Sat Jul  9 23:56:46 2011 guillaume gelin
+** graph_event_server.c for Zappy in ./server_zappy/modules/graph_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include "tserver.h"

@@ -1,11 +1,11 @@
 /*
-** string.h for  in /Users/Lifely/Developer/project/Zappy/server_zappy/src
+** util_string.h for Zappy in ./common/include
 ** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Mon Jun 20 16:29:28 2011 Julien Di Marco
-** Last update Mon Jun 20 16:29:28 2011 Julien Di Marco
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef		STRING_H_

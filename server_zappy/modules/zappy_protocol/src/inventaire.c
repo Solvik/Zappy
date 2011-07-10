@@ -1,11 +1,11 @@
 /*
-** inventaire.c for  in /home/solvik/tek2/proj/Zappy/server_zappy/src/protocol
-**
-** Made by solvik blum
-** Login   <blum_s@epitech.net>
-**
-** Started on  Tue Jun 14 17:42:10 2011 solvik blum
-** Last update Mon Jul  4 01:19:27 2011 solvik blum
+** inventaire.c for Zappy in ./server_zappy/modules/zappy_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define _GNU_SOURCE

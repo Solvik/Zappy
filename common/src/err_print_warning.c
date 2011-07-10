@@ -1,11 +1,11 @@
 /*
-** print_warning.c for My FTP in ./client/src/error
+** err_print_warning.c for Zappy in ./common/src
 ** 
-** Made by lepage_b
-** Login   <lepage_b@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Thu Mar 17 21:40:11 2011 lepage_b
-** Last update Sun Apr 03 22:43:34 2011 lepage_b
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<stdarg.h>

@@ -1,11 +1,11 @@
 /*
-** net_connection.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/src
+** net_connection.c for Zappy in ./server_zappy/src
 ** 
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Mon Jun 20 16:55:35 2011 Julien Di Marco
-** Last update Mon Jun 20 16:55:35 2011 Julien Di Marco
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define		_GNU_SOURCE

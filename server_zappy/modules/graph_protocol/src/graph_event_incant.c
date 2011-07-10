@@ -1,11 +1,11 @@
 /*
-** graph_event_incant.c for zappy project
-**
-** Made by ramnes
-** <perso@ramnes.eu>
-**
-** Started on  Fri Jul  8 02:34:53 2011 by ramnes
-** Last update Sun Jul 10 21:30:16 2011 guillaume gelin
+** graph_event_incant.c for Zappy in ./server_zappy/modules/graph_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #define	_GNU_SOURCE

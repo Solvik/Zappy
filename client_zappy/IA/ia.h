@@ -1,11 +1,11 @@
 /*
-** ia.h for  in /home/carade_g/Zappy/client_zappy/IA
+** ia.h for Zappy in ./client_zappy/IA
 ** 
-** Made by guillaume caradec
-** Login   <carade_g@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Sun Jul 10 22:35:22 2011 guillaume caradec
-** Last update Sun Jul 10 23:07:28 2011 guillaume caradec
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef IA_H__

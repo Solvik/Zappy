@@ -1,11 +1,11 @@
 /*
-** handle.c for  in /home/seb/git/Zappy/client_zappy
-**
-** Made by seb
-** Login   <seb@epitech.net>
-**
-** Started on  Sun Jul 10 07:32:44 2011 seb
-** Last update Sun Jul 10 16:30:18 2011 solvik blum
+** handle.c for Zappy in ./client_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include		"time_.h"

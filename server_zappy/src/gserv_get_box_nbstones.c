@@ -1,11 +1,11 @@
 /*
-** gserv_get_box_nbstones.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Thu Jun 30 05:05:15 2011 Julien Di Marco
-** Last update Mon Jul  4 01:20:01 2011 solvik blum
+** gserv_get_box_nbstones.c for Zappy in ./server_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include		<stdlib.h>

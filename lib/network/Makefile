@@ -1,7 +1,11 @@
 ##
-## Made by	db0
-## Contact	db0company@gmail.com
-## Site		http://db0.fr/
+## Makefile for Zappy in ./lib/network
+## 
+## Made by di-mar_j
+## Login   <di-mar_j@epitech.net>
+## 
+## Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+## Last update Sun Jul 10 23:15:49 2011 di-mar_j
 ##
 
 NAME		=	libnet.a

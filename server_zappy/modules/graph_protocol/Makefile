@@ -1,14 +1,12 @@
 ##
-## Makefile. for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/test
+## Makefile for Zappy in ./server_zappy/modules/graph_protocol
 ## 
-## Made by Julien Di Marco
-## Login   <Lifely@epitech.net>
+## Made by di-mar_j
+## Login   <di-mar_j@epitech.net>
 ## 
-## Started on  Wed Jun 29 23:31:59 2011 Julien Di Marco
-## Last update Sun Jul 10 00:00:56 2011 guillaume gelin
+## Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+## Last update Sun Jul 10 23:15:49 2011 di-mar_j
 ##
-
-############################################################
 
 NAME	= graphModule
 

@@ -1,11 +1,11 @@
 /*
-** gserv_get_eggs.c for zappy in /home/gelin_g/Zappy/server_zappy/src
+** gserv_get_eggs.c for Zappy in ./server_zappy/src
 ** 
-** Made by guillaume gelin
-** Login   <gelin_g@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Sun Jul 10 02:02:35 2011 guillaume gelin
-** Last update Sun Jul 10 02:05:46 2011 guillaume gelin
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	"tserver.h"

@@ -1,11 +1,11 @@
 /*
-** get_info.c for  in /Users/sebastienblot/git/Zappy/client_zappy
-**
-** Made by Sebastien Blot
-** Login   <sebastienblot@epitech.net>
-**
-** Started on  Sat Jul  9 01:35:21 2011 Sebastien Blot
-** Last update Sat Jul  9 01:37:28 2011 Sebastien Blot
+** get_info.c for Zappy in ./client_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	"client_zappy.h"

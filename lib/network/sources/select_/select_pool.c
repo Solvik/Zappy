@@ -1,11 +1,11 @@
 /*
-** select_pool.c for  in /Users/Lifely/Developer/project/Zappy/lib/network/sources
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Sun Jul  3 17:12:21 2011 Julien Di Marco
-** Last update Sun Jul  3 17:12:21 2011 Julien Di Marco
+** select_pool.c for Zappy in ./lib/network/sources/select_
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #if		defined(SELECT_)

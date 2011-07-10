@@ -1,11 +1,11 @@
 /*
-** itoa.h for My IRC in myirc/lib/libitoa/include
+** itoa.h for Zappy in ./lib/itoa/include
 ** 
-** Made by lepage_b
-** Login   <lepage_b@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Thu Apr 07 22:05:40 2011 lepage_b
-** Last update Sun Apr 24 23:09:03 2011 lepage_b
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #ifndef		ITOA_H_

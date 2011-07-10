@@ -1,11 +1,11 @@
 /*
-** Ia.c for  in /home/carade_g/Zappy/client_zappy
+** ia.c for Zappy in ./client_zappy/IA
 ** 
-** Made by guillaume caradec
-** Login   <carade_g@epitech.net>
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
 ** 
-** Started on  Sun Jul 10 16:41:08 2011 guillaume caradec
-** Last update Sun Jul 10 23:07:08 2011 guillaume caradec
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<unistd.h>

@@ -1,11 +1,11 @@
 /*
-** draw.c for  in /home/seb/git/Zappy/client_zappy
-**
-** Made by seb
-** Login   <seb@epitech.net>
-**
-** Started on  Thu Jul  7 14:09:16 2011 seb
-** Last update Sat Jul  9 18:50:56 2011 solvik blum
+** draw.c for Zappy in ./client_zappy/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include "client_zappy.h"

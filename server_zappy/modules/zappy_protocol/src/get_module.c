@@ -1,11 +1,11 @@
 /*
-** get_module.c for  in /Users/Lifely/Developer/project/Zappy/server_zappy/modules/zappy_protocol
-**
-** Made by Julien Di Marco
-** Login   <Lifely@epitech.net>
-**
-** Started on  Thu Jun 30 03:50:51 2011 Julien Di Marco
-** Last update Sun Jul 10 04:10:01 2011 guillaume gelin
+** get_module.c for Zappy in ./server_zappy/modules/zappy_protocol/src
+** 
+** Made by di-mar_j
+** Login   <di-mar_j@epitech.net>
+** 
+** Started on  Thu Jun 23 22:12:26 2011 di-mar_j
+** Last update Sun Jul 10 23:15:49 2011 di-mar_j
 */
 
 #include	<strings.h>
