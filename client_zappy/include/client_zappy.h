@@ -19,9 +19,9 @@
 #  include	"network.h"
 #  include	"player.h"
 
-#  define WIDTH		1024
-#  define HEIGHT	768
-#  define SCROLL	2
+#  define	WIDTH		1024
+#  define	HEIGHT		768
+#  define	SCROLL		2
 
 typedef struct	s_cmd
 {
@@ -56,16 +56,16 @@ typedef struct	s_visualiseur
   SDL_Rect	camera;
   TTF_Font	*police;
   t_sprite	*sprite;
-  t_list	*map; // t_box
-  t_list	*player; // t_player
-  t_list	*teams; // t_teams
+  t_list	*map;/* t_box */
+  t_list	*player;/* t_player */
+  t_list	*teams;/* t_team */
   int		width;
   int		height;
   int		time;
   bool		refresh;
 }		t_visualiseur;
 
-typedef t_visualiseur t_visu;
+typedef		t_visualiseur	t_visu;
 
 t_cmd		*parse_cmd(char *);
 int		gere_cmd(t_fds *, t_cmd *, t_visu *);
@@ -82,4 +82,5 @@ void		draw_text(t_visu *, char *, int [2]);
 void		handle_event(t_fds **, t_visu *);
 bool		match_box(void *, void *);
 void		draw_stones(t_visu *, int, int);
+
 #endif		/* !CLIENT_ZAPPY_H_ */

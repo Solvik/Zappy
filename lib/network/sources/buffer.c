@@ -8,7 +8,7 @@
 ** Last update Tue Apr 19 17:44:38 2011 julien di-marco
 */
 
-#define NETPRIVATE
+#define		NETPRIVATE
 
 #include        <unistd.h>
 #include        <stdlib.h>

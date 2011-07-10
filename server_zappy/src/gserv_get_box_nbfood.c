@@ -11,7 +11,7 @@
 #include		<stdlib.h>
 #include		"tserver.h"
 
-uint		get_box_nbfood(uint x, uint y)
+uint			get_box_nbfood(uint x, uint y)
 {
   t_box 	*box;
 

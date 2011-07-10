@@ -11,26 +11,26 @@
 #ifndef         NETWORK_H_
 # define        NETWORK_H_
 
-# include	"fds.h"
-# include	"socket.h"
-# include	"buffer.h"
+#  include	"fds.h"
+#  include	"socket.h"
+#  include	"buffer.h"
 
-# include	"select_.h"
+#  include	"select_.h"
 
 /*
 **
 **
 */
 
-#define READM   16
-#define READB   1024
-#define WRITEB  1024
+#  define	READM		16
+#  define	READB		1024
+#  define	WRITEB		1024
 
-#define sends(a, b)     (writes(a, b, 1))
-#define eof(a)          (writes(a, NULL, 1))
-#define sendneof(a, b)  (writes(a, b, 0))
+#  define	sends(a, b)     (writes(a, b, 1))
+#  define	eof(a)          (writes(a, NULL, 1))
+#  define	sendneof(a, b)  (writes(a, b, 0))
 
-typedef	struct _pool	t_pool;
+typedef	struct	_pool		t_pool;
 
 /*
 ** Functions

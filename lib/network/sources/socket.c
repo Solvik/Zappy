@@ -27,7 +27,7 @@
 #include	"network.h"
 #include	"socket.h"
 
-#define h_addr h_addr_list[0]
+#define		h_addr h_addr_list[0]
 
 static int      getport(sock *s)
 {

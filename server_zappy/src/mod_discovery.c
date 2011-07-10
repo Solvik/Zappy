@@ -17,7 +17,7 @@
 #include	"module.h"
 #include	"client.h"
 
-static bool		mod_handshaking(void *elem, void *arg)
+static bool	mod_handshaking(void *elem, void *arg)
 {
   t_module	*module;
   fds		client;

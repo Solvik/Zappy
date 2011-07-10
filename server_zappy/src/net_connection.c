@@ -21,9 +21,9 @@
 #include	"network.h"
 #include	"tserver.h"
 
-bool	net_port_unique(int port)
+bool		net_port_unique(int port)
 {
-  fds	tmp;
+  fds		tmp;
 
   if (!gserv_const(false))
     return (false);
@@ -37,9 +37,9 @@ bool	net_port_unique(int port)
   return (true);
 }
 
-bool	net_bind(uint *port)
+bool		net_bind(uint *port)
 {
-  int	a;
+  int		a;
 
   a = 0;
   if (!gserv_const(false))
@@ -57,7 +57,7 @@ static bool	del_pointer(void *a, void *b)
   return ((a == b));
 }
 
-bool	net_close(fds c)
+bool		net_close(fds c)
 {
   t_client	*info;
   t_module	*module;
@@ -76,7 +76,7 @@ bool	net_close(fds c)
   return (true);
 }
 
-bool	net_close_msg(fds c, char const *format, ...)
+bool		net_close_msg(fds c, char const *format, ...)
 {
   char		*string;
   va_list	arguments;

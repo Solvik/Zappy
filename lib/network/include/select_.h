@@ -12,9 +12,9 @@
 # ifndef	SELECT__H_
 #  define	SELECT__H_
 
-# include	<sys/select.h>
-# include	<sys/types.h>
-# include	<sys/time.h>
+#  include	<sys/select.h>
+#  include	<sys/types.h>
+#  include	<sys/time.h>
 
 typedef	 struct	_pool
 {
@@ -32,5 +32,6 @@ int             handle_write(fds);
 int		pool_fill(fds, t_select*);
 int		pool_exec(t_select *, struct timeval *);
 int		pool_handle(fds*, t_select*);
+
 # endif		/* !SELECT__H_ */
 #endif

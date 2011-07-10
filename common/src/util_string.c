@@ -8,14 +8,14 @@
 ** Last update Mon Jun 20 16:23:55 2011 Julien Di Marco
 */
 
-#include <strings.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <errno.h>
+#include	<strings.h>
+#include	<unistd.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<ctype.h>
+#include	<errno.h>
 
-char	*lowercase(char *s)
+char		*lowercase(char *s)
 {
   size_t	i;
   char		*p;

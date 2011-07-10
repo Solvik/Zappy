@@ -15,12 +15,12 @@
 
 extern t_server 	*gserv;
 
-static bool	match_stone(void *data, void *stone)
+static bool		match_stone(void *data, void *stone)
 {
   return (((t_stone *)data)->type == *((e_stone *)stone));
 }
 
-uint		get_box_nbstones(uint x, uint y, e_stone type)
+uint			get_box_nbstones(uint x, uint y, e_stone type)
 {
   t_box 	*box;
   t_stone 	*stone;
