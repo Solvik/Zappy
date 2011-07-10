@@ -39,7 +39,7 @@ void		writes(fds filed, char *s, int end)
       if (s)
 	buffer_add(&filed->write, s);
       if (s && end)
-	buffer_add(&filed->write, filed->delim[0] ? filed->delim : CRLF);
+	buffer_add(&filed->write, filed->delim[0] ? filed->delim : "\n");
     }
 }
 
@@ -58,7 +58,7 @@ int		sendf(fds c, char const *format, ...)
   if (string)
     {
       buffer_add(&c->write, string);
-      buffer_add(&c->write, c->delim[0] ? c->delim : CRLF);
+      buffer_add(&c->write, c->delim[0] ? c->delim : "\n");
       free(string);
     }
   return (true);
@@ -80,7 +80,7 @@ int		sendf_(fds c, int s, char const *format, ...)
     {
       buffer_add(&c->write, string);
       if (s)
-	buffer_add(&c->write, c->delim[0] ? c->delim : CRLF);
+	buffer_add(&c->write, c->delim[0] ? c->delim : "\n");
       free(string);
     }
   return (true);
