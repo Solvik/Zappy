@@ -21,12 +21,9 @@ SRCS		=	ia.c					\
 
 ## Libraries
 LIB		=	-L$(LIB_DIR)/network -lnet		\
-			-L$(LIB_DIR)/List -llist		\
-			-L$(LIB_DIR)/itoa -litoa		\
-			-Wl,-rpath -Wl,$(LIB_DIR)		\
-			-L$(LIB_DIR) -lfmodex			\
-			 `sdl-config --libs`			\
-			-lSDL_ttf				\
+			-L$(LIB_DIR)/List -llist
+
+
 
 ## functions
 OBJS		=	$(SRCS:.c=.o)
@@ -34,7 +31,7 @@ OBJS		=	$(SRCS:.c=.o)
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		+=	-W -Wall -Wextra -ggdb `sdl-config --cflags`
+CFLAGS		+=	-W -Wall -Wextra -ggdb
 
 ## RULES
 
