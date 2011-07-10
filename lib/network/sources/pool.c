@@ -51,7 +51,7 @@ fds		pool(fds *l, struct timeval *tv)
 
   if ((*l) && ((t = pool_fill((*l), &p)) != -1))
     {
-      tv = (t == 1 ? timeval_(tv, 0.05) : tv);
+      tv = ((t == 1) ? timeval_(tv, 0.05) : tv);
       if ((pool_exec(&p, tv) != -1))
 	pool_handle(l, &p);
     }

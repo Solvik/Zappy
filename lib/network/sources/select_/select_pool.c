@@ -56,7 +56,7 @@ int		pool_fill(fds l, t_select *p)
 	    FD_SET(l->fd, &p->write);
 	  p->max = (l->fd > p->max ? l->fd : p->max);
 	}
-      r = (l && l->read) ? 1 : r;
+      r = (l && l->read && l->read->update) ? 1 : r;
       l = l->next;
     }
   return ((p->max == -1 ? -1 : (r ? 1 : 0)));

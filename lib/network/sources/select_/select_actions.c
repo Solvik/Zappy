@@ -77,7 +77,11 @@ int		handle_read(fds socket)
   if (socket && fds_alive(socket) && (buffer_size(socket->read) < READM))
     {
       if ((i = read(socket->fd, tmp, READB)) > 0)
-	buffer_add(&socket->read, tmp);
+	{
+	  buffer_add(&socket->read, tmp);
+	  if (socket && socket->read)
+	    socket->read->update = 1;
+	}
       else
 	{
 	  if (i == -1)

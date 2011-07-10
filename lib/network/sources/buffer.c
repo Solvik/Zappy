@@ -30,7 +30,7 @@ char            *buffer_fill(char *buffer, char *s)
   return (s);
 }
 
-buffer		buffer_add(buffer *l, char *s)
+buffer          buffer_add(buffer *l, char *s)
 {
   buffer                tmp;
   buffer                new;
@@ -44,6 +44,7 @@ buffer		buffer_add(buffer *l, char *s)
     }
   if ((new = calloc(1, sizeof(*new))))
     {
+      new->update = 1;
       if ((*l))
         {
           if (tmp)
@@ -58,7 +59,7 @@ buffer		buffer_add(buffer *l, char *s)
   return (new);
 }
 
-int		buffer_size(buffer b)
+int             buffer_size(buffer b)
 {
   int           i;
 
@@ -72,7 +73,7 @@ int		buffer_size(buffer b)
   return (i);
 }
 
-buffer		buffer_remove(buffer e)
+buffer          buffer_remove(buffer e)
 {
   buffer                prev;
   buffer                next;
@@ -91,7 +92,7 @@ buffer		buffer_remove(buffer e)
   return (NULL);
 }
 
-int		buffer_move(buffer l, int i)
+int             buffer_move(buffer l, int i)
 {
   if (l && (i <= BUFFERS) && (strlen(&l->buf[i]) > 0))
     {

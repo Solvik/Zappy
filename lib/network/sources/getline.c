@@ -59,6 +59,7 @@ static buffer	push(buffer *bf, char *s)
 
   if ((new = calloc(1, sizeof(*new))))
     {
+      new->update = 1;
       buffer_fill(new->buf, s);
       if ((tmp = *bf))
 	{
@@ -106,13 +107,19 @@ char		*getcmd(fds filed)
   buffer	tmp;
   char		*r;
 
-  if (filed && (tmp = filed->read))
+  if (filed && (tmp = filed->read) && filed->read->update)
     while (tmp)
       {
 	if ((r = check_end(filed, tmp, filed->delim)))
-	  return (r);
+	  {
+	    if (filed && filed->read)
+	      filed->read->update = 1;
+	    return (r);
+	  }
 	tmp = tmp->next;
       }
+  if (filed && filed->read)
+    filed->read->update = 0;
   return (NULL);
 }
 
