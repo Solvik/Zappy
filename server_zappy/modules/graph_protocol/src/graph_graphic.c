@@ -50,8 +50,8 @@ bool graph_graphic(t_fds *client, char *cmd __attribute__((unused)))
 
   mod = get_module_by_name("Zappy Protocol");
   eggs = get_eggs();
-  graph_sgt(client, NULL);
   graph_msz(client, NULL);
+  graph_sgt(client, NULL);
   graph_mct(client, NULL);
   graph_tna(client, NULL);
   foreach_arg_list(mod->clients, _pnw, client);
