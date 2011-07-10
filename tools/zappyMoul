@@ -4,14 +4,14 @@ import sys, os, socket, string
 import random, time
 
 random.seed(time.time())
-simpleCommand = ["avance",
+simpleCommand = ["connect_nbr",
                  "droite",
                  "gauche",
                  "voir",
                  "inventaire",
                  "expulse",
                  "fork",
-                 "connect_nbr",
+                 "avance",
                  "prend nourriture"
                  ]
 
