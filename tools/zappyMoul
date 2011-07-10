@@ -9,12 +9,11 @@ simpleCommand = ["avance",
                  "gauche",
                  "voir",
                  "inventaire",
-#                 "expulse",
-#                 "fork",
-#                 "connect_nbr",
-                 "prend nouriture"]
-
-
+                 "expulse",
+                 "fork",
+                 "connect_nbr",
+                 "prend nouriture"
+                 ]
 
 CRLF = "\r\n"
 
