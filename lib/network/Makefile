@@ -33,7 +33,7 @@ AR		=	ar r
 RM		=	rm -f
 CC		?=	gcc
 
-CFLAGS		+=	-W -Wall -ansi -D$(POOL)
+CFLAGS		+=	-W -Wall -ansi -fPIC -D$(POOL)
 
 INCLUDE		=	-Iinclude
 
