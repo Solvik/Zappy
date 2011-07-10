@@ -24,13 +24,28 @@ static const char	*enum_to_dir[4] =
     "WEST",
   };
 
+
+static int	zappy_avance(t_fds *client, e_direction direction)
+{
+  t_player	*p;
+
+  p = player_data;
+  set_box_delplayer(p);
+  p->x += (direction == WEST) ? 1 : (direction == EAST) ? -1 : 0;
+  p->y += (direction == NORTH) ? 1 : (direction == SOUTH) ? -1 : 0;
+  p->x = X(p->x);
+  p->y = Y(p->y);
+  set_box_addplayer(p, p->x, p->y);
+  return (true);
+}
+
 static void	expulse_players(void *data, void *dest)
 {
   t_fds		*client;
 
   client = (t_fds *)data;
   if (player_data != (t_player *)dest)
-    sends(data, "avance");
+    zappy_avance(client, (player_data->direction + 2) % 4);
 }
 
 int		zappy_expulse(t_fds *client, char *cmd)
@@ -47,7 +62,7 @@ int		zappy_expulse(t_fds *client, char *cmd)
       mod = get_module_by_name("Zappy Protocol");
       foreach_arg_list(mod->clients, expulse_players, player_data);
       r = asprintf(&ret, "deplacement %s",
-		   enum_to_dir[player_data->direction]);
+		   enum_to_dir[(player_data->direction + 2) % 4]);
       sends(client, ret);
       if (ret)
 	free(ret);
