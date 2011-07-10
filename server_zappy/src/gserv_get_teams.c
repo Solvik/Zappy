@@ -24,3 +24,8 @@ t_box 		*get_box_at(uint i)
     return (NULL);
   return (&(gserv->map.map[i]));
 }
+
+t_fds		*get_fds(void)
+{
+  return (gserv->pool);
+}

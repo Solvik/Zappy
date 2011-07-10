@@ -18,7 +18,7 @@
 #include        "run.h"
 #include        "exec.h"
 #include        "tserver.h"
-#include "dbg.h"
+#include	"dbg.h"
 
 extern t_server *gserv;
 

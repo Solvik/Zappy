@@ -11,46 +11,50 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<stdio.h>
-
 #include	"tserver.h"
-#include	"client.h"
 
-extern t_server	*gserv;
-
-static bool             match_pointer(void *data, void *name)
+static void	destroy_fds(t_fds *pool)
 {
-  if (!data || !name)
-    return (false);
-  return ((data == name));
+  while (pool)
+    {
+      net_close(pool);
+      pool = pool->next;
+    }
 }
 
-void		*destroy_client(t_client *c)
+static void	destroy_map(t_box * map)
 {
-  if (!c)
-    return (NULL);
-  scheduler_destroy(c);
-  flood_destroy(c);
-  free(c);
-  return (NULL);
+  size_t	i;
+
+  if (!map)
+    return ;
+  i = 0;
+  while (i < get_map_max())
+    {
+      destroy_list(&map[i].stones, free);
+      destroy_list(&map[i].players, NULL);
+      destroy_list(&map[i].eggs, free);
+      ++i;
+    }
+  free(map);
 }
 
-t_player        *player_destroy(t_player *p)
+static void	destroy_team(void * team)
 {
-  if (!p || p->food > 0)
-    return ((p ? (void*)(p->client = NULL) : NULL));
-  event_relative_dispatch("PlayerDied", p, 0);
-  if (p->team && del_node_as_arg(&p->team->players, match_pointer, p)
-      && !p->fork)
-    p->team->max_conn += 1;
-  if (p->egg)
-    p->egg = NULL;
-  set_box_delplayer(p);
-  destroy_list(&p->stones, free);
-  free(p);
-  return (NULL);
+  free(((t_team *)team)->name);
+  destroy_list(&((t_team *)team)->players, NULL);
+  destroy_list(&((t_team *)team)->egg_list, NULL);
 }
 
 void		destroy(void)
 {
-  free(get_map());
+  t_list	*teams;
+  t_list	*eggs;
+
+  teams = get_teams();
+  destroy_list(&teams, destroy_team);
+  eggs = get_eggs();
+  destroy_list(&eggs, NULL);
+  destroy_map(get_map());
+  destroy_fds(get_fds());
 }

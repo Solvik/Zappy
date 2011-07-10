@@ -33,6 +33,12 @@ typedef struct s_egg	t_egg;
 typedef struct s_player	t_player;
 #endif
 
+typedef struct		_case
+{
+  int	x;
+  int	y;
+}		t_case;
+
 struct		s_player
 {
   uint		id;
@@ -45,6 +51,7 @@ struct		s_player
   t_fds		*client;
   t_team	*team;
   t_egg		*egg;
+  t_case	inca;
 
   bool		fork;
   uint		food;

@@ -35,9 +35,9 @@ typedef		struct
   t_map		map;
 
   t_fds		*pool;
-  t_list	*module; /* t_module */
-  t_list 	*team; /* t_team */
-  t_list 	*egg; /* t_egg */
+  t_list	*module;/* t_module */
+  t_list 	*team;/* t_team */
+  t_list 	*egg;/* t_egg */
 
   bool		run;
 }		t_server;
@@ -58,6 +58,7 @@ t_player *	new_player(char *);
 uint		get_map_width(void);
 uint		get_map_height(void);
 t_box 		*get_map(void);
+t_fds 		*get_fds(void);
 uint		get_map_max(void);
 
 t_box 		*get_box(uint, uint);
