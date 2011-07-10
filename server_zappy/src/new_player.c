@@ -31,6 +31,7 @@ static t_player *init_player(t_team *team)
   player->level = default_level;
   player->food = default_life;
   player->foodt = default_life;
+  player->foodlt = time_();
   player->x = rand() % get_map_width();
   player->y = rand() % get_map_height();
   player->direction = rand() % (WEST + 1);

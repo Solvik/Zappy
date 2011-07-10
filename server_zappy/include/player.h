@@ -56,6 +56,7 @@ struct		s_player
   bool		fork;
   uint		food;
   double	foodt;
+  double	foodlt;
 };
 
 /*

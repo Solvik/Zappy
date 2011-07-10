@@ -31,14 +31,18 @@ static double	timer_helper(double r)
   return ((dt = (r < dt || dt < 0.0 ? r : dt)));
 }
 
-static void	update_player(t_player *player, double *dt)
+static void	update_player(t_player *player, double *tdt)
 {
   fds		c;
+  double	dt;
 
-  if (!player || !dt)
+  (void)tdt;
+  if (!player)
     return ;
   c = player->client;
-  player->foodt -= (*dt / (((double)delay_life / get_delay()) * get_time()));
+  dt = time_d(player->foodlt);
+  player->foodlt = time_();
+  player->foodt -= (dt / (((double)delay_life / get_delay()) * get_time()));
   player->food = (uint)abs(player->foodt);
   if (player->foodt <= 0)
     c ? (void)net_close_msg(c, "mort") : (void)player_destroy(player);
