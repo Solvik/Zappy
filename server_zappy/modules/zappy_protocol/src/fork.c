@@ -29,7 +29,7 @@ int		zappy_fork(t_fds *client, char *_)
   t_egg		*egg;
 
   (void)_;
-  if (!client || !(p = *(t_player**)c) || !(egg = set_box_addegg(p)))
+  if (!client || !(p = *(t_player**)client) || !(egg = set_box_addegg(p)))
     return (false);
   event_relative_dispatch("EggNew", egg, 0);
   event_relative_dispatch("EggHatch", egg, 600);
