@@ -31,7 +31,9 @@ void	init_(void)
     {
       info->handshaking = zappy_handshaking;
       info->disconnection = zappy_disconnection;
+#if	defined(NDEBUG)
       info->update = zappy_update;
+#endif
       info->timer = zappy_timer;
       mod_register(info);
     }
